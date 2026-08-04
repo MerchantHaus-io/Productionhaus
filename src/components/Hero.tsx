@@ -52,7 +52,7 @@ export const Hero = () => {
       </div>
 
       {/* Centered Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Animated Headline */}
         <div
           className={`font-ubuntu font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight transition-all duration-700 delay-300 ${

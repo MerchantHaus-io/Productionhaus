@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ClientResources() {
   return (
-    <section className="py-20 px-6 max-w-7xl mx-auto">
+    <section className="py-20 px-6 md:px-16 lg:px-24">
       <div className="text-center mb-12">
         <h2 className="font-ubuntu text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
           Client Resources
@@ -13,7 +13,7 @@ export default function ClientResources() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8">
         <a
           href="/TheMerchantPortal"
           className="group relative overflow-hidden border border-border p-8 transition-all duration-300 hover:border-foreground/30"

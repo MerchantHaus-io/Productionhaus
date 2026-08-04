@@ -51,9 +51,9 @@ export default function VampBlogBanner() {
   }, [totalSlides]);
 
   return (
-    <section className="py-12 px-6">
+    <section className="py-12 px-6 md:px-16 lg:px-24">
       <div
-        className="relative max-w-7xl mx-auto overflow-hidden border border-border transition-all duration-500 bg-card"
+        className="relative overflow-hidden border border-border transition-all duration-500 bg-card"
         style={{
           boxShadow: "none"
         }}

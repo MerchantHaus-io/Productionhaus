@@ -95,8 +95,8 @@ export const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
   return (
-    <section className="py-24 px-4 bg-background border-t border-border">
-      <div className="container mx-auto max-w-7xl">
+    <section className="py-24 bg-background border-t border-border">
+      <div className="px-6 md:px-16 lg:px-24">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-ubuntu text-foreground">
             Transparent Pricing

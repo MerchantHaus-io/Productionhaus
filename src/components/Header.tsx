@@ -54,7 +54,7 @@ export const Header = () => {
         isScrolled ? 'shadow-md' : ''
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between">
         <div className="flex items-center gap-6">
           {/* Logo with Shield and Animation - Shield always on top */}
           <a href="/" className="flex items-center gap-3 group relative">
