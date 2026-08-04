@@ -29,6 +29,7 @@ const Apply = lazy(() => import("./pages/Apply"));
 const Security = lazy(() => import("./pages/Security"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const SupportedProcessors = lazy(() => import("./pages/SupportedProcessors"));
+const DeviceCatalog = lazy(() => import("./pages/DeviceCatalog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Quote = lazy(() => import("./pages/Quote"));
 const Todos = lazy(() => import("./pages/Todos"));
@@ -161,6 +162,7 @@ const App = () => (
               <Route path="/ThreeStepRedirect" element={<ThreeStepRedirect />} />
               <Route path="/Webhooks" element={<Webhooks />} />
               <Route path="/supported-processors" element={<SupportedProcessors />} />
+              <Route path="/device-catalog" element={<DeviceCatalog />} />
               <Route path="/pipeline" element={<Pipeline />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
