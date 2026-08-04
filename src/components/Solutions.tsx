@@ -267,7 +267,7 @@ export const Solutions = () => {
   };
 
   return (
-    <section id="services" className="py-24 px-4 sm:px-6 bg-background relative overflow-visible border-t border-border">
+    <section id="services" className="py-24 px-6 md:px-16 lg:px-24 bg-background relative overflow-visible border-t border-border">
       {/* Minimal shield logo */}
       <div className="relative mb-16 z-20 pointer-events-none">
         <div className="flex justify-center">
@@ -288,7 +288,7 @@ export const Solutions = () => {
           />
         </div>
       </div>
-      <div className="max-w-7xl mx-auto overflow-visible relative z-10">
+      <div className="overflow-visible relative z-10">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="font-ubuntu font-bold text-3xl sm:text-4xl md:text-5xl text-foreground mb-4">
             Core Services

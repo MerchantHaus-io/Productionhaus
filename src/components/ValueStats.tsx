@@ -246,9 +246,9 @@ export const ValueStats = () => {
   const currentSection = sections[active];
 
   return (
-    <section className="vs-section py-20 px-4 sm:px-6 bg-transparent">
+    <section className="vs-section py-20 px-6 md:px-16 lg:px-24 bg-transparent">
       {/* Section heading */}
-      <div className="max-w-5xl mx-auto mb-16 text-center">
+      <div className="mb-16 text-center">
         <h2 className="font-rajdhani text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground uppercase">
           Platform Capabilities at a Glance
         </h2>
@@ -355,7 +355,7 @@ export const ValueStats = () => {
 
         /* ===== Two-column layout ===== */
         .vs-layout {
-          max-width: 1100px;
+          max-width: 1400px;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
@@ -436,7 +436,7 @@ export const ValueStats = () => {
           font-size: clamp(1rem, 2vw, 1.15rem);
           line-height: 1.75;
           color: var(--vs-muted);
-          max-width: 36rem;
+          max-width: 40rem;
           margin-bottom: 1.5rem;
         }
 
@@ -451,7 +451,7 @@ export const ValueStats = () => {
         /* ===== Right: flat card panel ===== */
         .vs-card-panel {
           flex: 0 0 auto;
-          width: 340px;
+          width: clamp(320px, 26vw, 380px);
           position: relative;
         }
 

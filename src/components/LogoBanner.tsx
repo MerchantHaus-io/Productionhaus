@@ -33,7 +33,7 @@ const LogoBanner = () => {
 
   return (
     <section className="py-20 overflow-hidden border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-10">
+      <div className="px-6 md:px-16 lg:px-24 mb-10">
         <div className="text-center">
           <p className="font-ubuntu text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
             Integrations & Partnerships
