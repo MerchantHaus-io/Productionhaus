@@ -168,6 +168,29 @@ const Blog = () => {
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
+            {/* Card: Payment Gateway Buyer's Guide */}
+            <div className="card-container">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+                <a href="/payment-gateway-guide" className="block">
+                  <div className="h-40 bg-gradient-to-br from-crimson to-rose-700 text-white p-6 flex flex-col justify-between">
+                    <div className="text-xs font-semibold uppercase tracking-wider">Buyer&apos;s Guide</div>
+                    <h4 className="text-xl font-bold">How to Choose the Right Payment Gateway</h4>
+                    <p className="text-xs text-white/80">July 2026</p>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Payments Strategy</p>
+                    <p className="text-sm mb-4 text-muted-foreground">
+                      No jargon, no sales pitch — the questions that actually matter when picking a gateway that fits your sales model.
+                    </p>
+                    <div className="flex items-center text-sm font-medium text-foreground">
+                      Read More
+                      <ArrowRight className="arrow-icon w-4 h-4 ml-2" />
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
             {/* Card: Construction Finance */}
             <div className="card-container">
               <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
