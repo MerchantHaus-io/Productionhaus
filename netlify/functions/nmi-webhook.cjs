@@ -15,7 +15,7 @@
  * your payload uses different property names.
  */
 
-const createGateway = require('./create-gateway-account.js');
+const createGateway = require('./create-gateway-account.cjs');
 
 exports.handler = async function (event) {
   try {

@@ -272,9 +272,9 @@ export const ValueStats = () => {
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className={`vs-flat-card ${textAnimating ? "vs-flat-card--exit" : "vs-flat-card--enter"}`}>
-            <div className="vs-card-icon">{currentSection.icon}</div>
-            <h4 className="vs-card-title">{currentSection.heading}</h4>
-            <ul className="vs-card-stats">
+            {/* The capability name is already the heading on the left, so the card only labels its stats */}
+            <p className="vs-card-label">Key highlights</p>
+            <ul className="vs-card-stats" aria-label={`${currentSection.heading} highlights`}>
               {currentSection.stats.map((stat) => (
                 <li key={stat.text} className="vs-card-stat-item">
                   <span className="vs-card-stat-icon" aria-hidden="true">{stat.icon}</span>
@@ -496,28 +496,21 @@ export const ValueStats = () => {
           to { opacity: 0; transform: translateY(-8px); }
         }
 
-        .vs-card-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 1.8rem;
-          height: 1.8rem;
-          color: var(--vs-foreground);
-          opacity: 0.7;
-        }
-
-        .vs-card-title {
-          font-family: 'Rajdhani', system-ui, sans-serif;
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: var(--vs-foreground);
-          line-height: 1.25;
+        .vs-card-label {
+          font-family: 'Montserrat', system-ui, sans-serif;
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--vs-muted);
           margin: 0;
+          padding-bottom: 0.8rem;
+          border-bottom: 1px solid var(--vs-card-border);
         }
 
         .vs-card-stats {
           list-style: none;
-          margin: 0.6rem 0 0;
+          margin: 0.4rem 0 0;
           padding: 0;
           display: flex;
           flex-direction: column;
@@ -658,7 +651,8 @@ export const ValueStats = () => {
         /* ===== Responsive ===== */
         @media (max-width: 899px) {
           .vs-layout {
-            flex-direction: column-reverse;
+            flex-direction: column;
+            gap: 1.5rem;
           }
 
           .vs-card-panel {
