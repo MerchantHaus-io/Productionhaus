@@ -22,6 +22,7 @@ export default {
         rajdhani: ['Rajdhani', 'system-ui', 'sans-serif'],
       },
       colors: {
+        'brand-red': 'hsl(var(--brand-red))',
         crimson: 'hsl(var(--crimson))',
         'cyber-teal': 'hsl(var(--cyber-teal))',
         'neutral-dark': 'hsl(var(--neutral-dark))',
