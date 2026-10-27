@@ -87,7 +87,7 @@ const Blog = () => {
         
         .hover-crimson-arrow:hover .arrow-icon {
             transform: translateX(5px);
-            color: #DC143C;
+            color: hsl(var(--brand-red));
         }
         .arrow-icon {
             transition: all 0.3s ease;

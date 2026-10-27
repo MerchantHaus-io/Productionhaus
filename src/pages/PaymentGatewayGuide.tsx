@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PageSEO } from "@/components/PageSEO";
 
-const accent = "#DC143C";
+const accent = "hsl(var(--brand-red))";
 
 const blogStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
