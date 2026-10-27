@@ -172,13 +172,18 @@ const Blog = () => {
             <div className="card-container">
               <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
                 <a href="/swipe-fee-settlement" className="block">
-                  <div className="h-40 text-white p-6 flex flex-col justify-between" style={{ background: "linear-gradient(135deg, #C8102E 0%, #6E0919 100%)" }}>
-                    <div className="text-xs font-semibold uppercase tracking-wider">Payments Briefing</div>
-                    <h4 className="text-xl font-bold">The Swipe-Fee Settlement: What Actually Changes</h4>
-                    <p className="text-xs text-white/80">October 2026</p>
-                  </div>
+                  <img
+                    src="/blog-images/swipe-fee-settlement.webp"
+                    alt="Card terminal and credit cards beside a judge's gavel and settlement papers"
+                    className="w-full h-40 object-cover"
+                    loading="lazy"
+                  />
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Industry News</p>
+                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                      The Swipe-Fee Settlement: What Actually Changes
+                    </h4>
+                    <p className="text-xs text-muted-foreground mb-2">October 2026</p>
                     <p className="text-sm mb-4 text-muted-foreground">
                       Lower rates, card-by-card acceptance and new surcharging rules — what the Visa and Mastercard deal means for you, and five things to do before the November 16 hearing.
                     </p>
@@ -195,13 +200,18 @@ const Blog = () => {
             <div className="card-container">
               <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
                 <a href="/payment-gateway-guide" className="block">
-                  <div className="h-40 bg-gradient-to-br from-crimson to-rose-700 text-white p-6 flex flex-col justify-between">
-                    <div className="text-xs font-semibold uppercase tracking-wider">Buyer&apos;s Guide</div>
-                    <h4 className="text-xl font-bold">How to Choose the Right Payment Gateway</h4>
-                    <p className="text-xs text-white/80">July 2026</p>
-                  </div>
+                  <img
+                    src="/blog-images/payment-gateway-guide.webp"
+                    alt="A payment card with a lit path that bypasses two mazes and leads to a vault"
+                    className="w-full h-40 object-cover"
+                    loading="lazy"
+                  />
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Payments Strategy</p>
+                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                      How to Choose the Right Payment Gateway
+                    </h4>
+                    <p className="text-xs text-muted-foreground mb-2">July 2026</p>
                     <p className="text-sm mb-4 text-muted-foreground">
                       No jargon, no sales pitch — the questions that actually matter when picking a gateway that fits your sales model.
                     </p>
@@ -242,13 +252,18 @@ const Blog = () => {
             <div className="card-container">
               <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
                 <a href="/payments-survey-2025" className="block">
-                  <div className="h-40 bg-gradient-to-br from-purple-700 to-indigo-600 text-white p-6 flex flex-col justify-between">
-                    <div className="text-xs font-semibold uppercase tracking-wider">Industry Insights</div>
-                    <h4 className="text-xl font-bold">Payments Survey 2025: How Customers Really Pay</h4>
-                    <p className="text-xs text-white/80">December 2025</p>
-                  </div>
+                  <img
+                    src="/blog-images/payments-survey-2025.webp"
+                    alt="Abstract painting of gold, green and charcoal brushstrokes flowing across geometric blocks"
+                    className="w-full h-40 object-cover"
+                    loading="lazy"
+                  />
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Payments Strategy</p>
+                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                      Payments Survey 2025: How Customers Really Pay
+                    </h4>
+                    <p className="text-xs text-muted-foreground mb-2">December 2025</p>
                     <p className="text-sm mb-4 text-muted-foreground">
                       Cards still dominate, but wallets and BNPL are now essential levers for margin and AOV.
                     </p>
@@ -266,8 +281,8 @@ const Blog = () => {
               <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
                 <a href="/prediction-2026" className="block">
                   <img
-                    src="/blog-images/pos-terminal-overlay.png"
-                    alt="POS terminal overlay"
+                    src="/blog-images/prediction.webp"
+                    alt="AI predictions and payment trends"
                     className="w-full h-40 object-cover"
                     loading="lazy"
                   />
