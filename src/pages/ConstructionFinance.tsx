@@ -10,10 +10,9 @@ const accentDark = "#633806";
 const heroImage = "/blog-images/construction-finance-hero.jpg";
 
 const blogStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
   .blog-root {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
     color: var(--color-text-primary);
     max-width: 860px;
     margin: 0 auto;
@@ -23,7 +22,7 @@ const blogStyles = `
   }
 
   .blog-root h1, .blog-root h2, .blog-root h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     line-height: 1.2;
     font-weight: 700;
   }
@@ -83,7 +82,7 @@ const blogStyles = `
   }
 
   .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -120,7 +119,7 @@ const blogStyles = `
   }
 
   .hero-meta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.08em;
@@ -147,7 +146,7 @@ const blogStyles = `
   }
 
   .hero-stat-num {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2.4rem;
     font-weight: 900;
     color: ${accent};
@@ -157,7 +156,7 @@ const blogStyles = `
   }
 
   .hero-stat-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -180,7 +179,7 @@ const blogStyles = `
   }
 
   .section-num {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.1em;
@@ -206,7 +205,7 @@ const blogStyles = `
   }
 
   .pullquote p {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 1.3rem;
     font-style: italic;
     font-weight: 400;
@@ -216,7 +215,7 @@ const blogStyles = `
   }
 
   .pullquote cite {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.08em;
@@ -229,11 +228,11 @@ const blogStyles = `
     border-collapse: collapse;
     font-size: 14px;
     margin: 1.5rem 0;
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
   }
 
   .data-table thead th {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -269,7 +268,7 @@ const blogStyles = `
   }
 
   .callout-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -299,7 +298,7 @@ const blogStyles = `
   }
 
   .stat-card-num {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2rem;
     font-weight: 700;
     color: ${accent};
@@ -308,7 +307,7 @@ const blogStyles = `
   }
 
   .stat-card-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     text-transform: uppercase;
@@ -326,7 +325,7 @@ const blogStyles = `
   }
 
   .calc-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -342,7 +341,7 @@ const blogStyles = `
   }
 
   .calc-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 12px;
     color: var(--color-text-secondary);
     min-width: 180px;
@@ -358,7 +357,7 @@ const blogStyles = `
   }
 
   .calc-result-num {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2.5rem;
     font-weight: 900;
     color: ${accent};
@@ -366,7 +365,7 @@ const blogStyles = `
   }
 
   .calc-result-label {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 15px;
     color: var(--color-text-secondary);
     font-style: italic;
@@ -388,7 +387,7 @@ const blogStyles = `
   }
 
   .rec-num {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: ${accent};
     letter-spacing: 0.1em;
@@ -400,7 +399,7 @@ const blogStyles = `
     font-size: 1rem;
     font-weight: 700;
     margin: 0 0 0.5rem;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
   }
 
   .rec-card p {
@@ -427,7 +426,7 @@ const blogStyles = `
   }
 
   .tech-future-header span {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -456,7 +455,7 @@ const blogStyles = `
     display: inline-block;
     padding: 2px 8px;
     border-radius: 4px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     font-weight: 500;
   }
@@ -510,7 +509,7 @@ function SavingsCalculator() {
           onChange={e => setVolume(Number(e.target.value))}
           style={{ flex: 1 }}
         />
-        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, minWidth: 100, textAlign: "right" }}>
+        <span style={{ fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: 13, minWidth: 100, textAlign: "right" }}>
           ${(volume / 1000).toFixed(0)}k
         </span>
       </div>
@@ -542,7 +541,7 @@ export default function ConstructionFinance() {
       <div className="cf-hero-banner">
         <div className="cf-hero-inner">
           <div className="kicker">MerchantHaus — Industry Analysis — 2025</div>
-          <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900, fontSize: "clamp(2.2rem, 5vw, 3.4rem)", letterSpacing: "-0.02em", margin: "0 0 1.25rem" }}>
+          <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 900, fontSize: "clamp(2.2rem, 5vw, 3.4rem)", letterSpacing: "-0.02em", margin: "0 0 1.25rem" }}>
             The Digital Transformation of Construction Finance
           </h1>
           <p className="hero-sub">Strategic integration of payment gateways, CRM ecosystems, and margin optimization for an industry at the crossroads of legacy process and modern capital demands.</p>
@@ -933,7 +932,7 @@ export default function ConstructionFinance() {
         <hr className="divider" />
 
         <footer style={{ paddingTop: "1rem", paddingBottom: "2rem" }}>
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "var(--color-text-secondary)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+          <div style={{ fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: 11, color: "var(--color-text-secondary)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
             <span>MerchantHaus</span>
             <span>Plug in, play and process</span>
             <span>merchanthaus.io</span>

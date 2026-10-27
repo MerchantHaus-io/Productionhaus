@@ -190,7 +190,7 @@ export function MerchantApplicationDialog({
 
         {isSubmitted ? (
           <div className="flex flex-col items-center gap-4 py-8">
-            <CheckCircle2 className="h-16 w-16 text-primary" />
+            <CheckCircle2 className="h-16 w-16 text-primary-text" />
             <p className="text-center text-foreground">
               Your application has been submitted successfully. Our team will review it and reach out to you within 1-2 business days.
             </p>
@@ -504,7 +504,7 @@ export function MerchantApplicationDialog({
                     href="/security"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:underline font-semibold"
+                    className="text-primary-text hover:underline font-semibold"
                   >
                     Security Policy
                   </a>

@@ -333,10 +333,10 @@ export const ValueStats = () => {
       <style>{`
         /* ===== CSS variables ===== */
         .vs-section {
-          --vs-card-bg: hsl(0 0% 100%);
+          --vs-card-bg: hsl(var(--card));
           --vs-card-border: hsl(var(--border));
           --vs-foreground: hsl(var(--foreground));
-          --vs-muted: hsla(0, 0%, 30%, 0.85);
+          --vs-muted: hsl(var(--muted-foreground));
           --vs-heading-bg: hsla(0, 0%, 0%, 0.03);
           --vs-heading-border: hsla(0, 0%, 0%, 0.1);
           --vs-heading-foreground: hsl(var(--foreground));
@@ -344,13 +344,13 @@ export const ValueStats = () => {
         }
 
         .dark .vs-section {
-          --vs-card-bg: hsl(0 0% 10%);
-          --vs-card-border: hsl(0 0% 20%);
-          --vs-foreground: hsl(0 0% 95%);
-          --vs-muted: rgba(200, 200, 200, 0.8);
+          --vs-card-bg: hsl(var(--card));
+          --vs-card-border: hsl(var(--border));
+          --vs-foreground: hsl(var(--foreground));
+          --vs-muted: hsl(var(--muted-foreground));
           --vs-heading-bg: rgba(255, 255, 255, 0.05);
           --vs-heading-border: rgba(255, 255, 255, 0.1);
-          --vs-heading-foreground: hsl(0 0% 95%);
+          --vs-heading-foreground: hsl(var(--foreground));
         }
 
         /* ===== Two-column layout ===== */
@@ -423,7 +423,7 @@ export const ValueStats = () => {
         }
 
         .vs-section-heading {
-          font-family: 'Rajdhani', system-ui, sans-serif;
+          font-family: 'DM Serif Display', Georgia, serif;
           font-size: clamp(1.6rem, 3.5vw, 2.4rem);
           font-weight: 700;
           line-height: 1.15;
@@ -621,8 +621,8 @@ export const ValueStats = () => {
         }
 
         .dark .vs-bullet--active {
-          background: hsl(0 0% 90%);
-          border-color: hsl(0 0% 90%);
+          background: hsl(var(--foreground));
+          border-color: hsl(var(--foreground));
         }
 
         /* ===== Pause button ===== */

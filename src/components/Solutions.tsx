@@ -393,7 +393,7 @@ export const Solutions = () => {
       {/* Fullscreen Modal with Flip Animation */}
       {selectedCard !== null && (
         <div
-          className="fixed inset-0 z-50 bg-neutral-dark/95 dark:bg-black/95 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 bg-neutral-dark/95 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-fade-in overflow-y-auto"
           onClick={closeFullscreen}
         >
           <div

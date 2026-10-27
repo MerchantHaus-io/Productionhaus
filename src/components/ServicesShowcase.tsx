@@ -217,7 +217,7 @@ const ServicesShowcase = () => {
                 <div className="flex items-start justify-center md:justify-start gap-4">
                   <div>
                     <h3 className="text-3xl font-bold font-montserrat mb-2">{service.title}</h3>
-                    <p className="text-lg text-primary font-semibold italic">{service.subtitle}</p>
+                    <p className="text-lg text-primary-text font-semibold italic">{service.subtitle}</p>
                   </div>
                   {service.showPosOverlay && (
                     <img
@@ -249,7 +249,7 @@ const ServicesShowcase = () => {
                 <ul className="space-y-2 text-muted-foreground">
                   {service.stats.map((stat, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
+                      <span className="text-primary-text mt-1">•</span>
                       <span className="text-sm leading-relaxed">{stat}</span>
                     </li>
                   ))}

@@ -47,7 +47,7 @@ const TheMerchantPortal = () => {
                 </p>
                 <Link
                   to="/TransactionReports"
-                  className="font-semibold text-primary hover:underline"
+                  className="font-semibold text-primary-text hover:underline"
                 >
                   View Guide →
                 </Link>
@@ -63,7 +63,7 @@ const TheMerchantPortal = () => {
                 </p>
                 <Link
                   to="/MerchantUserAccounts"
-                  className="font-semibold text-primary hover:underline"
+                  className="font-semibold text-primary-text hover:underline"
                 >
                   View Guide →
                 </Link>
@@ -80,7 +80,7 @@ const TheMerchantPortal = () => {
                 </p>
                 <Link
                   to="/ManagingPartnerUsers"
-                  className="font-semibold text-primary hover:underline"
+                  className="font-semibold text-primary-text hover:underline"
                 >
                   View Guide →
                 </Link>

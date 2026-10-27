@@ -8,10 +8,9 @@ const accentLight = "#FAECE7";
 const accentDark = "#4A1B0C";
 
 const blogStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
   .blog-root {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
     color: var(--color-text-primary);
     max-width: 860px;
     margin: 0 auto;
@@ -21,7 +20,7 @@ const blogStyles = `
   }
 
   .blog-root h1, .blog-root h2, .blog-root h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     line-height: 1.2;
     font-weight: 700;
   }
@@ -33,7 +32,7 @@ const blogStyles = `
   }
 
   .kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -70,7 +69,7 @@ const blogStyles = `
   }
 
   .hero-meta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.08em;
@@ -97,7 +96,7 @@ const blogStyles = `
   }
 
   .hero-stat-num {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2.4rem;
     font-weight: 900;
     color: ${accent};
@@ -107,7 +106,7 @@ const blogStyles = `
   }
 
   .hero-stat-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -130,7 +129,7 @@ const blogStyles = `
   }
 
   .section-num {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.1em;
@@ -156,7 +155,7 @@ const blogStyles = `
   }
 
   .pullquote p {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 1.3rem;
     font-style: italic;
     font-weight: 400;
@@ -166,7 +165,7 @@ const blogStyles = `
   }
 
   .pullquote cite {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.08em;
@@ -183,7 +182,7 @@ const blogStyles = `
   }
 
   .callout-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -203,11 +202,11 @@ const blogStyles = `
     border-collapse: collapse;
     font-size: 14px;
     margin: 1.5rem 0;
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
   }
 
   .data-table thead th {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -249,7 +248,7 @@ const blogStyles = `
   }
 
   .stat-card-num {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2rem;
     font-weight: 700;
     color: ${accent};
@@ -258,7 +257,7 @@ const blogStyles = `
   }
 
   .stat-card-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     text-transform: uppercase;
@@ -277,7 +276,7 @@ const blogStyles = `
     position: absolute;
     top: -20px;
     right: -20px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 8rem;
     font-weight: 900;
     color: var(--color-border-tertiary);
@@ -508,7 +507,7 @@ export default function ThreeDS() {
         <hr className="divider" />
 
         <footer style={{ paddingTop: "1rem", paddingBottom: "2rem" }}>
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "var(--color-text-secondary)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+          <div style={{ fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: 11, color: "var(--color-text-secondary)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
             <span>MerchantHaus</span>
             <span>Plug in, play and process</span>
             <span>merchanthaus.io</span>

@@ -421,12 +421,12 @@ const NavItemRenderer: React.FC<NavItemRendererProps> = ({
   const linkClasses = cn(
     baseClasses,
     isAnchorLink
-      ? "text-xs text-muted-foreground hover:text-primary py-1 px-2"
+      ? "text-xs text-muted-foreground hover:text-primary-text py-1 px-2"
       : depth === 0
-        ? "text-sm font-medium text-sidebar-primary hover:text-primary py-1.5 px-2"
-        : "text-sm text-sidebar-foreground hover:text-primary py-1 px-2",
+        ? "text-sm font-medium text-sidebar-primary hover:text-primary-text py-1.5 px-2"
+        : "text-sm text-sidebar-foreground hover:text-primary-text py-1 px-2",
     "hover:bg-sidebar-accent",
-    isActive && !isAnchorLink && "bg-sidebar-accent text-primary"
+    isActive && !isAnchorLink && "bg-sidebar-accent text-primary-text"
   );
 
   // Render simple link (no children or anchor link)
@@ -443,7 +443,7 @@ const NavItemRenderer: React.FC<NavItemRendererProps> = ({
           <IconComponent
             className={cn(
               "mr-1.5 flex-shrink-0",
-              isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"
+              isActive ? "text-primary-text" : "text-muted-foreground group-hover:text-primary-text"
             )}
           />
           <span className="truncate text-left">{item.title}</span>
@@ -466,7 +466,7 @@ const NavItemRenderer: React.FC<NavItemRendererProps> = ({
             <FileText
               className={cn(
                 "mr-1.5 flex-shrink-0",
-                isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"
+                isActive ? "text-primary-text" : "text-muted-foreground group-hover:text-primary-text"
               )}
             />
             <span className="truncate text-left">{item.title}</span>
@@ -482,7 +482,7 @@ const NavItemRenderer: React.FC<NavItemRendererProps> = ({
         {/* Expand/Collapse toggle button */}
         <button
           onClick={() => toggleSection(key)}
-          className="p-1 rounded hover:bg-sidebar-accent text-muted-foreground hover:text-primary transition-colors flex-shrink-0"
+          className="p-1 rounded hover:bg-sidebar-accent text-muted-foreground hover:text-primary-text transition-colors flex-shrink-0"
           aria-expanded={isOpen}
           aria-controls={`sub-menu-${key.replace(/[^a-zA-Z0-9]/g, '-')}`}
           aria-label={isOpen ? `Collapse ${item.title}` : `Expand ${item.title}`}
