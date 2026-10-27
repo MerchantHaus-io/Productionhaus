@@ -1,26 +1,63 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type Logo = { file: string; name: string };
+/**
+ * `file` is drawn on light backgrounds; `darkFile`, when present, replaces it in
+ * dark mode (logos whose wordmark is black or charcoal). `width`/`height` are the
+ * file's trimmed pixel size, used for sizing and to reserve space before load.
+ */
+type Logo = { file: string; darkFile?: string; name: string; width: number; height: number };
 
 const logos: Logo[] = [
-  { file: "clover.svg", name: "Clover" },
-  { file: "freshbooks.webp", name: "FreshBooks" },
-  { file: "gohighlevel.png", name: "GoHighLevel" },
-  { file: "hubspot.webp", name: "HubSpot" },
-  { file: "keap.webp", name: "Keap" },
-  { file: "magento.webp", name: "Magento" },
-  { file: "mastercard.webp", name: "Mastercard" },
-  { file: "ncr.webp", name: "NCR" },
-  { file: "nmi.webp", name: "NMI" },
-  { file: "quickbooks.webp", name: "QuickBooks" },
-  { file: "salesforce.webp", name: "Salesforce" },
-  { file: "shopify.png", name: "Shopify" },
-  { file: "squarespace.webp", name: "Squarespace" },
-  { file: "visa.webp", name: "Visa" },
-  { file: "wix.webp", name: "Wix" },
-  { file: "zoho_crm.webp", name: "Zoho CRM" },
-  { file: "kurvs.svg", name: "Kurvs" },
+  { file: "clover.svg", name: "Clover", width: 164, height: 40 },
+  { file: "freshbooks.webp", darkFile: "freshbooks-on-dark.webp", name: "FreshBooks", width: 600, height: 130 },
+  { file: "gohighlevel.webp", darkFile: "gohighlevel-on-dark.webp", name: "GoHighLevel", width: 600, height: 136 },
+  { file: "hubspot.webp", darkFile: "hubspot-on-dark.webp", name: "HubSpot", width: 600, height: 171 },
+  { file: "keap.webp", name: "Keap", width: 389, height: 180 },
+  { file: "magento.webp", darkFile: "magento-on-dark.webp", name: "Magento", width: 536, height: 180 },
+  { file: "mastercard.webp", name: "Mastercard", width: 291, height: 180 },
+  { file: "ncr.webp", name: "NCR", width: 600, height: 172 },
+  { file: "nmi.webp", darkFile: "nmi-on-dark.webp", name: "NMI", width: 124, height: 40 },
+  { file: "quickbooks.webp", darkFile: "quickbooks-on-dark.webp", name: "QuickBooks", width: 600, height: 154 },
+  { file: "salesforce.webp", name: "Salesforce", width: 258, height: 180 },
+  { file: "shopify.webp", darkFile: "shopify-on-dark.webp", name: "Shopify", width: 600, height: 172 },
+  { file: "squarespace.webp", darkFile: "squarespace-on-dark.webp", name: "Squarespace", width: 600, height: 86 },
+  { file: "visa.webp", name: "Visa", width: 555, height: 180 },
+  { file: "wix.webp", darkFile: "wix-on-dark.webp", name: "Wix", width: 463, height: 180 },
+  { file: "zoho_crm.webp", darkFile: "zoho_crm-on-dark.webp", name: "Zoho CRM", width: 419, height: 180 },
+  { file: "kurvs.svg", darkFile: "kurvs-on-dark.svg", name: "Kurvs", width: 120, height: 32 },
 ];
+
+/**
+ * Logos are sized to a shared visual area rather than a shared height, so a wide
+ * wordmark (Squarespace) and a near-square mark (Mastercard) carry similar weight.
+ * Width = sqrt(area × aspect ratio), scaled per breakpoint by `--logo-scale` on
+ * the grid; the slot's max-width still caps it.
+ */
+const LOGO_AREA_PX = 3600;
+
+const LogoMark = ({ logo }: { logo: Logo }) => {
+  const width = Math.round(Math.sqrt(LOGO_AREA_PX * (logo.width / logo.height)));
+  const imgProps = {
+    alt: "",
+    loading: "lazy" as const,
+    decoding: "async" as const,
+    width: logo.width,
+    height: logo.height,
+    style: { width: `calc(${width}px * var(--logo-scale, 1))` },
+  };
+  const imgClass = "h-auto max-w-full object-contain";
+
+  if (!logo.darkFile) {
+    return <img src={`/logos/${logo.file}`} className={imgClass} {...imgProps} />;
+  }
+
+  return (
+    <>
+      <img src={`/logos/${logo.file}`} className={`${imgClass} dark:hidden`} {...imgProps} />
+      <img src={`/logos/${logo.darkFile}`} className={`${imgClass} hidden dark:block`} {...imgProps} />
+    </>
+  );
+};
 
 /* Feel of a single barrel roll. */
 const ROLL_DURATION_MS = 640;
@@ -209,13 +246,7 @@ const LogoSlot = ({
 
   const renderCell = (logo: Logo) => (
     <div className="flex h-1/2 items-center justify-center px-1">
-      <img
-        src={`/logos/${logo.file}`}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="max-h-10 md:max-h-12 w-auto max-w-full object-contain opacity-65 grayscale-[40%] transition-all duration-300 group-hover:opacity-95 group-hover:grayscale-0"
-      />
+      <LogoMark logo={logo} />
     </div>
   );
 
@@ -358,7 +389,7 @@ const LogoBanner = () => {
 
       <div className="px-6 md:px-16 lg:px-24">
         <div
-          className="mx-auto grid max-w-6xl gap-x-6 gap-y-4 md:gap-x-10"
+          className="mx-auto grid max-w-6xl gap-x-6 gap-y-4 md:gap-x-10 [--logo-scale:1] md:[--logo-scale:1.15]"
           style={{ gridTemplateColumns: `repeat(${seeds.length}, minmax(0, 1fr))` }}
         >
           {seeds.map((seed, index) => (
