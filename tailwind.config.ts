@@ -59,6 +59,28 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        status: {
+          approved: {
+            DEFAULT: 'hsl(var(--status-approved))',
+            bg: 'hsl(var(--status-approved-bg))',
+          },
+          pending: {
+            DEFAULT: 'hsl(var(--status-pending))',
+            bg: 'hsl(var(--status-pending-bg))',
+          },
+          declined: {
+            DEFAULT: 'hsl(var(--status-declined))',
+            bg: 'hsl(var(--status-declined-bg))',
+          },
+          refunded: {
+            DEFAULT: 'hsl(var(--status-refunded))',
+            bg: 'hsl(var(--status-refunded-bg))',
+          },
+          chargeback: {
+            DEFAULT: 'hsl(var(--status-chargeback))',
+            bg: 'hsl(var(--status-chargeback-bg))',
+          },
+        },
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',

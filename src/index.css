@@ -42,6 +42,21 @@ All colors MUST be HSL.
     --ring: 0 0% 10%;
     --radius: 0.5rem;
 
+    /* Payment statuses: text/icon colour plus a tint for the badge fill.
+       Each text colour is at least 5.5:1 on background, card and its own tint.
+       Always render the status word (and ideally its icon) — approved and
+       declined share a lightness, so hue alone must never carry the meaning. */
+    --status-approved: 152 70% 26%;
+    --status-approved-bg: 152 60% 94%;
+    --status-pending: 30 95% 30%;
+    --status-pending-bg: 40 95% 92%;
+    --status-declined: 348 83% 42%;
+    --status-declined-bg: 348 85% 95%;
+    --status-refunded: 214 80% 40%;
+    --status-refunded-bg: 214 85% 95%;
+    --status-chargeback: 276 50% 44%;
+    --status-chargeback-bg: 276 60% 95%;
+
     /* Chart colors */
     --chart-1: 0 0% 10%;
     --chart-2: 0 0% 35%;
@@ -81,6 +96,17 @@ All colors MUST be HSL.
     --border: 0 0% 20%;
     --input: 0 0% 42%;
     --ring: 0 0% 90%;
+
+    --status-approved: 152 55% 58%;
+    --status-approved-bg: 152 40% 14%;
+    --status-pending: 38 92% 60%;
+    --status-pending-bg: 36 55% 13%;
+    --status-declined: 348 83% 62%;
+    --status-declined-bg: 348 45% 15%;
+    --status-refunded: 214 90% 70%;
+    --status-refunded-bg: 214 45% 15%;
+    --status-chargeback: 276 75% 76%;
+    --status-chargeback-bg: 276 35% 16%;
 
     /* Chart colors */
     --chart-1: 0 0% 90%;
