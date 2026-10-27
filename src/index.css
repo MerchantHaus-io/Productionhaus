@@ -12,6 +12,9 @@ All colors MUST be HSL.
        Crimson #C51B29 · Maroon #6F0A0E · Cream #FBF0DB · Navy #032C49 · Slate #6498BE.
        The shield keeps its own red (#DC143C) for the mark and the hero full stops. */
     --brand-red: 348 83% 47%;
+    /* The shield red tuned for text, links and icons: darker on cream (5.7:1),
+       lighter on navy (5.9:1). The shield and hero full stops keep --brand-red. */
+    --brand-red-text: 348 83% 40%;
     --brand-crimson: 355 76% 44%;
     --brand-maroon: 358 83% 24%;
     --brand-cream: 39 80% 92%;
@@ -114,6 +117,7 @@ All colors MUST be HSL.
     --input: 205 41% 57%;
     --ring: 0 0% 100%;
     --brand-slate-text: 206 48% 70%;
+    --brand-red-text: 348 90% 74%;
 
     --status-approved: 142 55% 62%;
     --status-approved-bg: 150 45% 20%;

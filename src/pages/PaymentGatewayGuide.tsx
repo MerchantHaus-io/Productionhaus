@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PageSEO } from "@/components/PageSEO";
 
-const accent = "hsl(var(--brand-red))";
+const accent = "hsl(var(--brand-red-text))";
 
 const blogStyles = `
 
@@ -243,8 +243,8 @@ const blogStyles = `
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #fff;
-    background: ${accent};
+    color: hsl(var(--primary-foreground));
+    background: hsl(var(--primary));
     padding: 0.85rem 2rem;
     border-radius: var(--border-radius-md);
     text-decoration: none;

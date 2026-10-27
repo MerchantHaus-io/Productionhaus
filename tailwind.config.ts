@@ -25,7 +25,10 @@ export default {
         inter: ['Montserrat', 'system-ui', 'sans-serif'],
       },
       colors: {
-        'brand-red': 'hsl(var(--brand-red))',
+        'brand-red': {
+          DEFAULT: 'hsl(var(--brand-red))',
+          text: 'hsl(var(--brand-red-text))',
+        },
         'brand-crimson': 'hsl(var(--brand-crimson))',
         'brand-maroon': 'hsl(var(--brand-maroon))',
         'brand-cream': 'hsl(var(--brand-cream))',
