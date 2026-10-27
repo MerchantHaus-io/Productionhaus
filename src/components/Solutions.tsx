@@ -378,14 +378,15 @@ export const Solutions = () => {
             </button>
           </div>
         </div>
-        {/* Services Banner Link */}
+        {/* Services Banner Link. The banner's top edge is transparent, so the shadow is a
+            drop-shadow filter that follows its shape rather than a box-shadow rectangle. */}
         <a
           href="/services"
-          className="block mt-12 mx-auto max-w-4xl overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] group"
+          className="block mt-12 mx-auto max-w-4xl overflow-hidden rounded-2xl drop-shadow-lg transition-all duration-300 hover:drop-shadow-2xl hover:scale-[1.02] group"
         >
           <img
             src="/images/services-banner.webp"
-            alt="Explore Our Services"
+            alt="Merchant Haus services: maximize every approval with network tokens and automated 3DS. Explore our services."
             className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </a>
