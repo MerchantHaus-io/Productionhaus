@@ -23,8 +23,6 @@ export default {
       },
       colors: {
         'brand-red': 'hsl(var(--brand-red))',
-        crimson: 'hsl(var(--crimson))',
-        'cyber-teal': 'hsl(var(--cyber-teal))',
         'neutral-dark': 'hsl(var(--neutral-dark))',
         'silver-grey': 'hsl(var(--silver-grey))',
         'neutral-light': 'hsl(var(--neutral-light))',

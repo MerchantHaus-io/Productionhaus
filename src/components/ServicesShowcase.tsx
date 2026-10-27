@@ -10,8 +10,8 @@ const services = [
     subtitle: "Accept Payments Anywhere",
     description: "Enable seamless, secure payment experiences across every touchpoint — whether in the field, at the counter, or through remote channels. Our mobile solutions support digital wallets, QR codes, and in-app transactions for maximum operational flexibility. Fast, compliant, and built for organizations that need payment acceptance beyond fixed terminals.",
     stats: ["Over 60% of digital transactions now originate from mobile devices", "Supports Apple Pay, Google Pay, Samsung Pay, and more", "PCI-compliant for maximum data security", "Real-time receipts and loyalty integration"],
-    gradient: "from-crimson to-red-600",
-    shadow: "shadow-crimson/30",
+    gradient: "from-neutral-dark to-red-600",
+    shadow: "shadow-neutral-dark/30",
     showTapToPay: true,
   },
   {
@@ -57,7 +57,7 @@ const services = [
     subtitle: "Your Digital Channel, Optimized",
     description: "Launch and scale your online payment acceptance with enterprise-grade ecommerce tools. From payment gateways to customizable checkout experiences, we provide the infrastructure you need to sell, scale, and maintain compliance — without engineering overhead.",
     stats: ["Pre-built integrations with leading commerce platforms", "Customizable checkout pages for any brand", "Secure, PCI-compliant transactions", "Organizations with advanced ecommerce tools see 35% faster growth"],
-    gradient: "from-crimson to-purple-800",
+    gradient: "from-neutral-dark to-purple-800",
     shadow: "shadow-purple-900/40",
   },
   {
@@ -262,14 +262,14 @@ const ServicesShowcase = () => {
 
       {/* CTA Section */}
       <div className="mt-24 md:mt-32">
-        <div className="max-w-4xl mx-auto bg-crimson text-white text-center py-12 px-6 rounded-2xl shadow-2xl shadow-crimson/40">
+        <div className="max-w-4xl mx-auto bg-primary text-primary-foreground text-center py-12 px-6 rounded-2xl shadow-2xl shadow-neutral-dark/40">
           <h2 className="text-3xl md:text-4xl font-bold font-ubuntu">Ready to Elevate Your Payment Operations?</h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto text-white/90">
             Join the leading organizations that trust MerchantHaus to deliver secure, reliable, and scalable payment infrastructure. Let's build the future of your payment operations together.
           </p>
           <Button 
             onClick={() => setIsContactOpen(true)}
-            className="mt-8 bg-white text-crimson font-bold py-6 px-8 rounded-lg text-lg hover:bg-white/90 hover:scale-105 transition-transform duration-300"
+            className="mt-8 bg-white text-foreground font-bold py-6 px-8 rounded-lg text-lg hover:bg-white/90 hover:scale-105 transition-transform duration-300"
           >
             Apply Now
           </Button>

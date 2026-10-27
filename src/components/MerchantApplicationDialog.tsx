@@ -202,10 +202,10 @@ export function MerchantApplicationDialog({
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Merchant Information */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold font-ubuntu text-crimson">Merchant Information</h3>
+              <h3 className="text-lg font-semibold font-ubuntu text-foreground">Merchant Information</h3>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="company_name" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="company_name" className="flex items-center gap-2 text-foreground">
                     Company Name
                     <RequiredIndicator />
                   </Label>
@@ -218,7 +218,7 @@ export function MerchantApplicationDialog({
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="address" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="address" className="flex items-center gap-2 text-foreground">
                     Address
                     <RequiredIndicator />
                   </Label>
@@ -235,7 +235,7 @@ export function MerchantApplicationDialog({
                   <Input id="address2" {...register("address2")} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="city" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="city" className="flex items-center gap-2 text-foreground">
                     City
                     <RequiredIndicator />
                   </Label>
@@ -248,7 +248,7 @@ export function MerchantApplicationDialog({
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="state" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="state" className="flex items-center gap-2 text-foreground">
                     State
                     <RequiredIndicator />
                   </Label>
@@ -261,7 +261,7 @@ export function MerchantApplicationDialog({
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="zip" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="zip" className="flex items-center gap-2 text-foreground">
                     Zip/Postal Code
                     <RequiredIndicator />
                   </Label>
@@ -331,10 +331,10 @@ export function MerchantApplicationDialog({
 
             {/* Company Contact */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold font-ubuntu text-crimson">Company Contact (Primary User)</h3>
+              <h3 className="text-lg font-semibold font-ubuntu text-foreground">Company Contact (Primary User)</h3>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="first_name" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="first_name" className="flex items-center gap-2 text-foreground">
                     First Name
                     <RequiredIndicator />
                   </Label>
@@ -347,7 +347,7 @@ export function MerchantApplicationDialog({
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="last_name" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="last_name" className="flex items-center gap-2 text-foreground">
                     Last Name
                     <RequiredIndicator />
                   </Label>
@@ -360,7 +360,7 @@ export function MerchantApplicationDialog({
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="email" className="flex items-center gap-2 text-foreground">
                     Email Address
                     <RequiredIndicator />
                   </Label>
@@ -374,7 +374,7 @@ export function MerchantApplicationDialog({
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="flex items-center gap-2 text-crimson">
+                  <Label htmlFor="phone" className="flex items-center gap-2 text-foreground">
                     Phone Number
                     <RequiredIndicator />
                   </Label>
@@ -396,9 +396,9 @@ export function MerchantApplicationDialog({
 
             {/* Account Setup */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold font-ubuntu text-crimson">Account Setup</h3>
+              <h3 className="text-lg font-semibold font-ubuntu text-foreground">Account Setup</h3>
               <div className="space-y-2">
-                <Label htmlFor="username" className="flex items-center gap-2 text-crimson">
+                <Label htmlFor="username" className="flex items-center gap-2 text-foreground">
                   Primary Username
                   <RequiredIndicator />
                 </Label>
@@ -414,7 +414,7 @@ export function MerchantApplicationDialog({
 
             {/* Processing Services */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold font-ubuntu text-crimson">Processing Services</h3>
+              <h3 className="text-lg font-semibold font-ubuntu text-foreground">Processing Services</h3>
               <div className="space-y-2">
                 {["Credit Card", "ACH / eCheck", "Cash"].map((service) => (
                   <div key={service} className="flex items-center space-x-2">
@@ -435,7 +435,7 @@ export function MerchantApplicationDialog({
 
             {/* Value-added Services */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold font-ubuntu text-crimson">Value-added Services</h3>
+              <h3 className="text-lg font-semibold font-ubuntu text-foreground">Value-added Services</h3>
               <div className="space-y-2">
                 {["Encryption", "Invoice", "Level III Advantage", "Mobile Reader", "Vault Storage"].map((service) => (
                   <div key={service} className="flex items-center space-x-2">
@@ -469,13 +469,13 @@ export function MerchantApplicationDialog({
                     })
                   }
                 />
-                <Label htmlFor="agree_to_terms" className="cursor-pointer leading-relaxed text-sm text-crimson flex flex-wrap gap-2 items-center">
+                <Label htmlFor="agree_to_terms" className="cursor-pointer leading-relaxed text-sm text-foreground flex flex-wrap gap-2 items-center">
                   I agree to the{" "}
                   <a
                     href="/terms"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-crimson hover:underline font-semibold"
+                    className="text-foreground hover:underline font-semibold"
                   >
                     Terms and Conditions
                   </a>

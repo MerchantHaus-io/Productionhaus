@@ -43,7 +43,7 @@ export const ThankYouDialog = ({
           ) : null}
           <Button
             onClick={() => onOpenChange(false)}
-            className="mt-2 bg-crimson hover:bg-crimson/90"
+            className="mt-2 bg-primary hover:bg-primary/90"
           >
             {closeLabel}
           </Button>

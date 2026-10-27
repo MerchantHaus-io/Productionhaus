@@ -18,8 +18,8 @@ const Security = () => {
         <section className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-background to-muted/30 py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex-shrink-0 w-20 h-20 rounded-full bg-crimson/10 flex items-center justify-center">
-                <Shield className="w-10 h-10 text-crimson" />
+              <div className="flex-shrink-0 w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
+                <Shield className="w-10 h-10 text-foreground" />
               </div>
               <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-foreground">
                 Security & Compliance at MerchantHaus
@@ -38,8 +38,8 @@ const Security = () => {
             {/* PCI DSS Compliance */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -66,8 +66,8 @@ const Security = () => {
             {/* Network Tokenization */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <Key className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Key className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -90,8 +90,8 @@ const Security = () => {
             {/* Fraud Prevention */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <Eye className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Eye className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -109,23 +109,23 @@ const Security = () => {
                   <h3 className="font-ubuntu font-semibold text-foreground mb-4">Key Capabilities:</h3>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-crimson mt-1">•</span>
+                      <span className="text-foreground mt-1">•</span>
                       <span><strong>AI / ML Fraud Scoring:</strong> Real-time risk analysis for every transaction.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-crimson mt-1">•</span>
+                      <span className="text-foreground mt-1">•</span>
                       <span><strong>Velocity & Volume Controls:</strong> Identifies rapid-fire or high-value spikes.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-crimson mt-1">•</span>
+                      <span className="text-foreground mt-1">•</span>
                       <span><strong>Geo-Velocity & IP Analysis:</strong> Flags impossible location changes.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-crimson mt-1">•</span>
+                      <span className="text-foreground mt-1">•</span>
                       <span><strong>Device Fingerprinting:</strong> Detects new or compromised devices.</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-crimson mt-1">•</span>
+                      <span className="text-foreground mt-1">•</span>
                       <span><strong>Chargeback Management:</strong> Instant dispute alerts and direct network integrations for faster resolution.</span>
                     </li>
                   </ul>
@@ -140,8 +140,8 @@ const Security = () => {
             {/* 3D Secure */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <Lock className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Lock className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -160,8 +160,8 @@ const Security = () => {
             {/* Data Privacy */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <FileCheck className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <FileCheck className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -199,8 +199,8 @@ const Security = () => {
             {/* U.S. Regulatory Compliance */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <Globe className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -235,8 +235,8 @@ const Security = () => {
             {/* Additional Measures */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <AlertTriangle className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -259,8 +259,8 @@ const Security = () => {
             {/* Our Commitment */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-crimson/10 flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6 text-crimson" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
                   <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
@@ -347,13 +347,13 @@ const Security = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <a 
                 href="tel:15056006042"
-                className="inline-flex items-center justify-center rounded-full bg-crimson px-8 py-4 text-base font-semibold text-white shadow-sm transition hover:bg-crimson/90"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
               >
                 Call 1-505-600-6042
               </a>
               <a 
                 href="https://ops-terminal.merchant.haus/merchant-apply"
-                className="inline-flex items-center justify-center rounded-full border-2 border-crimson px-8 py-4 text-base font-semibold text-crimson transition hover:bg-crimson/10"
+                className="inline-flex items-center justify-center rounded-full border-2 border-foreground px-8 py-4 text-base font-semibold text-foreground transition hover:bg-primary/10"
               >
                 Apply Now
               </a>

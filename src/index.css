@@ -10,10 +10,6 @@ All colors MUST be HSL.
   :root {
     /* Brand Colors — Monochromatic, plus the shield red */
     --brand-red: 348 83% 47%; /* #DC143C, the shield. Marks and display accents only. */
-    /* Legacy names: these are greys since the monochrome rework, not red or teal.
-       Prefer foreground / muted-foreground in new code. */
-    --crimson: 0 0% 10%;
-    --cyber-teal: 0 0% 45%;
     --neutral-dark: 0 0% 6%;
     --silver-grey: 0 0% 55%;
     --neutral-light: 0 0% 97%;

@@ -31,7 +31,7 @@ const RevealLine = ({ shown, delay, children }: { shown: boolean; delay: number;
   </span>
 );
 
-/* Brand red from the shield logo (the `crimson` theme token is a near-black grey). */
+/* Brand red from the shield logo. */
 const Stop = () => <span className="text-brand-red">.</span>;
 
 export const Hero = () => {
