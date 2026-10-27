@@ -87,7 +87,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md bg-card">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-ubuntu text-crimson">
+          <DialogTitle className="text-2xl font-ubuntu text-foreground">
             {isSubmitted ? "Message Received!" : "Contact Us"}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
@@ -103,7 +103,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
             <p className="text-center text-foreground">
               Your message has been sent successfully. Our team will reach out to you within 24 hours.
             </p>
-            <Button onClick={handleClose} className="mt-4 bg-cyber-teal hover:bg-cyber-teal/90">
+            <Button onClick={handleClose} className="mt-4 bg-primary hover:bg-primary/90">
               Close
             </Button>
           </div>
@@ -121,7 +121,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
             <input type="hidden" name="form-name" value="contact-dialog" />
             <input type="hidden" name="bot-field" value="" />
             <div className="space-y-2">
-              <Label htmlFor="name" className="flex items-center gap-2 text-crimson">
+              <Label htmlFor="name" className="flex items-center gap-2 text-foreground">
                 Name
                 <RequiredIndicator />
               </Label>
@@ -139,7 +139,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="flex items-center gap-2 text-crimson">
+              <Label htmlFor="email" className="flex items-center gap-2 text-foreground">
                 Email
                 <RequiredIndicator />
               </Label>
@@ -158,7 +158,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="flex items-center gap-2 text-crimson">
+              <Label htmlFor="phone" className="flex items-center gap-2 text-foreground">
                 Phone
                 <RequiredIndicator />
               </Label>
@@ -178,7 +178,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message" className="flex items-center gap-2 text-crimson">
+              <Label htmlFor="message" className="flex items-center gap-2 text-foreground">
                 Message
                 <RequiredIndicator />
               </Label>
@@ -195,7 +195,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
               )}
             </div>
 
-            <Button type="submit" disabled={isSubmitting} className="w-full bg-cyber-teal hover:bg-cyber-teal/90">
+            <Button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary/90">
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>

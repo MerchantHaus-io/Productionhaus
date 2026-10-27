@@ -152,7 +152,7 @@ const Quote = () => {
         <MerchantProcessorDialog open={showProcessorDialog} onOpenChange={setShowProcessorDialog} />
         <section className="relative overflow-hidden bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-crimson/30 bg-white px-4 py-1.5 text-sm font-medium text-crimson shadow-sm mb-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-white px-4 py-1.5 text-sm font-medium text-foreground shadow-sm mb-6">
               Request a Quote
             </span>
             <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-foreground mb-4">
@@ -225,8 +225,8 @@ const Quote = () => {
                         htmlFor={`quote-hasCurrentProcessor-${option.value}`}
                         className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                           hasCurrentProcessor === option.value
-                            ? "border-crimson bg-crimson/5"
-                            : "border-border hover:border-crimson/50"
+                            ? "border-foreground bg-primary/5"
+                            : "border-border hover:border-foreground/50"
                         }`}
                       >
                         <input
@@ -284,8 +284,8 @@ const Quote = () => {
                         key={service}
                         className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                           processingServices.includes(service)
-                            ? "border-crimson bg-crimson/5"
-                            : "border-border hover:border-crimson/50"
+                            ? "border-foreground bg-primary/5"
+                            : "border-border hover:border-foreground/50"
                         }`}
                       >
                         <Checkbox
@@ -311,8 +311,8 @@ const Quote = () => {
                         key={service}
                         className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                           valueServices.includes(service)
-                            ? "border-crimson bg-crimson/5"
-                            : "border-border hover:border-crimson/50"
+                            ? "border-foreground bg-primary/5"
+                            : "border-border hover:border-foreground/50"
                         }`}
                       >
                         <Checkbox
@@ -335,11 +335,11 @@ const Quote = () => {
 
                 <p className="text-sm text-muted-foreground">
                   Need details on how we protect your data? Visit our{" "}
-                  <a href="/security" className="text-crimson hover:underline">
+                  <a href="/security" className="text-foreground hover:underline">
                     Security &amp; Compliance
                   </a>{" "}
                   and{" "}
-                  <a href="/privacy" className="text-crimson hover:underline">
+                  <a href="/privacy" className="text-foreground hover:underline">
                     Privacy Policy
                   </a>
                   .
@@ -365,7 +365,7 @@ const Quote = () => {
                       href="/terms"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-crimson hover:underline font-semibold"
+                      className="text-foreground hover:underline font-semibold"
                     >
                       Terms and Conditions
                     </a>
@@ -394,7 +394,7 @@ const Quote = () => {
                       href="/security"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-crimson hover:underline font-semibold"
+                      className="text-foreground hover:underline font-semibold"
                     >
                       Security Policy
                     </a>
@@ -426,7 +426,7 @@ const Quote = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-crimson hover:bg-crimson/90"
+                className="w-full bg-primary hover:bg-primary/90"
               >
                 {isSubmitting ? "Sending..." : "Submit Request"}
               </Button>

@@ -168,7 +168,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-montserrat font-medium text-crimson flex items-center gap-2">
+                      <FormLabel className="font-montserrat font-medium text-foreground flex items-center gap-2">
                         Name
                         <RequiredIndicator />
                       </FormLabel>
@@ -193,7 +193,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-montserrat font-medium text-crimson flex items-center gap-2">
+                      <FormLabel className="font-montserrat font-medium text-foreground flex items-center gap-2">
                         Email
                         <RequiredIndicator />
                       </FormLabel>
@@ -219,7 +219,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-montserrat font-medium text-crimson flex items-center gap-2">
+                      <FormLabel className="font-montserrat font-medium text-foreground flex items-center gap-2">
                         Phone Number
                         <RequiredIndicator />
                       </FormLabel>
@@ -251,7 +251,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                       <FormControl>
                         <Input
                           placeholder="Your company name"
-                          className="font-montserrat border-silver-grey/30 focus:border-cyber-teal"
+                          className="font-montserrat border-silver-grey/30 focus:border-muted-foreground"
                           {...field}
                         />
                       </FormControl>
@@ -265,7 +265,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-montserrat font-medium text-crimson flex items-center gap-2">
+                      <FormLabel className="font-montserrat font-medium text-foreground flex items-center gap-2">
                         Message
                         <RequiredIndicator />
                       </FormLabel>
@@ -298,13 +298,13 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel className="font-montserrat text-sm text-crimson cursor-pointer">
+                        <FormLabel className="font-montserrat text-sm text-foreground cursor-pointer">
                           I agree to the{" "}
                           <a
                             href="/privacy"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-crimson hover:underline"
+                            className="text-foreground hover:underline"
                             onClick={(e) => e.stopPropagation()}
                           >
                             Privacy Policy
@@ -339,7 +339,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
 
             <div className="flex flex-col items-center space-y-6 animate-fade-in">
               <div className="relative">
-                <CheckCircle2 className="w-20 h-20 text-cyber-teal animate-scale-in" />
+                <CheckCircle2 className="w-20 h-20 text-muted-foreground animate-scale-in" />
               </div>
               
               <div className="space-y-3">

@@ -85,7 +85,7 @@ const Blog = () => {
             filter: none !important;
         }
         
-        .hover-crimson-arrow:hover .arrow-icon {
+        .hover-accent-arrow:hover .arrow-icon {
             transform: translateX(5px);
             color: hsl(var(--brand-red));
         }
@@ -98,11 +98,11 @@ const Blog = () => {
         {/* Blog Hero / Featured Article */}
         <section className="mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 font-ubuntu text-foreground">
-            Latest Insights <span className="text-cyber-teal">on the Digital Frontier</span>
+            Latest Insights <span className="text-muted-foreground">on the Digital Frontier</span>
           </h2>
           
           <div className="card-container">
-            <div className="bg-card dark:bg-card/80 rounded-2xl overflow-hidden shadow-xl border border-border dark:border-border/50 card-shadow hover-crimson-arrow">
+            <div className="bg-card dark:bg-card/80 rounded-2xl overflow-hidden shadow-xl border border-border dark:border-border/50 card-shadow hover-accent-arrow">
               <a href="/prediction-2026" className="block">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Featured article image - matches the actual blog post hero image */}
@@ -114,7 +114,7 @@ const Blog = () => {
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4 flex flex-col gap-2">
-                      <span className="text-white text-xs font-bold px-3 py-1 rounded-full uppercase bg-cyber-teal">
+                      <span className="text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase bg-primary">
                         Featured
                       </span>
                       <span className="text-white text-xs font-semibold px-3 py-1 rounded-full bg-black/50 backdrop-blur">
@@ -123,7 +123,7 @@ const Blog = () => {
                     </div>
                   </div>
                   <div className="p-6 sm:p-10 flex flex-col justify-center">
-                    <p className="text-sm font-semibold uppercase tracking-wider mb-2 text-cyber-teal">
+                    <p className="text-sm font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Industry Insights
                     </p>
                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 font-ubuntu text-foreground">
@@ -149,7 +149,7 @@ const Blog = () => {
             Explore Topics
           </h3>
           <div className="flex flex-wrap gap-3">
-            <a href="#" className="px-4 py-2 text-sm text-white rounded-full hover:bg-opacity-90 transition-colors flex items-center bg-crimson">
+            <a href="#" className="px-4 py-2 text-sm text-primary-foreground rounded-full hover:bg-opacity-90 transition-colors flex items-center bg-primary">
               <ShieldCheck className="w-4 h-4 mr-2" /> Compliance (4)
             </a>
             <a href="#" className="px-4 py-2 text-sm bg-muted dark:bg-muted/50 rounded-full hover:bg-muted/80 dark:hover:bg-muted/70 transition-colors flex items-center text-foreground">
@@ -170,7 +170,7 @@ const Blog = () => {
 
             {/* Card: Swipe-Fee Settlement Briefing */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/swipe-fee-settlement" className="block">
                   <img
                     src="/blog-images/swipe-fee-settlement.webp"
@@ -179,7 +179,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Industry News</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Industry News</p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
                       The Swipe-Fee Settlement: What Actually Changes
                     </h4>
@@ -198,7 +198,7 @@ const Blog = () => {
 
             {/* Card: Payment Gateway Buyer's Guide */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/payment-gateway-guide" className="block">
                   <img
                     src="/blog-images/payment-gateway-guide.webp"
@@ -207,7 +207,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Payments Strategy</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Payments Strategy</p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
                       How to Choose the Right Payment Gateway
                     </h4>
@@ -226,7 +226,7 @@ const Blog = () => {
 
             {/* Card: Construction Finance */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/construction-finance" className="block">
                   <div className="h-40 text-white p-6 flex flex-col justify-between relative overflow-hidden" style={{ backgroundImage: "url('/blog-images/construction-finance-hero.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
@@ -235,7 +235,7 @@ const Blog = () => {
                     <p className="relative z-10 text-xs text-white/80">April 2026</p>
                   </div>
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Payments Strategy</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Payments Strategy</p>
                     <p className="text-sm mb-4 text-muted-foreground">
                       How payment gateways, CRM ecosystems, and Level III processing are solving construction's chronic cash flow challenges.
                     </p>
@@ -250,7 +250,7 @@ const Blog = () => {
 
             {/* Card: Payments Survey 2025 */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/payments-survey-2025" className="block">
                   <img
                     src="/blog-images/payments-survey-2025.webp"
@@ -259,7 +259,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Payments Strategy</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Payments Strategy</p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
                       Payments Survey 2025: How Customers Really Pay
                     </h4>
@@ -278,7 +278,7 @@ const Blog = () => {
 
             {/* Card 1: Prediction 2026 */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/prediction-2026" className="block">
                   <img
                     src="/blog-images/prediction.webp"
@@ -287,7 +287,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Industry Insights
                     </p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
@@ -308,7 +308,7 @@ const Blog = () => {
 
             {/* Card 2: VAMP Article */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/vamp" className="block">
                   <img
                     src="/blog-images/vamp_metrics.webp"
@@ -317,7 +317,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-crimson">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-foreground">
                       Compliance
                     </p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
@@ -338,7 +338,7 @@ const Blog = () => {
 
             {/* Card 3: 3D Secure Article */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/3ds" className="block">
                   <img
                     src="/blog-images/3ds_ai.png"
@@ -347,7 +347,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Fraud Prevention
                     </p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
@@ -368,7 +368,7 @@ const Blog = () => {
 
             {/* Card 4: Tap-to-Mobile */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/tap-to-mobile" className="block">
                   <img
                     src="/blog-images/TAP1.webp"
@@ -377,7 +377,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Payments Tech
                     </p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
@@ -398,7 +398,7 @@ const Blog = () => {
 
             {/* Card 5: 3DS2 Deep Dive */}
             <div className="card-container">
-              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-accent-arrow">
                 <a href="/3ds2" className="block">
                   <img
                     src="/blog-images/3ds_handshake.png"
@@ -407,7 +407,7 @@ const Blog = () => {
                     loading="lazy"
                   />
                   <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Fraud Prevention
                     </p>
                     <h4 className="text-xl font-bold mb-3 text-foreground">
@@ -430,7 +430,7 @@ const Blog = () => {
           
           {/* Pagination/Load More */}
           <div className="text-center mt-12">
-            <button className="px-6 py-3 border-2 font-semibold rounded-full transition-colors border-crimson text-crimson hover:bg-crimson hover:text-white">
+            <button className="px-6 py-3 border-2 font-semibold rounded-full transition-colors border-foreground text-foreground hover:bg-primary hover:text-primary-foreground">
               Load More Articles
             </button>
           </div>

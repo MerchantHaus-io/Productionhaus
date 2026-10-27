@@ -23,9 +23,9 @@ export const About = () => {
 
           {/* Visual Element */}
           <div className="relative animate-fade-in" style={{ animationDelay: '200ms' }}>
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-crimson/10 to-cyber-teal/10 flex items-center justify-center">
+            <div className="aspect-square rounded-2xl bg-gradient-to-br from-foreground/10 to-muted-foreground/10 flex items-center justify-center">
               <div className="text-center space-y-4">
-                <div className="text-6xl md:text-7xl font-ubuntu font-bold text-crimson">
+                <div className="text-6xl md:text-7xl font-ubuntu font-bold text-foreground">
                   10+
                 </div>
                 <div className="text-xl md:text-2xl font-inter font-semibold text-foreground">

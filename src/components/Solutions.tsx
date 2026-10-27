@@ -38,8 +38,8 @@ const solutions: Solution[] = [
       "Accept all major credit cards, debit cards, and digital wallets with competitive rates and rapid settlements.",
     fullDescription:
       "Our comprehensive payment processing solution enables organizations to accept all major credit cards, debit cards, and digital wallets seamlessly. With competitive transaction rates, rapid settlements, and advanced reconciliation tools, you can streamline your payment operations and improve cash flow. Our platform supports EMV chip cards, contactless payments, and mobile wallets like Apple Pay and Google Pay. Get real-time reporting, automated invoicing, and dedicated support available 24/7.",
-    borderColor: "border-crimson",
-    buttonColor: "bg-crimson hover:bg-crimson/90",
+    borderColor: "border-foreground",
+    buttonColor: "bg-primary hover:bg-primary/90",
     bannerImage: "/card-banners/card1.webp",
   },
   {

@@ -61,7 +61,7 @@ export const CookieConsent = () => {
         <p className="mt-2 text-sm text-muted-foreground">
           We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. You can
           learn more in our {" "}
-          <a href="/privacy" className="text-crimson font-medium underline-offset-4 hover:underline">
+          <a href="/privacy" className="text-foreground font-medium underline-offset-4 hover:underline">
             Privacy Policy
           </a>
           .
@@ -78,7 +78,7 @@ export const CookieConsent = () => {
           </Button>
           <Button
             type="button"
-            className="sm:flex-1 bg-crimson hover:bg-crimson/90"
+            className="sm:flex-1 bg-primary hover:bg-primary/90"
             onClick={() => handleChoice("accepted")}
           >
             Accept all cookies
