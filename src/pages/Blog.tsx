@@ -168,6 +168,29 @@ const Blog = () => {
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
+            {/* Card: Swipe-Fee Settlement Briefing */}
+            <div className="card-container">
+              <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
+                <a href="/swipe-fee-settlement" className="block">
+                  <div className="h-40 text-white p-6 flex flex-col justify-between" style={{ background: "linear-gradient(135deg, #C8102E 0%, #6E0919 100%)" }}>
+                    <div className="text-xs font-semibold uppercase tracking-wider">Payments Briefing</div>
+                    <h4 className="text-xl font-bold">The Swipe-Fee Settlement: What Actually Changes</h4>
+                    <p className="text-xs text-white/80">October 2026</p>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-cyber-teal">Industry News</p>
+                    <p className="text-sm mb-4 text-muted-foreground">
+                      Lower rates, card-by-card acceptance and new surcharging rules — what the Visa and Mastercard deal means for you, and five things to do before the November 16 hearing.
+                    </p>
+                    <div className="flex items-center text-sm font-medium text-foreground">
+                      Read More
+                      <ArrowRight className="arrow-icon w-4 h-4 ml-2" />
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
             {/* Card: Payment Gateway Buyer's Guide */}
             <div className="card-container">
               <div className="bg-card dark:bg-card/80 rounded-xl overflow-hidden card-shadow hover-crimson-arrow">
