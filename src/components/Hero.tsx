@@ -5,7 +5,7 @@ import heroVideo from "@/assets/Hero.webm";
 
 /* Same pairing as the Services page hero; both families are loaded in index.html. */
 const serif = { fontFamily: "'DM Serif Display', serif" };
-const sans = { fontFamily: "'Sora', sans-serif" };
+const sans = { fontFamily: "'Montserrat', sans-serif" };
 
 /*
  * Timing uses arbitrary properties: arbitrary values on the delay and duration
@@ -69,7 +69,7 @@ export const Hero = () => {
           {/* Eyebrow */}
           <div className={`flex items-center gap-3 mb-6 md:mb-8 ${fadeUp("delay-100")}`}>
             <span
-              className={`block h-px bg-white/50 transition-all duration-700 delay-200 ${EASE} ${
+              className={`block h-px bg-brand-slate transition-all duration-700 delay-200 ${EASE} ${
                 isLoaded ? "w-8" : "w-0"
               }`}
             />

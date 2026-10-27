@@ -7,8 +7,8 @@ import { PageSEO } from "@/components/PageSEO";
  * Blog post: the Visa / Mastercard swipe-fee settlement, explained for merchants.
  * Published October 27, 2026 — ahead of the November 16, 2026 final approval hearing.
  *
- * Follows the editorial template used by PaymentGatewayGuide.tsx (Playfair / Source Serif /
- * IBM Plex Mono, numbered sections, callouts, data tables). Colours come from the site's own
+ * Follows the editorial template used by PaymentGatewayGuide.tsx (DM Serif Display / Montserrat,
+ * numbered sections, callouts, data tables). Colours come from the site's own
  * theme tokens (--foreground, --muted, --border …) so the post follows light and dark mode,
  * with MH Red as the single accent.
  */
@@ -16,7 +16,6 @@ import { PageSEO } from "@/components/PageSEO";
 const accent = "#C8102E";
 
 const blogStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
   .sfs-root {
     --sfs-text: hsl(var(--foreground));
@@ -25,7 +24,7 @@ const blogStyles = `
     --sfs-panel: hsl(var(--muted));
     --sfs-radius: var(--radius);
 
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
     color: var(--sfs-text);
     max-width: 860px;
     margin: 0 auto;
@@ -35,7 +34,7 @@ const blogStyles = `
   }
 
   .sfs-root h1, .sfs-root h2, .sfs-root h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     line-height: 1.2;
     font-weight: 700;
     color: var(--sfs-text);
@@ -53,7 +52,7 @@ const blogStyles = `
   }
 
   .sfs-kicker {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -93,7 +92,7 @@ const blogStyles = `
   }
 
   .sfs-meta {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: var(--sfs-text-2);
     letter-spacing: 0.08em;
@@ -106,7 +105,7 @@ const blogStyles = `
     position: absolute;
     top: -10px;
     right: -10px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 9rem;
     font-weight: 900;
     color: var(--sfs-text);
@@ -142,7 +141,7 @@ const blogStyles = `
   }
 
   .sfs-stat-num {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2rem;
     font-weight: 900;
     line-height: 1.1;
@@ -150,7 +149,7 @@ const blogStyles = `
   }
 
   .sfs-stat-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10.5px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -171,7 +170,7 @@ const blogStyles = `
   }
 
   .sfs-num {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 11px;
     color: ${accent};
     letter-spacing: 0.1em;
@@ -193,7 +192,7 @@ const blogStyles = `
   .sfs-section p { margin-bottom: 1.25rem; }
 
   .sfs-qnum {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     color: ${accent};
     font-weight: 500;
     margin-right: 0.4rem;
@@ -206,7 +205,7 @@ const blogStyles = `
   }
 
   .sfs-pullquote p {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 1.3rem;
     font-style: italic;
     font-weight: 400;
@@ -223,7 +222,7 @@ const blogStyles = `
   }
 
   .sfs-callout-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -249,7 +248,7 @@ const blogStyles = `
   }
 
   .sfs-table thead th {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -273,7 +272,7 @@ const blogStyles = `
   .sfs-table .sfs-fine { color: var(--sfs-text-2); font-size: 13px; }
 
   .sfs-math {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 13.5px;
     background: var(--sfs-panel);
     border: 1px solid var(--sfs-rule);
@@ -300,7 +299,7 @@ const blogStyles = `
     left: 0;
     top: 0.6rem;
     color: ${accent};
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-weight: 600;
   }
 
@@ -318,7 +317,7 @@ const blogStyles = `
     position: absolute;
     left: 0;
     top: 1.05rem;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 12px;
     color: ${accent};
     font-weight: 500;
@@ -330,7 +329,7 @@ const blogStyles = `
 
   .sfs-cta a {
     display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -351,7 +350,7 @@ const blogStyles = `
   .sfs-sources a { color: var(--sfs-text-2); }
 
   .sfs-small-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -694,7 +693,7 @@ export default function SwipeFeeSettlement() {
             <li><a href="https://www.lek.com/insights/financial-services/finding-new-balance-rewards-cards-after-visa-mastercard-merchant" target="_blank" rel="noopener noreferrer">L.E.K. Consulting — Rewards cards after the Visa-Mastercard merchant settlement</a></li>
           </ul>
 
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "var(--sfs-text-2)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap", marginTop: "2rem" }}>
+          <div style={{ fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: 11, color: "var(--sfs-text-2)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap", marginTop: "2rem" }}>
             <span>Merchant Haus</span>
             <span>Plug in, play and process</span>
             <span>Payments Briefing</span>

@@ -37,7 +37,7 @@ export const ThankYouDialog = ({
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col items-center gap-4 py-6">
-          <CheckCircle2 className="h-16 w-16 text-primary" />
+          <CheckCircle2 className="h-16 w-16 text-primary-text" />
           {body ? (
             <p className="text-center text-foreground whitespace-pre-line">{body}</p>
           ) : null}

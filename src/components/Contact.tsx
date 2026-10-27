@@ -60,7 +60,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-foreground dark:bg-black">
+    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-foreground dark:bg-neutral-dark">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="font-ubuntu font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-4">

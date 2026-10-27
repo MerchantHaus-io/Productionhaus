@@ -356,10 +356,10 @@ const Terms = () => {
                   <p>1209 Mountain Road Pl NE, Ste N</p>
                   <p>Albuquerque, NM 87110 USA</p>
                   <p className="mt-4">
-                    <strong>Email:</strong> <a href="mailto:support@merchanthaus.io" className="text-primary hover:underline">support@merchanthaus.io</a>
+                    <strong>Email:</strong> <a href="mailto:support@merchanthaus.io" className="text-primary-text hover:underline">support@merchanthaus.io</a>
                   </p>
                   <p>
-                    <strong>Phone:</strong> <a href="tel:+15056006042" className="text-primary hover:underline">1-505-600-6042</a>
+                    <strong>Phone:</strong> <a href="tel:+15056006042" className="text-primary-text hover:underline">1-505-600-6042</a>
                   </p>
                 </div>
               </div>

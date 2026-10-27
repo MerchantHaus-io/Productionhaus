@@ -38,7 +38,7 @@ export const AnalyticsGraphic = () => {
         <div className="absolute top-0 right-0 bg-card border border-border rounded-lg p-3 shadow-lg animate-fade-in"
              style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-primary" />
+            <TrendingUp className="w-4 h-4 text-primary-text" />
             <div>
               <div className="text-xs text-muted-foreground">Revenue</div>
               <div className="text-sm font-bold text-foreground">+24.5%</div>

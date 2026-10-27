@@ -15,14 +15,26 @@ export default {
     },
     extend: {
       fontFamily: {
-        ubuntu: ['Rajdhani', 'system-ui', 'sans-serif'],
+        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+        // Legacy aliases kept so existing classes resolve to the two brand families.
+        ubuntu: ['"DM Serif Display"', 'Georgia', 'serif'],
+        rajdhani: ['"DM Serif Display"', 'Georgia', 'serif'],
+        playfair: ['"DM Serif Display"', 'Georgia', 'serif'],
         montserrat: ['Montserrat', 'system-ui', 'sans-serif'],
-        playfair: ['Rajdhani', 'system-ui', 'sans-serif'],
         inter: ['Montserrat', 'system-ui', 'sans-serif'],
-        rajdhani: ['Rajdhani', 'system-ui', 'sans-serif'],
       },
       colors: {
         'brand-red': 'hsl(var(--brand-red))',
+        'brand-crimson': 'hsl(var(--brand-crimson))',
+        'brand-maroon': 'hsl(var(--brand-maroon))',
+        'brand-cream': 'hsl(var(--brand-cream))',
+        'brand-navy': 'hsl(var(--brand-navy))',
+        'brand-slate': {
+          DEFAULT: 'hsl(var(--brand-slate))',
+          foreground: 'hsl(var(--brand-slate-foreground))',
+          text: 'hsl(var(--brand-slate-text))',
+        },
         'neutral-dark': 'hsl(var(--neutral-dark))',
         'silver-grey': 'hsl(var(--silver-grey))',
         'neutral-light': 'hsl(var(--neutral-light))',
@@ -34,6 +46,7 @@ export default {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          text: 'hsl(var(--primary-text))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',

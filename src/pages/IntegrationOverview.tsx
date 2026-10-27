@@ -75,7 +75,7 @@ const IntegrationOverview = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>
-                  <a href="/PaymentAPI" className="underline text-primary">
+                  <a href="/PaymentAPI" className="underline text-primary-text">
                     Payment API
                   </a>{" "}
                   – A classic direct post integration that processes
@@ -83,7 +83,7 @@ const IntegrationOverview = () => {
                   requires you to meet PCI standards.
                 </li>
                 <li>
-                  <a href="/ThreeStepRedirect" className="underline text-primary">
+                  <a href="/ThreeStepRedirect" className="underline text-primary-text">
                     Three Step Redirect
                   </a>{" "}
                   – Reduces your PCI footprint by hosting the payment
@@ -91,14 +91,14 @@ const IntegrationOverview = () => {
                   authorisation.
                 </li>
                 <li>
-                  <a href="/CollectJs" className="underline text-primary">
+                  <a href="/CollectJs" className="underline text-primary-text">
                     Collect.js
                   </a>{" "}
                   – A pop‑up tokenisation library that replaces raw
                   payment data with tokens, minimising PCI exposure.
                 </li>
                 <li>
-                  <a href="/CollectCheckout" className="underline text-primary">
+                  <a href="/CollectCheckout" className="underline text-primary-text">
                     Collect Checkout
                   </a>{" "}
                   – A hosted checkout page that lives entirely on the
@@ -106,56 +106,56 @@ const IntegrationOverview = () => {
                   scope.
                 </li>
                 <li>
-                  <a href="/HostedPaymentPage" className="underline text-primary">
+                  <a href="/HostedPaymentPage" className="underline text-primary-text">
                     Hosted Payment Page (QuickClick)
                   </a>{" "}
                   – A simple copy‑and‑paste checkout solution for
                   merchants without development resources.
                 </li>
                 <li>
-                  <a href="/QueryAPI" className="underline text-primary">
+                  <a href="/QueryAPI" className="underline text-primary-text">
                     Query API
                   </a>{" "}
                   – Download transaction data for custom reporting and
                   analytics.
                 </li>
                 <li>
-                  <a href="/Webhooks" className="underline text-primary">
+                  <a href="/Webhooks" className="underline text-primary-text">
                     Webhooks
                   </a>{" "}
                   – Push real‑time notifications of events to your
                   application.
                 </li>
                 <li>
-                  <a href="/CustomerPresentCloud" className="underline text-primary">
+                  <a href="/CustomerPresentCloud" className="underline text-primary-text">
                     Customer Present Cloud
                   </a>{" "}
                   – A browser‑based point of sale system for EMV
                   transactions with no software installation.
                 </li>
                 <li>
-                  <a href="/MobileSDK" className="underline text-primary">
+                  <a href="/MobileSDK" className="underline text-primary-text">
                     Mobile SDK (iOS/Android)
                   </a>{" "}
                   – Libraries for encrypted mobile card reader
                   integrations.
                 </li>
                 <li>
-                  <a href="/PaymentDeviceSDK" className="underline text-primary">
+                  <a href="/PaymentDeviceSDK" className="underline text-primary-text">
                     Payment Device SDK (Windows/Linux)
                   </a>{" "}
                   – Tools to integrate with payment terminals and a
                   virtual device emulator.
                 </li>
                 <li>
-                  <a href="/DirectConnect" className="underline text-primary">
+                  <a href="/DirectConnect" className="underline text-primary-text">
                     Direct Connect & Gateway Emulator
                   </a>{" "}
                   – Pre‑equip devices for the platform and emulate
                   Authorize.Net transactions.
                 </li>
                 <li>
-                  <a href="/Secure3DS" className="underline text-primary">
+                  <a href="/Secure3DS" className="underline text-primary-text">
                     3D Secure Server (3DS2)
                   </a>{" "}
                   – Hosted 3DS authentication for card scheme

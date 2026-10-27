@@ -56,7 +56,7 @@ const DeveloperPortal = () => {
                 Getting Started
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                To get started, visit the <Link to="/IntegrationOverview" className="underline text-primary">Integration Overview</Link>
+                To get started, visit the <Link to="/IntegrationOverview" className="underline text-primary-text">Integration Overview</Link>
                 . It explains fundamental concepts such as the difference
                 between Application Programming Interfaces (APIs) and
                 Software Development Kits (SDKs) and lists the available

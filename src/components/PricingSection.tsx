@@ -110,7 +110,7 @@ export const PricingSection = () => {
               <TabsTrigger value="monthly">Monthly</TabsTrigger>
               <TabsTrigger value="annual">
                 Annual
-                <span className="ml-2 text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">
+                <span className="ml-2 text-xs bg-primary/20 text-primary-text px-2 py-0.5 rounded-full">
                   Save 17%
                 </span>
               </TabsTrigger>
@@ -129,7 +129,7 @@ export const PricingSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg">
+                <div className="absolute top-0 right-0 bg-brand-slate text-brand-slate-foreground text-xs font-bold px-3 py-1 rounded-bl-lg">
                   POPULAR
                 </div>
               )}
@@ -161,7 +161,7 @@ export const PricingSection = () => {
               <CardContent className="space-y-3 min-h-[350px]">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-2">
-                    <Check className={`h-5 w-5 shrink-0 mt-0.5 text-foreground`} />
+                    <Check className="h-5 w-5 shrink-0 mt-0.5 text-brand-slate-text" />
                     <span className="text-sm">{feature}</span>
                   </div>
                 ))}
@@ -206,9 +206,9 @@ export const PricingSection = () => {
                 <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
                   <td className="py-4 px-4">AI Fraud Detection (Kount)</td>
                   <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-foreground inline" /></td>
+                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
+                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
+                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
                 </tr>
                 <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
                   <td className="py-4 px-4">Support Level</td>
@@ -222,7 +222,7 @@ export const PricingSection = () => {
                   <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
                   <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
                   <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-foreground inline" /></td>
+                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
                 </tr>
               </tbody>
             </table>

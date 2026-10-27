@@ -8,123 +8,140 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Brand Colors — Monochromatic, plus the shield red */
-    --brand-red: 348 83% 47%; /* #DC143C, the shield. Marks and display accents only. */
-    --neutral-dark: 0 0% 6%;
-    --silver-grey: 0 0% 55%;
-    --neutral-light: 0 0% 97%;
-    --light-bg: 0 0% 100%;
-    --dark-bg: 0 0% 8%;
+    /* Brand palette
+       Crimson #C51B29 · Maroon #6F0A0E · Cream #FBF0DB · Navy #032C49 · Slate #6498BE.
+       The shield keeps its own red (#DC143C) for the mark and the hero full stops. */
+    --brand-red: 348 83% 47%;
+    --brand-crimson: 355 76% 44%;
+    --brand-maroon: 358 83% 24%;
+    --brand-cream: 39 80% 92%;
+    --brand-navy: 205 92% 15%;
+    /* Slate is the cool counterpoint to the reds: fills (with navy text, 4.6:1) and
+       hairlines. As text or icons use --brand-slate-text, which darkens on cream. */
+    --brand-slate: 205 41% 57%;
+    --brand-slate-foreground: 205 92% 15%;
+    --brand-slate-text: 206 51% 37%;
+    --neutral-dark: 205 92% 11%;
+    --silver-grey: 205 41% 57%;
+    --neutral-light: 39 80% 92%;
+    --light-bg: 39 80% 92%;
+    --dark-bg: 205 92% 15%;
 
-    /* UI Tokens */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
-    --card: 0 0% 99%;
-    --card-foreground: 0 0% 8%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 92%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 0 0% 94%;
-    --accent-foreground: 0 0% 10%;
-    --attention: 0 0% 30%;
-    --attention-foreground: 0 0% 95%;
-    /* Errors are the one functional use of colour: a darkened shield red (6:1 on background). */
-    --destructive: 348 83% 42%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 86%;
+    /* UI Tokens — light theme: navy on cream */
+    --background: 39 80% 92%;
+    --foreground: 205 92% 15%;
+    --card: 40 90% 96%;
+    --card-foreground: 205 92% 15%;
+    --popover: 40 90% 96%;
+    --popover-foreground: 205 92% 15%;
+    --primary: 355 76% 44%;
+    --primary-foreground: 38 100% 96%;
+    --primary-text: 355 76% 44%;
+    --secondary: 41 53% 85%;
+    --secondary-foreground: 205 92% 15%;
+    --muted: 40 64% 87%;
+    --muted-foreground: 207 20% 36%;
+    --accent: 41 53% 85%;
+    --accent-foreground: 205 92% 15%;
+    --attention: 358 83% 24%;
+    --attention-foreground: 38 100% 96%;
+    /* Errors use maroon so they never read as the crimson primary button. */
+    --destructive: 358 83% 24%;
+    --destructive-foreground: 38 100% 96%;
+    --border: 40 47% 78%;
     /* Control borders must reach 3:1 on background (WCAG 1.4.11). */
-    --input: 0 0% 56%;
-    --ring: 0 0% 10%;
+    --input: 38 10% 49%;
+    --ring: 205 92% 15%;
     --radius: 0.5rem;
 
     /* Payment statuses: text/icon colour plus a tint for the badge fill.
-       Each text colour is at least 5.5:1 on background, card and its own tint.
-       Always render the status word (and ideally its icon) — approved and
-       declined share a lightness, so hue alone must never carry the meaning. */
-    --status-approved: 152 70% 26%;
-    --status-approved-bg: 152 60% 94%;
-    --status-pending: 30 95% 30%;
-    --status-pending-bg: 40 95% 92%;
-    --status-declined: 348 83% 42%;
-    --status-declined-bg: 348 85% 95%;
-    --status-refunded: 214 80% 40%;
-    --status-refunded-bg: 214 85% 95%;
-    --status-chargeback: 276 50% 44%;
-    --status-chargeback-bg: 276 60% 95%;
+       Each text colour is at least 5:1 on background, card and its own tint.
+       Always render the status word (and ideally its icon) so hue alone
+       never carries the meaning. */
+    --status-approved: 142 70% 24%;
+    --status-approved-bg: 142 45% 88%;
+    --status-pending: 30 95% 28%;
+    --status-pending-bg: 40 85% 85%;
+    --status-declined: 358 83% 30%;
+    --status-declined-bg: 355 70% 90%;
+    --status-refunded: 214 80% 36%;
+    --status-refunded-bg: 214 60% 88%;
+    --status-chargeback: 276 50% 40%;
+    --status-chargeback-bg: 276 45% 89%;
 
     /* Chart colors */
-    --chart-1: 0 0% 10%;
-    --chart-2: 0 0% 35%;
-    --chart-3: 0 0% 55%;
-    --chart-4: 0 0% 75%;
-    --chart-5: 0 0% 90%;
+    --chart-1: 205 92% 15%;
+    --chart-2: 355 76% 44%;
+    --chart-3: 205 41% 57%;
+    --chart-4: 358 83% 24%;
+    --chart-5: 40 47% 73%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 0 0% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 0% 10%;
+    --sidebar-background: 40 90% 96%;
+    --sidebar-foreground: 205 92% 15%;
+    --sidebar-primary: 205 92% 15%;
+    --sidebar-primary-foreground: 39 80% 92%;
+    --sidebar-accent: 40 64% 87%;
+    --sidebar-accent-foreground: 205 92% 15%;
+    --sidebar-border: 40 47% 78%;
+    --sidebar-ring: 205 92% 15%;
   }
 
+  /* Dark theme: cream on navy */
   .dark {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 95%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 0 0% 90%;
-    --primary-foreground: 0 0% 6%;
-    --secondary: 0 0% 18%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 18%;
-    --accent-foreground: 0 0% 95%;
-    --attention: 0 0% 70%;
-    --attention-foreground: 0 0% 10%;
-    --destructive: 348 83% 62%;
-    --destructive-foreground: 0 0% 6%;
-    --border: 0 0% 20%;
-    --input: 0 0% 42%;
-    --ring: 0 0% 90%;
+    --background: 205 92% 15%;
+    --foreground: 39 80% 92%;
+    --card: 205 80% 20%;
+    --card-foreground: 39 80% 92%;
+    --popover: 205 80% 20%;
+    --popover-foreground: 39 80% 92%;
+    --primary: 355 76% 44%;
+    --primary-foreground: 38 100% 96%;
+    /* Crimson is only 2.4:1 on navy, so crimson text and icons use this lighter tint (5.9:1). */
+    --primary-text: 355 85% 74%;
+    --secondary: 206 71% 26%;
+    --secondary-foreground: 39 80% 92%;
+    --muted: 205 76% 21%;
+    --muted-foreground: 208 38% 75%;
+    --accent: 206 71% 26%;
+    --accent-foreground: 39 80% 92%;
+    /* Coral, so errors never match the lightened crimson primary. */
+    --attention: 12 90% 70%;
+    --attention-foreground: 205 92% 15%;
+    --destructive: 12 90% 70%;
+    --destructive-foreground: 205 92% 15%;
+    --border: 207 60% 29%;
+    --input: 205 41% 57%;
+    --ring: 39 80% 92%;
+    --brand-slate-text: 206 48% 70%;
 
-    --status-approved: 152 55% 58%;
-    --status-approved-bg: 152 40% 14%;
-    --status-pending: 38 92% 60%;
-    --status-pending-bg: 36 55% 13%;
-    --status-declined: 348 83% 62%;
-    --status-declined-bg: 348 45% 15%;
-    --status-refunded: 214 90% 70%;
-    --status-refunded-bg: 214 45% 15%;
-    --status-chargeback: 276 75% 76%;
-    --status-chargeback-bg: 276 35% 16%;
+    --status-approved: 142 55% 62%;
+    --status-approved-bg: 150 45% 20%;
+    --status-pending: 38 92% 64%;
+    --status-pending-bg: 36 50% 20%;
+    --status-declined: 356 83% 76%;
+    --status-declined-bg: 355 45% 24%;
+    --status-refunded: 214 90% 76%;
+    --status-refunded-bg: 214 55% 28%;
+    --status-chargeback: 276 75% 82%;
+    --status-chargeback-bg: 276 35% 26%;
 
     /* Chart colors */
-    --chart-1: 0 0% 90%;
-    --chart-2: 0 0% 70%;
-    --chart-3: 0 0% 55%;
-    --chart-4: 0 0% 35%;
-    --chart-5: 0 0% 15%;
+    --chart-1: 39 80% 92%;
+    --chart-2: 355 85% 74%;
+    --chart-3: 205 41% 57%;
+    --chart-4: 40 47% 73%;
+    --chart-5: 206 71% 26%;
 
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 0 0% 90%;
-    --sidebar-primary-foreground: 0 0% 8%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 0 0% 90%;
-    --light-bg: 0 0% 10%;
-    --dark-bg: 0 0% 95%;
+    --sidebar-background: 205 92% 11%;
+    --sidebar-foreground: 39 80% 92%;
+    --sidebar-primary: 39 80% 92%;
+    --sidebar-primary-foreground: 205 92% 15%;
+    --sidebar-accent: 205 76% 21%;
+    --sidebar-accent-foreground: 39 80% 92%;
+    --sidebar-border: 207 60% 29%;
+    --sidebar-ring: 39 80% 92%;
+    --light-bg: 205 80% 20%;
+    --dark-bg: 39 80% 92%;
   }
 }
 
@@ -194,8 +211,19 @@ All colors MUST be HSL.
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rajdhani', system-ui, sans-serif;
+  /* Two families: DM Serif Display for headlines, Montserrat for everything else.
+     DM Serif ships one weight, so never let the browser fake a bold. */
+  html {
+    font-synthesis-weight: none;
+  }
+
+  h1, h2, h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+  }
+
+  h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
     font-weight: 600;
   }
 

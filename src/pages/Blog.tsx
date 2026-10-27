@@ -57,7 +57,7 @@ const Blog = () => {
             font-family: 'Montserrat', sans-serif;
         }
         .logo-text {
-             font-family: 'Rajdhani', system-ui, sans-serif;
+             font-family: 'DM Serif Display', Georgia, serif;
              font-weight: 600;
         }
         .card-container {

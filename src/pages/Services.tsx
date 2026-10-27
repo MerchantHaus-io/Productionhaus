@@ -265,7 +265,7 @@ export default function Services() {
 
       <main
         className="flex-1"
-        style={{ fontFamily: "'Sora', sans-serif" }}
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
       >
         {/* ── Hero ──────────────────────────────────────────── */}
         <section className={`relative px-6 md:px-16 lg:px-24 pt-24 pb-20 border-b border-foreground/[0.07] overflow-hidden ${sectionAlt}`}>
@@ -281,7 +281,7 @@ export default function Services() {
 
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-8">
-              <span className="block w-6 h-px bg-foreground/20" />
+              <span className="block w-6 h-px bg-brand-slate" />
               <span className="text-[11px] tracking-[0.12em] uppercase text-foreground/40 font-light">
                 Services
               </span>

@@ -329,7 +329,7 @@ export const MerchantApplicationForm: React.FC<MerchantApplicationFormProps> = (
               href="/terms"
               target="_blank"
               rel="noreferrer"
-              className="text-primary hover:underline ml-1"
+              className="text-primary-text hover:underline ml-1"
             >
               Terms and Conditions
             </a>
@@ -354,7 +354,7 @@ export const MerchantApplicationForm: React.FC<MerchantApplicationFormProps> = (
               href="/security"
               target="_blank"
               rel="noreferrer"
-              className="text-primary hover:underline ml-1"
+              className="text-primary-text hover:underline ml-1"
             >
               Security Policy
             </a>
