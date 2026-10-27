@@ -17,7 +17,7 @@
  *
  * Usage:
  *   Call this handler with the merchant data you want to use to create
- *   the gateway account. See the example in nmi-webhook.js for how to
+ *   the gateway account. See the example in nmi-webhook.cjs for how to
  *   integrate it.
  */
 
