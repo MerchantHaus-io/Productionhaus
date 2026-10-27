@@ -16,10 +16,10 @@ All colors MUST be HSL.
     --brand-maroon: 358 83% 24%;
     --brand-cream: 39 80% 92%;
     --brand-navy: 205 92% 15%;
-    /* Slate is the cool counterpoint to the reds: fills (with navy text, 4.6:1) and
+    /* Slate is the cool counterpoint to the reds: fills (with near-black text, 6.1:1) and
        hairlines. As text or icons use --brand-slate-text, which darkens on cream. */
     --brand-slate: 205 41% 57%;
-    --brand-slate-foreground: 205 92% 15%;
+    --brand-slate-foreground: 0 0% 7%;
     --brand-slate-text: 206 51% 37%;
     --neutral-dark: 205 92% 11%;
     --silver-grey: 205 41% 57%;
@@ -27,31 +27,32 @@ All colors MUST be HSL.
     --light-bg: 39 80% 92%;
     --dark-bg: 205 92% 15%;
 
-    /* UI Tokens — light theme: navy on cream */
+    /* UI Tokens — light theme: cream grounds, near-black text. Navy and cream are
+       surfaces and fills only; text is always near-black or white. */
     --background: 39 80% 92%;
-    --foreground: 205 92% 15%;
+    --foreground: 0 0% 7%;
     --card: 40 90% 96%;
-    --card-foreground: 205 92% 15%;
+    --card-foreground: 0 0% 7%;
     --popover: 40 90% 96%;
-    --popover-foreground: 205 92% 15%;
+    --popover-foreground: 0 0% 7%;
     --primary: 355 76% 44%;
-    --primary-foreground: 38 100% 96%;
+    --primary-foreground: 0 0% 100%;
     --primary-text: 355 76% 44%;
     --secondary: 41 53% 85%;
-    --secondary-foreground: 205 92% 15%;
+    --secondary-foreground: 0 0% 7%;
     --muted: 40 64% 87%;
-    --muted-foreground: 207 20% 36%;
+    --muted-foreground: 0 0% 36%;
     --accent: 41 53% 85%;
-    --accent-foreground: 205 92% 15%;
+    --accent-foreground: 0 0% 7%;
     --attention: 358 83% 24%;
-    --attention-foreground: 38 100% 96%;
+    --attention-foreground: 0 0% 100%;
     /* Errors use maroon so they never read as the crimson primary button. */
     --destructive: 358 83% 24%;
-    --destructive-foreground: 38 100% 96%;
+    --destructive-foreground: 0 0% 100%;
     --border: 40 47% 78%;
     /* Control borders must reach 3:1 on background (WCAG 1.4.11). */
     --input: 38 10% 49%;
-    --ring: 205 92% 15%;
+    --ring: 0 0% 7%;
     --radius: 0.5rem;
 
     /* Payment statuses: text/icon colour plus a tint for the badge fill.
@@ -77,41 +78,41 @@ All colors MUST be HSL.
     --chart-5: 40 47% 73%;
 
     --sidebar-background: 40 90% 96%;
-    --sidebar-foreground: 205 92% 15%;
+    --sidebar-foreground: 0 0% 7%;
     --sidebar-primary: 205 92% 15%;
-    --sidebar-primary-foreground: 39 80% 92%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 40 64% 87%;
-    --sidebar-accent-foreground: 205 92% 15%;
+    --sidebar-accent-foreground: 0 0% 7%;
     --sidebar-border: 40 47% 78%;
-    --sidebar-ring: 205 92% 15%;
+    --sidebar-ring: 0 0% 7%;
   }
 
-  /* Dark theme: cream on navy */
+  /* Dark theme: navy grounds, white text */
   .dark {
     --background: 205 92% 15%;
-    --foreground: 39 80% 92%;
+    --foreground: 0 0% 100%;
     --card: 205 80% 20%;
-    --card-foreground: 39 80% 92%;
+    --card-foreground: 0 0% 100%;
     --popover: 205 80% 20%;
-    --popover-foreground: 39 80% 92%;
+    --popover-foreground: 0 0% 100%;
     --primary: 355 76% 44%;
-    --primary-foreground: 38 100% 96%;
+    --primary-foreground: 0 0% 100%;
     /* Crimson is only 2.4:1 on navy, so crimson text and icons use this lighter tint (5.9:1). */
     --primary-text: 355 85% 74%;
     --secondary: 206 71% 26%;
-    --secondary-foreground: 39 80% 92%;
+    --secondary-foreground: 0 0% 100%;
     --muted: 205 76% 21%;
-    --muted-foreground: 208 38% 75%;
+    --muted-foreground: 0 0% 75%;
     --accent: 206 71% 26%;
-    --accent-foreground: 39 80% 92%;
+    --accent-foreground: 0 0% 100%;
     /* Coral, so errors never match the lightened crimson primary. */
     --attention: 12 90% 70%;
-    --attention-foreground: 205 92% 15%;
+    --attention-foreground: 0 0% 7%;
     --destructive: 12 90% 70%;
-    --destructive-foreground: 205 92% 15%;
+    --destructive-foreground: 0 0% 7%;
     --border: 207 60% 29%;
     --input: 205 41% 57%;
-    --ring: 39 80% 92%;
+    --ring: 0 0% 100%;
     --brand-slate-text: 206 48% 70%;
 
     --status-approved: 142 55% 62%;
@@ -133,13 +134,13 @@ All colors MUST be HSL.
     --chart-5: 206 71% 26%;
 
     --sidebar-background: 205 92% 11%;
-    --sidebar-foreground: 39 80% 92%;
+    --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 39 80% 92%;
-    --sidebar-primary-foreground: 205 92% 15%;
+    --sidebar-primary-foreground: 0 0% 7%;
     --sidebar-accent: 205 76% 21%;
-    --sidebar-accent-foreground: 39 80% 92%;
+    --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 207 60% 29%;
-    --sidebar-ring: 39 80% 92%;
+    --sidebar-ring: 0 0% 100%;
     --light-bg: 205 80% 20%;
     --dark-bg: 39 80% 92%;
   }
