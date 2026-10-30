@@ -60,13 +60,13 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-foreground dark:bg-neutral-dark">
+    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-neutral-dark">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="font-ubuntu font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-white mb-4">
             Get in Touch
           </h2>
-          <p className="font-inter text-base sm:text-lg text-white/50 max-w-2xl mx-auto font-light">
+          <p className="font-inter text-base sm:text-lg text-white/70 max-w-2xl mx-auto font-light">
             Ready to transform your payment processing? Contact us today.
           </p>
         </div>
@@ -87,7 +87,7 @@ export const Contact = () => {
                 autoComplete="name"
                 placeholder="Your Name"
                 required
-                className="mt-2 bg-white/5 border-white/15 text-white placeholder:text-white/30 rounded-none"
+                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
               />
             </div>
             <div>
@@ -101,7 +101,7 @@ export const Contact = () => {
                 autoComplete="email"
                 placeholder="Your Email"
                 required
-                className="mt-2 bg-white/5 border-white/15 text-white placeholder:text-white/30 rounded-none"
+                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
               />
             </div>
             <div>
@@ -116,7 +116,7 @@ export const Contact = () => {
                 inputMode="tel"
                 placeholder="Your Phone"
                 required
-                className="mt-2 bg-white/5 border-white/15 text-white placeholder:text-white/30 rounded-none"
+                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
               />
             </div>
             <div>
@@ -125,7 +125,7 @@ export const Contact = () => {
                 name="company"
                 autoComplete="organization"
                 placeholder="Company Name"
-                className="mt-2 bg-white/5 border-white/15 text-white placeholder:text-white/30 rounded-none"
+                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
               />
             </div>
           </div>
@@ -140,14 +140,14 @@ export const Contact = () => {
               placeholder="How can we help you?"
               required
               rows={6}
-              className="mt-2 bg-white/5 border-white/15 text-white placeholder:text-white/30 resize-none rounded-none"
+              className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark resize-none rounded-none"
             />
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-white hover:bg-white/90 text-black font-inter font-medium text-sm sm:text-base py-5 sm:py-6 rounded-none tracking-wide transition-all uppercase"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-inter font-medium text-sm sm:text-base py-5 sm:py-6 rounded-none tracking-wide transition-all uppercase"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>

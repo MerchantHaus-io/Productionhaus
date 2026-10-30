@@ -488,28 +488,28 @@ export default function Apply() {
 
   if (submissionStatus === "success") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
+        <div className="max-w-md w-full bg-card rounded-lg shadow-xl p-8 text-center space-y-4">
+          <div className="mx-auto w-16 h-16 bg-status-approved-bg rounded-full flex items-center justify-center text-status-approved">
             <Check size={32} strokeWidth={3} />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900">Application Received!</h2>
-          <p className="text-slate-600">
+          <h2 className="text-2xl font-bold text-foreground">Application Received!</h2>
+          <p className="text-muted-foreground">
             Thank you for submitting your application. A member of our sales team will contact you within 24 hours to request any supporting documentation.
           </p>
-          <p className="text-slate-600 text-sm">
+          <p className="text-muted-foreground text-sm">
             Alternatively, you can send documents directly to{" "}
-            <a href="mailto:sales@merchanthaus.io" className="text-emerald-600 font-medium hover:underline">
+            <a href="mailto:sales@merchanthaus.io" className="text-primary-text font-medium hover:underline">
               sales@merchanthaus.io
             </a>
           </p>
-          <p className="text-xs text-slate-400 mt-2">
+          <p className="text-xs text-muted-foreground mt-2">
             You will be redirected to the homepage in 10 seconds.
           </p>
           <div className="pt-4">
             <button
               onClick={() => window.location.href = "/"}
-              className="px-6 py-2 bg-slate-100 text-slate-700 font-medium rounded-lg hover:bg-slate-200 transition-colors"
+              className="px-6 py-2 bg-muted text-foreground font-medium rounded-lg hover:bg-accent transition-colors"
             >
               Return to Home
             </button>
@@ -520,36 +520,36 @@ export default function Apply() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20 md:pb-10">
+    <div className="min-h-screen bg-muted font-sans text-foreground pb-20 md:pb-10">
       <PageSEO
         title="Apply"
         description="Apply for a MerchantHaus merchant account. Start accepting credit cards, ACH, and digital payments with fast approval and transparent pricing."
         path="/apply"
       />
       {/* Top Navigation Bar */}
-      <div className="sticky top-0 z-30 bg-white border-b border-slate-200 px-4 py-3 shadow-sm">
+      <div className="sticky top-0 z-30 bg-card border-b border-border px-4 py-3 shadow-sm">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="bg-emerald-600 p-2 rounded-lg">
-              <FileText className="text-white w-5 h-5" />
+            <div className="bg-primary p-2 rounded-lg">
+              <FileText className="text-primary-foreground w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-slate-900 leading-tight">Merchant Preboarding</h1>
+              <h1 className="text-lg font-bold text-foreground leading-tight">Merchant Preboarding</h1>
               <div className="flex items-center gap-2 mt-0.5">
-                <p className="text-xs text-slate-500 hidden sm:block">Intake Wizard v2.4 (Supabase)</p>
+                <p className="text-xs text-muted-foreground hidden sm:block">Intake Wizard v2.4 (Supabase)</p>
                 {/* Save Status Indicator */}
                 {saveStatus === "saving" && (
-                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-slate-400 animate-pulse">
+                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-muted-foreground animate-pulse">
                     <Loader2 size={10} className="animate-spin" /> Saving...
                   </span>
                 )}
                 {saveStatus === "saved" && (
-                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-emerald-600">
+                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-status-approved">
                     <Cloud size={10} /> Saved
                   </span>
                 )}
                 {saveStatus === "error" && (
-                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-rose-500">
+                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-destructive">
                     <AlertCircle size={10} /> Save Failed
                   </span>
                 )}
@@ -559,11 +559,11 @@ export default function Apply() {
 
           <div className="flex flex-col items-end min-w-[140px]">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-semibold text-slate-700">{progress}% Complete</span>
+              <span className="text-xs font-semibold text-foreground">{progress}% Complete</span>
             </div>
-            <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-border rounded-full overflow-hidden">
               <div
-                className="h-full bg-emerald-500 transition-all duration-500 ease-out"
+                className="h-full bg-primary transition-all duration-500 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -588,10 +588,10 @@ export default function Apply() {
                   <div
                     className={`flex items-center justify-center w-10 h-10 rounded-full shrink-0 border-2 transition-colors ${
                       isActive
-                        ? "border-emerald-600 bg-emerald-50 text-emerald-600"
+                        ? "border-primary bg-primary/10 text-primary-text"
                         : isCompleted
-                          ? "border-emerald-600 bg-emerald-600 text-white"
-                          : "border-slate-300 bg-white text-slate-400"
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-input bg-card text-muted-foreground"
                     }`}
                   >
                     {isCompleted ? <Check size={20} /> : <Icon size={18} />}
@@ -599,14 +599,14 @@ export default function Apply() {
 
                   <span
                     className={`ml-3 text-sm font-medium hidden lg:block ${
-                      isActive ? "text-emerald-700" : "text-slate-500"
+                      isActive ? "text-primary-text" : "text-muted-foreground"
                     }`}
                   >
                     {s.label}
                   </span>
 
                   {index !== STEPS.length - 1 && (
-                    <div className={`w-full h-0.5 mx-4 ${isCompleted ? "bg-emerald-600" : "bg-slate-200"}`} />
+                    <div className={`w-full h-0.5 mx-4 ${isCompleted ? "bg-primary" : "bg-muted"}`} />
                   )}
                 </li>
               );
@@ -615,26 +615,26 @@ export default function Apply() {
         </div>
 
         {/* Mobile Step Indicator */}
-        <div className="md:hidden mb-6 flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-          <span className="text-sm font-semibold text-slate-700">
+        <div className="md:hidden mb-6 flex items-center justify-between bg-card p-3 rounded-lg border border-border shadow-sm">
+          <span className="text-sm font-semibold text-foreground">
             Step {step + 1}: {STEPS[step].label}
           </span>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-muted-foreground">
             {step + 1} of {STEPS.length}
           </span>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-start">
           {/* Main Form Area */}
-          <section className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <section className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
             <form
               onSubmit={handleSubmit}
             >
               <div className="p-6 md:p-8">
                 <div className="mb-6">
-                  <h2 className="text-xl font-bold text-slate-900 mb-1">{STEPS[step].label}</h2>
-                  <p className="text-sm text-slate-500">
-                    Please complete all required fields marked with <span className="text-rose-500">*</span>
+                  <h2 className="text-xl font-bold text-foreground mb-1">{STEPS[step].label}</h2>
+                  <p className="text-sm text-muted-foreground">
+                    Please complete all required fields marked with <span className="text-destructive">*</span>
                   </p>
                 </div>
 
@@ -654,10 +654,10 @@ export default function Apply() {
               </div>
 
               {/* Navigation Footer */}
-              <div className="bg-slate-50 px-6 py-4 border-t border-slate-200 flex justify-between items-center">
+              <div className="bg-muted px-6 py-4 border-t border-border flex justify-between items-center">
                 <button
                   type="button"
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   onClick={() => setStep((prev) => Math.max(0, prev - 1))}
                   disabled={step === 0}
                 >
@@ -667,7 +667,7 @@ export default function Apply() {
                 {step < STEPS.length - 1 ? (
                   <button
                     type="button"
-                    className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-md hover:bg-emerald-700 hover:shadow-lg disabled:bg-slate-300 disabled:text-slate-500 disabled:shadow-none transition-all"
+                    className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:bg-primary/90 hover:shadow-lg disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none transition-all"
                     onClick={() => setStep((prev) => Math.min(STEPS.length - 1, prev + 1))}
                     disabled={nextDisabled()}
                   >
@@ -676,7 +676,7 @@ export default function Apply() {
                 ) : (
                   <button
                     type="submit"
-                    className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-md hover:bg-emerald-700 hover:shadow-lg disabled:bg-slate-300 disabled:text-slate-500 disabled:shadow-none transition-all"
+                    className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:bg-primary/90 hover:shadow-lg disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none transition-all"
                     disabled={(isChecklistRequired && !isChecklistComplete) || (isGatewayOnly && !isGatewayOnlyConfirmed)}
                   >
                     Complete Preboarding <Save size={16} />
@@ -687,7 +687,7 @@ export default function Apply() {
                   showChecklistWarning &&
                   ((isChecklistRequired && !isChecklistComplete) ||
                    (isGatewayOnly && !isGatewayOnlyConfirmed)) && (
-                  <div className="flex items-center gap-2 text-xs text-amber-700 font-medium mt-3" role="alert">
+                  <div className="flex items-center gap-2 text-xs text-status-pending font-medium mt-3" role="alert">
                     <AlertCircle size={14} />
                     <span>
                       {isChecklistRequired && !isChecklistComplete
@@ -702,9 +702,9 @@ export default function Apply() {
 
           {/* Right Sidebar - Status Snapshot */}
           <aside className="space-y-6 lg:sticky lg:top-24">
-            <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-              <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Info size={16} className="text-emerald-600" />
+            <div className="bg-card rounded-lg border border-border p-5 shadow-sm">
+              <h3 className="font-sans text-sm font-bold text-foreground mb-4 flex items-center gap-2">
+                <Info size={16} className="text-primary-text" />
                 Status Snapshot
               </h3>
 
@@ -730,14 +730,14 @@ export default function Apply() {
               </div>
 
               {progress < 100 && (
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Missing Items</h4>
+                <div className="mt-6 pt-4 border-t border-border">
+                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Missing Items</h4>
                   <div className="space-y-3">
                     {Object.entries(allMissing).map(([section, fields]) =>
                       fields.length ? (
                         <div key={section} className="text-xs">
-                          <span className="font-semibold text-slate-700 capitalize">{section}:</span>
-                          <span className="text-rose-500 ml-1">
+                          <span className="font-semibold text-foreground capitalize">{section}:</span>
+                          <span className="text-destructive ml-1">
                             {fields.length} field{fields.length > 1 ? "s" : ""} remaining
                           </span>
                         </div>
@@ -748,9 +748,9 @@ export default function Apply() {
               )}
             </div>
 
-            <div className="bg-indigo-50 rounded-2xl border border-indigo-100 p-5">
-              <h3 className="text-xs font-bold text-indigo-900 uppercase tracking-wider mb-2">Tip</h3>
-              <p className="text-xs text-indigo-800 leading-relaxed">
+            <div className="bg-muted rounded-lg border border-border p-5">
+              <h3 className="font-sans text-xs font-bold text-foreground uppercase tracking-wider mb-2">Tip</h3>
+              <p className="text-xs text-foreground leading-relaxed">
                 If your business does not currently have a processor, we will ask for additional documentation readiness checks after you click
                 "Complete".
               </p>
@@ -775,11 +775,11 @@ interface FieldProps {
 function Field({ label, required, children, hint, className = "" }: FieldProps) {
   return (
     <div className={`space-y-1.5 ${className}`}>
-      <label className="block text-sm font-medium text-slate-700">
-        {label} {required && <span className="text-rose-500">*</span>}
+      <label className="block text-sm font-medium text-foreground">
+        {label} {required && <span className="text-destructive">*</span>}
       </label>
       {children}
-      {hint && <p className="text-xs text-slate-500">{hint}</p>}
+      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
     </div>
   );
 }
@@ -791,8 +791,8 @@ function Input(props: InputProps) {
   return (
     <input
       {...props}
-      className={`w-full rounded-lg border bg-white text-slate-900 px-3 py-2.5 text-sm shadow-sm placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all ${
-        hasValue ? "border-emerald-400" : "border-slate-300"
+      className={`w-full rounded-lg border bg-card text-foreground px-3 py-2.5 text-sm shadow-sm placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/30 transition-all ${
+        hasValue ? "border-foreground/40" : "border-input"
       } ${props.className || ""}`}
     />
   );
@@ -814,16 +814,16 @@ function SectionStatus({ label, done, count, total }: SectionStatusProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-1.5">
-        <span className={`text-xs font-semibold ${done ? "text-emerald-700" : "text-slate-700"}`}>
+        <span className={`text-xs font-semibold ${done ? "text-status-approved" : "text-foreground"}`}>
           {label}
         </span>
-        <span className="text-xs text-slate-500 font-medium">
+        <span className="text-xs text-muted-foreground font-medium">
           {count}/{total}
         </span>
       </div>
-      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+      <div className="h-1.5 w-full bg-border rounded-full overflow-hidden">
         <div
-          className={`h-full transition-all duration-500 ${done ? "bg-emerald-500" : "bg-emerald-300"}`}
+          className={`h-full transition-all duration-500 ${done ? "bg-status-approved" : "bg-status-approved/40"}`}
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -858,8 +858,8 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
         </Field>
       </div>
 
-      <hr className="border-slate-100" />
-      <h3 className="text-sm font-semibold text-slate-900">Contact Information</h3>
+      <hr className="border-border" />
+      <h3 className="font-sans text-sm font-semibold text-foreground">Contact Information</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="First Name" required>
@@ -891,8 +891,8 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
         </Field>
       </div>
 
-      <hr className="border-slate-100" />
-      <h3 className="text-sm font-semibold text-slate-900">Location</h3>
+      <hr className="border-border" />
+      <h3 className="font-sans text-sm font-semibold text-foreground">Location</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Address Line 1" required>
@@ -962,8 +962,8 @@ function LegalInfoStep({ form, onChange }: StepProps) {
         </Field>
       </div>
 
-      <hr className="border-slate-100" />
-      <h3 className="text-sm font-semibold text-slate-900">Legal Address</h3>
+      <hr className="border-border" />
+      <h3 className="font-sans text-sm font-semibold text-foreground">Legal Address</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Address Line 1" required>
@@ -991,12 +991,12 @@ function LegalInfoStep({ form, onChange }: StepProps) {
 function ProcessingStep({ form, onChange }: StepProps) {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+      <div className="bg-muted p-5 rounded-lg border border-border">
         <div className="space-y-6">
           {/* Question 1: Have Processor? */}
           <div className="space-y-3">
-            <label className="text-sm font-bold text-slate-900 block">
-              Do you have a payment processor? (Merchant ID) <span className="text-rose-500">*</span>
+            <label className="text-sm font-bold text-foreground block">
+              Do you have a payment processor? (Merchant ID) <span className="text-destructive">*</span>
             </label>
             <div className="flex gap-3">
               <button
@@ -1005,10 +1005,10 @@ function ProcessingStep({ form, onChange }: StepProps) {
                   onChange("hasExistingProcessor", "yes");
                   onChange("isSwitchingProcessor", ""); // reset sub-question
                 }}
-                className={`flex-1 rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${
+                className={`flex-1 rounded-lg border px-4 py-3 text-sm font-semibold transition-all ${
                   form.hasExistingProcessor === "yes"
-                    ? "border-emerald-500 bg-white text-emerald-700 ring-2 ring-emerald-200 ring-offset-1"
-                    : "border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:border-slate-400"
+                    ? "border-primary bg-card text-primary-text ring-2 ring-ring/30 ring-offset-1"
+                    : "border-input bg-card text-foreground hover:bg-accent hover:border-foreground/40"
                 }`}
               >
                 Yes
@@ -1019,10 +1019,10 @@ function ProcessingStep({ form, onChange }: StepProps) {
                   onChange("hasExistingProcessor", "no");
                   onChange("isSwitchingProcessor", "");
                 }}
-                className={`flex-1 rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${
+                className={`flex-1 rounded-lg border px-4 py-3 text-sm font-semibold transition-all ${
                   form.hasExistingProcessor === "no"
-                    ? "border-amber-500 bg-white text-amber-700 ring-2 ring-amber-200 ring-offset-1"
-                    : "border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:border-slate-400"
+                    ? "border-status-pending bg-card text-status-pending ring-2 ring-status-pending/30 ring-offset-1"
+                    : "border-input bg-card text-foreground hover:bg-accent hover:border-foreground/40"
                 }`}
               >
                 No
@@ -1033,17 +1033,17 @@ function ProcessingStep({ form, onChange }: StepProps) {
           {/* Sub-Question: Switching? (Only if Yes to MID) */}
           {form.hasExistingProcessor === "yes" && (
             <div className="space-y-3 animate-in fade-in slide-in-from-top-2">
-              <label className="text-sm font-bold text-slate-900 block">
-                Are you switching your payment processing to us? <span className="text-rose-500">*</span>
+              <label className="text-sm font-bold text-foreground block">
+                Are you switching your payment processing to us? <span className="text-destructive">*</span>
               </label>
               <div className="flex gap-3">
                 <button
                   type="button"
                   onClick={() => onChange("isSwitchingProcessor", "yes")}
-                  className={`flex-1 rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${
+                  className={`flex-1 rounded-lg border px-4 py-3 text-sm font-semibold transition-all ${
                     form.isSwitchingProcessor === "yes"
-                      ? "border-emerald-500 bg-white text-emerald-700 ring-2 ring-emerald-200 ring-offset-1"
-                      : "border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:border-slate-400"
+                      ? "border-primary bg-card text-primary-text ring-2 ring-ring/30 ring-offset-1"
+                      : "border-input bg-card text-foreground hover:bg-accent hover:border-foreground/40"
                   }`}
                 >
                   Yes, switching
@@ -1051,10 +1051,10 @@ function ProcessingStep({ form, onChange }: StepProps) {
                 <button
                   type="button"
                   onClick={() => onChange("isSwitchingProcessor", "no")}
-                  className={`flex-1 rounded-xl border px-4 py-3 text-sm font-semibold transition-all ${
+                  className={`flex-1 rounded-lg border px-4 py-3 text-sm font-semibold transition-all ${
                     form.isSwitchingProcessor === "no"
-                      ? "border-blue-500 bg-white text-blue-700 ring-2 ring-blue-200 ring-offset-1"
-                      : "border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:border-slate-400"
+                      ? "border-brand-slate bg-card text-brand-slate-text ring-2 ring-brand-slate/30 ring-offset-1"
+                      : "border-input bg-card text-foreground hover:bg-accent hover:border-foreground/40"
                   }`}
                 >
                   No, keeping existing
@@ -1065,7 +1065,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
 
           {/* 1. Switching Logic */}
           {form.hasExistingProcessor === "yes" && form.isSwitchingProcessor === "yes" && (
-            <div className="mt-4 pt-4 border-t border-slate-200 animate-in fade-in">
+            <div className="mt-4 pt-4 border-t border-border animate-in fade-in">
               <Field label="Current Processor Name">
                 <Input
                   value={form.currentProcessorName}
@@ -1078,49 +1078,49 @@ function ProcessingStep({ form, onChange }: StepProps) {
 
           {/* 2. Keeping MID Logic */}
           {form.hasExistingProcessor === "yes" && form.isSwitchingProcessor === "no" && (
-            <div className="mt-4 pt-4 border-t border-slate-200 space-y-5 animate-in fade-in">
-              <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">
-                <Info size={18} className="shrink-0 mt-0.5 text-blue-700" />
+            <div className="mt-4 pt-4 border-t border-border space-y-5 animate-in fade-in">
+              <div className="flex items-start gap-3 rounded-lg border border-border bg-muted p-3 text-sm text-foreground">
+                <Info size={18} className="shrink-0 mt-0.5 text-brand-slate-text" />
                 <div className="space-y-1">
-                  <p className="font-semibold text-blue-800">Gateway Configuration Required</p>
+                  <p className="font-semibold text-foreground">Gateway Configuration Required</p>
                   <p>
                     Since you are keeping your current processor, we need to bridge the gateway manually.
                     Please email a <span className="font-semibold">Voided Check</span> or <span className="font-semibold">Bank Confirmation Letter</span> to:
                   </p>
-                  <p className="text-xs text-blue-800">
+                  <p className="text-xs text-foreground">
                     Do not enter routing or account numbers in this form. We only accept the documents above for banking verification.
                   </p>
-                  <div className="font-mono bg-blue-100/50 p-2 rounded text-blue-800 select-all inline-block mt-1">
+                  <div className="font-mono bg-background p-2 rounded text-foreground select-all inline-block mt-1">
                     sales@merchanthaus.io
                   </div>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-sm font-semibold text-slate-900">Confirm Availability</h4>
+                <h4 className="text-sm font-semibold text-foreground">Confirm Availability</h4>
 
-                <div className="flex items-center gap-3 p-3 border border-slate-200 rounded-lg bg-white">
+                <div className="flex items-center gap-3 p-3 border border-border rounded-lg bg-card">
                   <input
                     type="checkbox"
                     id="chkVoided"
-                    className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                    className="h-4 w-4 rounded border-input text-primary-text focus:ring-ring"
                     checked={form.hasVoidedCheckOrBankLetter === "yes"}
                     onChange={(e) => onChange("hasVoidedCheckOrBankLetter", e.target.checked ? "yes" : "")}
                   />
-                  <label htmlFor="chkVoided" className="text-sm text-slate-700 cursor-pointer select-none">
+                  <label htmlFor="chkVoided" className="text-sm text-foreground cursor-pointer select-none">
                     I will send the <span className="font-semibold">Voided Check</span> or <span className="font-semibold">Bank Letter</span> to the email above.
                   </label>
                 </div>
 
-                <div className="flex items-center gap-3 p-3 border border-slate-200 rounded-lg bg-white">
+                <div className="flex items-center gap-3 p-3 border border-border rounded-lg bg-card">
                   <input
                     type="checkbox"
                     id="chkVar"
-                    className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                    className="h-4 w-4 rounded border-input text-primary-text focus:ring-ring"
                     checked={form.hasVarSheet === "yes"}
                     onChange={(e) => onChange("hasVarSheet", e.target.checked ? "yes" : "")}
                   />
-                  <label htmlFor="chkVar" className="text-sm text-slate-700 cursor-pointer select-none">
+                  <label htmlFor="chkVar" className="text-sm text-foreground cursor-pointer select-none">
                     I confirm I have the <span className="font-semibold">VAR Sheet</span> (Value Added Reseller sheet) from the current processor.
                   </label>
                 </div>
@@ -1130,7 +1130,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
 
           {/* 3. New Setup Logic */}
           {form.hasExistingProcessor === "no" && (
-            <div className="mt-3 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800 animate-in fade-in">
+            <div className="mt-3 flex items-start gap-3 rounded-lg border border-status-pending/40 bg-status-pending-bg p-3 text-xs text-foreground animate-in fade-in">
               <AlertCircle size={16} className="shrink-0 mt-0.5" />
               <p>
                 Heads up: After you submit this form, we'll ask a few quick questions about document readiness (bank statements, voided checks, etc.) to ensure a smooth boarding process.
@@ -1141,7 +1141,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold text-slate-900 mb-4">Volume & Ticket Size</h3>
+        <h3 className="font-sans text-sm font-semibold text-foreground mb-4">Volume & Ticket Size</h3>
         <div className="grid gap-6 md:grid-cols-3">
           <Field label="Monthly Volume ($)" required>
             <NumberInput value={form.monthlyVolume} onChange={(e) => onChange("monthlyVolume", e.target.value)} />
@@ -1157,8 +1157,8 @@ function ProcessingStep({ form, onChange }: StepProps) {
 
       {/* Transaction Breakdown - shows percentage split across different transaction types */}
       <div>
-        <h3 className="text-sm font-semibold text-slate-900 mb-4">
-          Transaction Breakdown (%) <span className="text-slate-500 font-normal ml-1">(Percentage of transactions you see or anticipate)</span>
+        <h3 className="font-sans text-sm font-semibold text-foreground mb-4">
+          Transaction Breakdown (%) <span className="text-muted-foreground font-normal ml-1">(Percentage of transactions you see or anticipate)</span>
         </h3>
         <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
           <Field label="Swiped" required hint="Card physically swiped at terminal">
@@ -1221,27 +1221,27 @@ function ReviewStep({
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Anti-Fraud Value Prop */}
-      <div className="rounded-xl border border-indigo-200 bg-indigo-50 p-5">
+      <div className="rounded-lg border border-border bg-muted p-5">
         <div className="flex items-start gap-4">
-          <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+          <div className="p-2 bg-brand-slate/20 rounded-lg text-brand-slate-text">
             <ShieldCheck size={24} />
           </div>
           <div className="space-y-1">
-            <h4 className="font-bold text-indigo-900">Security & Value Added Services</h4>
-            <p className="text-sm text-indigo-800 leading-relaxed">
+            <h4 className="font-bold text-foreground">Security & Value Added Services</h4>
+            <p className="text-sm text-foreground leading-relaxed">
               We are an anti-fraud first company.
               <span className="font-semibold"> Customer Vault</span>,
               <span className="font-semibold"> Network Tokens</span>, and
               <span className="font-semibold"> Account Updater</span> are provided by default as a value-added service to ensure your transactions are secure and seamless.
             </p>
             <div className="flex gap-4 pt-2">
-              <span className="flex items-center gap-1.5 text-xs font-medium text-indigo-700">
+              <span className="flex items-center gap-1.5 text-xs font-medium text-brand-slate-text">
                 <Lock size={12} /> Vault
               </span>
-              <span className="flex items-center gap-1.5 text-xs font-medium text-indigo-700">
+              <span className="flex items-center gap-1.5 text-xs font-medium text-brand-slate-text">
                 <RefreshCw size={12} /> Updater
               </span>
-              <span className="flex items-center gap-1.5 text-xs font-medium text-indigo-700">
+              <span className="flex items-center gap-1.5 text-xs font-medium text-brand-slate-text">
                 <ShieldCheck size={12} /> Tokens
               </span>
             </div>
@@ -1249,7 +1249,7 @@ function ReviewStep({
         </div>
       </div>
 
-      <div className="bg-slate-50 p-4 rounded-xl text-sm text-slate-600 border border-slate-200">
+      <div className="bg-muted p-4 rounded-lg text-sm text-muted-foreground border border-border">
         <p>
           Please review the details below. Once you submit, this data will be queued for formal onboarding.
         </p>
@@ -1257,18 +1257,18 @@ function ReviewStep({
 
       {/* Gateway-Only Review Confirmation - requires explicit acknowledgment before submission */}
       {isGatewayOnly && (
-        <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-5 animate-in fade-in">
-          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-blue-900 uppercase tracking-wide">
-            <Info size={16} className="text-blue-500" />
+        <div className="rounded-lg border border-border bg-muted p-5 animate-in fade-in">
+          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-foreground uppercase tracking-wide">
+            <Info size={16} className="text-brand-slate-text" />
             Review & Confirm
           </h4>
-          <p className="text-sm text-blue-800 mb-4">
+          <p className="text-sm text-foreground mb-4">
             You are setting up a <span className="font-semibold">Gateway-Only</span> configuration (keeping your existing processor).
             Please review all the information above and confirm you are ready to submit.
           </p>
           <div
             className={`flex items-center gap-2 text-xs font-semibold mb-3 ${
-              isGatewayOnlyConfirmed ? "text-emerald-700" : "text-blue-700"
+              isGatewayOnlyConfirmed ? "text-status-approved" : "text-brand-slate-text"
             }`}
             role="status"
           >
@@ -1279,16 +1279,16 @@ function ReviewStep({
                 : "Please confirm your review to enable submission."}
             </span>
           </div>
-          <div className="flex items-center gap-3 p-4 border border-blue-200 rounded-xl bg-white">
+          <div className="flex items-center gap-3 p-4 border border-border rounded-lg bg-card">
             <input
               type="checkbox"
               id="gatewayOnlyConfirm"
-              className="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+              className="h-5 w-5 rounded border-input text-primary-text focus:ring-ring"
               checked={isGatewayOnlyConfirmed}
               onChange={(e) => onChange("gatewayOnlyReviewConfirmed", e.target.checked ? "yes" : "")}
             />
-            <label htmlFor="gatewayOnlyConfirm" className="text-sm text-slate-700 cursor-pointer select-none">
-              I have reviewed all the application details and confirm they are correct. <span className="text-rose-500">*</span>
+            <label htmlFor="gatewayOnlyConfirm" className="text-sm text-foreground cursor-pointer select-none">
+              I have reviewed all the application details and confirm they are correct. <span className="text-destructive">*</span>
             </label>
           </div>
         </div>
@@ -1296,18 +1296,18 @@ function ReviewStep({
 
       {/* Required Docs Confirmation for NEW SETUPS & SWITCHING */}
       {showFullChecklist && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-5 animate-in fade-in">
-          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-amber-900 uppercase tracking-wide">
-            <FileText size={16} className="text-amber-500" />
+        <div className="rounded-lg border border-status-pending/40 bg-status-pending-bg p-5 animate-in fade-in">
+          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-foreground uppercase tracking-wide">
+            <FileText size={16} className="text-status-pending" />
             Application Readiness Checklist
           </h4>
-          <p className="text-sm text-amber-800 mb-4">
+          <p className="text-sm text-foreground mb-4">
             Please confirm you have access to the following documents before proceeding.
             (Uploads will be requested in the formal application). Do not enter routing or account numbers in this form.
           </p>
           <div
             className={`flex items-center gap-2 text-xs font-semibold mb-3 ${
-              isChecklistComplete ? "text-emerald-700" : "text-amber-700"
+              isChecklistComplete ? "text-status-approved" : "text-status-pending"
             }`}
             role="status"
           >
@@ -1379,7 +1379,7 @@ function ReviewStep({
           />
 
           {form.hasExistingProcessor === "yes" && form.isSwitchingProcessor === "no" && (
-            <div className="py-2 my-2 border-y border-slate-100 bg-slate-50 rounded px-2">
+            <div className="py-2 my-2 border-y border-border bg-muted rounded px-2">
               <SummaryItem label="Banking" value="Email Instr. Sent" />
               <SummaryItem label="VAR Sheet" value={form.hasVarSheet} />
             </div>
@@ -1387,11 +1387,11 @@ function ReviewStep({
 
           <SummaryItem label="Monthly Vol" value={`$${form.monthlyVolume}`} />
           <SummaryItem label="Avg Ticket" value={`$${form.avgTicket}`} />
-          <div className="grid grid-cols-2 gap-y-1 mt-2 pt-2 border-t border-slate-100">
-            <span className="text-xs text-slate-500">Swiped: {form.swipedPct}%</span>
-            <span className="text-xs text-slate-500">Keyed: {form.keyedPct}%</span>
-            <span className="text-xs text-slate-500">eCom: {form.ecomPct}%</span>
-            <span className="text-xs text-slate-500">B2B: {form.b2bPct}%</span>
+          <div className="grid grid-cols-2 gap-y-1 mt-2 pt-2 border-t border-border">
+            <span className="text-xs text-muted-foreground">Swiped: {form.swipedPct}%</span>
+            <span className="text-xs text-muted-foreground">Keyed: {form.keyedPct}%</span>
+            <span className="text-xs text-muted-foreground">eCom: {form.ecomPct}%</span>
+            <span className="text-xs text-muted-foreground">B2B: {form.b2bPct}%</span>
           </div>
         </SummaryCard>
 
@@ -1411,12 +1411,12 @@ function ReviewStep({
               <SummaryItem label="VAR Sheet" value={form.hasVarSheet || "—"} />
             </div>
           ) : (
-            <p className="text-xs text-slate-500 italic mb-2">Standard docs verification pending.</p>
+            <p className="text-xs text-muted-foreground italic mb-2">Standard docs verification pending.</p>
           )}
           <SummaryItem label="Docs Link" value={form.docsLocationOrLink} />
-          <div className="mt-2 pt-2 border-t border-slate-100">
-            <span className="text-xs text-slate-400 block mb-1">Internal Notes</span>
-            <p className="text-sm text-slate-700 whitespace-pre-wrap">{form.notes || "—"}</p>
+          <div className="mt-2 pt-2 border-t border-border">
+            <span className="text-xs text-muted-foreground block mb-1">Internal Notes</span>
+            <p className="text-sm text-foreground whitespace-pre-wrap">{form.notes || "—"}</p>
           </div>
         </SummaryCard>
       </div>
@@ -1434,9 +1434,9 @@ interface SummaryCardProps {
 
 function SummaryCard({ title, icon: Icon, children }: SummaryCardProps) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-slate-900 uppercase tracking-wide">
-        {Icon && <Icon size={16} className="text-slate-400" />}
+    <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
+      <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-foreground uppercase tracking-wide">
+        {Icon && <Icon size={16} className="text-muted-foreground" />}
         {title}
       </h4>
       <div className="space-y-3">{children}</div>
@@ -1452,8 +1452,8 @@ interface SummaryItemProps {
 function SummaryItem({ label, value }: SummaryItemProps) {
   return (
     <div className="flex justify-between items-start text-sm">
-      <span className="text-slate-500">{label}</span>
-      <span className="font-medium text-slate-900 text-right max-w-[60%] break-words">{value || "—"}</span>
+      <span className="text-muted-foreground">{label}</span>
+      <span className="font-medium text-foreground text-right max-w-[60%] break-words">{value || "—"}</span>
     </div>
   );
 }
@@ -1466,10 +1466,10 @@ interface ChecklistRowProps {
 
 function ChecklistRow({ label, value, onChange }: ChecklistRowProps) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-slate-200 hover:border-slate-300 transition-colors bg-white">
-      <span className="font-medium text-slate-900 flex items-center gap-2">
-        <FileText size={16} className="text-slate-400" />
-        {label} <span className="text-rose-500">*</span>
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-lg border border-border hover:border-foreground/30 transition-colors bg-card">
+      <span className="font-medium text-foreground flex items-center gap-2">
+        <FileText size={16} className="text-muted-foreground" />
+        {label} <span className="text-destructive">*</span>
       </span>
       <div className="flex gap-2 shrink-0">
         <button
@@ -1477,8 +1477,8 @@ function ChecklistRow({ label, value, onChange }: ChecklistRowProps) {
           onClick={() => onChange("yes")}
           className={`px-4 py-1.5 rounded-lg text-sm font-semibold border transition-all ${
             value === "yes"
-              ? "bg-emerald-50 border-emerald-500 text-emerald-700 shadow-sm"
-              : "bg-white border-slate-300 text-slate-600 hover:bg-slate-50"
+              ? "bg-status-approved-bg border-status-approved text-status-approved shadow-sm"
+              : "bg-card border-input text-muted-foreground hover:bg-accent"
           }`}
         >
           Yes
@@ -1488,8 +1488,8 @@ function ChecklistRow({ label, value, onChange }: ChecklistRowProps) {
           onClick={() => onChange("no")}
           className={`px-4 py-1.5 rounded-lg text-sm font-semibold border transition-all ${
             value === "no"
-              ? "bg-rose-50 border-rose-500 text-rose-700 shadow-sm"
-              : "bg-white border-slate-300 text-slate-600 hover:bg-slate-50"
+              ? "bg-status-declined-bg border-status-declined text-status-declined shadow-sm"
+              : "bg-card border-input text-muted-foreground hover:bg-accent"
           }`}
         >
           No
