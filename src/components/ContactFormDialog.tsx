@@ -175,7 +175,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                       <FormControl>
                         <Input
                           placeholder="Your name"
-                          className="font-montserrat border-silver-grey/30"
+                          className="font-montserrat"
                           autoComplete="name"
                           required
                           aria-required="true"
@@ -201,7 +201,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                         <Input
                           type="email"
                           placeholder="your.email@company.com"
-                          className="font-montserrat border-silver-grey/30"
+                          className="font-montserrat"
                           autoComplete="email"
                           required
                           aria-required="true"
@@ -251,7 +251,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                       <FormControl>
                         <Input
                           placeholder="Your company name"
-                          className="font-montserrat border-silver-grey/30 focus:border-muted-foreground"
+                          className="font-montserrat"
                           {...field}
                         />
                       </FormControl>
@@ -273,7 +273,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                         <Textarea
                           placeholder="How can we help you?"
                           rows={5}
-                          className="font-montserrat border-silver-grey/30 resize-none"
+                          className="font-montserrat resize-none"
                           required
                           aria-required="true"
                           aria-invalid={!!form.formState.errors.message}
@@ -320,7 +320,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
                 <Button
                   type="submit"
                   disabled={form.formState.isSubmitting}
-                  className="w-full bg-foreground hover:bg-foreground/90 text-background font-montserrat font-semibold text-lg py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-montserrat font-semibold text-lg py-6 rounded-md transition-colors"
                 >
                   {form.formState.isSubmitting ? "Sending..." : "Send Message"}
                 </Button>

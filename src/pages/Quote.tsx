@@ -150,12 +150,12 @@ const Quote = () => {
 
       <main className="flex-1 relative z-10">
         <MerchantProcessorDialog open={showProcessorDialog} onOpenChange={setShowProcessorDialog} />
-        <section className="relative overflow-hidden bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-sm py-16">
+        <section className="relative overflow-hidden bg-muted py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-white px-4 py-1.5 text-sm font-medium text-foreground shadow-sm mb-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground shadow-sm mb-6">
               Request a Quote
             </span>
-            <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl text-foreground mb-4">
               Get Your Customized MerchantHaus Quote
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -174,7 +174,7 @@ const Quote = () => {
               action="/"
               acceptCharset="UTF-8"
               onSubmit={handleSubmit(onSubmit)}
-              className="space-y-8 rounded-2xl border border-border bg-card/95 backdrop-blur-md p-8 shadow-sm"
+              className="space-y-8 rounded-lg border border-border bg-card p-8 shadow-sm"
             >
               <input type="hidden" name="form-name" value="quote" />
               <input type="hidden" name="bot-field" />
@@ -226,7 +226,7 @@ const Quote = () => {
                         className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                           hasCurrentProcessor === option.value
                             ? "border-foreground bg-primary/5"
-                            : "border-border hover:border-foreground/50"
+                            : "border-input hover:border-foreground/50"
                         }`}
                       >
                         <input
@@ -285,7 +285,7 @@ const Quote = () => {
                         className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                           processingServices.includes(service)
                             ? "border-foreground bg-primary/5"
-                            : "border-border hover:border-foreground/50"
+                            : "border-input hover:border-foreground/50"
                         }`}
                       >
                         <Checkbox
@@ -312,7 +312,7 @@ const Quote = () => {
                         className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                           valueServices.includes(service)
                             ? "border-foreground bg-primary/5"
-                            : "border-border hover:border-foreground/50"
+                            : "border-input hover:border-foreground/50"
                         }`}
                       >
                         <Checkbox

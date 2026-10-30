@@ -374,7 +374,7 @@ export const MerchantApplicationForm: React.FC<MerchantApplicationFormProps> = (
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 inline-flex items-center px-4 py-2 rounded-md bg-foreground text-background text-sm font-medium disabled:opacity-50"
+        className="mt-2 inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium disabled:opacity-50"
       >
         {isSubmitting ? "Submitting..." : "Submit Application"}
       </button>

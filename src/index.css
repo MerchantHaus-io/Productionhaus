@@ -415,6 +415,9 @@ All colors MUST be HSL.
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    /* Land on card edges after a swipe or an arrow click. */
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 2rem;
     mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
@@ -443,6 +446,7 @@ All colors MUST be HSL.
 
   .marquee-card {
     --glow-intensity: 0;
+    scroll-snap-align: start;
     position: relative;
     transition: transform 0.1s ease-out, box-shadow 0.3s ease;
     transform-style: preserve-3d;

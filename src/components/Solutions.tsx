@@ -15,6 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "./ui/button";
 import shieldLogo from "@/assets/shield.webp";
 
@@ -142,6 +143,10 @@ export const Solutions = () => {
   const scrollPositionRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
   const isPausedRef = useRef(false);
+  // Where an arrow-driven scroll is heading, so rapid clicks queue up instead of
+  // restarting from a half-finished scroll position.
+  const scrollTargetRef = useRef<number | null>(null);
+  const scrollIdleTimerRef = useRef<number | null>(null);
 
   // Typewriter effect for modal title
   useEffect(() => {
@@ -179,18 +184,27 @@ export const Solutions = () => {
     };
   }, [selectedCard]);
 
-  // Scroll handler for arrow navigation
-  const scrollLeft = () => {
+  // Arrow navigation: move exactly one card (card width + gap) per click, aligned to
+  // the card edges, so the strip never stops with a card half off screen.
+  const scrollByCard = (direction: 1 | -1) => {
     const container = marqueeRef.current;
-    if (!container) return;
-    container.scrollBy({ left: -340, behavior: 'smooth' });
+    const firstCard = cardRefs.current[0];
+    if (!container || !firstCard) return;
+
+    const track = firstCard.parentElement;
+    const gap = track ? parseFloat(getComputedStyle(track).columnGap) || 0 : 0;
+    const step = firstCard.offsetWidth + gap;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const from = scrollTargetRef.current ?? container.scrollLeft;
+    const target = Math.min(maxScroll, Math.max(0, (Math.round(from / step) + direction) * step));
+
+    scrollTargetRef.current = target;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    container.scrollTo({ left: target, behavior: reduceMotion ? "auto" : "smooth" });
   };
 
-  const scrollRight = () => {
-    const container = marqueeRef.current;
-    if (!container) return;
-    container.scrollBy({ left: 340, behavior: 'smooth' });
-  };
+  const scrollLeft = () => scrollByCard(-1);
+  const scrollRight = () => scrollByCard(1);
 
   // Pause on hover handlers are left in place but currently unused
   const handleMarqueeMouseEnter = () => {
@@ -221,13 +235,34 @@ export const Solutions = () => {
       });
     };
 
+    // Recompute at most once per frame; the glow is a blurred pseudo-element, so
+    // repainting it on every scroll event made the arrow scrolls stutter.
+    let frame: number | null = null;
+    const scheduleGlowUpdate = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        updateCardGlows();
+      });
+    };
+
+    const handleScroll = () => {
+      scheduleGlowUpdate();
+      if (scrollIdleTimerRef.current !== null) window.clearTimeout(scrollIdleTimerRef.current);
+      scrollIdleTimerRef.current = window.setTimeout(() => {
+        scrollTargetRef.current = null;
+      }, 150);
+    };
+
     updateCardGlows();
-    container.addEventListener('scroll', updateCardGlows);
-    window.addEventListener('resize', updateCardGlows);
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', scheduleGlowUpdate);
 
     return () => {
-      container.removeEventListener('scroll', updateCardGlows);
-      window.removeEventListener('resize', updateCardGlows);
+      if (frame !== null) cancelAnimationFrame(frame);
+      if (scrollIdleTimerRef.current !== null) window.clearTimeout(scrollIdleTimerRef.current);
+      container.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', scheduleGlowUpdate);
     };
   }, []);
 
@@ -391,19 +426,18 @@ export const Solutions = () => {
           />
         </a>
       </div>
-      {/* Fullscreen Modal with Flip Animation */}
-      {selectedCard !== null && (
+      {/* Fullscreen Modal with Flip Animation. Portalled to <body>: the section sits in a
+          transformed <Reveal> wrapper, which would otherwise size this fixed overlay to the
+          section instead of the viewport and push the card's buttons off screen. */}
+      {selectedCard !== null && createPortal(
         <div
           className="fixed inset-0 z-50 bg-neutral-dark/95 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-fade-in overflow-y-auto"
           onClick={closeFullscreen}
         >
           <div
-            className="relative max-w-4xl w-full my-auto bg-background dark:bg-card shadow-2xl overflow-hidden animate-scale-in flex flex-col"
+            className="relative max-w-4xl w-full my-auto max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] bg-background dark:bg-card shadow-2xl overflow-hidden animate-scale-in flex flex-col"
             onClick={(e) => e.stopPropagation()}
-            style={{
-              animation: 'flipIn 0.6s ease-out',
-              maxHeight: 'calc(100vh - 2rem)'
-            }}
+            style={{ animation: 'flipIn 0.6s ease-out' }}
           >
             {/* Banner Image in Modal */}
             {solutions[selectedCard].bannerImage && (
@@ -466,7 +500,8 @@ export const Solutions = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
       <style>{`
         @keyframes flipIn {
