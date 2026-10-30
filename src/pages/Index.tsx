@@ -3,6 +3,8 @@ import { Hero } from "@/components/Hero";
 import LogoBanner from "@/components/LogoBanner";
 import { ValueStats } from "@/components/ValueStats";
 import { Solutions } from "@/components/Solutions";
+import { HowItWorks } from "@/components/HowItWorks";
+import { OnboardingDetails } from "@/components/OnboardingDetails";
 import { Contact } from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -31,6 +33,12 @@ const Index = () => {
         </Reveal>
         <Reveal direction="up" delay={100}>
           <Solutions />
+        </Reveal>
+        <Reveal direction="up" delay={100}>
+          <HowItWorks />
+        </Reveal>
+        <Reveal direction="up" delay={100}>
+          <OnboardingDetails />
         </Reveal>
         <Reveal direction="up" delay={100}>
           <VampBlogBanner />
