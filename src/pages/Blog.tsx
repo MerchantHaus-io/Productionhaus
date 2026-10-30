@@ -87,7 +87,7 @@ const Blog = () => {
         
         .hover-accent-arrow:hover .arrow-icon {
             transform: translateX(5px);
-            color: hsl(var(--brand-red));
+            color: hsl(var(--brand-red-text));
         }
         .arrow-icon {
             transition: all 0.3s ease;
