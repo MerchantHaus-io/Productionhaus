@@ -122,7 +122,7 @@ export const handler = async (event) => {
     const createHeaders = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
-      "Idempotency-Key": randomUUID(),
+      "Idempotency-Key": crypto.randomUUID(),
     };
     const createPayload = {
       package_id: process.env.NMI_PACKAGE_ID,
