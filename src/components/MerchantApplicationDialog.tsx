@@ -121,24 +121,32 @@ export function MerchantApplicationDialog({
 
       if (dbError) throw dbError;
 
-      // 2. TRIGGER EMAIL NOTIFICATION
-      await supabase.functions.invoke('send-notification-email', {
-        body: {
-          type: 'new_web_application',
-          recipientEmail: 'sales@merchanthaus.io',
-          recipientName: 'Admin',
-          data: {
-            dbaName: data.company_name,
-            contactName: `${data.first_name} ${data.last_name}`,
-            email: data.email,
-            phone: data.phone,
-            monthlyVolume: "Not specified (Dialog)",
-            crmUrl: "https://merchantflow.merchanthaus.io/admin/web-submissions"
-          }
-        }
-      });
-
+      // The row is saved — show success now. The notification email is
+      // best-effort and must never turn a saved application into a "failure".
       setIsSubmitted(true);
+
+      // 2. TRIGGER EMAIL NOTIFICATION
+      supabase.functions
+        .invoke('send-notification-email', {
+          body: {
+            type: 'new_web_application',
+            recipientEmail: 'sales@merchanthaus.io',
+            recipientName: 'Admin',
+            data: {
+              dbaName: data.company_name,
+              contactName: `${data.first_name} ${data.last_name}`,
+              email: data.email,
+              phone: data.phone,
+              monthlyVolume: "Not specified (Dialog)",
+              crmUrl: "https://merchantflow.merchanthaus.io/admin/web-submissions"
+            }
+          }
+        })
+        .then(({ error }) => {
+          if (error) console.error("Notification email failed:", error);
+        })
+        .catch((err) => console.error("Notification email failed:", err));
+
       toast({
         title: "Application Received",
         description: "We'll review your application and get back to you soon.",

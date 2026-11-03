@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   Lock,
   RefreshCw,
-  Cloud,
+  HardDrive,
   Loader2,
   LucideIcon,
 } from "lucide-react";
@@ -106,6 +106,10 @@ interface RequiredFieldsMap {
 interface StepProps {
   form: MerchantFormState;
   onChange: (field: keyof MerchantFormState, value: string) => void;
+}
+
+interface EditableStepProps extends StepProps {
+  errors: Partial<Record<keyof MerchantFormState, string>>;
 }
 
 interface ReviewStepProps extends StepProps {
@@ -239,20 +243,216 @@ const initialState: MerchantFormState = {
   notes: "",
 };
 
+// --- Draft persistence (local only) ---
+//
+// Drafts are kept in this browser's localStorage, never in the database.
+// The public site can only INSERT into merchant_applications (no SELECT /
+// UPDATE for anon), so the first and only DB write is the final submit.
+
+const DRAFT_STORAGE_KEY = "mh_apply_draft_v1";
+
+// Fields that must never be written to the local draft.
+const DRAFT_EXCLUDED_FIELDS: (keyof MerchantFormState)[] = ["id", "tin"];
+
+function loadDraft(): Partial<MerchantFormState> | null {
+  try {
+    const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return null;
+    const draft: Partial<MerchantFormState> = {};
+    for (const key of Object.keys(initialState)) {
+      if (DRAFT_EXCLUDED_FIELDS.includes(key)) continue;
+      const value = (parsed as Record<string, unknown>)[key];
+      if (typeof value === "string") draft[key] = value;
+    }
+    return Object.keys(draft).length ? draft : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveDraft(form: MerchantFormState): boolean {
+  try {
+    const draft: Record<string, string> = {};
+    for (const key of Object.keys(initialState)) {
+      if (DRAFT_EXCLUDED_FIELDS.includes(key)) continue;
+      draft[key] = form[key] ?? "";
+    }
+    window.localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(draft));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function clearDraft() {
+  try {
+    window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
+// --- Validation ---
+
+type FieldErrors = Partial<Record<keyof MerchantFormState, string>>;
+type SectionKey = keyof RequiredFieldsMap;
+
+const STEP_SECTIONS: SectionKey[] = ["business", "legal", "processing"];
+
+const SECTION_LABELS: Record<SectionKey, string> = {
+  business: "Business Profile",
+  legal: "Legal Information",
+  processing: "Processing Info",
+};
+
+const PERCENT_FIELDS: (keyof MerchantFormState)[] = [
+  "swipedPct",
+  "keyedPct",
+  "motoPct",
+  "ecomPct",
+  "b2cPct",
+  "b2bPct",
+];
+
+const AMOUNT_FIELDS: (keyof MerchantFormState)[] = ["monthlyVolume", "avgTicket", "highTicket"];
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ZIP_RE = /^\d{5}(-\d{4})?$/;
+const TIN_RE = /^\d{2}-\d{7}$/;
+
+/** Formats any input as XX-XXXXXXX (digits only, max 9). */
+function formatTin(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 9);
+  return digits.length > 2 ? `${digits.slice(0, 2)}-${digits.slice(2)}` : digits;
+}
+
+const isBlank = (value: string | undefined) => !String(value ?? "").trim();
+
+function getSectionErrors(form: MerchantFormState, section: SectionKey): FieldErrors {
+  const errors: FieldErrors = {};
+
+  for (const field of REQUIRED_FIELDS[section]) {
+    if (isBlank(form[field])) errors[field] = "Required";
+  }
+
+  const checkFormat = (field: keyof MerchantFormState, valid: boolean, message: string) => {
+    if (!errors[field] && !isBlank(form[field]) && !valid) errors[field] = message;
+  };
+
+  if (section === "business") {
+    checkFormat("dbaEmail", EMAIL_RE.test(form.dbaEmail.trim()), "Enter a valid email address");
+    checkFormat("dbaZip", ZIP_RE.test(form.dbaZip.trim()), "Enter a 5-digit ZIP (or ZIP+4)");
+  }
+
+  if (section === "legal") {
+    checkFormat("legalEmail", EMAIL_RE.test(form.legalEmail.trim()), "Enter a valid email address");
+    checkFormat("tin", TIN_RE.test(form.tin.trim()), "Tax ID must be 9 digits (XX-XXXXXXX)");
+    checkFormat("legalZip", ZIP_RE.test(form.legalZip.trim()), "Enter a 5-digit ZIP (or ZIP+4)");
+  }
+
+  if (section === "processing") {
+    if (form.hasExistingProcessor === "yes" && isBlank(form.isSwitchingProcessor)) {
+      errors.isSwitchingProcessor = "Required";
+    }
+    for (const field of PERCENT_FIELDS) {
+      const n = Number(form[field]);
+      checkFormat(field, Number.isFinite(n) && n >= 0 && n <= 100, "Must be 0–100");
+    }
+    for (const field of AMOUNT_FIELDS) {
+      const n = Number(form[field]);
+      checkFormat(field, Number.isFinite(n) && n >= 0, "Enter a valid amount");
+    }
+  }
+
+  return errors;
+}
+
+// --- DB payload ---
+
+function buildApplicationPayload(formData: MerchantFormState): MerchantApplication {
+  const num = (v: string) => parseFloat(v) || 0;
+  return {
+    id: formData.id,
+    dba_name: formData.dbaName,
+    products: formData.products,
+    nature_of_business: formData.natureOfBusiness,
+    dba_contact_first: formData.dbaContactFirst,
+    dba_contact_last: formData.dbaContactLast,
+    dba_phone: formData.dbaPhone,
+    dba_email: formData.dbaEmail,
+    dba_address: formData.dbaAddress,
+    dba_address2: formData.dbaAddress2,
+    dba_city: formData.dbaCity,
+    dba_state: formData.dbaState,
+    dba_zip: formData.dbaZip,
+    legal_entity_name: formData.legalEntityName,
+    legal_phone: formData.legalPhone,
+    legal_email: formData.legalEmail,
+    tin: formData.tin,
+    ownership_type: formData.ownershipType,
+    formation_date: formData.formationDate || null,
+    state_incorporated: formData.stateIncorporated,
+    legal_address: formData.legalAddress,
+    legal_address2: formData.legalAddress2,
+    legal_city: formData.legalCity,
+    legal_state: formData.legalState,
+    legal_zip: formData.legalZip,
+    has_existing_processor: formData.hasExistingProcessor,
+    is_switching_processor: formData.isSwitchingProcessor,
+    current_processor_name: formData.currentProcessorName,
+    has_var_sheet: formData.hasVarSheet,
+    monthly_volume: num(formData.monthlyVolume),
+    avg_ticket: num(formData.avgTicket),
+    high_ticket: num(formData.highTicket),
+    swiped_pct: num(formData.swipedPct),
+    keyed_pct: num(formData.keyedPct),
+    moto_pct: num(formData.motoPct),
+    ecom_pct: num(formData.ecomPct),
+    b2c_pct: num(formData.b2cPct),
+    b2b_pct: num(formData.b2bPct),
+    website: formData.website,
+    sic_mcc: formData.sicMcc,
+    has_bank_statements: formData.hasBankOrProcessingStatements,
+    has_voided_check: formData.hasVoidedCheckOrBankLetter,
+    has_gov_id: formData.hasGovernmentId,
+    has_articles_org: formData.hasArticlesOfOrganization,
+    has_tax_doc: formData.hasTaxDocument,
+    docs_link: formData.docsLocationOrLink,
+    notes: formData.notes,
+    gateway_only_confirmed: formData.gatewayOnlyReviewConfirmed,
+    status: "submitted",
+    updated_at: new Date().toISOString(),
+  };
+}
+
 // --- Main Component ---
 
 export default function Apply() {
   const [step, setStep] = useState<number>(0);
-  const [form, setForm] = useState<MerchantFormState>(initialState);
+
+  // Restore any local draft once, on first render. The TIN is never stored,
+  // and the row id is generated fresh for this page session.
+  const [restoredDraft] = useState(() => loadDraft());
+  const [form, setForm] = useState<MerchantFormState>(() => ({
+    ...initialState,
+    ...(restoredDraft ?? {}),
+    id: crypto.randomUUID(),
+  }));
+
   const [submissionStatus, setSubmissionStatus] = useState<
     "idle" | "submitting" | "success"
   >("idle");
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const isSubmittingRef = useRef(false);
 
-  // Autosave State
-  const [saveStatus, setSaveStatus] = useState<
-    "idle" | "saving" | "saved" | "error"
-  >("idle");
-  const isFirstRender = useRef(true);
+  // Local draft state
+  const [draftSaved, setDraftSaved] = useState<boolean>(!!restoredDraft);
+  const hasUserEdited = useRef(false);
+
+  // Which steps should display validation errors (after a blocked Next/Submit)
+  const [showErrorsFor, setShowErrorsFor] = useState<Record<number, boolean>>({});
   const [showChecklistWarning, setShowChecklistWarning] = useState(false);
 
   const isChecklistRequired =
@@ -270,28 +470,15 @@ export default function Apply() {
   const isGatewayOnlyConfirmed =
     !isGatewayOnly || form.gatewayOnlyReviewConfirmed === "yes";
 
-  // 1. Initialize Session ID
+  // Debounced local draft save. Only runs after the user has actually
+  // changed something, so nothing happens on page load.
   useEffect(() => {
-    if (!form.id) {
-      // Use crypto.randomUUID() for Supabase compatibility
-      const newId = crypto.randomUUID();
-      setForm((prev) => ({ ...prev, id: newId }));
-    }
-  }, [form.id]);
-
-  // 2. Autosave Logic (Supabase)
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
+    if (!hasUserEdited.current || submissionStatus !== "idle") return;
     const timer = setTimeout(() => {
-      saveToSupabase(form);
-    }, 1500); // Slightly longer delay to debounce typing
-
+      setDraftSaved(saveDraft(form));
+    }, 800);
     return () => clearTimeout(timer);
-  }, [form]);
+  }, [form, submissionStatus]);
 
   useEffect(() => {
     if (isChecklistComplete) {
@@ -299,85 +486,21 @@ export default function Apply() {
     }
   }, [isChecklistComplete]);
 
-  // 3. Supabase Save Handler
-  const saveToSupabase = async (formData: MerchantFormState) => {
-    if (!formData.id) return;
-    setSaveStatus("saving");
-
-    // Map Frontend State to Database Columns
-    const dbPayload: MerchantApplication = {
-      id: formData.id,
-      dba_name: formData.dbaName,
-      products: formData.products,
-      nature_of_business: formData.natureOfBusiness,
-      dba_contact_first: formData.dbaContactFirst,
-      dba_contact_last: formData.dbaContactLast,
-      dba_phone: formData.dbaPhone,
-      dba_email: formData.dbaEmail,
-      dba_address: formData.dbaAddress,
-      dba_address2: formData.dbaAddress2,
-      dba_city: formData.dbaCity,
-      dba_state: formData.dbaState,
-      dba_zip: formData.dbaZip,
-      legal_entity_name: formData.legalEntityName,
-      legal_phone: formData.legalPhone,
-      legal_email: formData.legalEmail,
-      tin: formData.tin,
-      ownership_type: formData.ownershipType,
-      formation_date: formData.formationDate || null, // Handle empty date
-      state_incorporated: formData.stateIncorporated,
-      legal_address: formData.legalAddress,
-      legal_address2: formData.legalAddress2,
-      legal_city: formData.legalCity,
-      legal_state: formData.legalState,
-      legal_zip: formData.legalZip,
-      has_existing_processor: formData.hasExistingProcessor,
-      is_switching_processor: formData.isSwitchingProcessor,
-      current_processor_name: formData.currentProcessorName,
-      has_var_sheet: formData.hasVarSheet,
-      // Helper to parse numbers safely
-      monthly_volume: parseFloat(formData.monthlyVolume) || 0,
-      avg_ticket: parseFloat(formData.avgTicket) || 0,
-      high_ticket: parseFloat(formData.highTicket) || 0,
-      swiped_pct: parseFloat(formData.swipedPct) || 0,
-      keyed_pct: parseFloat(formData.keyedPct) || 0,
-      moto_pct: parseFloat(formData.motoPct) || 0,
-      ecom_pct: parseFloat(formData.ecomPct) || 0,
-      b2c_pct: parseFloat(formData.b2cPct) || 0,
-      b2b_pct: parseFloat(formData.b2bPct) || 0,
-      website: formData.website,
-      sic_mcc: formData.sicMcc,
-      has_bank_statements: formData.hasBankOrProcessingStatements,
-      has_voided_check: formData.hasVoidedCheckOrBankLetter,
-      has_gov_id: formData.hasGovernmentId,
-      has_articles_org: formData.hasArticlesOfOrganization,
-      has_tax_doc: formData.hasTaxDocument,
-      docs_link: formData.docsLocationOrLink,
-      notes: formData.notes,
-      gateway_only_confirmed: formData.gatewayOnlyReviewConfirmed,
-      updated_at: new Date().toISOString()
-    };
-
-    try {
-      const { error } = await supabase
-        .from('merchant_applications')
-        .upsert(dbPayload, { onConflict: 'id' });
-
-      if (error) throw error;
-      setSaveStatus("saved");
-    } catch (err) {
-      console.error("Autosave failed:", err);
-      setSaveStatus("error");
-    }
-  };
-
   const handleChange = (field: keyof MerchantFormState, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    hasUserEdited.current = true;
+    setSubmitError(null);
+    setForm((prev) => ({ ...prev, [field]: field === "tin" ? formatTin(value) : value }));
   };
 
-  const getMissingFieldsForSection = (sectionKey: keyof RequiredFieldsMap) => {
+  const sectionErrors: Record<SectionKey, FieldErrors> = {
+    business: getSectionErrors(form, "business"),
+    legal: getSectionErrors(form, "legal"),
+    processing: getSectionErrors(form, "processing"),
+  };
+
+  const getMissingFieldsForSection = (sectionKey: SectionKey) => {
     const required = REQUIRED_FIELDS[sectionKey] || [];
-    return required.filter((field) => !String(form[field] ?? "").trim()) as string[];
+    return required.filter((field) => isBlank(form[field])) as string[];
   };
 
   const allMissing = {
@@ -401,61 +524,104 @@ export default function Apply() {
     (completedRequiredFields / totalRequiredFields) * 100,
   );
 
-  const nextDisabled = () => {
-    return false; // Validation disabled per original code
+  const stepErrors = (index: number): FieldErrors => {
+    const section = STEP_SECTIONS[index];
+    return section ? sectionErrors[section] : {};
+  };
+
+  const hasErrors = (errors: FieldErrors) => Object.keys(errors).length > 0;
+
+  // Errors to display on a step: only after the user tried to leave it.
+  const visibleErrors = (index: number): FieldErrors =>
+    showErrorsFor[index] ? stepErrors(index) : {};
+
+  const scrollToFirstError = () => {
+    window.requestAnimationFrame(() => {
+      const el = document.querySelector<HTMLElement>("[data-field-error='true']");
+      el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      el?.querySelector<HTMLElement>("input, button")?.focus({ preventScroll: true });
+    });
+  };
+
+  const handleNext = () => {
+    if (hasErrors(stepErrors(step))) {
+      setShowErrorsFor((prev) => ({ ...prev, [step]: true }));
+      scrollToFirstError();
+      return;
+    }
+    setStep((prev) => Math.min(STEPS.length - 1, prev + 1));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const notifySalesTeam = async (submitted: MerchantFormState) => {
+    try {
+      const { error: emailError } = await supabase.functions.invoke("send-notification-email", {
+        body: {
+          type: "new_web_application",
+          recipientEmail: "sales@merchanthaus.io",
+          recipientName: "Sales Team",
+          data: {
+            dbaName: submitted.dbaName,
+            contactName: `${submitted.dbaContactFirst} ${submitted.dbaContactLast}`,
+            email: submitted.dbaEmail,
+            phone: submitted.dbaPhone,
+            monthlyVolume: submitted.monthlyVolume,
+            crmUrl: "https://merchantflow.merchanthaus.io/admin/web-submissions",
+          },
+        },
+      });
+      if (emailError) console.error("Notification email failed:", emailError);
+    } catch (err) {
+      // The application is already saved; a failed email must not fail the submit.
+      console.error("Notification email failed:", err);
+    }
   };
 
   const finalizeSubmit = async () => {
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setSubmissionStatus("submitting");
+    setSubmitError(null);
 
     try {
-      // 1. Force a final save first
-      await saveToSupabase(form);
+      // Single INSERT. No .select(): returning rows would need an anon SELECT policy.
+      const { error } = await supabase
+        .from("merchant_applications")
+        .insert(buildApplicationPayload(form));
 
-      // 2. Update Status to 'submitted'
-      const { error: dbError } = await supabase
-        .from('merchant_applications')
-        .update({ status: 'submitted' })
-        .eq('id', form.id);
+      // 23505 = unique violation on our client-generated id, i.e. this exact
+      // application was already stored (e.g. a retry after a lost response).
+      if (error && error.code !== "23505") throw error;
 
-      if (dbError) throw dbError;
-
-      // 3. TRIGGER EMAIL (New Code)
-      console.log("Triggering email notification...");
-      const { error: emailError } = await supabase.functions.invoke('send-notification-email', {
-        body: {
-          type: 'new_web_application',
-          recipientEmail: 'sales@merchanthaus.io', // <--- REPLACE THIS EMAIL if needed
-          recipientName: 'Sales Team',
-          data: {
-            dbaName: form.dbaName,
-            contactName: `${form.dbaContactFirst} ${form.dbaContactLast}`,
-            email: form.dbaEmail,
-            phone: form.dbaPhone,
-            monthlyVolume: form.monthlyVolume,
-            crmUrl: "https://merchantflow.merchanthaus.io/admin/web-submissions"
-          }
-        }
-      });
-
-      if (emailError) {
-        console.error("Email failed to send:", emailError);
-        // We do NOT stop execution here; the DB save was successful.
-      }
-
-      console.log("Supabase Form Submitted Successfully");
+      clearDraft();
       setSubmissionStatus("success");
+      void notifySalesTeam(form);
     } catch (error) {
-      console.error("Submission Failed:", error);
-      alert("Submission failed. Please check your connection.");
+      console.error("Submission failed:", error);
+      setSubmitError(
+        "We couldn't submit your application. Your information is still here — please try again in a moment, or email sales@merchanthaus.io if the problem continues.",
+      );
       setSubmissionStatus("idle");
+    } finally {
+      isSubmittingRef.current = false;
     }
   };
 
   const handleSubmit = (e: FormEvent) => {
     if (e) e.preventDefault();
 
-    if (step < STEPS.length - 1) {
+    if (step < STEPS.length - 1 || submissionStatus !== "idle") {
+      return;
+    }
+
+    // Block submission until every section is complete and valid.
+    const firstInvalidStep = STEP_SECTIONS.findIndex((section) =>
+      hasErrors(sectionErrors[section]),
+    );
+    if (firstInvalidStep !== -1) {
+      setShowErrorsFor({ 0: true, 1: true, 2: true });
+      setStep(firstInvalidStep);
+      scrollToFirstError();
       return;
     }
 
@@ -485,6 +651,8 @@ export default function Apply() {
       return () => clearTimeout(timer);
     }
   }, [submissionStatus]);
+
+  const invalidSections = STEP_SECTIONS.filter((section) => hasErrors(sectionErrors[section]));
 
   if (submissionStatus === "success") {
     return (
@@ -537,20 +705,10 @@ export default function Apply() {
               <h1 className="text-lg font-bold text-foreground leading-tight">Merchant Preboarding</h1>
               <div className="flex items-center gap-2 mt-0.5">
                 <p className="text-xs text-muted-foreground hidden sm:block">Intake Wizard v2.4 (Supabase)</p>
-                {/* Save Status Indicator */}
-                {saveStatus === "saving" && (
-                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-muted-foreground animate-pulse">
-                    <Loader2 size={10} className="animate-spin" /> Saving...
-                  </span>
-                )}
-                {saveStatus === "saved" && (
-                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-status-approved">
-                    <Cloud size={10} /> Saved
-                  </span>
-                )}
-                {saveStatus === "error" && (
-                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-destructive">
-                    <AlertCircle size={10} /> Save Failed
+                {/* Local draft indicator (drafts never leave this browser) */}
+                {draftSaved && (
+                  <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-muted-foreground">
+                    <HardDrive size={10} /> Draft saved on this device
                   </span>
                 )}
               </div>
@@ -638,9 +796,32 @@ export default function Apply() {
                   </p>
                 </div>
 
-                {step === 0 && <BusinessProfileStep form={form} onChange={handleChange} />}
-                {step === 1 && <LegalInfoStep form={form} onChange={handleChange} />}
-                {step === 2 && <ProcessingStep form={form} onChange={handleChange} />}
+                {restoredDraft && step < 3 && (
+                  <div className="mb-6 flex items-start gap-2 rounded-lg border border-border bg-muted p-3 text-xs text-foreground" role="status">
+                    <Info size={14} className="shrink-0 mt-0.5 text-brand-slate-text" />
+                    <span>
+                      We restored the draft saved on this device. For your security, your Tax ID is not saved
+                      and will need to be re-entered on the Legal Information step.
+                    </span>
+                  </div>
+                )}
+
+                {step < 3 && hasErrors(visibleErrors(step)) && (
+                  <div className="mb-6 flex items-center gap-2 rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive" role="alert">
+                    <AlertCircle size={16} className="shrink-0" />
+                    <span>Please complete or correct the highlighted fields to continue.</span>
+                  </div>
+                )}
+
+                {step === 0 && (
+                  <BusinessProfileStep form={form} onChange={handleChange} errors={visibleErrors(0)} />
+                )}
+                {step === 1 && (
+                  <LegalInfoStep form={form} onChange={handleChange} errors={visibleErrors(1)} />
+                )}
+                {step === 2 && (
+                  <ProcessingStep form={form} onChange={handleChange} errors={visibleErrors(2)} />
+                )}
                 {step === 3 && (
                   <ReviewStep
                     form={form}
@@ -650,6 +831,26 @@ export default function Apply() {
                     isChecklistComplete={isChecklistComplete}
                     isGatewayOnly={isGatewayOnly}
                   />
+                )}
+
+                {step === 3 && invalidSections.length > 0 && (
+                  <div className="mt-6 flex items-start gap-2 rounded-lg border border-status-pending/40 bg-status-pending-bg p-3 text-sm text-foreground" role="status">
+                    <AlertCircle size={16} className="shrink-0 mt-0.5 text-status-pending" />
+                    <span>
+                      Some required information is missing or invalid in:{" "}
+                      <span className="font-semibold">
+                        {invalidSections.map((s) => SECTION_LABELS[s]).join(", ")}
+                      </span>
+                      . Submitting will take you to the first field that needs attention.
+                    </span>
+                  </div>
+                )}
+
+                {step === 3 && submitError && (
+                  <div className="mt-6 flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive" role="alert">
+                    <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                    <span>{submitError}</span>
+                  </div>
                 )}
               </div>
 
@@ -668,8 +869,7 @@ export default function Apply() {
                   <button
                     type="button"
                     className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:bg-primary/90 hover:shadow-lg disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none transition-all"
-                    onClick={() => setStep((prev) => Math.min(STEPS.length - 1, prev + 1))}
-                    disabled={nextDisabled()}
+                    onClick={handleNext}
                   >
                     Next Step <ChevronRight size={16} />
                   </button>
@@ -677,9 +877,22 @@ export default function Apply() {
                   <button
                     type="submit"
                     className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:bg-primary/90 hover:shadow-lg disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none transition-all"
-                    disabled={(isChecklistRequired && !isChecklistComplete) || (isGatewayOnly && !isGatewayOnlyConfirmed)}
+                    disabled={
+                      submissionStatus !== "idle" ||
+                      (isChecklistRequired && !isChecklistComplete) ||
+                      (isGatewayOnly && !isGatewayOnlyConfirmed)
+                    }
+                    aria-busy={submissionStatus === "submitting"}
                   >
-                    Complete Preboarding <Save size={16} />
+                    {submissionStatus === "submitting" ? (
+                      <>
+                        Submitting… <Loader2 size={16} className="animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        Complete Preboarding <Save size={16} />
+                      </>
+                    )}
                   </button>
                 )}
 
@@ -770,16 +983,24 @@ interface FieldProps {
   children: React.ReactNode;
   hint?: string;
   className?: string;
+  error?: string;
 }
 
-function Field({ label, required, children, hint, className = "" }: FieldProps) {
+function Field({ label, required, children, hint, className = "", error }: FieldProps) {
   return (
-    <div className={`space-y-1.5 ${className}`}>
+    <div
+      className={`space-y-1.5 ${error ? "[&_input]:border-destructive [&_input]:ring-1 [&_input]:ring-destructive/40" : ""} ${className}`}
+      data-field-error={error ? "true" : undefined}
+    >
       <label className="block text-sm font-medium text-foreground">
         {label} {required && <span className="text-destructive">*</span>}
       </label>
       {children}
-      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      {error ? (
+        <p className="text-xs font-medium text-destructive" role="alert">{error}</p>
+      ) : (
+        hint && <p className="text-xs text-muted-foreground">{hint}</p>
+      )}
     </div>
   );
 }
@@ -799,7 +1020,20 @@ function Input(props: InputProps) {
 }
 
 function NumberInput(props: InputProps) {
-  return <Input type="number" step="any" min="0" {...props} />;
+  return <Input type="number" step="any" min="0" inputMode="decimal" {...props} />;
+}
+
+function PercentInput(props: InputProps) {
+  return <NumberInput max="100" {...props} />;
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return (
+    <p className="text-xs font-medium text-destructive" role="alert" data-field-error="true">
+      {message}
+    </p>
+  );
 }
 
 interface SectionStatusProps {
@@ -831,25 +1065,25 @@ function SectionStatus({ label, done, count, total }: SectionStatusProps) {
   );
 }
 
-function BusinessProfileStep({ form, onChange }: StepProps) {
+function BusinessProfileStep({ form, onChange, errors }: EditableStepProps) {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="DBA Name" required className="md:col-span-2">
+        <Field error={errors.dbaName} label="DBA Name" required className="md:col-span-2">
           <Input
             value={form.dbaName}
             onChange={(e) => onChange("dbaName", e.target.value)}
             placeholder="Doing Business As..."
           />
         </Field>
-        <Field label="Products / Services" required>
+        <Field error={errors.products} label="Products / Services" required>
           <Input
             value={form.products}
             onChange={(e) => onChange("products", e.target.value)}
             placeholder="e.g. Shoes, Consulting"
           />
         </Field>
-        <Field label="Nature of Business" required>
+        <Field error={errors.natureOfBusiness} label="Nature of Business" required>
           <Input
             value={form.natureOfBusiness}
             onChange={(e) => onChange("natureOfBusiness", e.target.value)}
@@ -862,26 +1096,26 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
       <h3 className="font-sans text-sm font-semibold text-foreground">Contact Information</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="First Name" required>
+        <Field error={errors.dbaContactFirst} label="First Name" required>
           <Input
             value={form.dbaContactFirst}
             onChange={(e) => onChange("dbaContactFirst", e.target.value)}
           />
         </Field>
-        <Field label="Last Name" required>
+        <Field error={errors.dbaContactLast} label="Last Name" required>
           <Input
             value={form.dbaContactLast}
             onChange={(e) => onChange("dbaContactLast", e.target.value)}
           />
         </Field>
-        <Field label="Phone Number" required>
+        <Field error={errors.dbaPhone} label="Phone Number" required>
           <Input
             value={form.dbaPhone}
             onChange={(e) => onChange("dbaPhone", e.target.value)}
             placeholder="+1 (555) 000-0000"
           />
         </Field>
-        <Field label="Email Address" required>
+        <Field error={errors.dbaEmail} label="Email Address" required>
           <Input
             type="email"
             value={form.dbaEmail}
@@ -895,27 +1129,27 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
       <h3 className="font-sans text-sm font-semibold text-foreground">Location</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Address Line 1" required>
+        <Field error={errors.dbaAddress} label="Address Line 1" required>
           <Input
             value={form.dbaAddress}
             onChange={(e) => onChange("dbaAddress", e.target.value)}
           />
         </Field>
-        <Field label="Address Line 2">
+        <Field error={errors.dbaAddress2} label="Address Line 2">
           <Input
             value={form.dbaAddress2}
             onChange={(e) => onChange("dbaAddress2", e.target.value)}
           />
         </Field>
-        <Field label="City" required>
+        <Field error={errors.dbaCity} label="City" required>
           <Input value={form.dbaCity} onChange={(e) => onChange("dbaCity", e.target.value)} />
         </Field>
         <div className="grid grid-cols-2 gap-4">
-          <Field label="State" required>
+          <Field error={errors.dbaState} label="State" required>
             <Input value={form.dbaState} onChange={(e) => onChange("dbaState", e.target.value)} />
           </Field>
-          <Field label="ZIP Code" required>
-            <Input value={form.dbaZip} onChange={(e) => onChange("dbaZip", e.target.value)} />
+          <Field error={errors.dbaZip} label="ZIP Code" required>
+            <Input value={form.dbaZip} onChange={(e) => onChange("dbaZip", e.target.value)} inputMode="numeric" placeholder="12345" />
           </Field>
         </div>
       </div>
@@ -923,41 +1157,48 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
   );
 }
 
-function LegalInfoStep({ form, onChange }: StepProps) {
+function LegalInfoStep({ form, onChange, errors }: EditableStepProps) {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Legal Entity Name" required className="md:col-span-2">
+        <Field error={errors.legalEntityName} label="Legal Entity Name" required className="md:col-span-2">
           <Input
             value={form.legalEntityName}
             onChange={(e) => onChange("legalEntityName", e.target.value)}
             placeholder="Official Registered Name"
           />
         </Field>
-        <Field label="Business Phone" required>
+        <Field error={errors.legalPhone} label="Business Phone" required>
           <Input value={form.legalPhone} onChange={(e) => onChange("legalPhone", e.target.value)} />
         </Field>
-        <Field label="Business Email" required>
+        <Field error={errors.legalEmail} label="Business Email" required>
           <Input
             type="email"
             value={form.legalEmail}
             onChange={(e) => onChange("legalEmail", e.target.value)}
           />
         </Field>
-        <Field label="Tax ID (TIN/EIN)" required>
-          <Input value={form.tin} onChange={(e) => onChange("tin", e.target.value)} placeholder="XX-XXXXXXX" />
+        <Field error={errors.tin} label="Tax ID (TIN/EIN)" required>
+          <Input
+            value={form.tin}
+            onChange={(e) => onChange("tin", e.target.value)}
+            placeholder="XX-XXXXXXX"
+            inputMode="numeric"
+            autoComplete="off"
+            maxLength={10}
+          />
         </Field>
-        <Field label="Ownership Type" required>
+        <Field error={errors.ownershipType} label="Ownership Type" required>
           <Input
             value={form.ownershipType}
             onChange={(e) => onChange("ownershipType", e.target.value)}
             placeholder="e.g. LLC, Sole Prop, Corp"
           />
         </Field>
-        <Field label="Formation Date" required>
+        <Field error={errors.formationDate} label="Formation Date" required>
           <Input type="date" value={form.formationDate} onChange={(e) => onChange("formationDate", e.target.value)} />
         </Field>
-        <Field label="State Incorporated" required>
+        <Field error={errors.stateIncorporated} label="State Incorporated" required>
           <Input value={form.stateIncorporated} onChange={(e) => onChange("stateIncorporated", e.target.value)} />
         </Field>
       </div>
@@ -966,21 +1207,21 @@ function LegalInfoStep({ form, onChange }: StepProps) {
       <h3 className="font-sans text-sm font-semibold text-foreground">Legal Address</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Address Line 1" required>
+        <Field error={errors.legalAddress} label="Address Line 1" required>
           <Input value={form.legalAddress} onChange={(e) => onChange("legalAddress", e.target.value)} />
         </Field>
-        <Field label="Address Line 2">
+        <Field error={errors.legalAddress2} label="Address Line 2">
           <Input value={form.legalAddress2} onChange={(e) => onChange("legalAddress2", e.target.value)} />
         </Field>
-        <Field label="City" required>
+        <Field error={errors.legalCity} label="City" required>
           <Input value={form.legalCity} onChange={(e) => onChange("legalCity", e.target.value)} />
         </Field>
         <div className="grid grid-cols-2 gap-4">
-          <Field label="State" required>
+          <Field error={errors.legalState} label="State" required>
             <Input value={form.legalState} onChange={(e) => onChange("legalState", e.target.value)} />
           </Field>
-          <Field label="ZIP Code" required>
-            <Input value={form.legalZip} onChange={(e) => onChange("legalZip", e.target.value)} />
+          <Field error={errors.legalZip} label="ZIP Code" required>
+            <Input value={form.legalZip} onChange={(e) => onChange("legalZip", e.target.value)} inputMode="numeric" placeholder="12345" />
           </Field>
         </div>
       </div>
@@ -988,7 +1229,7 @@ function LegalInfoStep({ form, onChange }: StepProps) {
   );
 }
 
-function ProcessingStep({ form, onChange }: StepProps) {
+function ProcessingStep({ form, onChange, errors }: EditableStepProps) {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="bg-muted p-5 rounded-lg border border-border">
@@ -1028,6 +1269,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
                 No
               </button>
             </div>
+            <FieldError message={errors.hasExistingProcessor} />
           </div>
 
           {/* Sub-Question: Switching? (Only if Yes to MID) */}
@@ -1060,13 +1302,14 @@ function ProcessingStep({ form, onChange }: StepProps) {
                   No, keeping existing
                 </button>
               </div>
+              <FieldError message={errors.isSwitchingProcessor} />
             </div>
           )}
 
           {/* 1. Switching Logic */}
           {form.hasExistingProcessor === "yes" && form.isSwitchingProcessor === "yes" && (
             <div className="mt-4 pt-4 border-t border-border animate-in fade-in">
-              <Field label="Current Processor Name">
+              <Field error={errors.currentProcessorName} label="Current Processor Name">
                 <Input
                   value={form.currentProcessorName}
                   onChange={(e) => onChange("currentProcessorName", e.target.value)}
@@ -1143,13 +1386,13 @@ function ProcessingStep({ form, onChange }: StepProps) {
       <div>
         <h3 className="font-sans text-sm font-semibold text-foreground mb-4">Volume & Ticket Size</h3>
         <div className="grid gap-6 md:grid-cols-3">
-          <Field label="Monthly Volume ($)" required>
+          <Field error={errors.monthlyVolume} label="Monthly Volume ($)" required>
             <NumberInput value={form.monthlyVolume} onChange={(e) => onChange("monthlyVolume", e.target.value)} />
           </Field>
-          <Field label="Average Ticket ($)" required>
+          <Field error={errors.avgTicket} label="Average Ticket ($)" required>
             <NumberInput value={form.avgTicket} onChange={(e) => onChange("avgTicket", e.target.value)} />
           </Field>
-          <Field label="High Ticket ($)" required>
+          <Field error={errors.highTicket} label="High Ticket ($)" required>
             <NumberInput value={form.highTicket} onChange={(e) => onChange("highTicket", e.target.value)} />
           </Field>
         </div>
@@ -1161,36 +1404,36 @@ function ProcessingStep({ form, onChange }: StepProps) {
           Transaction Breakdown (%) <span className="text-muted-foreground font-normal ml-1">(Percentage of transactions you see or anticipate)</span>
         </h3>
         <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
-          <Field label="Swiped" required hint="Card physically swiped at terminal">
-            <NumberInput value={form.swipedPct} onChange={(e) => onChange("swipedPct", e.target.value)} />
+          <Field error={errors.swipedPct} label="Swiped" required hint="Card physically swiped at terminal">
+            <PercentInput value={form.swipedPct} onChange={(e) => onChange("swipedPct", e.target.value)} />
           </Field>
-          <Field label="Keyed" required hint="Card number manually entered">
-            <NumberInput value={form.keyedPct} onChange={(e) => onChange("keyedPct", e.target.value)} />
+          <Field error={errors.keyedPct} label="Keyed" required hint="Card number manually entered">
+            <PercentInput value={form.keyedPct} onChange={(e) => onChange("keyedPct", e.target.value)} />
           </Field>
-          <Field label="MOTO" required hint="Mail Order / Telephone Order transactions">
-            <NumberInput value={form.motoPct} onChange={(e) => onChange("motoPct", e.target.value)} />
+          <Field error={errors.motoPct} label="MOTO" required hint="Mail Order / Telephone Order transactions">
+            <PercentInput value={form.motoPct} onChange={(e) => onChange("motoPct", e.target.value)} />
           </Field>
-          <Field label="eCom" required hint="eCommerce / online transactions">
-            <NumberInput value={form.ecomPct} onChange={(e) => onChange("ecomPct", e.target.value)} />
+          <Field error={errors.ecomPct} label="eCom" required hint="eCommerce / online transactions">
+            <PercentInput value={form.ecomPct} onChange={(e) => onChange("ecomPct", e.target.value)} />
           </Field>
-          <Field label="B2C" required hint="Business-to-Consumer sales">
-            <NumberInput value={form.b2cPct} onChange={(e) => onChange("b2cPct", e.target.value)} />
+          <Field error={errors.b2cPct} label="B2C" required hint="Business-to-Consumer sales">
+            <PercentInput value={form.b2cPct} onChange={(e) => onChange("b2cPct", e.target.value)} />
           </Field>
-          <Field label="B2B" required hint="Business-to-Business sales">
-            <NumberInput value={form.b2bPct} onChange={(e) => onChange("b2bPct", e.target.value)} />
+          <Field error={errors.b2bPct} label="B2B" required hint="Business-to-Business sales">
+            <PercentInput value={form.b2bPct} onChange={(e) => onChange("b2bPct", e.target.value)} />
           </Field>
         </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Field label="Website URL">
+        <Field error={errors.website} label="Website URL">
           <Input
             value={form.website}
             onChange={(e) => onChange("website", e.target.value)}
             placeholder="https://example.com"
           />
         </Field>
-        <Field label="SIC / MCC (if known)" hint="Standard Industry / Merchant Category Code">
+        <Field error={errors.sicMcc} label="SIC / MCC (if known)" hint="Standard Industry / Merchant Category Code">
           <Input
             value={form.sicMcc}
             onChange={(e) => onChange("sicMcc", e.target.value)}
@@ -1356,6 +1599,10 @@ function ReviewStep({
           <SummaryItem label="Contact" value={`${form.dbaContactFirst} ${form.dbaContactLast}`} />
           <SummaryItem label="Phone" value={form.dbaPhone} />
           <SummaryItem label="Email" value={form.dbaEmail} />
+          <SummaryItem
+            label="DBA Address"
+            value={formatAddress(form.dbaAddress, form.dbaAddress2, form.dbaCity, form.dbaState, form.dbaZip)}
+          />
         </SummaryCard>
 
         <SummaryCard title="Legal Information" icon={Scale}>
@@ -1364,6 +1611,10 @@ function ReviewStep({
           <SummaryItem label="Ownership" value={form.ownershipType} />
           <SummaryItem label="Founded" value={form.formationDate} />
           <SummaryItem label="State Inc." value={form.stateIncorporated} />
+          <SummaryItem
+            label="Legal Address"
+            value={formatAddress(form.legalAddress, form.legalAddress2, form.legalCity, form.legalState, form.legalZip)}
+          />
         </SummaryCard>
 
         <SummaryCard title="Processing Details" icon={CreditCard}>
@@ -1385,13 +1636,20 @@ function ReviewStep({
             </div>
           )}
 
-          <SummaryItem label="Monthly Vol" value={`$${form.monthlyVolume}`} />
-          <SummaryItem label="Avg Ticket" value={`$${form.avgTicket}`} />
+          <SummaryItem label="Monthly Vol" value={formatMoney(form.monthlyVolume)} />
+          <SummaryItem label="Avg Ticket" value={formatMoney(form.avgTicket)} />
+          <SummaryItem label="High Ticket" value={formatMoney(form.highTicket)} />
           <div className="grid grid-cols-2 gap-y-1 mt-2 pt-2 border-t border-border">
-            <span className="text-xs text-muted-foreground">Swiped: {form.swipedPct}%</span>
-            <span className="text-xs text-muted-foreground">Keyed: {form.keyedPct}%</span>
-            <span className="text-xs text-muted-foreground">eCom: {form.ecomPct}%</span>
-            <span className="text-xs text-muted-foreground">B2B: {form.b2bPct}%</span>
+            <span className="text-xs text-muted-foreground">Swiped: {formatPct(form.swipedPct)}</span>
+            <span className="text-xs text-muted-foreground">Keyed: {formatPct(form.keyedPct)}</span>
+            <span className="text-xs text-muted-foreground">MOTO: {formatPct(form.motoPct)}</span>
+            <span className="text-xs text-muted-foreground">eCom: {formatPct(form.ecomPct)}</span>
+            <span className="text-xs text-muted-foreground">B2C: {formatPct(form.b2cPct)}</span>
+            <span className="text-xs text-muted-foreground">B2B: {formatPct(form.b2bPct)}</span>
+          </div>
+          <div className="mt-2 pt-2 border-t border-border space-y-3">
+            <SummaryItem label="Website" value={form.website} />
+            <SummaryItem label="SIC / MCC" value={form.sicMcc} />
           </div>
         </SummaryCard>
 
@@ -1450,12 +1708,30 @@ interface SummaryItemProps {
 }
 
 function SummaryItem({ label, value }: SummaryItemProps) {
+  // Only treat genuinely empty values as missing, so 0 / "0" still display.
+  const isEmpty = value === undefined || value === null || String(value).trim() === "";
   return (
     <div className="flex justify-between items-start text-sm">
       <span className="text-muted-foreground">{label}</span>
-      <span className="font-medium text-foreground text-right max-w-[60%] break-words">{value || "—"}</span>
+      <span className="font-medium text-foreground text-right max-w-[60%] break-words">{isEmpty ? "—" : value}</span>
     </div>
   );
+}
+
+function formatMoney(value: string): string {
+  return isBlank(value) ? "" : `$${value}`;
+}
+
+function formatPct(value: string): string {
+  return isBlank(value) ? "—" : `${value}%`;
+}
+
+function formatAddress(line1: string, line2: string, city: string, state: string, zip: string): string {
+  const street = [line1, line2].map((v) => v.trim()).filter(Boolean).join(", ");
+  const region = [city.trim(), [state.trim(), zip.trim()].filter(Boolean).join(" ")]
+    .filter(Boolean)
+    .join(", ");
+  return [street, region].filter(Boolean).join(", ");
 }
 
 interface ChecklistRowProps {
