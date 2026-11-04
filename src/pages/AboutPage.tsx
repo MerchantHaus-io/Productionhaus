@@ -2,7 +2,6 @@ import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { PageSEO } from "@/components/PageSEO";
-import { Link } from "react-router-dom";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -279,12 +278,12 @@ const AboutPage = () => {
               Fast deployment, enterprise-grade security, and support that actually delivers.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/get-started"
+              <a
+                href="https://ops-terminal.merchant.haus/merchant-apply"
                 className="px-8 py-3.5 bg-foreground text-background text-[0.82rem] tracking-[0.08em] uppercase font-semibold hover:bg-foreground/90 transition-colors duration-200 rounded-sm"
               >
                 Apply Now
-              </Link>
+              </a>
               <a
                 href="tel:15056006042"
                 className="px-8 py-3.5 border border-foreground/20 text-[0.82rem] tracking-[0.08em] uppercase font-medium hover:bg-foreground/[0.04] transition-colors duration-200 rounded-sm text-foreground/70"
