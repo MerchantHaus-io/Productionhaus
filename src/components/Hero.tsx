@@ -110,7 +110,7 @@ export const Hero = () => {
               className="bg-white text-black hover:bg-white/90 font-medium text-base px-10 py-6 rounded-none tracking-wide transition-all w-full sm:w-auto"
               style={sans}
             >
-              <a href="https://ops-terminal.merchant.haus/contact">Get Started</a>
+              <a href="https://ops-terminal.merchant.haus/merchant-apply">Get Started</a>
             </Button>
           </div>
         </div>
