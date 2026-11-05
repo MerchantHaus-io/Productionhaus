@@ -308,12 +308,12 @@ export default function Services() {
               >
                 Book a Demo
               </Link>
-              <Link
-                to="/get-started"
+              <a
+                href="https://ops-terminal.merchant.haus/merchant-apply"
                 className="px-7 py-3.5 border border-foreground/20 text-[0.82rem] tracking-[0.08em] uppercase font-medium hover:bg-foreground/[0.04] transition-colors duration-200 rounded-sm text-foreground/70"
               >
                 Get Started
-              </Link>
+              </a>
             </div>
 
             {/* Trust badges */}

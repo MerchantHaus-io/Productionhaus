@@ -431,7 +431,7 @@ export default function PaymentGatewayGuide() {
           </div>
 
           <div className="cta">
-            <a href="/apply">Talk to Merchant Haus →</a>
+            <a href="https://ops-terminal.merchant.haus/merchant-apply">Talk to Merchant Haus →</a>
           </div>
         </section>
 
