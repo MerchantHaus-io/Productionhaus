@@ -10,10 +10,9 @@ All colors MUST be HSL.
   :root {
     /* Brand palette
        Crimson #C51B29 · Maroon #6F0A0E · Cream #FBF0DB · Navy #032C49 · Slate #6498BE.
-       The shield keeps its own red (#DC143C) for the mark and the hero full stops. */
-    --brand-red: 348 83% 47%;
-    /* The shield red tuned for text, links and icons: darker on cream (5.7:1),
-       lighter on navy (5.9:1). The shield and hero full stops keep --brand-red. */
+       Brand red #F73B51 is for the shield and the hero full stops only. */
+    --brand-red: 353 92% 60%;
+    /* Red as text, links and icons: darker on cream (5.7:1), lighter on navy (5.9:1). */
     --brand-red-text: 348 83% 40%;
     --brand-crimson: 355 76% 44%;
     --brand-maroon: 358 83% 24%;
@@ -30,10 +29,11 @@ All colors MUST be HSL.
     --light-bg: 39 80% 92%;
     --dark-bg: 205 92% 15%;
 
-    /* UI Tokens — light theme: cream grounds, near-black text. Navy and cream are
-       surfaces and fills only; text is always near-black or white. */
+    /* Light theme: cream grounds, near-black body text, deep slate headings. */
     --background: 39 80% 92%;
     --foreground: 0 0% 7%;
+    /* Headings and titles take the brand: deep slate on cream (5.5:1). Never body text. */
+    --heading: 206 51% 37%;
     --card: 40 90% 96%;
     --card-foreground: 0 0% 7%;
     --popover: 40 90% 96%;
@@ -56,12 +56,27 @@ All colors MUST be HSL.
     /* Control borders must reach 3:1 on background (WCAG 1.4.11). */
     --input: 38 10% 49%;
     --ring: 0 0% 7%;
-    --radius: 0.5rem;
+    /* radius-lg 12px (product cards, dialogs); md 8px (controls); sm 4px. */
+    --radius: 0.75rem;
+
+    /* Counter colour: the other theme's palette, for one block per page (pricing cards,
+       the contact band). Applied by the .inverse class below. */
+    --inverse-background: 205 92% 15%;
+    --inverse-card: 205 95% 16%;
+    --inverse-foreground: 0 0% 100%;
+    --inverse-heading: 39 80% 92%;
+    --inverse-muted: 205 76% 21%;
+    --inverse-muted-foreground: 0 0% 75%;
+    --inverse-border: 207 60% 29%;
+    --inverse-input: 205 41% 57%;
+    --inverse-ring: 0 0% 100%;
+    --inverse-brand-slate-text: 206 48% 70%;
+    --inverse-primary-text: 355 85% 74%;
+    --inverse-accent: 206 71% 26%;
 
     /* Payment statuses: text/icon colour plus a tint for the badge fill.
        Each text colour is at least 5:1 on background, card and its own tint.
-       Always render the status word (and ideally its icon) so hue alone
-       never carries the meaning. */
+       Always render the status word so hue alone never carries the meaning. */
     --status-approved: 142 70% 24%;
     --status-approved-bg: 142 45% 88%;
     --status-pending: 30 95% 28%;
@@ -88,13 +103,21 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 0 0% 7%;
     --sidebar-border: 40 47% 78%;
     --sidebar-ring: 0 0% 7%;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 120ms;
+    --dur-base: 200ms;
+    --dur-slow: 320ms;
   }
 
-  /* Dark theme: navy grounds, white text */
+  /* Dark theme: navy grounds, white body text, cream headings */
   .dark {
     --background: 205 92% 15%;
     --foreground: 0 0% 100%;
-    --card: 205 80% 20%;
+    --heading: 39 80% 92%;
+    --card: 205 95% 16%;
     --card-foreground: 0 0% 100%;
     --popover: 205 80% 20%;
     --popover-foreground: 0 0% 100%;
@@ -108,7 +131,7 @@ All colors MUST be HSL.
     --muted-foreground: 0 0% 75%;
     --accent: 206 71% 26%;
     --accent-foreground: 0 0% 100%;
-    /* Coral, so errors never match the lightened crimson primary. */
+    /* Coral, so errors never match the crimson primary. */
     --attention: 12 90% 70%;
     --attention-foreground: 0 0% 7%;
     --destructive: 12 90% 70%;
@@ -118,6 +141,19 @@ All colors MUST be HSL.
     --ring: 0 0% 100%;
     --brand-slate-text: 206 48% 70%;
     --brand-red-text: 348 90% 74%;
+
+    --inverse-background: 39 80% 92%;
+    --inverse-card: 40 90% 96%;
+    --inverse-foreground: 0 0% 7%;
+    --inverse-heading: 206 51% 37%;
+    --inverse-muted: 40 64% 87%;
+    --inverse-muted-foreground: 0 0% 36%;
+    --inverse-border: 40 47% 78%;
+    --inverse-input: 38 10% 49%;
+    --inverse-ring: 0 0% 7%;
+    --inverse-brand-slate-text: 206 51% 37%;
+    --inverse-primary-text: 355 76% 44%;
+    --inverse-accent: 41 53% 85%;
 
     --status-approved: 142 55% 62%;
     --status-approved-bg: 150 45% 20%;
@@ -148,6 +184,36 @@ All colors MUST be HSL.
     --light-bg: 205 80% 20%;
     --dark-bg: 39 80% 92%;
   }
+
+  /* The page palette, kept under its own names so fields inside an .inverse block can
+     flip back to it (cream fields on a navy band, navy fields on a cream band). */
+  :root, .dark {
+    --page-background: var(--background);
+    --page-foreground: var(--foreground);
+    --page-muted-foreground: var(--muted-foreground);
+    --page-input: var(--input);
+    --page-ring: var(--ring);
+  }
+
+  /* Counter-colour block: every role swaps to the other theme's value, so ordinary
+     utilities (bg-card, text-heading, border-border …) render inverse inside it. */
+  .inverse {
+    --background: var(--inverse-background);
+    --card: var(--inverse-card);
+    --card-foreground: var(--inverse-foreground);
+    --foreground: var(--inverse-foreground);
+    --heading: var(--inverse-heading);
+    --muted: var(--inverse-muted);
+    --muted-foreground: var(--inverse-muted-foreground);
+    --border: var(--inverse-border);
+    --input: var(--inverse-input);
+    --ring: var(--inverse-ring);
+    --brand-slate-text: var(--inverse-brand-slate-text);
+    --primary-text: var(--inverse-primary-text);
+    --accent: var(--inverse-accent);
+    --accent-foreground: var(--inverse-foreground);
+    color: hsl(var(--foreground));
+  }
 }
 
 @layer base {
@@ -157,7 +223,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     overflow-x: hidden;
     position: relative;
   }
@@ -189,7 +255,7 @@ All colors MUST be HSL.
   }
 
   .docs-typography {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
   }
 
   .docs-typography h1,
@@ -204,7 +270,7 @@ All colors MUST be HSL.
   .docs-typography a,
   .docs-typography em,
   .docs-typography strong {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
   }
 
   @keyframes caret-blink {
@@ -216,20 +282,26 @@ All colors MUST be HSL.
     }
   }
 
-  /* Two families: DM Serif Display for headlines, Montserrat for everything else.
-     DM Serif ships one weight, so never let the browser fake a bold. */
-  html {
-    font-synthesis-weight: none;
+  /* Type: Public Sans for everything, DM Serif Display only for headlines of 40px and up
+     (opt in with font-display), Geist Mono for identifiers. Headings take the brand colour. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Public Sans', system-ui, sans-serif;
+    color: hsl(var(--heading));
   }
 
   h1, h2, h3 {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-weight: 400;
+    font-weight: 700;
   }
 
   h4, h5, h6 {
-    font-family: 'Montserrat', system-ui, sans-serif;
     font-weight: 600;
+  }
+
+  /* DM Serif ships one weight: never let the browser fake a bold on it. */
+  .font-display {
+    font-weight: 400;
+    font-synthesis-weight: none;
+    letter-spacing: -0.01em;
   }
 
   @media (max-width: 768px) {
@@ -474,29 +546,33 @@ All colors MUST be HSL.
     z-index: 10;
   }
 
+  /* Carousel arrows: round icon buttons; hover darkens, nothing scales. */
   .nav-arrow-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
     background: hsl(var(--foreground));
     color: hsl(var(--background));
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: filter var(--dur-fast) var(--ease-out);
+    box-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.08), 0 1px 2px 0 rgba(16, 24, 40, 0.04);
   }
 
   .nav-arrow-button:hover {
-    background: hsl(var(--foreground) / 0.8);
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.9);
   }
 
   .nav-arrow-button:active {
-    transform: scale(0.95);
+    filter: brightness(0.85);
+  }
+
+  .nav-arrow-button:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 
   .infinite-carousel {
