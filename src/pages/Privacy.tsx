@@ -11,11 +11,11 @@ const Privacy = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main className="container mx-auto px-4 py-16 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">MerchantHaus Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-4 text-heading">MerchantHaus Privacy Policy</h1>
         <p className="text-muted-foreground mb-8">Last Updated: August 5, 2025</p>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">1. Introduction & Scope</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">1. Introduction & Scope</h2>
           <p className="mb-4 text-foreground/90">
             Welcome to MerchantHaus LLC ("MerchantHaus", "we", "us", or "our"). This Privacy Policy explains how we collect, use, store, share, and protect information when you interact with us.
           </p>
@@ -31,12 +31,12 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">2. The Information We Collect</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">2. The Information We Collect</h2>
           <p className="mb-4 text-foreground/90">
             We collect different types of information from various sources to provide and manage our Services.
           </p>
 
-          <h3 className="text-xl font-semibold mb-3 text-foreground">2.1 Information You Provide to Us (Merchants)</h3>
+          <h3 className="text-xl font-semibold mb-3 text-heading">2.1 Information You Provide to Us (Merchants)</h3>
           <p className="mb-2 text-foreground/90">When you register for a MerchantHaus account, we collect:</p>
           <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground/90">
             <li><strong>Business Information:</strong> Your business's legal name, "Doing Business As" (DBA) name, physical address, industry type (MCC), and government-issued tax ID (e.g., EIN).</li>
@@ -45,7 +45,7 @@ const Privacy = () => {
             <li><strong>Financial Information:</strong> Bank account details (account and routing numbers) for processing payouts (settlements).</li>
           </ul>
 
-          <h3 className="text-xl font-semibold mb-3 text-foreground">2.2 Information Collected from Your Customers</h3>
+          <h3 className="text-xl font-semibold mb-3 text-heading">2.2 Information Collected from Your Customers</h3>
           <p className="mb-2 text-foreground/90">When a Customer makes a payment to you (our Merchant) through our Services, we collect:</p>
           <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground/90">
             <li><strong>Payment Information:</strong> Cardholder data (credit or debit card number, expiration date, CVV), bank account details for bank transfers, or other payment method details.</li>
@@ -53,7 +53,7 @@ const Privacy = () => {
             <li><strong>Identifying Information:</strong> The Customer's name, email, billing address, or shipping address, as required by the Merchant or for fraud prevention.</li>
           </ul>
 
-          <h3 className="text-xl font-semibold mb-3 text-foreground">2.3 Information We Collect Automatically (Technical Data)</h3>
+          <h3 className="text-xl font-semibold mb-3 text-heading">2.3 Information We Collect Automatically (Technical Data)</h3>
           <p className="mb-2 text-foreground/90">When you (Merchant, Customer, or Visitor) interact with our website or Services, we automatically collect:</p>
           <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground/90">
             <li><strong>Log Data:</strong> Your IP address, device type, operating system, browser type and settings, and the date, time, and content of your requests.</li>
@@ -61,7 +61,7 @@ const Privacy = () => {
             <li><strong>Cookies and Tracking Technologies:</strong> We use cookies, web beacons, and similar technologies to gather this data. (See Section 5 for details).</li>
           </ul>
 
-          <h3 className="text-xl font-semibold mb-3 text-foreground">2.4 Information from Third Parties</h3>
+          <h3 className="text-xl font-semibold mb-3 text-heading">2.4 Information from Third Parties</h3>
           <p className="mb-2 text-foreground/90">We may also receive information about you from third-party sources, including:</p>
           <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground/90">
             <li><strong>Fraud Prevention Services:</strong> To assess risk, we receive data from credit bureaus, identity verification services, and public databases.</li>
@@ -70,7 +70,7 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">3. How We Use Your Information (and Legal Bases)</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">3. How We Use Your Information (and Legal Bases)</h2>
           <p className="mb-4 text-foreground/90">
             We use your information for specific purposes and only where we have a legal basis to do so, such as contractual necessity, legal obligation, legitimate interest, or consent.
           </p>
@@ -99,7 +99,7 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">4. How and Why We Share Information</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">4. How and Why We Share Information</h2>
           <p className="mb-4 text-foreground/90">
             We do not sell your personal information. We only share it in the following circumstances to provide our Services and meet our legal obligations:
           </p>
@@ -113,7 +113,7 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">5. Cookies and Tracking Technologies</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">5. Cookies and Tracking Technologies</h2>
           <p className="mb-4 text-foreground/90">
             We use cookies (small text files stored on your device) and similar technologies (like web beacons or pixels) for several purposes:
           </p>
@@ -128,7 +128,7 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">6. Data Security Measures</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">6. Data Security Measures</h2>
           <p className="mb-4 text-foreground/90">
             We are committed to protecting your data. We implement robust, industry-standard security measures, including:
           </p>
@@ -145,7 +145,7 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">7. Data Retention</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">7. Data Retention</h2>
           <p className="mb-4 text-foreground/90">
             We retain your personal data only for as long as necessary to fulfill the purposes for which it was collected, or as required by law.
           </p>
@@ -158,7 +158,7 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">8. Your Data Privacy Rights</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">8. Your Data Privacy Rights</h2>
           <p className="mb-4 text-foreground/90">
             You have certain rights regarding the personal information we hold about you, subject to local laws. These rights may include:
           </p>
@@ -178,28 +178,28 @@ const Privacy = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">9. International Data Transfers</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">9. International Data Transfers</h2>
           <p className="text-foreground/90">
             MerchantHaus is based in the United States. If you are accessing our Services from outside the U.S. (e.g., in Europe or the UK), your information will be processed and stored in the United States. We use appropriate safeguards, such as Standard Contractual Clauses, to protect your data when it is transferred.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">10. Children's Privacy</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">10. Children's Privacy</h2>
           <p className="text-foreground/90">
             Our Services are not intended for or directed at children. We do not knowingly collect personal information from individuals under the age of 18. If we learn we have collected data from a child, we will take steps to delete it.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">11. Changes to This Privacy Policy</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">11. Changes to This Privacy Policy</h2>
           <p className="text-foreground/90">
             We may update this Privacy Policy periodically to reflect changes in our practices or for legal reasons. We will notify you of any material changes by posting the updated policy on our website and updating the "Last Updated" date at the top.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">12. Contact Us</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-heading">12. Contact Us</h2>
           <p className="mb-4 text-foreground/90">
             If you have any questions, concerns, or complaints about this Privacy Policy or our data practices, please contact us:
           </p>

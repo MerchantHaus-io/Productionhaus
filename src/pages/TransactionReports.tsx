@@ -26,7 +26,7 @@ const TransactionReports = () => {
           <NavTree />
           {/* Content area */}
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Transaction Reports
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -40,7 +40,7 @@ const TransactionReports = () => {
 
           {/* Overview */}
           <section id="overview" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Overview
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -58,7 +58,7 @@ const TransactionReports = () => {
 
           {/* Prerequisites */}
           <section id="prerequisites" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Prerequisites
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -77,7 +77,7 @@ const TransactionReports = () => {
 
           {/* Snapshot vs Search */}
           <section id="snapshot-vs-search" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Snapshot vs. Search
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -97,7 +97,7 @@ const TransactionReports = () => {
 
           {/* Grouping Options */}
           <section id="grouping-options" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Snapshot Grouping Options
             </h2>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
@@ -137,12 +137,12 @@ const TransactionReports = () => {
 
           {/* Running Reports */}
           <section id="how-to-run-reports" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               How to Run Common Reports
             </h2>
             <div className="space-y-6 text-muted-foreground">
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   Settlement Batch Report
                 </h3>
                 <p className="leading-relaxed mb-2">
@@ -154,7 +154,7 @@ const TransactionReports = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   Resettle a Failed Batch
                 </h3>
                 <p className="leading-relaxed mb-2">
@@ -166,7 +166,7 @@ const TransactionReports = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   Card/Payment Type Report
                 </h3>
                 <p className="leading-relaxed mb-2">
@@ -176,7 +176,7 @@ const TransactionReports = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   Payment Processor Report
                 </h3>
                 <p className="leading-relaxed mb-2">
@@ -186,7 +186,7 @@ const TransactionReports = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   User Account Report
                 </h3>
                 <p className="leading-relaxed mb-2">
@@ -195,7 +195,7 @@ const TransactionReports = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   Transaction Source Report
                 </h3>
                 <p className="leading-relaxed mb-2">

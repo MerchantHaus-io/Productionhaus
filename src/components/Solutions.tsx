@@ -11,10 +11,11 @@ import {
   Smartphone,
   Shuffle,
   X,
+  ArrowRight,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "./ui/button";
 import shieldLogo from "@/assets/shield.webp";
@@ -34,7 +35,7 @@ type Solution = {
 const solutions: Solution[] = [
   {
     icon: CreditCard,
-    title: "Payment Processing",
+    title: "Payment processing",
     description:
       "Accept all major credit cards, debit cards, and digital wallets with competitive rates and rapid settlements.",
     fullDescription:
@@ -45,7 +46,7 @@ const solutions: Solution[] = [
   },
   {
     icon: ShieldAlert,
-    title: "Advanced Fraud Detection",
+    title: "Advanced fraud detection",
     description: "Protect your organization and your customers with our multi-layered fraud prevention system.",
     fullDescription:
       "Stay protected with our multi-layered fraud prevention system featuring AI-powered transaction monitoring, real-time risk assessment, and advanced encryption protocols. Our system automatically flags suspicious activities, uses machine learning to detect patterns, and provides customizable security rules. Features include 3D Secure authentication, tokenization, PCI DSS Level 1 compliance, and chargeback management tools. Reduce fraud losses while maintaining a frictionless transaction experience with intelligent risk scoring.",
@@ -55,7 +56,7 @@ const solutions: Solution[] = [
   },
   {
     icon: Smartphone,
-    title: "Mobile Solutions",
+    title: "Mobile solutions",
     description: "Process payments anywhere with our mobile-ready technology and POS systems for distributed operations.",
     fullDescription:
       "Transform any smartphone or tablet into a powerful point-of-sale system with our mobile payment solutions. Built for organizations with distributed operations, our mobile POS accepts payments anywhere with reliable offline mode capabilities. Features include inventory management, customer relationship tools, digital receipts, tip management, and split payment options. Compatible with Bluetooth card readers and supports both iOS and Android devices. Ideal for field service providers, events, distributed teams, and multi-location organizations.",
@@ -65,7 +66,7 @@ const solutions: Solution[] = [
   },
   {
     icon: Globe,
-    title: "Global Payments",
+    title: "Global payments",
     description: "Expand internationally with multi-currency support and local payment methods in over 200 countries.",
     fullDescription:
       "Expand your business globally with our international payment infrastructure supporting 135+ currencies and local payment methods across 200+ countries. Accept popular regional payment methods including Alipay, WeChat Pay, iDEAL, and SEPA transfers. Features include automatic currency conversion, dynamic currency conversion at checkout, multi-currency settlements, and local acquiring to reduce cross-border fees. Our platform handles complex tax calculations, compliance requirements, and provides localized checkout experiences to maximize conversion rates in every market.",
@@ -75,7 +76,7 @@ const solutions: Solution[] = [
   },
   {
     icon: Lock,
-    title: "Network Tokenization",
+    title: "Network tokenization",
     description: "Enhance payment security and approval rates with network tokenization.",
     fullDescription:
       "Enhance payment security and approval rates with network tokenization. By replacing sensitive card data with unique, encrypted tokens, you minimize the risk of breaches and keep recurring payments running smoothly—even when cards are updated or replaced. Features include up to 3% increase in transaction approvals, reduces PCI compliance burdens, automatic card updater to prevent failed recurring payments, and vault-stored tokens for maximum safety.",
@@ -85,7 +86,7 @@ const solutions: Solution[] = [
   },
   {
     icon: ShoppingCart,
-    title: "Ecommerce Solutions",
+    title: "Ecommerce solutions",
     description: "Launch and scale your online payment acceptance with enterprise-grade ecommerce tools.",
     fullDescription:
       "Launch and scale your online payment acceptance with enterprise-grade ecommerce tools that keep you agile and secure. From payment gateways to customizable checkout experiences, we give you everything you need to sell, scale, and maintain compliance — without the engineering overhead. Features include pre-built integrations with leading commerce platforms, customizable checkout pages for any brand, secure PCI-compliant transactions, and advanced tools that help organizations grow 35% faster.",
@@ -95,7 +96,7 @@ const solutions: Solution[] = [
   },
   {
     icon: BarChart2,
-    title: "Data & Analytics",
+    title: "Data and analytics",
     description: "Unlock powerful insights from your transaction data with real-time analytics.",
     fullDescription:
       "Unlock powerful insights from your transaction data. Our analytics dashboard transforms complex data into actionable trends, letting you track volume, authorization rates, and performance metrics in real time — no spreadsheets, no guesswork. Features include live dashboards with instant transaction and refund metrics, custom reporting by product, channel, or region, segmentation and portfolio analytics. Organizations with analytics tools make decisions 2x faster.",
@@ -105,7 +106,7 @@ const solutions: Solution[] = [
   },
   {
     icon: Repeat,
-    title: "Subscription Billing",
+    title: "Subscription billing",
     description: "Automate your billing and grow your subscription base with smart recurring revenue tools.",
     fullDescription:
       "Automate your billing and grow your subscription base with tools that handle the complexity for you. Create, manage, and optimize plans—while smart dunning and card updating keep your revenue steady. Features include flexible trial, renewal, and proration options, automated failed payment recovery, card updater and retry logic to reduce churn. 46% of consumers pay for at least one subscription service, making this a crucial revenue stream.",
@@ -115,7 +116,7 @@ const solutions: Solution[] = [
   },
   {
     icon: ShieldCheck,
-    title: "Chargeback Management",
+    title: "Chargeback management",
     description: "Win more disputes and keep more revenue with automated chargeback management.",
     fullDescription:
       "Don't let disputes eat into your bottom line. Our automated system tracks, compiles, and submits evidence on your behalf, making it easier to contest chargebacks and reclaim lost revenue. Features include real-time chargeback alerts, 20% higher reversal rates with rapid response, integrated evidence templates for major card brands, and analytics to spot and stop patterns before they repeat.",
@@ -125,7 +126,7 @@ const solutions: Solution[] = [
   },
   {
     icon: Shuffle,
-    title: "Payment Orchestration",
+    title: "Payment orchestration",
     description: "Smart routing for better approvals, lower costs, and optimized payment paths.",
     fullDescription:
       "Connect to multiple payment processors and dynamically route every transaction for the best outcome — lower fees, higher approval rates, fewer declines. Control your entire payment stack without added engineering overhead. Features include lower transaction costs by up to 20%, built-in failover for always-on acceptance, unified reporting across all channels and providers, and automatic optimization of every payment path.",
@@ -215,54 +216,23 @@ export const Solutions = () => {
     // intentionally blank
   };
 
-  // Update card glow based on position relative to center
+  // Forget the queued arrow target once scrolling settles, so the next click starts
+  // from wherever a swipe left the strip.
   useEffect(() => {
     const container = marqueeRef.current;
     if (!container) return;
 
-    const updateCardGlows = () => {
-      const cards = container.querySelectorAll('.marquee-card');
-      const containerRect = container.getBoundingClientRect();
-      const containerCenter = containerRect.left + containerRect.width / 2;
-
-      cards.forEach((card) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distanceFromCenter = Math.abs(containerCenter - cardCenter);
-        const maxDistance = containerRect.width / 2;
-        const intensity = Math.max(0, 1 - distanceFromCenter / maxDistance);
-        (card as HTMLElement).style.setProperty('--glow-intensity', intensity.toString());
-      });
-    };
-
-    // Recompute at most once per frame; the glow is a blurred pseudo-element, so
-    // repainting it on every scroll event made the arrow scrolls stutter.
-    let frame: number | null = null;
-    const scheduleGlowUpdate = () => {
-      if (frame !== null) return;
-      frame = requestAnimationFrame(() => {
-        frame = null;
-        updateCardGlows();
-      });
-    };
-
     const handleScroll = () => {
-      scheduleGlowUpdate();
       if (scrollIdleTimerRef.current !== null) window.clearTimeout(scrollIdleTimerRef.current);
       scrollIdleTimerRef.current = window.setTimeout(() => {
         scrollTargetRef.current = null;
       }, 150);
     };
 
-    updateCardGlows();
     container.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', scheduleGlowUpdate);
-
     return () => {
-      if (frame !== null) cancelAnimationFrame(frame);
       if (scrollIdleTimerRef.current !== null) window.clearTimeout(scrollIdleTimerRef.current);
       container.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', scheduleGlowUpdate);
     };
   }, []);
 
@@ -279,28 +249,6 @@ export const Solutions = () => {
     window.location.href = "/#contact";
   };
 
-  // Tilt effect handler for cards based on cursor position
-  const handleMouseMove = (e: MouseEvent<HTMLElement>, index: number) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const cardCenterX = rect.left + rect.width / 2;
-    const cardCenterY = rect.top + rect.height / 2;
-    // Calculate cursor position relative to card center (-1 to 1)
-    const deltaX = (e.clientX - cardCenterX) / (rect.width / 2);
-    const deltaY = (e.clientY - cardCenterY) / (rect.height / 2);
-    // Apply tilt transform (max 15 degrees)
-    const tiltX = deltaY * -15;
-    const tiltY = deltaX * 15;
-    card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px) scale(1.02)`;
-  };
-
-  const handleMouseLeave = (index: number) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
-    card.style.transform = '';
-  };
-
   return (
     <section id="services" className="py-24 px-6 md:px-16 lg:px-24 bg-background relative overflow-visible border-t border-border">
       {/* Minimal shield logo */}
@@ -313,29 +261,16 @@ export const Solutions = () => {
           />
         </div>
       </div>
-      {/* Subtle background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <img
-            src="/images/globe-background.png"
-            alt="Global Payment Network"
-            className="relative w-full max-w-5xl h-auto object-contain opacity-[0.06]"
-          />
-        </div>
-      </div>
       <div className="overflow-visible relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-ubuntu font-bold text-3xl sm:text-4xl md:text-5xl text-foreground mb-4">
-            Core Services
+          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
+            Core services
           </h2>
-          <p className="font-inter text-lg text-muted-foreground max-w-2xl mx-auto mb-8 font-light">
+          <p className="text-lg leading-[27px] text-muted-foreground max-w-2xl mx-auto mb-8 font-light">
             Comprehensive payment solutions designed to help your organization thrive in today's digital economy.
           </p>
-          <Button
-            asChild
-            className="bg-foreground hover:bg-foreground/90 text-background font-inter font-medium rounded-none px-10 py-6 text-sm tracking-wide shadow-none transition-all uppercase"
-          >
-            <a href="/quote">Get a Quote</a>
+          <Button asChild variant="cta" size="lg">
+            <a href="/quote">Get a quote</a>
           </Button>
         </div>
         <div className="relative">
@@ -345,7 +280,7 @@ export const Solutions = () => {
             onMouseEnter={handleMarqueeMouseEnter}
             onMouseLeave={handleMarqueeMouseLeave}
           >
-            <div className="marquee-content flex gap-6">
+            <div className="marquee-content flex gap-4">
               {solutions.map((solution, index) => {
                 const Icon = solution.icon;
                 return (
@@ -354,42 +289,22 @@ export const Solutions = () => {
                     ref={(el) => {
                       cardRefs.current[index] = el;
                     }}
-                    className="service-card service-card--has-bg marquee-card flex-shrink-0 w-[320px] md:w-[360px] aspect-[3/4] md:aspect-[4/5]"
-                    onMouseMove={(e) => handleMouseMove(e, index)}
-                    onMouseLeave={() => handleMouseLeave(index)}
+                    className="group flex min-h-[280px] w-[280px] md:w-[320px] flex-shrink-0 snap-start flex-col gap-4 rounded-2xl border border-border bg-card p-8 transition-[border-color,box-shadow] duration-200 ease-brand hover:border-input hover:shadow-md"
                   >
-                    {/* Full-colour background image; the overlay only darkens behind the text */}
-                    {solution.bannerImage && (
-                      <img
-                        src={solution.bannerImage}
-                        alt=""
-                        aria-hidden="true"
-                        className="service-card-bg-img"
-                        draggable={false}
-                      />
-                    )}
-                    <div className="service-card-bg-overlay" />
-                    <div className="service-card-body relative z-10">
-                      <div className="service-card-icon service-card-icon--light">
-                        <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
-                      </div>
-                      {/* Copy sits at the bottom over the scrim so the image stays clear above it */}
-                      <div className="mt-auto">
-                        <div className="service-card-text space-y-3">
-                          <h3 className="text-2xl font-bold font-ubuntu text-white">{solution.title}</h3>
-                          <p className="text-base leading-relaxed text-white/90">{solution.description}</p>
-                        </div>
-                        <div className="service-card-footer">
-                          <button
-                            type="button"
-                            className="service-card-button service-card-button--light"
-                            onClick={() => handleCardClick(index)}
-                          >
-                            Learn More
-                          </button>
-                        </div>
-                      </div>
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-muted">
+                      <Icon className="h-7 w-7 text-foreground" aria-hidden="true" />
                     </div>
+                    <h3 className="text-[22px] font-bold leading-7 tracking-[-0.015em] text-heading">{solution.title}</h3>
+                    <p className="text-[15px] leading-[22px] text-muted-foreground">{solution.description}</p>
+                    <button
+                      type="button"
+                      onClick={() => handleCardClick(index)}
+                      className="mt-auto inline-flex items-center gap-1.5 self-start rounded-sm text-sm font-semibold text-primary-text ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      aria-label={`Learn more about ${solution.title.toLowerCase()}`}
+                    >
+                      Learn more
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-brand group-hover:translate-x-0.5" aria-hidden="true" />
+                    </button>
                   </article>
                 );
               })}
@@ -431,13 +346,13 @@ export const Solutions = () => {
           section instead of the viewport and push the card's buttons off screen. */}
       {selectedCard !== null && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-neutral-dark/95 backdrop-blur-sm flex items-start justify-center p-4 sm:p-6 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 bg-black/40 flex items-start justify-center p-4 sm:p-6 animate-fade-in overflow-y-auto"
           onClick={closeFullscreen}
         >
           <div
-            className="relative max-w-4xl w-full my-auto max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] bg-background dark:bg-card shadow-2xl overflow-hidden animate-scale-in flex flex-col"
+            className="relative max-w-4xl w-full my-auto max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] rounded-lg border border-border bg-card shadow-xl overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
-            style={{ animation: 'flipIn 0.6s ease-out' }}
+            style={{ animation: 'solutionsFadeUp var(--dur-slow) var(--ease-out)' }}
           >
             {/* Banner Image in Modal */}
             {solutions[selectedCard].bannerImage && (
@@ -460,42 +375,36 @@ export const Solutions = () => {
             {/* Close button */}
             <button
               onClick={closeFullscreen}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 p-2 rounded-full bg-neutral-dark/10 dark:bg-white/10 hover:bg-neutral-dark/20 dark:hover:bg-white/20 transition-colors"
+              aria-label="Close"
+              className="absolute top-4 right-4 z-10 inline-flex h-8 w-8 items-center justify-center rounded-md bg-card/90 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <X className="w-6 h-6 text-foreground" />
+              <X className="h-4 w-4" />
             </button>
-            <div className="p-6 sm:p-8 md:p-12 overflow-y-auto flex-1 min-h-0">
+            <div className="p-6 sm:p-8 overflow-y-auto flex-1 min-h-0">
               {/* Large icon */}
-              <div className="w-20 h-20 md:w-24 md:h-24 rounded-none border border-border flex items-center justify-center mb-6 md:mb-8 animate-scale-in">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-muted">
                 {(() => {
                   const Icon = solutions[selectedCard].icon;
-                  return <Icon className="w-10 h-10 md:w-12 md:h-12 text-foreground/70" strokeWidth={1.5} />;
+                  return <Icon className="h-7 w-7 text-foreground" aria-hidden="true" />;
                 })()}
               </div>
               {/* Content with typewriter effect */}
-              <h2 className="font-ubuntu font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 md:mb-6 min-h-[3rem] md:min-h-[4rem]">
+              <h2 className="text-[28px] font-bold leading-9 tracking-[-0.01em] text-heading mb-4 min-h-9">
                 {typewriterText}
                 <span className="animate-pulse">|</span>
               </h2>
-              <p className="font-inter text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base leading-[25px] font-light text-muted-foreground">
                 {solutions[selectedCard].fullDescription}
               </p>
             </div>
             {/* CTA Buttons - Fixed at bottom */}
-            <div className="shrink-0 p-6 sm:p-8 md:px-12 border-t border-border bg-background dark:bg-card">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  className="bg-foreground text-background hover:bg-foreground/90 font-inter font-medium rounded-none px-8"
-                  onClick={handleGetStarted}
-                >
-                  Get Started
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={closeFullscreen}
-                  className="font-inter font-medium rounded-none px-8 border-foreground/20"
-                >
+            <div className="shrink-0 px-6 py-5 sm:px-8 border-t border-border bg-card">
+              <div className="flex flex-col sm:flex-row sm:justify-end gap-3">
+                <Button variant="outline" onClick={closeFullscreen} className="sm:order-1">
                   Close
+                </Button>
+                <Button onClick={handleGetStarted} className="sm:order-2">
+                  Get started
                 </Button>
               </div>
             </div>
@@ -504,16 +413,13 @@ export const Solutions = () => {
         document.body
       )}
       <style>{`
-        @keyframes flipIn {
-          0% {
-            transform: perspective(1000px) rotateY(-90deg) scale(0.8);
+        @keyframes solutionsFadeUp {
+          from {
+            transform: translateY(12px);
             opacity: 0;
           }
-          50% {
-            transform: perspective(1000px) rotateY(10deg) scale(1.05);
-          }
-          100% {
-            transform: perspective(1000px) rotateY(0deg) scale(1);
+          to {
+            transform: translateY(0);
             opacity: 1;
           }
         }

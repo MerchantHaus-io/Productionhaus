@@ -23,7 +23,7 @@ const DkimSpfValidation = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               DKIM &amp; SPF Validation
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const DkimSpfValidation = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The portal can send receipts and notifications using your
                 company’s domain. To do this, your DNS must include specific
@@ -47,7 +47,7 @@ const DkimSpfValidation = () => {
 
             {/* Domain Validation */}
             <section id="domain-validation" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Domain Validation
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -62,7 +62,7 @@ const DkimSpfValidation = () => {
 
             {/* Updating DNS */}
             <section id="updating-dns" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Updating DNS</h2>
+              <h2 className="text-2xl font-semibold text-heading">Updating DNS</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 To validate your domain, add the SPF and DKIM records
                 provided by your email service to your DNS. The SPF record
@@ -76,7 +76,7 @@ const DkimSpfValidation = () => {
 
             {/* Checking Status */}
             <section id="checking-status" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Checking Status
               </h2>
               <p className="text-muted-foreground leading-relaxed">

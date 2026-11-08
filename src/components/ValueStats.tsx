@@ -249,7 +249,7 @@ export const ValueStats = () => {
     <section className="vs-section py-20 px-6 md:px-16 lg:px-24 bg-transparent">
       {/* Section heading */}
       <div className="mb-16 text-center">
-        <h2 className="font-rajdhani text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground uppercase">
+        <h2 className="font-rajdhani text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-heading uppercase">
           Platform Capabilities at a Glance
         </h2>
       </div>
@@ -497,7 +497,7 @@ export const ValueStats = () => {
         }
 
         .vs-card-label {
-          font-family: 'Montserrat', system-ui, sans-serif;
+          font-family: 'Public Sans', system-ui, sans-serif;
           font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0.15em;
@@ -549,7 +549,7 @@ export const ValueStats = () => {
           letter-spacing: 0.15em;
           color: var(--vs-muted);
           text-transform: uppercase;
-          font-family: 'Montserrat', system-ui, sans-serif;
+          font-family: 'Public Sans', system-ui, sans-serif;
         }
 
         /* ===== Navigation arrows ===== */

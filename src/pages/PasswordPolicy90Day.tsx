@@ -22,7 +22,7 @@ const PasswordPolicy90Day = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               90‑Day Password Policy
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const PasswordPolicy90Day = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 When the 90‑day policy is active, a progress bar displays the
                 number of days remaining until your password expires. You can
@@ -45,7 +45,7 @@ const PasswordPolicy90Day = () => {
 
             {/* How It Works */}
             <section id="how-it-works" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+              <h2 className="text-2xl font-semibold text-heading">How It Works</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Password expiration only applies to users who have not
                 enabled two‑factor authentication. Each time you log in, the
@@ -57,7 +57,7 @@ const PasswordPolicy90Day = () => {
 
             {/* Resetting Your Password */}
             <section id="resetting-password" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Resetting Your Password
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -71,7 +71,7 @@ const PasswordPolicy90Day = () => {
 
             {/* 2FA Exemptions */}
             <section id="2fa-exemptions" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 2FA Exemptions
               </h2>
               <p className="text-muted-foreground leading-relaxed">

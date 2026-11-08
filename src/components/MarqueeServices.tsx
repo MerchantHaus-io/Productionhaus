@@ -93,7 +93,7 @@ export default function MarqueeServices() {
                 alt={s.title}
                 className="w-16 h-16 mb-4 transition-transform duration-300 ease-out group-hover:scale-[1.5]"
               />
-              <h3 className="text-foreground text-lg font-semibold">{s.title}</h3>
+              <h3 className="text-heading text-lg font-semibold">{s.title}</h3>
             </div>
           </div>
         ))}

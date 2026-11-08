@@ -22,7 +22,7 @@ const SettlementSchedule = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Settlement Schedule
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const SettlementSchedule = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Terminal capture means that authorisations are stored on the
                 gateway until you settle. You can control when settlement
@@ -45,7 +45,7 @@ const SettlementSchedule = () => {
 
             {/* Capture Types */}
             <section id="capture-types" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Capture Types
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -59,7 +59,7 @@ const SettlementSchedule = () => {
 
             {/* Setting Your Schedule */}
             <section id="setting-schedule" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Setting Your Schedule
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -84,7 +84,7 @@ const SettlementSchedule = () => {
 
             {/* Additional Notes */}
             <section id="additional-notes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Additional Notes
               </h2>
               <p className="text-muted-foreground leading-relaxed">

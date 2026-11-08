@@ -26,7 +26,7 @@ const DirectConnect = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Direct Connect &amp; Gateway Emulator
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -37,7 +37,7 @@ const DirectConnect = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Direct Connect allows terminal device makers to pre‑equip
                 their hardware to communicate with our platform. The
@@ -57,7 +57,7 @@ const DirectConnect = () => {
 
             {/* Gateway Emulator */}
             <section id="gateway-emulator" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Gateway Emulator</h2>
+              <h2 className="text-2xl font-semibold text-heading">Gateway Emulator</h2>
               <p className="text-muted-foreground leading-relaxed">
                 According to independent guidance, the Gateway Emulator
                 works by changing your existing shopping cart’s
@@ -74,7 +74,7 @@ const DirectConnect = () => {
 
             {/* Considerations */}
             <section id="considerations" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Considerations</h2>
+              <h2 className="text-2xl font-semibold text-heading">Considerations</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Direct Connect integrations require an EMV Level 3
                 processor certification for each device and processor

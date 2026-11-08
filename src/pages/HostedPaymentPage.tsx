@@ -23,7 +23,7 @@ const HostedPaymentPage = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Hosted Payment Page
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const HostedPaymentPage = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 QuickClick is designed for merchants who want to accept
                 payments online but lack the development resources to
@@ -46,7 +46,7 @@ const HostedPaymentPage = () => {
 
             {/* Implementation */}
             <section id="implementation" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Implementation</h2>
+              <h2 className="text-2xl font-semibold text-heading">Implementation</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To use a hosted payment page, log in to your merchant
                 portal and configure a QuickClick button with product
@@ -61,7 +61,7 @@ const HostedPaymentPage = () => {
 
             {/* Benefits */}
             <section id="benefits" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Benefits</h2>
+              <h2 className="text-2xl font-semibold text-heading">Benefits</h2>
               <p className="text-muted-foreground leading-relaxed">
                 QuickClick is ideal for small merchants, bloggers or
                 site builders who don’t have server‑side scripting

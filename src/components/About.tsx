@@ -5,7 +5,7 @@ export const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="space-y-6 animate-fade-in">
-            <h2 className="font-ubuntu font-bold text-4xl md:text-5xl text-foreground">
+            <h2 className="font-ubuntu font-bold text-4xl md:text-5xl text-heading">
               Trusted Payment Solutions
             </h2>
             <div className="space-y-4 font-inter text-lg text-muted-foreground leading-relaxed">

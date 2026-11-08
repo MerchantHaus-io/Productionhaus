@@ -41,41 +41,38 @@ const steps: Step[] = [
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="scroll-mt-20 py-24 px-6 md:px-16 lg:px-24 bg-background border-t border-border">
+    <section id="how-it-works" className="scroll-mt-20 py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-background border-t border-border">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-3xl mb-14">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="block w-8 h-px bg-brand-slate" />
-            <span className="text-xs tracking-[0.22em] uppercase text-muted-foreground">How it works</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl leading-[1.05] text-foreground mb-5">
+          <p className="mb-6 text-base font-black uppercase leading-5 tracking-[0.04em] text-brand-slate-text">How it works</p>
+          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-5">
             From first call to first deposit in about a week
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
+          <p className="text-lg leading-[27px] text-muted-foreground font-light">
             One clear path with no surprises. Here's what happens, how long each step takes, and what we'll need from
             you.
           </p>
         </div>
 
         <h3 className="sr-only">The process</h3>
-        <ol className="grid gap-px bg-border border border-border md:grid-cols-2 lg:grid-cols-3">
+        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {steps.map((step, index) => (
-            <li key={step.title} className="flex flex-col gap-4 bg-card p-7">
+            <li key={step.title} className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-8">
               <div className="flex items-baseline justify-between gap-4">
                 <span className="font-display text-5xl leading-none text-primary-text" aria-hidden="true">
                   {index + 1}
                 </span>
                 {step.time && (
-                  <span className="text-right text-xs font-semibold tracking-wide uppercase text-muted-foreground">
+                  <span className="text-right text-xs leading-4 text-muted-foreground">
                     {step.time}
                   </span>
                 )}
               </div>
-              <h4 className="text-lg font-semibold text-foreground">
+              <h4 className="text-lg font-semibold leading-6 text-heading">
                 <span className="sr-only">Step {index + 1}: </span>
                 {step.title}
               </h4>
-              <p className="text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+              <p className="text-[15px] leading-[22px] text-muted-foreground">{step.body}</p>
               {step.note && (
                 <p className="mt-auto flex gap-3 border-t border-border pt-4 text-sm leading-relaxed text-foreground">
                   <Code2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-slate-text" aria-hidden="true" />
@@ -86,13 +83,13 @@ export const HowItWorks = () => {
           ))}
         </ol>
 
-        <div className="mt-10 flex flex-col gap-5 bg-muted p-7 md:flex-row md:items-start md:p-9">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-brand-slate text-brand-slate-foreground">
-            <Plug className="h-5 w-5" aria-hidden="true" />
+        <div className="mt-10 flex flex-col gap-5 rounded-2xl bg-muted p-8 md:flex-row md:items-start">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-slate text-brand-slate-foreground">
+            <Plug className="h-7 w-7" aria-hidden="true" />
           </div>
           <div>
-            <h3 className="text-2xl text-foreground mb-2">Already have a processor? Keep it.</h3>
-            <p className="text-sm md:text-base leading-relaxed text-muted-foreground max-w-3xl">
+            <h3 className="text-[22px] font-bold leading-7 tracking-[-0.015em] text-heading mb-2">Already have a processor? Keep it.</h3>
+            <p className="text-base leading-[25px] font-light text-muted-foreground max-w-3xl">
               We plug the MerchantHaus gateway into your existing setup. All we need is a setup sheet, called a VAR sheet,
               from your processor. Ask them for it the day you sign up, because it's usually the longest wait.
             </p>

@@ -22,7 +22,7 @@ const Webhooks = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Webhooks
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -36,7 +36,7 @@ const Webhooks = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 A webhook is essentially an HTTP POST that the gateway
                 sends to a URL you define. When a qualifying event
@@ -51,7 +51,7 @@ const Webhooks = () => {
 
             {/* How It Works */}
             <section id="how-it-works" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+              <h2 className="text-2xl font-semibold text-heading">How It Works</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To set up webhooks:
               </p>
@@ -84,7 +84,7 @@ const Webhooks = () => {
 
             {/* Use Cases */}
             <section id="use-cases" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Use Cases</h2>
+              <h2 className="text-2xl font-semibold text-heading">Use Cases</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Common use cases for webhooks include updating order
                 statuses when transactions settle, pausing or resuming

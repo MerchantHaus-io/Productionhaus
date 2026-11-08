@@ -21,7 +21,7 @@ const Security = () => {
               <div className="flex-shrink-0 w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
                 <Shield className="w-10 h-10 text-foreground" />
               </div>
-              <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-foreground">
+              <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-heading">
                 Security & Compliance at MerchantHaus
               </h1>
             </div>
@@ -42,7 +42,7 @@ const Security = () => {
                   <ShieldCheck className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     1. PCI DSS Level 1 Compliance
                   </h2>
                 </div>
@@ -70,7 +70,7 @@ const Security = () => {
                   <Key className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     2. Tokenization & End-to-End Encryption
                   </h2>
                 </div>
@@ -94,7 +94,7 @@ const Security = () => {
                   <Eye className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     3. AI Fraud Detection & Real-Time Monitoring
                   </h2>
                 </div>
@@ -106,7 +106,7 @@ const Security = () => {
                 </p>
                 
                 <div className="bg-muted/50 rounded-lg p-6 my-6">
-                  <h3 className="font-ubuntu font-semibold text-foreground mb-4">Key Capabilities:</h3>
+                  <h3 className="font-ubuntu font-semibold text-heading mb-4">Key Capabilities:</h3>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-foreground mt-1">•</span>
@@ -144,7 +144,7 @@ const Security = () => {
                   <Lock className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     4. Strong Customer Authentication (3-D Secure 2.0)
                   </h2>
                 </div>
@@ -164,7 +164,7 @@ const Security = () => {
                   <FileCheck className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     5. Data Privacy & Global Compliance
                   </h2>
                 </div>
@@ -177,19 +177,19 @@ const Security = () => {
                 
                 <div className="grid md:grid-cols-2 gap-6 my-6">
                   <div className="bg-muted/50 rounded-lg p-6">
-                    <h3 className="font-ubuntu font-semibold text-foreground mb-3">Data Minimization</h3>
+                    <h3 className="font-ubuntu font-semibold text-heading mb-3">Data Minimization</h3>
                     <p className="text-sm">We collect only what is necessary for legitimate business and regulatory needs.</p>
                   </div>
                   <div className="bg-muted/50 rounded-lg p-6">
-                    <h3 className="font-ubuntu font-semibold text-foreground mb-3">User Rights</h3>
+                    <h3 className="font-ubuntu font-semibold text-heading mb-3">User Rights</h3>
                     <p className="text-sm">Customers can access, correct, delete, or port personal data through their account or by request.</p>
                   </div>
                   <div className="bg-muted/50 rounded-lg p-6">
-                    <h3 className="font-ubuntu font-semibold text-foreground mb-3">Transparency</h3>
+                    <h3 className="font-ubuntu font-semibold text-heading mb-3">Transparency</h3>
                     <p className="text-sm">Our Privacy Policy details what data we collect, why we use it, and who we share it with.</p>
                   </div>
                   <div className="bg-muted/50 rounded-lg p-6">
-                    <h3 className="font-ubuntu font-semibold text-foreground mb-3">Data Security</h3>
+                    <h3 className="font-ubuntu font-semibold text-heading mb-3">Data Security</h3>
                     <p className="text-sm">All personal data is encrypted, access-controlled, and regularly audited for compliance.</p>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ const Security = () => {
                   <Globe className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     6. U.S. Regulatory & Card-Network Compliance
                   </h2>
                 </div>
@@ -239,7 +239,7 @@ const Security = () => {
                   <AlertTriangle className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     7. Incident Response & Business Continuity
                   </h2>
                 </div>
@@ -263,7 +263,7 @@ const Security = () => {
                   <ShieldCheck className="w-6 h-6 text-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+                  <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
                     8. Our Commitment to Trust
                   </h2>
                 </div>
@@ -282,13 +282,13 @@ const Security = () => {
         {/* FAQ Section */}
         <section className="py-16 bg-muted/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-8 text-center">
+            <h2 className="text-3xl font-ubuntu font-bold text-heading mb-8 text-center">
               Frequently Asked Questions
             </h2>
             
             <div className="space-y-6">
               <div className="bg-background rounded-lg p-6 shadow-sm">
-                <h3 className="font-ubuntu font-semibold text-foreground mb-2">
+                <h3 className="font-ubuntu font-semibold text-heading mb-2">
                   What does PCI DSS Level 1 mean for my business?
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -297,7 +297,7 @@ const Security = () => {
               </div>
               
               <div className="bg-background rounded-lg p-6 shadow-sm">
-                <h3 className="font-ubuntu font-semibold text-foreground mb-2">
+                <h3 className="font-ubuntu font-semibold text-heading mb-2">
                   How does MerchantHaus prevent fraud?
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -306,7 +306,7 @@ const Security = () => {
               </div>
               
               <div className="bg-background rounded-lg p-6 shadow-sm">
-                <h3 className="font-ubuntu font-semibold text-foreground mb-2">
+                <h3 className="font-ubuntu font-semibold text-heading mb-2">
                   Do I need my own PCI certification?
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -315,7 +315,7 @@ const Security = () => {
               </div>
               
               <div className="bg-background rounded-lg p-6 shadow-sm">
-                <h3 className="font-ubuntu font-semibold text-foreground mb-2">
+                <h3 className="font-ubuntu font-semibold text-heading mb-2">
                   How is personal data protected?
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -324,7 +324,7 @@ const Security = () => {
               </div>
               
               <div className="bg-background rounded-lg p-6 shadow-sm">
-                <h3 className="font-ubuntu font-semibold text-foreground mb-2">
+                <h3 className="font-ubuntu font-semibold text-heading mb-2">
                   What happens if there's an outage or breach?
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -338,7 +338,7 @@ const Security = () => {
         {/* CTA Section */}
         <section className="py-16 bg-background">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-ubuntu font-bold text-foreground mb-4">
+            <h2 className="text-3xl font-ubuntu font-bold text-heading mb-4">
               Questions About Our Security?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">

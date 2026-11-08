@@ -23,7 +23,7 @@ const BlindCredits = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Blind Credits
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const BlindCredits = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 A blind credit is a standalone refund. Unlike a standard refund
                 (which references a prior transaction), blind credits send
@@ -47,7 +47,7 @@ const BlindCredits = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To issue blind credits, the “Virtual Terminal Access” permission
                 must include the ability to create new credits. Additionally,
@@ -59,7 +59,7 @@ const BlindCredits = () => {
 
             {/* Risks */}
             <section id="risks" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Risks</h2>
+              <h2 className="text-2xl font-semibold text-heading">Risks</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Blind credits are vulnerable to abuse. Without a corresponding
                 sale, there is little protection against issuing refunds to
@@ -71,7 +71,7 @@ const BlindCredits = () => {
 
             {/* Enabling Blind Credits */}
             <section id="enabling" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Enabling Blind Credits
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">

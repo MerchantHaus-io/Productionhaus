@@ -23,7 +23,7 @@ const DeveloperPortal = () => {
         <div className="max-w-5xl mx-auto flex gap-8">
           <NavTree />
           <div className="flex-1 docs-typography min-w-0">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Developer Guides
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -38,7 +38,7 @@ const DeveloperPortal = () => {
 
             {/* Overview section */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Overview
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -52,7 +52,7 @@ const DeveloperPortal = () => {
 
             {/* Getting Started section */}
             <section id="getting-started" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Getting Started
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -68,7 +68,7 @@ const DeveloperPortal = () => {
 
             {/* Additional Resources section */}
             <section id="additional-resources" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Additional Resources
               </h2>
               <p className="text-muted-foreground leading-relaxed">

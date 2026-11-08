@@ -54,7 +54,7 @@ const Blog = () => {
       
       <style>{`
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Public Sans', system-ui, sans-serif;
         }
         .logo-text {
              font-family: 'DM Serif Display', Georgia, serif;
@@ -97,7 +97,7 @@ const Blog = () => {
       <main ref={mainRef} className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Blog Hero / Featured Article */}
         <section className="mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 font-ubuntu text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 font-ubuntu text-heading">
             Latest Insights <span className="text-muted-foreground">on the Digital Frontier</span>
           </h2>
           
@@ -126,7 +126,7 @@ const Blog = () => {
                     <p className="text-sm font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Industry Insights
                     </p>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 font-ubuntu text-foreground">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 font-ubuntu text-heading">
                       Beyond the Hype: Why 2026 Will Reset AI Expectations and Accelerate SaaS Payments
                     </h3>
                     <p className="mb-6 leading-relaxed text-muted-foreground">
@@ -145,7 +145,7 @@ const Blog = () => {
 
         {/* Category Filters */}
         <section className="mb-12">
-          <h3 className="text-xl sm:text-2xl font-bold mb-4 font-ubuntu text-foreground">
+          <h3 className="text-xl sm:text-2xl font-bold mb-4 font-ubuntu text-heading">
             Explore Topics
           </h3>
           <div className="flex flex-wrap gap-3">
@@ -180,7 +180,7 @@ const Blog = () => {
                   />
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Industry News</p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       The Swipe-Fee Settlement: What Actually Changes
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">October 2026</p>
@@ -208,7 +208,7 @@ const Blog = () => {
                   />
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Payments Strategy</p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       How to Choose the Right Payment Gateway
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">July 2026</p>
@@ -260,7 +260,7 @@ const Blog = () => {
                   />
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">Payments Strategy</p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       Payments Survey 2025: How Customers Really Pay
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">December 2025</p>
@@ -290,7 +290,7 @@ const Blog = () => {
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Industry Insights
                     </p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       Beyond the Hype: Payments and AI Predictions for 2026
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">October 28, 2024</p>
@@ -320,7 +320,7 @@ const Blog = () => {
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-foreground">
                       Compliance
                     </p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       Visa VAMP: Decoding the New Risk Ratio
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">September 12, 2024</p>
@@ -350,7 +350,7 @@ const Blog = () => {
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Fraud Prevention
                     </p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       Understanding 3D Secure: Protecting Merchants and Customers
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">August 22, 2024</p>
@@ -380,7 +380,7 @@ const Blog = () => {
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Payments Tech
                     </p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       Tap-to-Mobile Is the New POS
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">October 2, 2024</p>
@@ -410,7 +410,7 @@ const Blog = () => {
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2 text-muted-foreground">
                       Fraud Prevention
                     </p>
-                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                    <h4 className="text-xl font-bold mb-3 text-heading">
                       3D Secure 2: Security Without the Speed Bumps
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">November 3, 2024</p>

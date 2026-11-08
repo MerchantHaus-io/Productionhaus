@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import shieldLogo from "@/assets/shield.webp";
 import { useState, useEffect } from "react";
 import { ContactDialog } from "./ContactDialog";
-import { Moon, Sun, Menu, X, LogIn } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export const Header = () => {
@@ -18,8 +18,10 @@ export const Header = () => {
     { href: "/device-catalog", label: "Devices" },
     { href: "/supported-processors", label: "Processors" },
     { href: "/blog", label: "Blog" },
-    { href: "/#contact", label: "Get Started" }
+    { href: "/#pricing", label: "Pricing" }
   ];
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
+  const isCurrent = (href: string) => !href.includes("#") && currentPath === href;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,23 +52,21 @@ export const Header = () => {
 
   return (
     <header 
-      className={`sticky top-0 z-50 bg-background dark:bg-neutral-dark border-b border-border transition-all duration-300 ${
-        isScrolled ? 'shadow-md' : ''
+      className={`sticky top-0 z-50 bg-background border-b border-border transition-shadow duration-200 ${
+        isScrolled ? 'shadow-xs' : ''
       }`}
     >
-      <div className="px-6 md:px-16 lg:px-24 py-4 flex items-center justify-between">
+      <div className="px-6 md:px-16 lg:px-24 h-[76px] flex items-center justify-between gap-6">
         <div className="flex items-center gap-6">
           {/* Logo with Shield and Animation - Shield always on top */}
           <a href="/" className="flex items-center gap-3 group relative">
             <img
               src={shieldLogo}
               alt="MerchantHaus Shield"
-              className={`transition-all duration-300 relative z-20 ${isScrolled ? 'h-7 w-7' : 'h-9 w-9'}`}
+              className={`transition-all duration-200 relative z-20 ${isScrolled ? 'h-8 w-8' : 'h-9 w-9'}`}
             />
             <div className="relative z-10">
-              <h1 className={`font-rajdhani font-medium text-foreground tracking-wider uppercase transition-all duration-300 ${
-                isScrolled ? 'text-lg' : 'text-xl'
-              }`}>
+              <h1 className="font-sans text-xl font-black leading-6 tracking-[0.02em] text-heading uppercase">
                 Merchant Haus
               </h1>
               {showShimmer && (
@@ -87,7 +87,10 @@ export const Header = () => {
             <a
               key={href}
               href={href}
-              className="font-inter font-medium text-sm tracking-wide text-foreground/70 hover:text-foreground transition-colors uppercase"
+              aria-current={isCurrent(href) ? "page" : undefined}
+              className={`text-sm transition-colors duration-[120ms] hover:text-foreground ${
+                isCurrent(href) ? "font-semibold text-foreground" : "font-medium text-muted-foreground"
+              }`}
             >
               {label}
             </a>
@@ -95,7 +98,7 @@ export const Header = () => {
         </nav>
 
         <button
-          className="md:hidden inline-flex items-center justify-center rounded-full border border-border p-2 text-foreground transition-colors hover:bg-muted"
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground transition-colors hover:bg-accent"
           onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-label="Toggle navigation menu"
           aria-expanded={isMenuOpen}
@@ -104,32 +107,29 @@ export const Header = () => {
         </button>
 
         {/* Theme Toggle and CTA */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-full"
+            className="text-foreground hover:bg-accent"
           >
             <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
           
-          <a
-            href="https://merchanthausio.transactiongateway.com/merchants/login.php?cookie_check=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 border border-foreground/20 text-foreground/70 hover:bg-foreground hover:text-background font-inter font-medium text-sm tracking-wide rounded-none px-5 py-2 transition-all"
-          >
-            <LogIn className="h-4 w-4" />
-            Client Login
-          </a>
-          <Button
-            onClick={() => setIsContactOpen(true)}
-            className="hidden md:inline-flex bg-foreground hover:bg-foreground/90 text-background font-inter font-medium text-sm tracking-wide rounded-none px-6 transition-all"
-          >
-            Contact Us
+          <Button asChild variant="ghost" className="hidden md:inline-flex">
+            <a
+              href="https://merchanthausio.transactiongateway.com/merchants/login.php?cookie_check=1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Client login
+            </a>
+          </Button>
+          <Button variant="cta" onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex">
+            Contact us
           </Button>
         </div>
       </div>
@@ -141,30 +141,33 @@ export const Header = () => {
               <a
                 key={href}
                 href={href}
-                className="font-inter font-medium text-sm tracking-wide text-foreground/70 hover:text-foreground transition-colors uppercase"
+                aria-current={isCurrent(href) ? "page" : undefined}
+                className={`text-sm transition-colors hover:text-foreground ${
+                  isCurrent(href) ? "font-semibold text-foreground" : "font-medium text-muted-foreground"
+                }`}
                 onClick={handleNavClick}
               >
                 {label}
               </a>
             ))}
-            <a
-              href="https://merchanthausio.transactiongateway.com/merchants/login.php?cookie_check=1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 justify-center border border-foreground/20 text-foreground/70 hover:bg-foreground hover:text-background font-inter font-medium text-sm tracking-wide rounded-none px-4 py-2 transition-all"
-              onClick={handleNavClick}
-            >
-              <LogIn className="h-4 w-4" />
-              Client Login
-            </a>
+            <Button asChild variant="ghost" className="justify-center">
+              <a
+                href="https://merchanthausio.transactiongateway.com/merchants/login.php?cookie_check=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleNavClick}
+              >
+                Client login
+              </a>
+            </Button>
             <Button
+              variant="cta"
               onClick={() => {
                 setIsContactOpen(true);
                 setIsMenuOpen(false);
               }}
-              className="bg-foreground hover:bg-foreground/90 text-background font-inter font-medium text-sm tracking-wide rounded-none"
             >
-              Contact Us
+              Contact us
             </Button>
           </nav>
         </div>
