@@ -23,7 +23,7 @@ const AccountInformation = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Account Information
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const AccountInformation = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The account information page shows your business name, address,
                 phone number, email address, time zone and other settings.
@@ -46,7 +46,7 @@ const AccountInformation = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To access and edit account information, you need the
                 “Administrative Options” permission. Primary users have this by
@@ -56,7 +56,7 @@ const AccountInformation = () => {
 
             {/* Editing Your Details */}
             <section id="editing" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Editing Your Details
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -71,7 +71,7 @@ const AccountInformation = () => {
 
             {/* Restrictions */}
             <section id="restrictions" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Restrictions</h2>
+              <h2 className="text-2xl font-semibold text-heading">Restrictions</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Some fields cannot be changed in the portal. For example, you
                 can’t edit your business name or billing contact information

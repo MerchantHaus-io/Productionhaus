@@ -22,7 +22,7 @@ const QueryAPI = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Query API
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const QueryAPI = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Whereas the gateway’s web interface lets you browse
                 transactions manually, the Query API allows your
@@ -48,7 +48,7 @@ const QueryAPI = () => {
 
             {/* Communication & Variables */}
             <section id="communication-variables" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Communication &amp; Variables
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -75,7 +75,7 @@ const QueryAPI = () => {
 
             {/* Usage */}
             <section id="usage" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Usage</h2>
+              <h2 className="text-2xl font-semibold text-heading">Usage</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To call the API, construct a request string with your
                 credentials and desired filters and send it to the
@@ -89,7 +89,7 @@ const QueryAPI = () => {
 
             {/* Use Cases */}
             <section id="use-cases" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Use Cases</h2>
+              <h2 className="text-2xl font-semibold text-heading">Use Cases</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The Query API is ideal for businesses that need
                 automated reporting or integration with existing

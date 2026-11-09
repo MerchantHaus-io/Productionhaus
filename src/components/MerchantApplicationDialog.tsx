@@ -178,7 +178,7 @@ export function MerchantApplicationDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-ubuntu text-foreground">
+          <DialogTitle className="text-2xl font-ubuntu text-heading">
             {isSubmitted ? "Application Received!" : "Merchant Application"}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">
@@ -202,7 +202,7 @@ export function MerchantApplicationDialog({
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Merchant Information */}
             <div className="space-y-4">
-              <h3 className="font-sans text-lg font-semibold text-foreground">Merchant Information</h3>
+              <h3 className="font-sans text-lg font-semibold text-heading">Merchant Information</h3>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="company_name" className="flex items-center gap-2 text-foreground">
@@ -285,7 +285,7 @@ export function MerchantApplicationDialog({
 
             {/* Current Processor */}
             <div className="space-y-4">
-              <h3 className="font-sans text-lg font-semibold text-foreground">Current Processor</h3>
+              <h3 className="font-sans text-lg font-semibold text-heading">Current Processor</h3>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-3">
                   <Label className="block">Do you currently have your own payment processor?*</Label>
@@ -331,7 +331,7 @@ export function MerchantApplicationDialog({
 
             {/* Company Contact */}
             <div className="space-y-4">
-              <h3 className="font-sans text-lg font-semibold text-foreground">Company Contact (Primary User)</h3>
+              <h3 className="font-sans text-lg font-semibold text-heading">Company Contact (Primary User)</h3>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="first_name" className="flex items-center gap-2 text-foreground">
@@ -396,7 +396,7 @@ export function MerchantApplicationDialog({
 
             {/* Account Setup */}
             <div className="space-y-4">
-              <h3 className="font-sans text-lg font-semibold text-foreground">Account Setup</h3>
+              <h3 className="font-sans text-lg font-semibold text-heading">Account Setup</h3>
               <div className="space-y-2">
                 <Label htmlFor="username" className="flex items-center gap-2 text-foreground">
                   Primary Username
@@ -414,7 +414,7 @@ export function MerchantApplicationDialog({
 
             {/* Processing Services */}
             <div className="space-y-4">
-              <h3 className="font-sans text-lg font-semibold text-foreground">Processing Services</h3>
+              <h3 className="font-sans text-lg font-semibold text-heading">Processing Services</h3>
               <div className="space-y-2">
                 {["Credit Card", "ACH / eCheck", "Cash"].map((service) => (
                   <div key={service} className="flex items-center space-x-2">
@@ -435,7 +435,7 @@ export function MerchantApplicationDialog({
 
             {/* Value-added Services */}
             <div className="space-y-4">
-              <h3 className="font-sans text-lg font-semibold text-foreground">Value-added Services</h3>
+              <h3 className="font-sans text-lg font-semibold text-heading">Value-added Services</h3>
               <div className="space-y-2">
                 {["Encryption", "Invoice", "Level III Advantage", "Mobile Reader", "Vault Storage"].map((service) => (
                   <div key={service} className="flex items-center space-x-2">

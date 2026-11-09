@@ -21,7 +21,7 @@ const MerchantDefinedFields = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Merchant Defined Fields
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -32,7 +32,7 @@ const MerchantDefinedFields = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 You can create up to 20 MDFs. Each field consists of a label,
                 an internal alias and, optionally, a set of choices. MDFs are
@@ -43,7 +43,7 @@ const MerchantDefinedFields = () => {
 
             {/* Creating Fields */}
             <section id="creating-fields" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Creating Fields
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -72,7 +72,7 @@ const MerchantDefinedFields = () => {
 
             {/* Field Types */}
             <section id="field-types" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Field Types</h2>
+              <h2 className="text-2xl font-semibold text-heading">Field Types</h2>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
                 <li>
                   <strong>Plain Text:</strong> A single line text box.
@@ -92,7 +92,7 @@ const MerchantDefinedFields = () => {
 
             {/* Additional Notes */}
             <section id="additional-notes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Additional Notes
               </h2>
               <p className="text-muted-foreground leading-relaxed">

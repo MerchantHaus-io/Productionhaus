@@ -23,7 +23,7 @@ const CollectCheckout = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Collect Checkout
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const CollectCheckout = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Collect Checkout is designed for merchants who want a
                 streamlined integration without handling sensitive data.
@@ -49,7 +49,7 @@ const CollectCheckout = () => {
 
             {/* How It Works */}
             <section id="how-it-works" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+              <h2 className="text-2xl font-semibold text-heading">How It Works</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To use Collect Checkout you typically follow these steps:
               </p>
@@ -74,7 +74,7 @@ const CollectCheckout = () => {
 
             {/* Benefits */}
             <section id="benefits" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Benefits</h2>
+              <h2 className="text-2xl font-semibold text-heading">Benefits</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Because Collect Checkout runs entirely on the gateway, no
                 payment data flows through your infrastructure.

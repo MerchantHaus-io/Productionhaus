@@ -294,7 +294,7 @@ const SupportedProcessors = () => {
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl font-ubuntu font-bold text-foreground mb-3">
+          <h1 className="text-3xl sm:text-4xl font-ubuntu font-bold text-heading mb-3">
             Supported Processors
           </h1>
 

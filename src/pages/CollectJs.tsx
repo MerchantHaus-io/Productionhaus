@@ -22,7 +22,7 @@ const CollectJs = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Collect.js</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">Collect.js</h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Collect.js is a browser‑based tokenisation library. It
               displays a pop‑up form hosted on the gateway, collects
@@ -34,7 +34,7 @@ const CollectJs = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The Collect.js library works by injecting a small script
                 into your checkout page. When triggered, it opens a
@@ -47,7 +47,7 @@ const CollectJs = () => {
 
             {/* How It Works */}
             <section id="how-it-works" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+              <h2 className="text-2xl font-semibold text-heading">How It Works</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To integrate Collect.js:
               </p>
@@ -74,7 +74,7 @@ const CollectJs = () => {
 
             {/* Benefits */}
             <section id="benefits" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Benefits</h2>
+              <h2 className="text-2xl font-semibold text-heading">Benefits</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Collect.js replaces raw card or bank account data with
                 tokens. Because the popup form

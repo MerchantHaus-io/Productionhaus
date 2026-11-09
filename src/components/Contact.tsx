@@ -60,38 +60,39 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-16 lg:px-24 bg-neutral-dark">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-white mb-4">
-            Get in Touch
+    <section id="contact" className="inverse scroll-mt-20 py-24 px-6 md:px-16 lg:px-24 bg-background">
+      {/* ContactBand: a counter-colour surface (navy on the cream page, cream on the navy page);
+          its fields flip back to the page palette. */}
+      <div className="max-w-[880px] mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
+            Get in touch
           </h2>
-          <p className="font-inter text-base sm:text-lg text-white/70 max-w-2xl mx-auto font-light">
+          <p className="text-lg leading-[27px] text-muted-foreground max-w-2xl mx-auto font-light">
             Ready to transform your payment processing? Contact us today.
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-6 animate-fade-in"
-          style={{ animationDelay: '200ms' }}
+          className="space-y-6"
         >
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <Label className="text-white/70 flex items-center text-sm font-inter font-medium tracking-wide uppercase">
+              <Label className="flex items-center text-foreground">
                 Name
                 <RequiredIndicator />
               </Label>
               <Input
                 name="name"
                 autoComplete="name"
-                placeholder="Your Name"
+                placeholder="Your name"
                 required
-                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
+                className="mt-1.5 bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
               />
             </div>
             <div>
-              <Label className="text-white/70 flex items-center text-sm font-inter font-medium tracking-wide uppercase">
+              <Label className="flex items-center text-foreground">
                 Email
                 <RequiredIndicator />
               </Label>
@@ -99,13 +100,13 @@ export const Contact = () => {
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="Your Email"
+                placeholder="Your email"
                 required
-                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
+                className="mt-1.5 bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
               />
             </div>
             <div>
-              <Label className="text-white/70 flex items-center text-sm font-inter font-medium tracking-wide uppercase">
+              <Label className="flex items-center text-foreground">
                 Phone
                 <RequiredIndicator />
               </Label>
@@ -114,24 +115,24 @@ export const Contact = () => {
                 type="tel"
                 autoComplete="tel"
                 inputMode="tel"
-                placeholder="Your Phone"
+                placeholder="Your phone"
                 required
-                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
+                className="mt-1.5 bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
               />
             </div>
             <div>
-              <Label className="text-white/70 flex items-center text-sm font-inter font-medium tracking-wide uppercase">Company</Label>
+              <Label className="flex items-center text-foreground">Company</Label>
               <Input
                 name="company"
                 autoComplete="organization"
-                placeholder="Company Name"
-                className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark rounded-none"
+                placeholder="Company name"
+                className="mt-1.5 bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
               />
             </div>
           </div>
 
           <div>
-            <Label className="text-white/70 flex items-center text-sm font-inter font-medium tracking-wide uppercase">
+            <Label className="flex items-center text-foreground">
               Message
               <RequiredIndicator />
             </Label>
@@ -140,16 +141,12 @@ export const Contact = () => {
               placeholder="How can we help you?"
               required
               rows={6}
-              className="mt-2 bg-white/5 border-white/40 text-white placeholder:text-white/60 focus-visible:ring-white focus-visible:ring-offset-neutral-dark resize-none rounded-none"
+              className="mt-1.5 resize-none bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
             />
           </div>
 
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-inter font-medium text-sm sm:text-base py-5 sm:py-6 rounded-none tracking-wide transition-all uppercase"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
+          <Button type="submit" variant="cta" size="lg" disabled={isSubmitting} className="w-full">
+            {isSubmitting ? "Sending…" : "Send message"}
           </Button>
         </form>
       </div>
@@ -161,7 +158,7 @@ export const Contact = () => {
             setShowThankYou(false);
           }
         }}
-        title="Message Received!"
+        title="Message received."
         description="Thanks for contacting MerchantHaus."
         body="A member of our team will reach out within one business day."
       />

@@ -117,7 +117,7 @@ const DeviceCard = ({
     )}
 
     <div className="flex flex-1 flex-col p-6">
-      <h3 className="font-rajdhani text-xl font-medium uppercase tracking-wide text-foreground">
+      <h3 className="font-rajdhani text-xl font-medium uppercase tracking-wide text-heading">
         {device.name}
       </h3>
       <p className="mt-1 font-inter text-xs uppercase tracking-wider text-muted-foreground/70">
@@ -175,7 +175,7 @@ const DeviceDetailDialog = ({
 
           {device.highlights.length > 0 && (
             <section>
-              <h4 className="font-ubuntu mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
+              <h4 className="font-ubuntu mb-3 text-sm font-semibold uppercase tracking-wide text-heading">
                 Highlights
               </h4>
               <ul className="space-y-2">
@@ -194,7 +194,7 @@ const DeviceDetailDialog = ({
 
           {device.useCases.length > 0 && (
             <section>
-              <h4 className="font-ubuntu mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
+              <h4 className="font-ubuntu mb-3 text-sm font-semibold uppercase tracking-wide text-heading">
                 Where it fits
               </h4>
               <ul className="space-y-2">
@@ -212,7 +212,7 @@ const DeviceDetailDialog = ({
           )}
 
           <section>
-            <h4 className="font-ubuntu mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
+            <h4 className="font-ubuntu mb-3 text-sm font-semibold uppercase tracking-wide text-heading">
               Specifications
             </h4>
             <SpecList device={device} />
@@ -263,7 +263,7 @@ const DeviceCatalog = () => {
           <span className="font-inter text-xs uppercase tracking-[0.25em] text-muted-foreground/70">
             Merchant Haus · Card-present hardware
           </span>
-          <h1 className="mt-6 max-w-4xl font-rajdhani text-4xl font-medium uppercase leading-tight tracking-wide text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-4xl font-rajdhani text-4xl font-medium uppercase leading-tight tracking-wide text-heading sm:text-5xl lg:text-6xl">
             Every device your business will ever need,{" "}
             <span className="text-foreground/45">on one account.</span>
           </h1>
@@ -331,7 +331,7 @@ const DeviceCatalog = () => {
                 Form factor
               </span>
               <div className="mt-3 flex flex-wrap items-baseline gap-4">
-                <h2 className="font-rajdhani text-3xl font-medium uppercase tracking-wide text-foreground sm:text-4xl">
+                <h2 className="font-rajdhani text-3xl font-medium uppercase tracking-wide text-heading sm:text-4xl">
                   {category.title}
                 </h2>
                 <span className="font-inter text-sm text-muted-foreground/70">
@@ -362,7 +362,7 @@ const DeviceCatalog = () => {
             <span className="font-inter text-xs uppercase tracking-[0.25em] text-muted-foreground/60">
               Side by side
             </span>
-            <h2 className="mt-3 font-rajdhani text-3xl font-medium uppercase tracking-wide text-foreground sm:text-4xl">
+            <h2 className="mt-3 font-rajdhani text-3xl font-medium uppercase tracking-wide text-heading sm:text-4xl">
               Capability comparison
             </h2>
             <p className="mt-4 max-w-3xl font-inter text-sm font-light leading-relaxed text-muted-foreground">
@@ -456,7 +456,7 @@ const DeviceCatalog = () => {
             <span className="font-inter text-xs uppercase tracking-[0.25em] text-muted-foreground/60">
               Behind the catalog
             </span>
-            <h2 className="mt-3 max-w-3xl font-rajdhani text-3xl font-medium uppercase tracking-wide text-foreground sm:text-4xl">
+            <h2 className="mt-3 max-w-3xl font-rajdhani text-3xl font-medium uppercase tracking-wide text-heading sm:text-4xl">
               Put our experience to work for you.
             </h2>
             <p className="mt-6 max-w-3xl font-inter text-base font-light leading-relaxed text-muted-foreground">
@@ -483,15 +483,12 @@ const DeviceCatalog = () => {
             </dl>
 
             <div className="mt-14 flex flex-wrap items-center gap-4">
-              <Button
-                onClick={() => setIsContactOpen(true)}
-                className="rounded-none bg-foreground px-8 font-inter text-sm font-medium tracking-wide text-background transition-all hover:bg-foreground/90"
-              >
+              <Button variant="cta" size="lg" onClick={() => setIsContactOpen(true)}>
                 Talk to us about hardware
               </Button>
               <a
                 href="/supported-processors"
-                className="inline-flex items-center border border-foreground/20 px-6 py-2 font-inter text-sm font-medium tracking-wide text-foreground/70 transition-all hover:bg-foreground hover:text-background"
+                className="inline-flex h-11 items-center rounded-pill border border-input px-5 text-sm font-bold text-foreground transition-colors duration-[120ms] hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 View supported processors
               </a>

@@ -23,7 +23,7 @@ const AutomaticCardUpdater = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Automatic Card Updater
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -36,7 +36,7 @@ const AutomaticCardUpdater = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 ACU periodically contacts card networks to obtain updated card
                 numbers and expiry dates. Updated data is applied to your
@@ -47,7 +47,7 @@ const AutomaticCardUpdater = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Automatic Card Updater must be enabled on your account by your
                 service provider. Not all processors support ACU, and
@@ -58,7 +58,7 @@ const AutomaticCardUpdater = () => {
 
             {/* Configuration */}
             <section id="configuration" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Configuration</h2>
+              <h2 className="text-2xl font-semibold text-heading">Configuration</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 On the ACU settings page you can choose how often updates run
                 (monthly, quarterly or annually) and what card statuses to
@@ -98,7 +98,7 @@ const AutomaticCardUpdater = () => {
 
             {/* Running Updates */}
             <section id="running-updates" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Running Updates</h2>
+              <h2 className="text-2xl font-semibold text-heading">Running Updates</h2>
               <p className="text-muted-foreground leading-relaxed">
                 ACU runs automatically on the schedule you choose. If you need
                 to force an update—for example after enabling the service—you

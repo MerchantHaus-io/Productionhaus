@@ -22,7 +22,7 @@ const CustomerPresentCloud = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Customer Present Cloud
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const CustomerPresentCloud = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 With Customer Present Cloud, you don’t need to deploy
                 drivers or SDKs on merchant PCs. Instead, a web
@@ -48,7 +48,7 @@ const CustomerPresentCloud = () => {
 
             {/* Benefits */}
             <section id="benefits" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Benefits</h2>
+              <h2 className="text-2xl font-semibold text-heading">Benefits</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The cloud‑based approach provides several advantages:
               </p>

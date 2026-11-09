@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Badge } from "./ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 // Updated Pricing tiers including the new high-visibility Enterprise plan.
@@ -95,22 +95,22 @@ export const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
   return (
-    <section className="py-24 bg-background border-t border-border">
+    <section id="pricing" className="scroll-mt-20 py-24 md:py-32 bg-background border-t border-border">
       <div className="px-6 md:px-16 lg:px-24">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-ubuntu text-foreground">
-            Transparent Pricing
+        <div className="text-center mb-12">
+          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
+            Transparent pricing
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 font-inter font-light">
-            Every plan includes our fraud-first foundation: Network Tokens, Customer Vault, and Basic Fraud Prevention. Custom volume pricing available.
+          <p className="text-lg leading-[27px] font-light text-muted-foreground max-w-2xl mx-auto mb-8">
+            Every plan includes our fraud-first foundation: network tokens, customer vault and basic fraud prevention. Custom volume pricing available.
           </p>
-          
+
           <Tabs value={billingCycle} onValueChange={(v) => setBillingCycle(v as "monthly" | "annual")} className="inline-flex">
             <TabsList>
               <TabsTrigger value="monthly">Monthly</TabsTrigger>
               <TabsTrigger value="annual">
                 Annual
-                <span className="ml-2 text-xs bg-primary/20 text-primary-text px-2 py-0.5 rounded-full">
+                <span className="rounded-pill bg-brand-slate px-2 py-0.5 text-xs font-semibold text-brand-slate-foreground">
                   Save 17%
                 </span>
               </TabsTrigger>
@@ -118,78 +118,65 @@ export const PricingSection = () => {
           </Tabs>
         </div>
 
-        {/* Updated grid for 4 columns on large screens */}
+        {/* Plan cards are counter-colour surfaces: navy on the cream page, cream on the navy page. */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {pricingPlans.map((plan, index) => (
-            <Card
+          {pricingPlans.map((plan) => (
+            <div
               key={plan.name}
-              className={`relative overflow-hidden transition-all duration-300 hover:scale-[1.02] bg-background backdrop-blur-sm border-border ${
-                plan.popular ? "ring-1 ring-foreground shadow-lg" : ""
-              } animate-fade-in`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              className={`inverse relative flex flex-col gap-6 rounded-2xl bg-card p-8 ${
+                plan.popular ? "border-2 border-brand-slate shadow-marketing" : "border border-border"
+              }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-brand-slate text-brand-slate-foreground text-xs font-bold px-3 py-1 rounded-bl-lg">
-                  POPULAR
-                </div>
+                <Badge variant="slate" className="absolute right-6 top-6">
+                  Popular
+                </Badge>
               )}
-              <CardHeader>
-                <CardTitle className="text-2xl">
-                  {plan.name}
-                </CardTitle>
-                <CardDescription className="min-h-[40px]">{plan.description}</CardDescription>
-                <div className="mt-4">
+              <div>
+                <h3 className="text-[22px] font-bold leading-7 tracking-[-0.015em] text-heading">{plan.name}</h3>
+                <p className="mt-2 min-h-[40px] text-sm text-muted-foreground">{plan.description}</p>
+                <div className="mt-6">
                   {typeof plan.monthlyPrice === "number" ? (
                     <>
-                      <span className="text-4xl font-bold">
+                      <span className="text-[44px] font-extrabold leading-[44px] tracking-[-0.02em] text-foreground">
                         ${billingCycle === "monthly" ? plan.monthlyPrice : Math.round((plan.annualPrice as number) / 12)}
                       </span>
-                      <span className="text-muted-foreground">/month</span>
+                      <span className="text-base text-muted-foreground">/month</span>
                       {billingCycle === "annual" && (
-                        <div className="text-xs text-muted-foreground mt-1">
-                          ${plan.annualPrice} billed annually
-                        </div>
+                        <div className="mt-1 text-xs text-muted-foreground">${plan.annualPrice} billed annually</div>
                       )}
                     </>
                   ) : (
-                    <span className="text-4xl font-bold">
+                    <span className="text-[44px] font-extrabold leading-[44px] tracking-[-0.02em] text-foreground">
                       Custom
                     </span>
                   )}
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-3 min-h-[350px]">
+              </div>
+              <ul className="flex-1 space-y-3">
                 {plan.features.map((feature) => (
-                  <div key={feature} className="flex items-start gap-2">
-                    <Check className="h-5 w-5 shrink-0 mt-0.5 text-brand-slate-text" />
-                    <span className="text-sm">{feature}</span>
-                  </div>
+                  <li key={feature} className="flex items-start gap-2 text-sm text-foreground">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-slate-text" aria-hidden="true" />
+                    {feature}
+                  </li>
                 ))}
                 {plan.limitations.map((limitation) => (
-                  <div key={limitation} className="flex items-start gap-2 opacity-50">
-                    <X className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">{limitation}</span>
-                  </div>
+                  <li key={limitation} className="flex items-start gap-2 text-sm text-muted-foreground opacity-60">
+                    <X className="mt-0.5 h-5 w-5 shrink-0" aria-label="Not included:" />
+                    {limitation}
+                  </li>
                 ))}
-              </CardContent>
-              <CardFooter>
-                <Button
-                  className="w-full rounded-none font-inter"
-                  variant={plan.popular ? "default" : "outline"}
-                  asChild
-                >
-                  <a href="/#contact">
-                    {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
-                  </a>
-                </Button>
-              </CardFooter>
-            </Card>
+              </ul>
+              <Button asChild size="lg" variant={plan.popular ? "pill" : "cta-outline"} className="w-full">
+                <a href="/#contact">{plan.name === "Enterprise" ? "Contact sales" : "Get started"}</a>
+              </Button>
+            </div>
           ))}
         </div>
 
         {/* Feature Comparison Table */}
         <div className="mt-16 animate-fade-in" style={{ animationDelay: "400ms" }}>
-          <h3 className="text-2xl font-bold text-center mb-8">Feature Comparison</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">Feature comparison</h3>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse min-w-[800px]">
               <thead>

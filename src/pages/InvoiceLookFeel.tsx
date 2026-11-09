@@ -22,7 +22,7 @@ const InvoiceLookFeel = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Invoice Look &amp; Feel
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const InvoiceLookFeel = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The invoice look &amp; feel settings allow you to upload a
                 custom image that appears at the top of your invoices. You
@@ -44,7 +44,7 @@ const InvoiceLookFeel = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 You must have the electronic invoicing service enabled on
                 your account. Only users with administrative privileges can
@@ -54,7 +54,7 @@ const InvoiceLookFeel = () => {
 
             {/* Adding a Logo */}
             <section id="adding-logo" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Adding a Logo</h2>
+              <h2 className="text-2xl font-semibold text-heading">Adding a Logo</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 To upload a logo:
               </p>

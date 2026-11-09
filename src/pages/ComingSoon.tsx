@@ -14,7 +14,7 @@ const ComingSoon = () => {
             <Construction className="w-12 h-12 text-foreground" />
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-foreground mb-6">
+          <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-heading mb-6">
             Coming Soon
           </h1>
           

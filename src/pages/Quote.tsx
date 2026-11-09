@@ -155,7 +155,7 @@ const Quote = () => {
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground shadow-sm mb-6">
               Request a Quote
             </span>
-            <h1 className="text-4xl md:text-5xl text-foreground mb-4">
+            <h1 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
               Get Your Customized MerchantHaus Quote
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -277,7 +277,7 @@ const Quote = () => {
 
               <div className="space-y-6">
                 <div className="space-y-3">
-                  <h2 className="font-semibold text-foreground">Processing Services</h2>
+                  <h2 className="font-semibold text-heading">Processing Services</h2>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {processingOptions.map((service) => (
                       <div
@@ -304,7 +304,7 @@ const Quote = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <h2 className="font-semibold text-foreground">Value-added Services</h2>
+                  <h2 className="font-semibold text-heading">Value-added Services</h2>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {valueOptions.map((service) => (
                       <div

@@ -22,7 +22,7 @@ const BillingStatement = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Billing Statement
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const BillingStatement = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The billing statement page lists the current balance due for
                 your account. You can view individual invoices, download a
@@ -43,7 +43,7 @@ const BillingStatement = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The billing statement option is only available if your
                 provider has enabled the “Bill to Merchant” setting. Partners
@@ -56,7 +56,7 @@ const BillingStatement = () => {
 
             {/* Viewing Your Statement */}
             <section id="viewing-statement" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Viewing Your Statement
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -70,7 +70,7 @@ const BillingStatement = () => {
 
             {/* Billing Schedule */}
             <section id="billing-schedule" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Billing Schedule
               </h2>
               <p className="text-muted-foreground leading-relaxed">

@@ -16,13 +16,15 @@ export default {
     extend: {
       fontFamily: {
         display: ['"DM Serif Display"', 'Georgia', 'serif'],
-        sans: ['Montserrat', 'system-ui', 'sans-serif'],
-        // Legacy aliases kept so existing classes resolve to the two brand families.
-        ubuntu: ['"DM Serif Display"', 'Georgia', 'serif'],
-        rajdhani: ['"DM Serif Display"', 'Georgia', 'serif'],
-        playfair: ['"DM Serif Display"', 'Georgia', 'serif'],
-        montserrat: ['Montserrat', 'system-ui', 'sans-serif'],
-        inter: ['Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['"Public Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'Helvetica', 'Arial', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', '"SF Mono"', 'Menlo', 'Consolas', 'monospace'],
+        // Legacy aliases kept so existing classes resolve to Public Sans; serif headlines
+        // opt in with font-display.
+        ubuntu: ['"Public Sans"', 'system-ui', 'sans-serif'],
+        rajdhani: ['"Public Sans"', 'system-ui', 'sans-serif'],
+        playfair: ['"Public Sans"', 'system-ui', 'sans-serif'],
+        montserrat: ['"Public Sans"', 'system-ui', 'sans-serif'],
+        inter: ['"Public Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         'brand-red': {
@@ -46,6 +48,24 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        heading: 'hsl(var(--heading))',
+        page: {
+          background: 'hsl(var(--page-background))',
+          foreground: 'hsl(var(--page-foreground))',
+          'muted-foreground': 'hsl(var(--page-muted-foreground))',
+          input: 'hsl(var(--page-input))',
+          ring: 'hsl(var(--page-ring))',
+        },
+        inverse: {
+          background: 'hsl(var(--inverse-background))',
+          card: 'hsl(var(--inverse-card))',
+          foreground: 'hsl(var(--inverse-foreground))',
+          heading: 'hsl(var(--inverse-heading))',
+          muted: 'hsl(var(--inverse-muted))',
+          'muted-foreground': 'hsl(var(--inverse-muted-foreground))',
+          border: 'hsl(var(--inverse-border))',
+          input: 'hsl(var(--inverse-input))',
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -117,8 +137,23 @@ export default {
       },
       borderRadius: {
         lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 4px)',
+        sm: 'calc(var(--radius) - 8px)',
+        xl: '1rem',
+        '2xl': '1.25rem',
+        pill: '999px',
+      },
+      boxShadow: {
+        xs: '0 1px 2px 0 rgba(16, 24, 40, 0.05)',
+        sm: '0 1px 3px 0 rgba(16, 24, 40, 0.08), 0 1px 2px 0 rgba(16, 24, 40, 0.04)',
+        md: '0 4px 8px -2px rgba(16, 24, 40, 0.10), 0 2px 4px -2px rgba(16, 24, 40, 0.06)',
+        lg: '0 12px 16px -4px rgba(16, 24, 40, 0.08), 0 4px 6px -2px rgba(16, 24, 40, 0.03)',
+        xl: '0 20px 24px -4px rgba(16, 24, 40, 0.08), 0 8px 8px -4px rgba(16, 24, 40, 0.03)',
+        marketing: '0 3px 30px 0 rgba(0, 0, 0, 0.16)',
+      },
+      transitionTimingFunction: {
+        brand: 'var(--ease-out)',
+        'brand-in-out': 'var(--ease-in-out)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

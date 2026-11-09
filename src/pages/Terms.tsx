@@ -12,7 +12,7 @@ const Terms = () => {
       <Header />
       <main className="bg-background py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-foreground mb-4">
+          <h1 className="text-4xl md:text-5xl font-ubuntu font-bold text-heading mb-4">
             MerchantHaus Terms & Conditions
           </h1>
           <p className="text-muted-foreground mb-8">
@@ -62,7 +62,7 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">3.1 Eligibility</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">3.1 Eligibility</h3>
                   <p className="mb-2">To use the Services, you must:</p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Be a legal entity or an individual who is at least 18 years old and operating a bona fide business.</li>
@@ -72,11 +72,11 @@ const Terms = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">3.2 Account Security</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">3.2 Account Security</h3>
                   <p>You are solely responsible for safeguarding your account credentials, including usernames, passwords, and API keys. You are fully responsible for all activity that occurs under your account, whether or not authorized by you. You must notify MerchantHaus immediately at support@merchanthaus.io of any suspected or actual unauthorized use of your account or any other breach of security.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">3.3 Account Suspension and Termination</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">3.3 Account Suspension and Termination</h3>
                   <p className="mb-2">MerchantHaus reserves the right, in its sole discretion, to suspend, limit, or terminate your account or access to the Services at any time, with or without cause or notice. Reasons for suspension or termination may include, but are not limited to:</p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Suspected fraud, money laundering, terrorist financing, or other illegal activities.</li>
@@ -88,7 +88,7 @@ const Terms = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">3.4 Underwriting & Approval</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">3.4 Underwriting & Approval</h3>
                   <p>Access to payment processing services is subject to underwriting approval and ongoing monitoring by NMI Payments and the applicable Acquiring Bank. MerchantHaus does not guarantee approval of any merchant account and may suspend onboarding or processing access pending underwriting review, compliance verification, or risk assessment.</p>
                 </div>
               </div>
@@ -100,13 +100,13 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.1 Role of MerchantHaus</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.1 Role of MerchantHaus</h3>
                   <p className="mb-2">MerchantHaus acts as a payment technology provider facilitating access to payment processing services through NMI Payments and its sponsoring acquiring bank(s). MerchantHaus is not a bank, does not accept deposits, does not hold funds for the benefit of Merchant, and does not operate as a money transmitter or custodial financial institution.</p>
                   <p className="mb-2">MerchantHaus does not hold, receive, or control Merchant settlement funds and does not operate as a money transmitter, custodial institution, or acquiring bank.</p>
                   <p>Payment processing services are provided through NMI Payments, a registered ISO/MSP, and its sponsoring Acquiring Bank(s), including where applicable Merrick Bank, Woodbury, NY.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.2 Acquiring Bank & Processing Relationship</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.2 Acquiring Bank & Processing Relationship</h3>
                   <p className="mb-2">Merchant acknowledges and agrees that:</p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>(a) NMI Payments is a registered ISO/MSP of its sponsoring Acquiring Bank(s).</li>
@@ -118,15 +118,15 @@ const Terms = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.3 Fees</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.3 Fees</h3>
                   <p>You agree to pay the fees, charges, and other assessments (collectively, "Fees") applicable to your use of the Services, which will be disclosed to you during onboarding or in a separate signed agreement. All Fees are quoted in U.S. Dollars unless otherwise specified. Fees are non-refundable unless explicitly stated otherwise. We reserve the right to change our Fees with thirty (30) days' prior notice.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.4 Payment of Fees</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.4 Payment of Fees</h3>
                   <p>Fees will typically be deducted from the settlement funds due to you from your processed transactions. If settlement funds are insufficient, or for any other charges due, you authorize MerchantHaus to debit your designated bank account on file.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.5 Chargebacks and Refunds</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.5 Chargebacks and Refunds</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>You are solely and fully liable for the total amount of all Chargebacks, refunds, retrievals, and any associated fees (including Card Network fees and MerchantHaus administrative fees).</li>
                     <li>You are responsible for managing your own customer service and providing refunds to your customers as per your business policies.</li>
@@ -135,16 +135,16 @@ const Terms = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.6 Reserves</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.6 Reserves</h3>
                   <p className="mb-2">Merchant acknowledges that reserves, holdbacks, or other risk mitigation measures may be established by NMI Payments and/or the applicable Acquiring Bank to cover potential future losses arising from Chargebacks, refunds, fines, penalties, or other liabilities.</p>
                   <p>MerchantHaus does not hold, control, administer, or have custody of any settlement funds or reserve funds. All settlement and reserve funds are held and administered by NMI Payments, the applicable Acquiring Bank, or their designated processing partners in accordance with the applicable Merchant Processing Agreement and Card Network rules.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.7 Payouts (Settlements)</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.7 Payouts (Settlements)</h3>
                   <p>Settlement funds from processed transactions will be directed to your designated bank account by NMI Payments and/or the applicable Acquiring Bank, less applicable Fees, any Chargebacks, refunds, and Reserve amounts, according to the payout schedule agreed upon. MerchantHaus facilitates the payout process but does not hold, control, or have custody of settlement funds. Payouts may be delayed, adjusted, or withheld by the Acquiring Bank, NMI Payments, or their processing partners for risk management, compliance, investigative, or regulatory purposes. MerchantHaus is not responsible for actions taken by NMI Payments, the Acquiring Bank, Card Networks, or third-party processors.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">4.8 Third-Party Processing Dependency</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">4.8 Third-Party Processing Dependency</h3>
                   <p>Merchant acknowledges that the Services rely on third-party Acquiring Banks, processors, financial institutions, and Card Networks. MerchantHaus shall not be liable for service interruptions, funding delays, network outages, reserve adjustments, monitoring programs, enforcement actions, or account suspensions resulting from decisions or actions taken by such third parties.</p>
                 </div>
               </div>
@@ -156,16 +156,16 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">5.1 Privacy Policy</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">5.1 Privacy Policy</h3>
                   <p>Our Privacy Policy, which is incorporated by reference into this Agreement, describes how we collect, use, store, and disclose personal information. You agree to the practices described in the Privacy Policy.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">5.2 MerchantHaus Security</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">5.2 MerchantHaus Security</h3>
                   <p className="mb-2">MerchantHaus maintains compliance with the Payment Card Industry Data Security Standard (PCI DSS) as a service provider. We use commercially reasonable administrative, technical, and physical safeguards, including encryption, to protect data processed through our Services.</p>
                   <p>MerchantHaus acts as a service provider or data processor with respect to personal data processed on behalf of Merchant in connection with payment transactions. Merchant remains responsible for its own compliance with applicable data protection laws and Card Network security requirements.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">5.3 Merchant Responsibilities</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">5.3 Merchant Responsibilities</h3>
                   <ul className="list-disc pl-6 space-y-2">
                     <li><strong>Your Compliance:</strong> You are responsible for the security of any Merchant Data you possess or otherwise control. You must maintain your own PCI DSS compliance (if applicable to your business) and must not store, process, or transmit sensitive cardholder data (such as full card numbers or CVV codes) in an unsecure manner.</li>
                     <li><strong>Data License:</strong> You grant MerchantHaus a non-exclusive, worldwide, royalty-free license to use, copy, modify, and display Merchant Data solely for the purposes of providing and improving the Services.</li>
@@ -201,19 +201,19 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">7.1 MerchantHaus IP</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">7.1 MerchantHaus IP</h3>
                   <p>MerchantHaus and its licensors retain all right, title, and interest in and to the Services, the Platform, our website, trademarks, logos, documentation, and all underlying technology and intellectual property (collectively, "MerchantHaus IP").</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">7.2 Limited License</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">7.2 Limited License</h3>
                   <p>We grant you a limited, non-exclusive, non-transferable, non-sublicensable, and revocable license to access and use the Services, including our APIs and documentation, solely as permitted by this Agreement and for your internal business purposes.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">7.3 Merchant Data</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">7.3 Merchant Data</h3>
                   <p>As between you and MerchantHaus, you retain all ownership rights to your Merchant Data.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">7.4 Feedback</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">7.4 Feedback</h3>
                   <p>If you provide us with any feedback, suggestions, or ideas for improvement (collectively, "Feedback"), you hereby grant MerchantHaus a worldwide, perpetual, irrevocable, royalty-free, and fully sublicensable license to use, implement, and otherwise commercialize such Feedback in any way without any obligation or compensation to you.</p>
                 </div>
               </div>
@@ -225,19 +225,19 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">8.1 Term</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">8.1 Term</h3>
                   <p>This Agreement commences on the date you first accept it (by creating an account or using the Services) and continues until terminated by either party.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">8.2 Termination by You</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">8.2 Termination by You</h3>
                   <p>You may terminate this Agreement at any time by closing your account and ceasing all use of the Services. You will remain liable for all outstanding fees, charges, and liabilities incurred prior to termination.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">8.3 Termination by Us</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">8.3 Termination by Us</h3>
                   <p>We may terminate this Agreement as outlined in Section 3.3. Payment processing services may also be suspended or terminated upon direction from NMI Payments or the applicable Acquiring Bank.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">8.4 Effect of Termination</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">8.4 Effect of Termination</h3>
                   <p>Upon termination, your license to use the Services is revoked. You must immediately pay any outstanding Fees. Any reserve funds held by NMI Payments, the applicable Acquiring Bank, or their designated processing partners may continue to be held for a period (typically 180 days or longer) sufficient to cover potential Chargebacks. Sections of this Agreement that by their nature should survive termination will survive, including (but not limited to) sections on Fees, Chargebacks, Intellectual Property, Confidentiality, Disclaimers, Liability, Indemnification, and Dispute Resolution.</p>
                 </div>
               </div>
@@ -249,19 +249,19 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">9.1 DISCLAIMER OF WARRANTIES</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">9.1 DISCLAIMER OF WARRANTIES</h3>
                   <p className="uppercase text-sm">
                     THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. MERCHANT HAUS, ITS AFFILIATES, AND ITS LICENSORS EXPRESSLY DISCLAIM ALL WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">9.2 LIMITATION OF LIABILITY</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">9.2 LIMITATION OF LIABILITY</h3>
                   <p className="uppercase text-sm">
                     TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL MERCHANT HAUS, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR IN CONNECTION WITH: (A) YOUR ACCESS TO OR USE OF, OR INABILITY TO ACCESS OR USE, THE SERVICES; (B) ANY CONDUCT OR CONTENT OF ANY THIRD PARTY; (C) ANY DATA OR CONTENT OBTAINED FROM THE SERVICES; OR (D) UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR DATA.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">9.3 LIABILITY CAP</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">9.3 LIABILITY CAP</h3>
                   <p className="uppercase text-sm">
                     TO THE MAXIMUM EXTENT PERMITTED BY LAW, MERCHANT HAUS'S TOTAL AGGREGATE LIABILITY FOR ALL CLAIMS AND DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE SERVICES, WHETHER IN CONTRACT, TORT, OR OTHERWISE, WILL NOT EXCEED THE TOTAL FEES PAID BY YOU TO MERCHANT HAUS DURING THE SIX (6) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
                   </p>
@@ -284,23 +284,23 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">11.1 Governing Law</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">11.1 Governing Law</h3>
                   <p>These Terms and any dispute arising from them shall be governed by and construed in accordance with the laws of the State of New Mexico, United States, without regard to its conflict of law principles.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">11.2 Jurisdiction</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">11.2 Jurisdiction</h3>
                   <p>Unless otherwise required by law or the arbitration provisions below, you agree that any legal action or proceeding shall be brought exclusively in the state or federal courts located in Albuquerque (Bernalillo County), New Mexico, and you consent to the personal jurisdiction of such courts.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">11.3 Informal Resolution</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">11.3 Informal Resolution</h3>
                   <p>In case of any dispute, we strongly encourage you to contact our support team first at support@merchanthaus.io to seek a resolution. If a dispute is not resolved informally within forty-five (45) days, either party may initiate a formal proceeding.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">11.4 Binding Arbitration</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">11.4 Binding Arbitration</h3>
                   <p>Any dispute or claim (excluding claims for injunctive relief) shall be resolved by binding arbitration administered by the American Arbitration Association (AAA) under its Commercial Arbitration Rules. The arbitration will take place in Albuquerque, New Mexico. The arbitrator's decision will be final and binding.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">11.5 CLASS ACTION WAIVER</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">11.5 CLASS ACTION WAIVER</h3>
                   <p className="uppercase text-sm">
                     YOU AND MERCHANT HAUS AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.
                   </p>
@@ -314,31 +314,31 @@ const Terms = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.1 Changes to Terms</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.1 Changes to Terms</h3>
                   <p>MerchantHaus reserves the right to update or modify these Terms at any time. We will notify you of material changes by posting the updated Terms on our website, updating the "Effective Date," or by email. Your continued use of the Services after such notice constitutes your acceptance of the updated Terms. If you do not agree to the changes, you must stop using the Services.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.2 Entire Agreement</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.2 Entire Agreement</h3>
                   <p>This Agreement, together with the Privacy Policy and any other agreements or policies incorporated by reference, constitutes the entire agreement between you and MerchantHaus regarding the Services and supersedes all prior agreements.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.3 Severability</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.3 Severability</h3>
                   <p>If any provision of this Agreement is found to be invalid or unenforceable, that provision will be severed, and the remaining provisions will remain in full force and effect.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.4 Waiver</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.4 Waiver</h3>
                   <p>Our failure to exercise or enforce any right or provision of this Agreement will not constitute a waiver of that right or provision.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.5 Assignment</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.5 Assignment</h3>
                   <p>You may not assign or transfer this Agreement (or your account) without our prior written consent. MerchantHaus may freely assign or transfer this Agreement without restriction.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.6 Force Majeure</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.6 Force Majeure</h3>
                   <p>We will not be liable for any delays or failure in performance resulting from events or circumstances beyond our reasonable control, including acts of God, war, terrorism, pandemics, strikes, or government actions.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">12.7 Notices</h3>
+                  <h3 className="text-lg font-semibold text-heading mb-2">12.7 Notices</h3>
                   <p>All legal notices to MerchantHaus must be sent to the address below. Notices to you will be sent to the email address associated with your account.</p>
                 </div>
               </div>

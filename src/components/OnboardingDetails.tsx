@@ -37,11 +37,11 @@ const documentGroups = [
 
 export const OnboardingDetails = () => {
   return (
-    <section id="what-you-need" className="scroll-mt-20 py-24 px-6 md:px-16 lg:px-24 bg-background border-t border-border">
+    <section id="what-you-need" className="scroll-mt-20 py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-background border-t border-border">
       <div className="max-w-6xl mx-auto">
         <div className="grid gap-14 lg:grid-cols-[2fr_3fr] lg:gap-16">
           <div>
-            <h2 className="text-3xl md:text-4xl text-foreground mb-6">Turnaround times</h2>
+            <h2 className="font-display text-[40px] leading-[44px] text-heading mb-6">Turnaround times</h2>
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-foreground text-left">
@@ -70,11 +70,11 @@ export const OnboardingDetails = () => {
           </div>
 
           <div>
-            <h2 className="text-3xl md:text-4xl text-foreground mb-6">What you'll need</h2>
+            <h2 className="font-display text-[40px] leading-[44px] text-heading mb-6">What you'll need</h2>
             <div className="space-y-8">
               {documentGroups.map((group) => (
                 <div key={group.title}>
-                  <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-foreground mb-3">
+                  <h3 className="text-xs font-bold uppercase leading-4 tracking-[0.08em] text-heading mb-3">
                     {group.title}
                   </h3>
                   <ul className="space-y-2.5">
@@ -95,7 +95,7 @@ export const OnboardingDetails = () => {
           </div>
         </div>
 
-        <div className="mt-12 flex gap-4 bg-muted p-6 md:p-7">
+        <div className="mt-12 flex gap-4 rounded-xl bg-muted p-6">
           <Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-primary-text" aria-hidden="true" />
           <p className="text-sm md:text-base leading-relaxed text-foreground">
             <span className="font-semibold">Tip:</span> Make sure your legal business name, EIN, owner names and bank
@@ -104,14 +104,14 @@ export const OnboardingDetails = () => {
         </div>
 
         <div className="mt-16 flex flex-col items-start gap-8 border-t border-border pt-12 md:flex-row md:items-center md:justify-between">
-          <p className="font-display text-4xl md:text-5xl leading-none text-foreground">
+          <p className="font-display text-[40px] leading-[44px] md:text-[50px] md:leading-[59px] text-heading">
             Plug in, play and process<span className="text-brand-red-text">.</span>
           </p>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <Button asChild size="lg" className="rounded-none px-8 tracking-wide">
+            <Button asChild size="lg" variant="pill">
               <a href="https://ops-terminal.merchant.haus/contact">Book a 15-minute call</a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-none px-8 tracking-wide">
+            <Button asChild size="lg" variant="cta-outline">
               <a href="#contact">Send us a statement</a>
             </Button>
           </div>

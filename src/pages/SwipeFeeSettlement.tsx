@@ -24,7 +24,7 @@ const blogStyles = `
     --sfs-panel: hsl(var(--muted));
     --sfs-radius: var(--radius);
 
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     color: var(--sfs-text);
     max-width: 860px;
     margin: 0 auto;
@@ -52,7 +52,7 @@ const blogStyles = `
   }
 
   .sfs-kicker {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -92,7 +92,7 @@ const blogStyles = `
   }
 
   .sfs-meta {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     color: var(--sfs-text-2);
     letter-spacing: 0.08em;
@@ -149,7 +149,7 @@ const blogStyles = `
   }
 
   .sfs-stat-label {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10.5px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -170,7 +170,7 @@ const blogStyles = `
   }
 
   .sfs-num {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     color: ${accent};
     letter-spacing: 0.1em;
@@ -192,7 +192,7 @@ const blogStyles = `
   .sfs-section p { margin-bottom: 1.25rem; }
 
   .sfs-qnum {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     color: ${accent};
     font-weight: 500;
     margin-right: 0.4rem;
@@ -222,7 +222,7 @@ const blogStyles = `
   }
 
   .sfs-callout-label {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -248,7 +248,7 @@ const blogStyles = `
   }
 
   .sfs-table thead th {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -272,7 +272,7 @@ const blogStyles = `
   .sfs-table .sfs-fine { color: var(--sfs-text-2); font-size: 13px; }
 
   .sfs-math {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 13.5px;
     background: var(--sfs-panel);
     border: 1px solid var(--sfs-rule);
@@ -299,7 +299,7 @@ const blogStyles = `
     left: 0;
     top: 0.6rem;
     color: ${accent};
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-weight: 600;
   }
 
@@ -317,7 +317,7 @@ const blogStyles = `
     position: absolute;
     left: 0;
     top: 1.05rem;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 12px;
     color: ${accent};
     font-weight: 500;
@@ -329,7 +329,7 @@ const blogStyles = `
 
   .sfs-cta a {
     display: inline-block;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -350,7 +350,7 @@ const blogStyles = `
   .sfs-sources a { color: var(--sfs-text-2); }
 
   .sfs-small-label {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -693,7 +693,7 @@ export default function SwipeFeeSettlement() {
             <li><a href="https://www.lek.com/insights/financial-services/finding-new-balance-rewards-cards-after-visa-mastercard-merchant" target="_blank" rel="noopener noreferrer">L.E.K. Consulting — Rewards cards after the Visa-Mastercard merchant settlement</a></li>
           </ul>
 
-          <div style={{ fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: 11, color: "var(--sfs-text-2)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap", marginTop: "2rem" }}>
+          <div style={{ fontFamily: "'Public Sans', system-ui, sans-serif", fontSize: 11, color: "var(--sfs-text-2)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap", marginTop: "2rem" }}>
             <span>Merchant Haus</span>
             <span>Plug in, play and process</span>
             <span>Payments Briefing</span>

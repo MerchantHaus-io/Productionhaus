@@ -10,7 +10,7 @@ const accentDark = "#4A1B0C";
 const blogStyles = `
 
   .blog-root {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     color: var(--color-text-primary);
     max-width: 860px;
     margin: 0 auto;
@@ -32,7 +32,7 @@ const blogStyles = `
   }
 
   .kicker {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -69,7 +69,7 @@ const blogStyles = `
   }
 
   .hero-meta {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.08em;
@@ -106,7 +106,7 @@ const blogStyles = `
   }
 
   .hero-stat-label {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -129,7 +129,7 @@ const blogStyles = `
   }
 
   .section-num {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.1em;
@@ -165,7 +165,7 @@ const blogStyles = `
   }
 
   .pullquote cite {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     letter-spacing: 0.08em;
@@ -182,7 +182,7 @@ const blogStyles = `
   }
 
   .callout-label {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -202,11 +202,11 @@ const blogStyles = `
     border-collapse: collapse;
     font-size: 14px;
     margin: 1.5rem 0;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
   }
 
   .data-table thead th {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -257,7 +257,7 @@ const blogStyles = `
   }
 
   .stat-card-label {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 11px;
     color: var(--color-text-secondary);
     text-transform: uppercase;
@@ -278,7 +278,7 @@ const blogStyles = `
     border-radius: var(--border-radius-md);
     padding: 1.5rem;
     margin: 1.5rem 0;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 13px;
   }
 
@@ -552,7 +552,7 @@ export default function Vamp() {
         <hr className="divider" />
 
         <footer style={{ paddingTop: "1rem", paddingBottom: "2rem" }}>
-          <div style={{ fontFamily: "'Montserrat', system-ui, sans-serif", fontSize: 11, color: "var(--color-text-secondary)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+          <div style={{ fontFamily: "'Public Sans', system-ui, sans-serif", fontSize: 11, color: "var(--color-text-secondary)", letterSpacing: "0.08em", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
             <span>MerchantHaus</span>
             <span>Plug in, play and process</span>
             <span>merchanthaus.io</span>

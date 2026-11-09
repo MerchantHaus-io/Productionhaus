@@ -265,7 +265,7 @@ export default function Services() {
 
       <main
         className="flex-1"
-        style={{ fontFamily: "'Montserrat', sans-serif" }}
+        style={{ fontFamily: "'Public Sans', system-ui, sans-serif" }}
       >
         {/* ── Hero ──────────────────────────────────────────── */}
         <section className={`relative px-6 md:px-16 lg:px-24 pt-24 pb-20 border-b border-foreground/[0.07] overflow-hidden ${sectionAlt}`}>
@@ -304,15 +304,15 @@ export default function Services() {
             <div className="flex flex-wrap gap-4 mb-14">
               <Link
                 to="/demo"
-                className="px-7 py-3.5 bg-foreground text-background text-[0.82rem] tracking-[0.08em] uppercase font-semibold hover:bg-foreground/90 transition-colors duration-200 rounded-sm"
+                className="inline-flex h-11 items-center rounded-pill bg-foreground px-5 text-sm font-bold text-background transition-[filter] duration-[120ms] hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                Book a Demo
+                Book a demo
               </Link>
               <a
                 href="https://ops-terminal.merchant.haus/merchant-apply"
-                className="px-7 py-3.5 border border-foreground/20 text-[0.82rem] tracking-[0.08em] uppercase font-medium hover:bg-foreground/[0.04] transition-colors duration-200 rounded-sm text-foreground/70"
+                className="inline-flex h-11 items-center rounded-pill border border-input px-5 text-sm font-bold text-foreground transition-colors duration-[120ms] hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                Get Started
+                Get started
               </a>
             </div>
 
@@ -558,13 +558,13 @@ export default function Services() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="https://ops-terminal.merchant.haus/merchant-apply"
-                className="px-8 py-3.5 bg-foreground text-background text-[0.82rem] tracking-[0.08em] uppercase font-semibold hover:bg-foreground/90 transition-colors duration-200 rounded-sm"
+                className="inline-flex h-11 items-center rounded-pill bg-foreground px-5 text-sm font-bold text-background transition-[filter] duration-[120ms] hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                Apply Now
+                Apply now
               </a>
               <a
                 href="tel:15056006042"
-                className="px-8 py-3.5 border border-foreground/20 text-[0.82rem] tracking-[0.08em] uppercase font-medium hover:bg-foreground/[0.04] transition-colors duration-200 rounded-sm text-foreground/70"
+                className="inline-flex h-11 items-center rounded-pill border border-input px-5 text-sm font-bold text-foreground transition-colors duration-[120ms] hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 1-505-600-6042
               </a>

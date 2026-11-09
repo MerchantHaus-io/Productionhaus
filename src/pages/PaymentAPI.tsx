@@ -24,7 +24,7 @@ const PaymentAPI = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Payment API</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">Payment API</h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               The Payment API, sometimes called the Direct Post method, is
               the simplest way to post transactions directly from your
@@ -35,7 +35,7 @@ const PaymentAPI = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 At its core, the Payment API is a simple HTTP interface for
                 processing transactions. Your server sends a POST request
@@ -51,7 +51,7 @@ const PaymentAPI = () => {
 
             {/* Prerequisites & PCI */}
             <section id="prerequisites-pci" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites &amp; PCI Considerations</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites &amp; PCI Considerations</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Before implementing the Payment API, you should perform a
                 PCI vulnerability scan and ensure that your systems meet
@@ -73,7 +73,7 @@ const PaymentAPI = () => {
 
             {/* Usage */}
             <section id="usage" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Usage</h2>
+              <h2 className="text-2xl font-semibold text-heading">Usage</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To submit a transaction you will send a POST request to the
                 payment endpoint with name/value pairs representing the
@@ -100,7 +100,7 @@ const PaymentAPI = () => {
 
             {/* Considerations */}
             <section id="considerations" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Considerations</h2>
+              <h2 className="text-2xl font-semibold text-heading">Considerations</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The Payment API offers maximum control but also brings
                 additional responsibilities. Because your server handles cardholder
