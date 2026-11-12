@@ -305,6 +305,7 @@ export default function PaymentsSurvey2025() {
         title="What the 2025 Payments Survey Reveals About How Customers Really Pay"
         description="Analysis of the BRC Payments Survey 2025 — insights on card dominance, alternative payment growth, processing costs, and cash resilience."
         path="/payments-survey-2025"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

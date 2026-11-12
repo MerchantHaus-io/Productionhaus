@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { PageSEO } from "@/components/PageSEO";
 import Footer from "@/components/Footer";
 import { useEffect, useMemo, useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
@@ -290,6 +291,11 @@ const SupportedProcessors = () => {
 
   return (
     <div className="min-h-screen bg-background dark:bg-neutral-dark">
+      <PageSEO
+        title="Supported Payment Processors"
+        description="The card processors and acquiring platforms supported by the MerchantHaus payment gateway, with the card-present, card-not-present and ACH capabilities of each."
+        path="/supported-processors"
+      />
       <Header />
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">

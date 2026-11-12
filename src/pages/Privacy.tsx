@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
+import { PageSEO } from "@/components/PageSEO";
 import Footer from "@/components/Footer";
 
 const Privacy = () => {
@@ -9,6 +10,11 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageSEO
+        title="Privacy Policy"
+        description="How MerchantHaus collects, uses, shares and protects personal and payment information, and the choices and rights you have."
+        path="/privacy"
+      />
       <Header />
       <main className="container mx-auto px-4 py-16 max-w-4xl">
         <h1 className="text-4xl font-bold mb-4 text-heading">MerchantHaus Privacy Policy</h1>

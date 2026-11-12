@@ -97,9 +97,9 @@ const Blog = () => {
       <main ref={mainRef} className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Blog Hero / Featured Article */}
         <section className="mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 font-ubuntu text-heading">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 font-ubuntu text-heading">
             Latest Insights <span className="text-muted-foreground">on the Digital Frontier</span>
-          </h2>
+          </h1>
           
           <div className="card-container">
             <div className="bg-card dark:bg-card/80 rounded-2xl overflow-hidden shadow-xl border border-border dark:border-border/50 card-shadow hover-accent-arrow">

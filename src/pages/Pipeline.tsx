@@ -367,8 +367,9 @@ export default function Pipeline() {
   return (
     <>
       <PageSEO
-        title="Pipeline | MerchantHaus"
+        title="Pipeline"
         description="Merchant application pipeline"
+        noindex
       />
       <Header />
       <main className="min-h-screen bg-background pt-24 pb-16">

@@ -323,6 +323,7 @@ export default function Prediction2026Article() {
         title="Beyond the Hype: Why 2026 Will Reset AI Expectations and Accelerate SaaS Payments"
         description="An analysis of the coming correction in AI expectations and the simultaneous acceleration of SaaS-embedded payments."
         path="/prediction-2026"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

@@ -376,6 +376,7 @@ export default function SwipeFeeSettlement() {
         title="The Visa and Mastercard Swipe-Fee Settlement, Explained for Merchants"
         description="The $38 billion Visa and Mastercard settlement faces final approval on November 16, 2026. What it changes on rates, card acceptance and surcharging, what it doesn't, and five things to do now."
         path="/swipe-fee-settlement"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

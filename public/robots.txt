@@ -1,14 +1,58 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# merchanthaus.io — search engines and AI assistants are welcome.
+#
+# Content signals (https://contentsignals.org): this content may be used for
+# search indexing, as input to AI answers, and for AI training.
+# Content-Signal: search=yes, ai-input=yes, ai-train=yes
+#
+# AI-readable summaries of the whole site:
+#   https://merchanthaus.io/llms.txt
+#   https://merchanthaus.io/llms-full.txt
+# Every page is also available as Markdown at the same path with ".md"
+# (e.g. https://merchanthaus.io/services.md, home page: /index.md), or by
+# requesting any page with the header "Accept: text/markdown".
 
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
+Disallow: /todos
+Disallow: /pipeline
+Disallow: /.netlify/
+
+# Search engines
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: Applebot
+User-agent: YandexBot
+Allow: /
+Disallow: /todos
+Disallow: /pipeline
+
+# AI search and assistant crawlers (answer engines that cite and link to us)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: MistralAI-User
+User-agent: DuckAssistBot
+User-agent: CCBot
+Allow: /
+Disallow: /todos
+Disallow: /pipeline
+
+# Link previews
+User-agent: Twitterbot
+User-agent: facebookexternalhit
+User-agent: LinkedInBot
+User-agent: Slackbot
+Allow: /
+
+Sitemap: https://merchanthaus.io/sitemap.xml

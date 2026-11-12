@@ -1,1 +1,12 @@
-/* /index.html 200
+# Every public route is prerendered to its own HTML file at build time
+# (scripts/prerender.mjs), which Netlify serves before these rules apply.
+
+# Internal tools are not prerendered: serve the app shell.
+/todos      /spa.html  200
+/pipeline   /spa.html  200
+
+# @prerender-redirects (trailing-slash rules are inserted here at build time)
+
+# Anything else is not a real page: serve the app shell (which renders the
+# Not Found page) with a real 404 status so it never gets indexed.
+/*          /spa.html  404
