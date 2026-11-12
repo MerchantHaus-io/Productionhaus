@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/supabase";
+import { PageSEO } from "@/components/PageSEO";
 
 type Todo = {
   id: number | string;
@@ -26,6 +27,7 @@ const Todos = () => {
 
   return (
     <div>
+      <PageSEO title="Todos" description="Internal task list" noindex />
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>{todo.title ?? "Untitled todo"}</li>

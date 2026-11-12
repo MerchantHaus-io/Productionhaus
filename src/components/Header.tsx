@@ -66,9 +66,9 @@ export const Header = () => {
               className={`transition-all duration-200 relative z-20 ${isScrolled ? 'h-8 w-8' : 'h-9 w-9'}`}
             />
             <div className="relative z-10">
-              <h1 className="font-sans text-xl font-black leading-6 tracking-[0.02em] text-heading uppercase">
+              <span className="block font-sans text-xl font-black leading-6 tracking-[0.02em] text-heading uppercase">
                 Merchant Haus
-              </h1>
+              </span>
               {showShimmer && (
                 <div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/20 to-transparent opacity-40 z-0"

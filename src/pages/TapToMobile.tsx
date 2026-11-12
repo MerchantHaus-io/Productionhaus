@@ -353,6 +353,7 @@ export default function TapToMobile() {
         title="Tap-to-Mobile Is the New POS: How to Get Paid With Just a Phone in 2025"
         description="How Tap-to-Mobile turns any NFC phone into a secure payment terminal — and why it's the fastest-growing acceptance method for merchants."
         path="/tap-to-mobile"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

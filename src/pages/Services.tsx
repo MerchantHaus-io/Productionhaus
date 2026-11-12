@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { PageSEO } from "@/components/PageSEO";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -242,11 +241,9 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           +
         </span>
       </div>
-      {open && (
-        <p className="text-[0.85rem] leading-[1.8] text-foreground/45 font-light pb-5 max-w-2xl">
-          {a}
-        </p>
-      )}
+      <p hidden={!open} className="text-[0.85rem] leading-[1.8] text-foreground/45 font-light pb-5 max-w-2xl">
+        {a}
+      </p>
     </div>
   )
 }
@@ -260,6 +257,17 @@ export default function Services() {
         title="Services"
         description="Accept payments anywhere — in-person, online, or in the field. Mobile payments, POS devices, fraud detection, and global payment processing for mid-market and enterprise organizations."
         path="/services"
+        jsonLd={[
+          {
+            "@type": "FAQPage",
+            "@id": "https://merchanthaus.io/services#faq",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]}
       />
       <Header />
 
@@ -302,12 +310,12 @@ export default function Services() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-14">
-              <Link
-                to="/demo"
+              <a
+                href="https://ops-terminal.merchant.haus/contact"
                 className="inline-flex h-11 items-center rounded-pill bg-foreground px-5 text-sm font-bold text-background transition-[filter] duration-[120ms] hover:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 Book a demo
-              </Link>
+              </a>
               <a
                 href="https://ops-terminal.merchant.haus/merchant-apply"
                 className="inline-flex h-11 items-center rounded-pill border border-input px-5 text-sm font-bold text-foreground transition-colors duration-[120ms] hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

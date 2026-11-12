@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { PageSEO } from "@/components/PageSEO";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
@@ -9,6 +10,11 @@ const Terms = () => {
 
   return (
     <>
+      <PageSEO
+        title="Terms of Service"
+        description="The terms and conditions that govern use of the MerchantHaus website, merchant services and payment processing platform."
+        path="/terms"
+      />
       <Header />
       <main className="bg-background py-16 px-6">
         <div className="max-w-4xl mx-auto">

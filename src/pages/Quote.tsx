@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Header } from "@/components/Header";
+import { PageSEO } from "@/components/PageSEO";
 import Footer from "@/components/Footer";
 import { StarfieldBackground } from "@/components/StarfieldBackground";
 import { Input } from "@/components/ui/input";
@@ -145,6 +146,11 @@ const Quote = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background relative">
+      <PageSEO
+        title="Request a Payment Processing Quote"
+        description="Get a customized MerchantHaus quote for credit card, ACH/eCheck and payment gateway processing. Share a few details and we'll tailor pricing and solutions to your business."
+        path="/quote"
+      />
       <StarfieldBackground />
       <Header />
 

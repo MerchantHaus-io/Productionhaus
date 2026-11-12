@@ -532,6 +532,7 @@ export default function ConstructionFinance() {
         title="The Digital Transformation of Construction Finance"
         description="Strategic integration of payment gateways, CRM ecosystems, and margin optimization for the construction industry."
         path="/construction-finance"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

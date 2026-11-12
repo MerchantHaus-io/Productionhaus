@@ -35,6 +35,8 @@
     "/*.json",
     "/*.xml",
     "/*.txt",
+    "/*.md",
+    "/spa.html",
     "/*.csv",
     "/*.svg",
     "/*.png",

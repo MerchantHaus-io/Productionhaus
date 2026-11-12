@@ -292,6 +292,7 @@ export default function PaymentGatewayGuide() {
         title="How to Choose the Right Payment Gateway for Your Business"
         description="A practical, jargon-free guide to evaluating payment gateways — how your sales model shapes the choice, the questions that separate good gateways from expensive mistakes, and the red flags to walk away from."
         path="/payment-gateway-guide"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

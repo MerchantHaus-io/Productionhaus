@@ -306,6 +306,7 @@ export default function ThreeDS() {
         title="Understanding 3D Secure: Protecting Merchants and Customers"
         description="How 3D Secure authentication protects online card transactions by verifying cardholder identity before payment approval."
         path="/3ds"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

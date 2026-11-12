@@ -340,6 +340,7 @@ export default function Vamp() {
         title="Visa's VAMP: A New Era for Fraud and Dispute Management"
         description="Understanding Visa's new Acquirer Monitoring Program — the unified framework replacing VFMP and VDMP for fraud and dispute management."
         path="/vamp"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

@@ -10,6 +10,11 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  // The prerender build (scripts/prerender.mjs) bundles every dependency so the
+  // server bundle runs in plain Node without CommonJS/ESM interop surprises.
+  ssr: {
+    noExternal: true,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

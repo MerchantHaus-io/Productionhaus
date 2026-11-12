@@ -336,6 +336,7 @@ export default function ThreeDS2() {
         title="3D Secure 2: Security Without the Speed Bumps"
         description="How 3DS2 reduces fraud, lowers chargebacks, and boosts checkout conversion with frictionless authentication."
         path="/3ds2"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       />
       <style>{blogStyles}</style>
 

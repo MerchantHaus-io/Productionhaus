@@ -1,9 +1,10 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import type { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import { HelmetProvider } from "react-helmet-async";
 import LoadingScreen from "./components/LoadingScreen";
@@ -88,19 +89,15 @@ import QueryAPI from "./pages/QueryAPI";
 import ThreeStepRedirect from "./pages/ThreeStepRedirect";
 import Webhooks from "./pages/Webhooks";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Suspense fallback={<LoadingScreen />}>
-              <Routes>
+/**
+ * The route table, shared by the browser entry (BrowserRouter) and the
+ * build-time prerender (StaticRouter in src/entry-server.tsx), so every public
+ * route is shipped as real HTML that search engines and AI crawlers can read
+ * without running JavaScript.
+ */
+export const AppRoutes = () => (
+  <Suspense fallback={<LoadingScreen />}>
+    <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<AboutPage />} />
@@ -171,12 +168,43 @@ const App = () => (
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-  </HelmetProvider>
+  </Suspense>
+);
+
+/**
+ * Providers shared by the browser and the prerender. `helmetContext` is only
+ * passed by the prerender, which reads the collected <head> tags back out.
+ */
+export const AppProviders = ({
+  children,
+  helmetContext,
+}: {
+  children: ReactNode;
+  helmetContext?: Record<string, unknown>;
+}) => {
+  const [queryClient] = useState(() => new QueryClient());
+  return (
+    <HelmetProvider context={helmetContext}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            {children}
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  );
+};
+
+const App = () => (
+  <AppProviders>
+    <BrowserRouter>
+      <ScrollToTop />
+      <AppRoutes />
+    </BrowserRouter>
+  </AppProviders>
 );
 
 export default App;
