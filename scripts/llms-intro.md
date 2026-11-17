@@ -1,6 +1,6 @@
 # MerchantHaus
 
-> MerchantHaus (merchanthaus.io) gives U.S. merchants, ISOs, mid-market and enterprise organizations a unified payment gateway to accept credit and debit cards, ACH/eCheck, digital wallets, contactless and secure pay links online, in-store and on mobile. It is powered by NMI, priced month to month, and backed by U.S.-based human support.
+> MerchantHaus (merchanthaus.io) gives U.S. small and mid-size businesses a unified payment gateway to accept credit and debit cards, ACH/eCheck, digital wallets, contactless and secure pay links online, in-store and on mobile. It is powered by NMI, priced month to month, and backed by U.S.-based human support.
 
 Key facts:
 

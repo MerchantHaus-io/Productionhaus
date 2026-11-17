@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type HTMLAttributes, type Ref } from "react";
+import { useEffect, useRef, useState, type ElementType, type HTMLAttributes, type Ref } from "react";
 
 interface TypewriterRevealProps extends HTMLAttributes<HTMLElement> {
   text: string;
@@ -93,7 +93,7 @@ export function TypewriterReveal({
     };
   }, [delay, speed, startTyping, text]);
 
-  const Component = as as keyof JSX.IntrinsicElements;
+  const Component = as as ElementType;
   const caretVisible = showCaret && isTyping;
 
   return (

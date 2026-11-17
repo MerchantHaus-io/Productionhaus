@@ -33,7 +33,7 @@ export const organizationJsonLd = {
   image: DEFAULT_IMAGE,
   legalName: "MerchantHaus LLC",
   description:
-    "MerchantHaus provides payment gateway technology, merchant accounts and U.S.-based support for merchants, ISOs, mid-market and enterprise organizations: credit and debit cards, ACH/eCheck, digital wallets, contactless and pay links, online, in-store and on mobile. Powered by NMI. Payment processing services are provided by NMI Payments, a registered ISO/MSP of Merrick Bank, Woodbury, NY.",
+    "MerchantHaus provides payment gateway technology, merchant accounts and U.S.-based support for U.S. small and mid-size businesses: credit and debit cards, ACH/eCheck, digital wallets, contactless and pay links, online, in-store and on mobile. Powered by NMI. Payment processing services are provided by NMI Payments, a registered ISO/MSP of Merrick Bank, Woodbury, NY.",
   slogan: "Plug in, play and process",
   email: "support@merchanthaus.io",
   telephone: "+1-505-600-6042",

@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import heroVideo from "@/assets/Hero.webm";
+import { PRIMARY_CTA, SECONDARY_CTA } from "@/lib/cta";
 
 /*
  * Timing uses arbitrary properties: arbitrary values on the delay and duration
@@ -63,20 +64,19 @@ export const Hero = () => {
           </h1>
 
           <p className="mt-8 max-w-[640px] text-lg sm:text-[22px] sm:leading-8 font-light text-white/85">
-            Integrated payments. Enterprise performance.
+            Card, ACH and pay-link payments for your business. Live in about a week.
           </p>
           <p className="mt-3 max-w-xl text-base leading-[25px] font-light text-white/70">
-            Deploy a unified payment gateway in days — supporting cards, ACH, and secure pay links across every channel
-            your organization operates.
+            One payment gateway for U.S. small and mid-size businesses, in-store, online and on the go.
           </p>
         </div>
 
         <div className={`mt-10 flex flex-col gap-3 sm:flex-row ${actions.className}`} style={actions.style}>
           <Button asChild variant="light" size="lg">
-            <a href="https://ops-terminal.merchant.haus/contact">Get started</a>
+            <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
           </Button>
           <Button asChild variant="light-outline" size="lg">
-            <a href="/#contact">Contact sales</a>
+            <a href={SECONDARY_CTA.href}>{SECONDARY_CTA.label}</a>
           </Button>
         </div>
       </div>

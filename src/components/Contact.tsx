@@ -28,9 +28,10 @@ export const Contact = () => {
     const submission = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
+      // Phone and message are optional; empty fields are sent as empty strings.
+      phone: (formData.get("phone") as string) ?? "",
       company: (formData.get("company") as string) || null,
-      message: formData.get("message") as string,
+      message: (formData.get("message") as string) ?? "",
     };
 
     try {
@@ -79,11 +80,12 @@ export const Contact = () => {
         >
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <Label className="flex items-center text-foreground">
+              <Label htmlFor="contact-name" className="flex items-center text-foreground">
                 Name
                 <RequiredIndicator />
               </Label>
               <Input
+                id="contact-name"
                 name="name"
                 autoComplete="name"
                 placeholder="Your name"
@@ -92,11 +94,12 @@ export const Contact = () => {
               />
             </div>
             <div>
-              <Label className="flex items-center text-foreground">
+              <Label htmlFor="contact-email" className="flex items-center text-foreground">
                 Email
                 <RequiredIndicator />
               </Label>
               <Input
+                id="contact-email"
                 name="email"
                 type="email"
                 autoComplete="email"
@@ -106,23 +109,23 @@ export const Contact = () => {
               />
             </div>
             <div>
-              <Label className="flex items-center text-foreground">
-                Phone
-                <RequiredIndicator />
+              <Label htmlFor="contact-phone" className="flex items-center text-foreground">
+                Phone <span className="ml-1 font-normal text-muted-foreground">(optional)</span>
               </Label>
               <Input
+                id="contact-phone"
                 name="phone"
                 type="tel"
                 autoComplete="tel"
                 inputMode="tel"
                 placeholder="Your phone"
-                required
                 className="mt-1.5 bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
               />
             </div>
             <div>
-              <Label className="flex items-center text-foreground">Company</Label>
+              <Label htmlFor="contact-company" className="flex items-center text-foreground">Company</Label>
               <Input
+                id="contact-company"
                 name="company"
                 autoComplete="organization"
                 placeholder="Company name"
@@ -132,14 +135,13 @@ export const Contact = () => {
           </div>
 
           <div>
-            <Label className="flex items-center text-foreground">
-              Message
-              <RequiredIndicator />
+            <Label htmlFor="contact-message" className="flex items-center text-foreground">
+              Message <span className="ml-1 font-normal text-muted-foreground">(optional)</span>
             </Label>
             <Textarea
+              id="contact-message"
               name="message"
               placeholder="How can we help you?"
-              required
               rows={6}
               className="mt-1.5 resize-none bg-page-background text-page-foreground border-page-input placeholder:text-page-muted-foreground focus-visible:border-page-ring focus-visible:ring-page-ring/30"
             />

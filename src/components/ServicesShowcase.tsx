@@ -8,7 +8,7 @@ const services = [
     icon: Smartphone,
     title: "Mobile Payments",
     subtitle: "Accept Payments Anywhere",
-    description: "Enable seamless, secure payment experiences across every touchpoint — whether in the field, at the counter, or through remote channels. Our mobile solutions support digital wallets, QR codes, and in-app transactions for maximum operational flexibility. Fast, compliant, and built for organizations that need payment acceptance beyond fixed terminals.",
+    description: "Enable seamless, secure payment experiences across every touchpoint — whether in the field, at the counter, or through remote channels. Our mobile solutions support digital wallets, QR codes, and in-app transactions for maximum operational flexibility. Fast, compliant, and built for businesses that need payment acceptance beyond fixed terminals.",
     stats: ["Over 60% of digital transactions now originate from mobile devices", "Supports Apple Pay, Google Pay, Samsung Pay, and more", "PCI-compliant for maximum data security", "Real-time receipts and loyalty integration"],
     gradient: "from-neutral-dark to-red-600",
     shadow: "shadow-neutral-dark/30",
@@ -18,7 +18,7 @@ const services = [
     icon: ShieldAlert,
     title: "Advanced Fraud Detection",
     subtitle: "Built-In Vigilance, Zero Guesswork",
-    description: "Protect your organization and your customers with our multi-layered fraud prevention system. Leveraging machine learning and real-time analysis, we proactively identify and block suspicious activity — so threats never reach your bottom line. Gain peace of mind, fewer disputes, and more time to focus on growth.",
+    description: "Protect your business and your customers with our multi-layered fraud prevention system. Leveraging machine learning and real-time analysis, we proactively identify and block suspicious activity — so threats never reach your bottom line. Gain peace of mind, fewer disputes, and more time to focus on growth.",
     stats: ["70% of fraud attempts are blocked automatically by our systems", "Includes 3D Secure, custom rules, and velocity checks", "Alerts and auto-responses keep your team ahead of threats", "Chargeback rates drop significantly with AI-driven monitoring"],
     gradient: "from-green-600 to-emerald-700",
     shadow: "shadow-green-900/40",
@@ -55,8 +55,8 @@ const services = [
     icon: ShoppingCart,
     title: "Ecommerce Solutions",
     subtitle: "Your Digital Channel, Optimized",
-    description: "Launch and scale your online payment acceptance with enterprise-grade ecommerce tools. From payment gateways to customizable checkout experiences, we provide the infrastructure you need to sell, scale, and maintain compliance — without engineering overhead.",
-    stats: ["Pre-built integrations with leading commerce platforms", "Customizable checkout pages for any brand", "Secure, PCI-compliant transactions", "Organizations with advanced ecommerce tools see 35% faster growth"],
+    description: "Launch and scale your online payment acceptance with professional ecommerce tools. From payment gateways to customizable checkout experiences, we provide the infrastructure you need to sell, scale, and maintain compliance — without engineering overhead.",
+    stats: ["Pre-built integrations with leading commerce platforms", "Customizable checkout pages for any brand", "Secure, PCI-compliant transactions", "Businesses with advanced ecommerce tools see 35% faster growth"],
     gradient: "from-neutral-dark to-purple-800",
     shadow: "shadow-purple-900/40",
   },
@@ -65,7 +65,7 @@ const services = [
     title: "Data & Analytics",
     subtitle: "Insight-Driven Payment Operations",
     description: "Unlock powerful insights from your transaction data. Our analytics dashboard transforms complex data into actionable trends, letting you track volume, authorization rates, and performance metrics in real time — no spreadsheets, no guesswork.",
-    stats: ["Live dashboards with instant transaction and refund metrics", "Custom reporting by product, channel, or region", "Segmentation and portfolio analytics", "Organizations with analytics tools make decisions 2x faster"],
+    stats: ["Live dashboards with instant transaction and refund metrics", "Custom reporting by product, channel, or region", "Segmentation and portfolio analytics", "Businesses with analytics tools make decisions 2x faster"],
     gradient: "from-blue-600 to-cyan-500",
     shadow: "shadow-blue-900/40",
   },
@@ -265,7 +265,7 @@ const ServicesShowcase = () => {
         <div className="max-w-4xl mx-auto bg-primary text-primary-foreground text-center py-12 px-6 rounded-2xl shadow-2xl shadow-neutral-dark/40">
           <h2 className="text-3xl md:text-4xl font-bold font-ubuntu">Ready to Elevate Your Payment Operations?</h2>
           <p className="mt-4 text-lg max-w-2xl mx-auto text-white/90">
-            Join the leading organizations that trust MerchantHaus to deliver secure, reliable, and scalable payment infrastructure. Let's build the future of your payment operations together.
+            Join the businesses that trust MerchantHaus to deliver secure, reliable, and scalable payment infrastructure. Let's build the future of your payment operations together.
           </p>
           <Button 
             onClick={() => setIsContactOpen(true)}

@@ -418,7 +418,6 @@ export default function Vamp() {
 
           <p>VAMP's consolidation into one framework and the calculation of the new ratio bring several major implications for merchants:</p>
 
-          <data-table />
           <table className="data-table">
             <thead>
               <tr>

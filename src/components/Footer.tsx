@@ -26,7 +26,6 @@ const seals = [
   { src: "/trust-seals/pci-dss.png", alt: "PCI DSS Level 1 Compliant", label: "PCI DSS compliant" },
   { src: "/trust-seals/ssl-secure.png", alt: "SSL Secure 256-bit Encryption", label: "256-bit SSL" },
   { src: "/trust-seals/bank-security.png", alt: "Bank-Level Security", label: "Bank-level security" },
-  { src: "/trust-seals/247-support.png", alt: "24/7 Customer Support", label: "24/7 support" },
 ];
 
 const headingClass = "text-xs font-bold uppercase leading-4 tracking-[0.08em] text-brand-cream";
@@ -48,7 +47,7 @@ const Footer = () => {
               loading="lazy"
             />
             <p className="max-w-md text-sm font-light leading-relaxed text-white/75">
-              Empowering mid-market and enterprise organizations through tailored payment processing solutions.
+              Card, ACH and pay-link payments for U.S. small and mid-size businesses, with U.S.-based support.
             </p>
             <div className="space-y-3 text-sm">
               <div>
@@ -90,7 +89,7 @@ const Footer = () => {
 
           <div>
             <h4 className={`${headingClass} mb-6`}>Resources</h4>
-            <ul className="space-y-3.5 mb-10">
+            <ul className="space-y-3.5">
               {resourceLinks.map(({ href, label }) => (
                 <li key={label}>
                   <a href={href} className={linkClass}>
@@ -98,14 +97,6 @@ const Footer = () => {
                   </a>
                 </li>
               ))}
-            </ul>
-            <h4 className={`${headingClass} mb-6`}>Follow us</h4>
-            <ul className="space-y-3.5">
-              <li>
-                <a href="#" className={linkClass}>
-                  LinkedIn
-                </a>
-              </li>
             </ul>
           </div>
         </div>

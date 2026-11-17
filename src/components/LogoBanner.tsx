@@ -35,6 +35,18 @@ const logos: Logo[] = [
  */
 const LOGO_AREA_PX = 3600;
 
+/* Text-only: no logo files for these. The full list is on /supported-processors. */
+const processors = [
+  "Fiserv (First Data)",
+  "Worldpay",
+  "TSYS",
+  "Global Payments",
+  "Elavon",
+  "Chase Paymentech",
+  "Heartland",
+  "Paysafe",
+];
+
 const LogoMark = ({ logo }: { logo: Logo }) => {
   const width = Math.round(Math.sqrt(LOGO_AREA_PX * (logo.width / logo.height)));
   const imgProps = {
@@ -379,10 +391,10 @@ const LogoBanner = () => {
       <div className="px-6 md:px-16 lg:px-24 mb-10">
         <div className="text-center">
           <p className="font-ubuntu text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
-            Integrations & Partnerships
+            Platforms and processors
           </p>
           <p className="font-inter text-base md:text-lg text-muted-foreground max-w-2xl mx-auto font-light">
-            Plug into the platforms your business already trusts
+            Plug into the software you already use and the processor you already have
           </p>
         </div>
       </div>
@@ -408,12 +420,45 @@ const LogoBanner = () => {
         </div>
       </div>
 
-      {/* The rolling slots are decorative; name every partner once for assistive tech. */}
-      <ul className="sr-only">
-        {logos.map((logo) => (
-          <li key={logo.name}>{logo.name}</li>
-        ))}
-      </ul>
+      {/* Processors, as text. Hidden from assistive tech here because the list below names them. */}
+      <div className="px-6 md:px-16 lg:px-24 mt-10" aria-hidden="true">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-bold uppercase leading-4 tracking-[0.08em] text-muted-foreground mb-3">
+            Processors we connect to
+          </p>
+          <p className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm md:text-base leading-relaxed text-foreground">
+            {processors.map((name) => (
+              <span key={name} className="whitespace-nowrap">
+                {name}
+              </span>
+            ))}
+          </p>
+        </div>
+      </div>
+
+      {/* The rolling slots are decorative; name every partner and processor once for assistive tech. */}
+      <div className="sr-only">
+        <h3>Platforms and partners</h3>
+        <ul>
+          {logos.map((logo) => (
+            <li key={logo.name}>{logo.name}</li>
+          ))}
+        </ul>
+        <h3>Processors we connect to</h3>
+        <ul>
+          {processors.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="px-6 md:px-16 lg:px-24 mt-4 text-center">
+        <a
+          href="/supported-processors"
+          className="text-sm font-semibold text-primary-text underline underline-offset-4 hover:no-underline"
+        >
+          See all supported processors
+        </a>
+      </div>
     </section>
   );
 };

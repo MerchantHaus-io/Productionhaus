@@ -47,10 +47,19 @@ import TurndownService from 'https://esm.sh/turndown@7.2.0'
  *   slip through the path config are still returned untouched.
  */
 
+// Icons are dropped, except ones that carry meaning (role="img" + aria-label, such
+// as the pricing table's included / not-included marks): keep their label as text.
+// An <svg> has no text, so Turndown hands it to blankReplacement, not to a rule.
+const labelledIcon = (node: Element) =>
+  node.nodeName.toLowerCase() === 'svg' && node.getAttribute?.('role') === 'img'
+    ? node.getAttribute('aria-label') ?? ''
+    : ''
+
 const turndownService = new TurndownService({
   headingStyle: 'atx',
   codeBlockStyle: 'fenced',
   bulletListMarker: '-',
+  blankReplacement: (_content, node) => labelledIcon(node) || (node.isBlock ? '\n\n' : ''),
 })
 
 // Drop non-content elements entirely so they never reach the Markdown output.
