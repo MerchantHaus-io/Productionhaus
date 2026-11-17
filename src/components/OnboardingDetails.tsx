@@ -1,5 +1,6 @@
 import { Check, Lightbulb } from "lucide-react";
 import { Button } from "./ui/button";
+import { PRIMARY_CTA, SECONDARY_CTA } from "@/lib/cta";
 
 const turnaround = [
   { step: "Proposal, after we get your statement", time: "1 business day" },
@@ -41,7 +42,10 @@ export const OnboardingDetails = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid gap-14 lg:grid-cols-[2fr_3fr] lg:gap-16">
           <div>
-            <h2 className="font-display text-[40px] leading-[44px] text-heading mb-6">Turnaround times</h2>
+            <h2 className="font-display text-[40px] leading-[44px] text-heading mb-3">Turnaround times</h2>
+            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+              Most businesses are live in about a week. Higher-risk approvals take about two weeks.
+            </p>
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-foreground text-left">
@@ -109,10 +113,10 @@ export const OnboardingDetails = () => {
           </p>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Button asChild size="lg" variant="pill">
-              <a href="https://ops-terminal.merchant.haus/contact">Book a 15-minute call</a>
+              <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
             </Button>
             <Button asChild size="lg" variant="cta-outline">
-              <a href="#contact">Send us a statement</a>
+              <a href={SECONDARY_CTA.href}>{SECONDARY_CTA.label}</a>
             </Button>
           </div>
         </div>

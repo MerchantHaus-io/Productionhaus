@@ -3,14 +3,33 @@ import { Check, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import { PRIMARY_CTA } from "@/lib/cta";
 
-// Updated Pricing tiers including the new high-visibility Enterprise plan.
-const pricingPlans = [
+/* Annual billing is the monthly price for 12 months, less this discount. */
+const ANNUAL_DISCOUNT = 0.17;
+const ANNUAL_DISCOUNT_PERCENT = Math.round(ANNUAL_DISCOUNT * 100);
+
+const annualPriceFor = (monthlyPrice: number) => Math.round(monthlyPrice * 12 * (1 - ANNUAL_DISCOUNT));
+
+/* One name for the Shopify feature on every plan. */
+const SHOPIFY_FEATURE = "Shopify integration";
+
+type Plan = {
+  name: string;
+  description: string;
+  /** null for custom pricing. */
+  monthlyPrice: number | null;
+  features: string[];
+  limitations: string[];
+  gradient: string;
+  popular: boolean;
+};
+
+const pricingPlans: Plan[] = [
   {
     name: "Foundation",
-    description: "Essential fraud-first platform for growing organizations",
+    description: "Essential fraud-first platform for growing businesses",
     monthlyPrice: 59,
-    annualPrice: 588,
     features: [
       "Network Tokens (Customer Token Vault)",
       "Customer Vault secure storage",
@@ -24,7 +43,7 @@ const pricingPlans = [
     limitations: [
       "AI\u2011powered fraud scoring (Kount)",
       "Level III data optimization",
-      "Shopify premium integration",
+      SHOPIFY_FEATURE,
       "Priority support",
       "API access",
       "Dedicated account manager",
@@ -37,7 +56,6 @@ const pricingPlans = [
     name: "Growth",
     description: "Advanced fraud protection with AI decisioning",
     monthlyPrice: 99,
-    annualPrice: 986,
     features: [
       "Everything in Foundation",
       "Kount AI Fraud Manager",
@@ -47,7 +65,7 @@ const pricingPlans = [
     ],
     limitations: [
       "Level III data optimization",
-      "Shopify premium integration",
+      SHOPIFY_FEATURE,
       "Dedicated account manager",
       "White\u2011label options",
     ],
@@ -58,11 +76,10 @@ const pricingPlans = [
     name: "Scale",
     description: "Full fraud suite + advanced data optimization",
     monthlyPrice: 149,
-    annualPrice: 1484,
     features: [
       "Everything in Growth",
       "Level III Advantage (B2B optimization)",
-      "Shopify Integration",
+      SHOPIFY_FEATURE,
       "Custom analytics & reporting",
       "Dedicated account manager",
       "White\u2011label options",
@@ -73,9 +90,8 @@ const pricingPlans = [
   },
   {
     name: "Enterprise",
-    description: "Bespoke solutions for high-volume organizations",
-    monthlyPrice: "Custom",
-    annualPrice: "Custom",
+    description: "Bespoke solutions for high-volume businesses",
+    monthlyPrice: null,
     features: [
       "Everything in Scale",
       "Custom Fraud Rulesets",
@@ -90,6 +106,46 @@ const pricingPlans = [
     popular: false,
   },
 ];
+
+/* Comparison-table marks. The label is the accessible name, and the Markdown copies turn it into text. */
+const Included = () => (
+  <Check role="img" aria-label="Included" className="h-5 w-5 text-brand-slate-text inline" />
+);
+const NotIncluded = () => (
+  <X role="img" aria-label="Not included" className="h-5 w-5 text-muted-foreground inline" />
+);
+
+const PlanPrice = ({ monthlyPrice, billingCycle }: { monthlyPrice: number | null; billingCycle: "monthly" | "annual" }) => {
+  const amountClass = "text-[44px] font-extrabold leading-[44px] tracking-[-0.02em] text-foreground";
+
+  if (monthlyPrice === null) {
+    return <span className={amountClass}>Custom</span>;
+  }
+
+  const annualPrice = annualPriceFor(monthlyPrice);
+  const annualSaving = monthlyPrice * 12 - annualPrice;
+
+  if (billingCycle === "annual") {
+    return (
+      <>
+        <span className={amountClass}>${Math.round(annualPrice / 12)}</span>
+        <span className="text-base text-muted-foreground">/mo</span>
+        <div className="mt-1 text-xs text-muted-foreground">${annualPrice.toLocaleString("en-US")} billed annually</div>
+        <div className="mt-1 text-xs font-semibold text-brand-slate-text">Save ${annualSaving.toLocaleString("en-US")}</div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <span className={amountClass}>${monthlyPrice}</span>
+      <span className="text-base text-muted-foreground">/month</span>
+      <div className="mt-1 text-xs text-muted-foreground">
+        or ${annualPrice.toLocaleString("en-US")}/yr, save {ANNUAL_DISCOUNT_PERCENT}%
+      </div>
+    </>
+  );
+};
 
 export const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
@@ -111,7 +167,7 @@ export const PricingSection = () => {
               <TabsTrigger value="annual">
                 Annual
                 <span className="rounded-pill bg-brand-slate px-2 py-0.5 text-xs font-semibold text-brand-slate-foreground">
-                  Save 17%
+                  Save {ANNUAL_DISCOUNT_PERCENT}%
                 </span>
               </TabsTrigger>
             </TabsList>
@@ -136,39 +192,31 @@ export const PricingSection = () => {
                 <h3 className="text-[22px] font-bold leading-7 tracking-[-0.015em] text-heading">{plan.name}</h3>
                 <p className="mt-2 min-h-[40px] text-sm text-muted-foreground">{plan.description}</p>
                 <div className="mt-6">
-                  {typeof plan.monthlyPrice === "number" ? (
-                    <>
-                      <span className="text-[44px] font-extrabold leading-[44px] tracking-[-0.02em] text-foreground">
-                        ${billingCycle === "monthly" ? plan.monthlyPrice : Math.round((plan.annualPrice as number) / 12)}
-                      </span>
-                      <span className="text-base text-muted-foreground">/month</span>
-                      {billingCycle === "annual" && (
-                        <div className="mt-1 text-xs text-muted-foreground">${plan.annualPrice} billed annually</div>
-                      )}
-                    </>
-                  ) : (
-                    <span className="text-[44px] font-extrabold leading-[44px] tracking-[-0.02em] text-foreground">
-                      Custom
-                    </span>
-                  )}
+                  <PlanPrice monthlyPrice={plan.monthlyPrice} billingCycle={billingCycle} />
                 </div>
               </div>
               <ul className="flex-1 space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm text-foreground">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-slate-text" aria-hidden="true" />
-                    {feature}
+                    <span>
+                      <span className="sr-only">Included: </span>
+                      {feature}
+                    </span>
                   </li>
                 ))}
                 {plan.limitations.map((limitation) => (
                   <li key={limitation} className="flex items-start gap-2 text-sm text-muted-foreground opacity-60">
-                    <X className="mt-0.5 h-5 w-5 shrink-0" aria-label="Not included:" />
-                    {limitation}
+                    <X className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                    <span>
+                      <span className="sr-only">Not included: </span>
+                      {limitation}
+                    </span>
                   </li>
                 ))}
               </ul>
               <Button asChild size="lg" variant={plan.popular ? "pill" : "cta-outline"} className="w-full">
-                <a href="/#contact">{plan.name === "Enterprise" ? "Contact sales" : "Get started"}</a>
+                <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
               </Button>
             </div>
           ))}
@@ -181,9 +229,9 @@ export const PricingSection = () => {
             <table className="w-full border-collapse min-w-[800px]">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-4 px-4 font-semibold">Features</th>
+                  <th scope="col" className="text-left py-4 px-4 font-semibold">Features</th>
                   {pricingPlans.map((plan) => (
-                    <th key={plan.name} className="text-center py-4 px-4 font-semibold">
+                    <th key={plan.name} scope="col" className="text-center py-4 px-4 font-semibold">
                       {plan.name}
                     </th>
                   ))}
@@ -191,25 +239,25 @@ export const PricingSection = () => {
               </thead>
               <tbody>
                 <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
-                  <td className="py-4 px-4">AI Fraud Detection (Kount)</td>
-                  <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
+                  <th scope="row" className="py-4 px-4 text-left font-normal">AI Fraud Detection (Kount)</th>
+                  <td className="text-center py-4 px-4"><NotIncluded /></td>
+                  <td className="text-center py-4 px-4"><Included /></td>
+                  <td className="text-center py-4 px-4"><Included /></td>
+                  <td className="text-center py-4 px-4"><Included /></td>
                 </tr>
                 <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
-                  <td className="py-4 px-4">Support Level</td>
+                  <th scope="row" className="py-4 px-4 text-left font-normal">Support Level</th>
                   <td className="text-center py-4 px-4 text-sm">Email</td>
                   <td className="text-center py-4 px-4 text-sm">Priority</td>
                   <td className="text-center py-4 px-4 text-sm">Dedicated AM</td>
                   <td className="text-center py-4 px-4 text-sm font-semibold">24/7 Engineering</td>
                 </tr>
                 <tr className="hover:bg-muted/20 transition-colors">
-                  <td className="py-4 px-4">Custom Processing Rates</td>
-                  <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><X className="h-5 w-5 text-muted-foreground inline" /></td>
-                  <td className="text-center py-4 px-4"><Check className="h-5 w-5 text-brand-slate-text inline" /></td>
+                  <th scope="row" className="py-4 px-4 text-left font-normal">Custom Processing Rates</th>
+                  <td className="text-center py-4 px-4"><NotIncluded /></td>
+                  <td className="text-center py-4 px-4"><NotIncluded /></td>
+                  <td className="text-center py-4 px-4"><NotIncluded /></td>
+                  <td className="text-center py-4 px-4"><Included /></td>
                 </tr>
               </tbody>
             </table>

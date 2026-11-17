@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "./ui/button";
 import shieldLogo from "@/assets/shield.webp";
+import { PRIMARY_CTA } from "@/lib/cta";
 
 type Solution = {
   icon: LucideIcon;
@@ -39,7 +40,7 @@ const solutions: Solution[] = [
     description:
       "Accept all major credit cards, debit cards, and digital wallets with competitive rates and rapid settlements.",
     fullDescription:
-      "Our comprehensive payment processing solution enables organizations to accept all major credit cards, debit cards, and digital wallets seamlessly. With competitive transaction rates, rapid settlements, and advanced reconciliation tools, you can streamline your payment operations and improve cash flow. Our platform supports EMV chip cards, contactless payments, and mobile wallets like Apple Pay and Google Pay. Get real-time reporting, automated invoicing, and dedicated support available 24/7.",
+      "Our comprehensive payment processing solution enables businesses to accept all major credit cards, debit cards, and digital wallets seamlessly. With competitive transaction rates, rapid settlements, and advanced reconciliation tools, you can streamline your payment operations and improve cash flow. Our platform supports EMV chip cards, contactless payments, and mobile wallets like Apple Pay and Google Pay. Get real-time reporting and automated invoicing.",
     borderColor: "border-foreground",
     buttonColor: "bg-primary hover:bg-primary/90",
     bannerImage: "/card-banners/card1.webp",
@@ -47,7 +48,7 @@ const solutions: Solution[] = [
   {
     icon: ShieldAlert,
     title: "Advanced fraud detection",
-    description: "Protect your organization and your customers with our multi-layered fraud prevention system.",
+    description: "Protect your business and your customers with our multi-layered fraud prevention system.",
     fullDescription:
       "Stay protected with our multi-layered fraud prevention system featuring AI-powered transaction monitoring, real-time risk assessment, and advanced encryption protocols. Our system automatically flags suspicious activities, uses machine learning to detect patterns, and provides customizable security rules. Features include 3D Secure authentication, tokenization, PCI DSS Level 1 compliance, and chargeback management tools. Reduce fraud losses while maintaining a frictionless transaction experience with intelligent risk scoring.",
     borderColor: "border-green-600",
@@ -57,9 +58,9 @@ const solutions: Solution[] = [
   {
     icon: Smartphone,
     title: "Mobile solutions",
-    description: "Process payments anywhere with our mobile-ready technology and POS systems for distributed operations.",
+    description: "Process payments anywhere with our mobile-ready technology and POS systems for businesses on the move.",
     fullDescription:
-      "Transform any smartphone or tablet into a powerful point-of-sale system with our mobile payment solutions. Built for organizations with distributed operations, our mobile POS accepts payments anywhere with reliable offline mode capabilities. Features include inventory management, customer relationship tools, digital receipts, tip management, and split payment options. Compatible with Bluetooth card readers and supports both iOS and Android devices. Ideal for field service providers, events, distributed teams, and multi-location organizations.",
+      "Transform any smartphone or tablet into a powerful point-of-sale system with our mobile payment solutions. Built for businesses with staff on the move, our mobile POS accepts payments anywhere with reliable offline mode capabilities. Features include inventory management, customer relationship tools, digital receipts, tip management, and split payment options. Compatible with Bluetooth card readers and supports both iOS and Android devices. Ideal for field service providers, events, distributed teams, and multi-location businesses.",
     borderColor: "border-orange-400",
     buttonColor: "bg-orange-400 hover:bg-orange-400/90",
     bannerImage: "/card-banners/card4.webp",
@@ -87,9 +88,9 @@ const solutions: Solution[] = [
   {
     icon: ShoppingCart,
     title: "Ecommerce solutions",
-    description: "Launch and scale your online payment acceptance with enterprise-grade ecommerce tools.",
+    description: "Launch and scale your online payment acceptance with professional ecommerce tools.",
     fullDescription:
-      "Launch and scale your online payment acceptance with enterprise-grade ecommerce tools that keep you agile and secure. From payment gateways to customizable checkout experiences, we give you everything you need to sell, scale, and maintain compliance — without the engineering overhead. Features include pre-built integrations with leading commerce platforms, customizable checkout pages for any brand, secure PCI-compliant transactions, and advanced tools that help organizations grow 35% faster.",
+      "Launch and scale your online payment acceptance with professional ecommerce tools that keep you agile and secure. From payment gateways to customizable checkout experiences, we give you everything you need to sell, scale, and maintain compliance — without the engineering overhead. Features include pre-built integrations with leading commerce platforms, customizable checkout pages for any brand, secure PCI-compliant transactions, and advanced tools that help businesses grow 35% faster.",
     borderColor: "border-purple-600",
     buttonColor: "bg-purple-600 hover:bg-purple-600/90",
     bannerImage: "/card-banners/card7.webp",
@@ -99,7 +100,7 @@ const solutions: Solution[] = [
     title: "Data and analytics",
     description: "Unlock powerful insights from your transaction data with real-time analytics.",
     fullDescription:
-      "Unlock powerful insights from your transaction data. Our analytics dashboard transforms complex data into actionable trends, letting you track volume, authorization rates, and performance metrics in real time — no spreadsheets, no guesswork. Features include live dashboards with instant transaction and refund metrics, custom reporting by product, channel, or region, segmentation and portfolio analytics. Organizations with analytics tools make decisions 2x faster.",
+      "Unlock powerful insights from your transaction data. Our analytics dashboard transforms complex data into actionable trends, letting you track volume, authorization rates, and performance metrics in real time — no spreadsheets, no guesswork. Features include live dashboards with instant transaction and refund metrics, custom reporting by product, channel, or region, segmentation and portfolio analytics. Businesses with analytics tools make decisions 2x faster.",
     borderColor: "border-blue-600",
     buttonColor: "bg-blue-600 hover:bg-blue-600/90",
     bannerImage: "/card-banners/card10.webp",
@@ -136,6 +137,20 @@ const solutions: Solution[] = [
   },
 ];
 
+/* The home page features five services; the full list lives on /services. */
+const FEATURED_TITLES = [
+  "Payment processing",
+  "Advanced fraud detection",
+  "Ecommerce solutions",
+  "Subscription billing",
+  "Chargeback management",
+];
+const featuredSolutions = FEATURED_TITLES.map((title) => {
+  const solution = solutions.find((s) => s.title === title);
+  if (!solution) throw new Error(`Featured service "${title}" is missing from the solutions list`);
+  return solution;
+});
+
 export const Solutions = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [typewriterText, setTypewriterText] = useState("");
@@ -152,7 +167,7 @@ export const Solutions = () => {
   // Typewriter effect for modal title
   useEffect(() => {
     if (selectedCard !== null) {
-      const fullText = solutions[selectedCard].title;
+      const fullText = featuredSolutions[selectedCard].title;
       setTypewriterText("");
       let index = 0;
 
@@ -244,10 +259,6 @@ export const Solutions = () => {
     setSelectedCard(null);
   };
 
-  const handleGetStarted = () => {
-    closeFullscreen();
-    window.location.href = "/#contact";
-  };
 
   return (
     <section id="services" className="py-24 px-6 md:px-16 lg:px-24 bg-background relative overflow-visible border-t border-border">
@@ -267,10 +278,10 @@ export const Solutions = () => {
             Core services
           </h2>
           <p className="text-lg leading-[27px] text-muted-foreground max-w-2xl mx-auto mb-8 font-light">
-            Comprehensive payment solutions designed to help your organization thrive in today's digital economy.
+            Comprehensive payment solutions designed to help your business thrive in today's digital economy.
           </p>
           <Button asChild variant="cta" size="lg">
-            <a href="/quote">Get a quote</a>
+            <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
           </Button>
         </div>
         <div className="relative">
@@ -281,7 +292,7 @@ export const Solutions = () => {
             onMouseLeave={handleMarqueeMouseLeave}
           >
             <div className="marquee-content flex gap-4">
-              {solutions.map((solution, index) => {
+              {featuredSolutions.map((solution, index) => {
                 const Icon = solution.icon;
                 return (
                   <article
@@ -327,6 +338,15 @@ export const Solutions = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
+          <div className="mt-8 text-center">
+            <a
+              href="/services"
+              className="inline-flex items-center gap-1.5 rounded-sm text-base font-semibold text-primary-text ring-offset-background hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              See all services
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
         </div>
         {/* Services Banner Link. The banner's top edge is transparent, so the shadow is a
             drop-shadow filter that follows its shape rather than a box-shadow rectangle. */}
@@ -355,7 +375,7 @@ export const Solutions = () => {
             style={{ animation: 'solutionsFadeUp var(--dur-slow) var(--ease-out)' }}
           >
             {/* Banner Image in Modal */}
-            {solutions[selectedCard].bannerImage && (
+            {featuredSolutions[selectedCard].bannerImage && (
               /*
                * The fullscreen modal banner image should occupy less vertical
                * space relative to its width. Changing the aspect ratio from
@@ -365,8 +385,8 @@ export const Solutions = () => {
                */
               <div className="solutions-modal-banner relative w-full aspect-[3/1] overflow-hidden shrink-0">
                 <img
-                  src={solutions[selectedCard].bannerImage}
-                  alt={solutions[selectedCard].title}
+                  src={featuredSolutions[selectedCard].bannerImage}
+                  alt={featuredSolutions[selectedCard].title}
                   className="absolute inset-0 h-full w-full object-cover"
                   draggable={false}
                 />
@@ -384,7 +404,7 @@ export const Solutions = () => {
               {/* Large icon */}
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-muted">
                 {(() => {
-                  const Icon = solutions[selectedCard].icon;
+                  const Icon = featuredSolutions[selectedCard].icon;
                   return <Icon className="h-7 w-7 text-foreground" aria-hidden="true" />;
                 })()}
               </div>
@@ -394,7 +414,7 @@ export const Solutions = () => {
                 <span className="animate-pulse">|</span>
               </h2>
               <p className="text-base leading-[25px] font-light text-muted-foreground">
-                {solutions[selectedCard].fullDescription}
+                {featuredSolutions[selectedCard].fullDescription}
               </p>
             </div>
             {/* CTA Buttons - Fixed at bottom */}
@@ -403,8 +423,8 @@ export const Solutions = () => {
                 <Button variant="outline" onClick={closeFullscreen} className="sm:order-1">
                   Close
                 </Button>
-                <Button onClick={handleGetStarted} className="sm:order-2">
-                  Get started
+                <Button asChild className="sm:order-2">
+                  <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
                 </Button>
               </div>
             </div>

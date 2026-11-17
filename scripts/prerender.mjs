@@ -86,7 +86,17 @@ const decode = (s) =>
 const attr = (head, re) => decode((head.match(re) || [])[1] || "");
 
 // ─── 3. Markdown ────────────────────────────────────────────────────────────
-const turndown = new TurndownService({ headingStyle: "atx", codeBlockStyle: "fenced", bulletListMarker: "-" });
+// Icons are dropped, except ones that carry meaning (role="img" + aria-label, such
+// as the pricing table's included / not-included marks): keep their label as text.
+// An <svg> has no text, so Turndown hands it to blankReplacement, not to a rule.
+const labelledIcon = (node) =>
+  node.nodeName.toLowerCase() === "svg" && node.getAttribute?.("role") === "img" ? node.getAttribute("aria-label") || "" : "";
+const turndown = new TurndownService({
+  headingStyle: "atx",
+  codeBlockStyle: "fenced",
+  bulletListMarker: "-",
+  blankReplacement: (_content, node) => labelledIcon(node) || (node.isBlock ? "\n\n" : ""),
+});
 turndown.remove(["script", "style", "noscript", "nav", "header", "footer", "aside", "form", "svg", "iframe", "button", "video"]);
 turndown.addRule("hidden-dialogs", {
   filter: (node) => node.getAttribute?.("role") === "dialog" || node.getAttribute?.("aria-hidden") === "true",

@@ -19,7 +19,7 @@ const Index = () => {
     <div className="relative min-h-screen bg-background">
       <PageSEO
         title="Plug In, Play and Process"
-        description="Empowering merchants and ISOs through tailored retail solutions for payment processing. Accept cards, ACH, and secure pay links online, in-store, or on the go."
+        description="Card, ACH and pay-link payments for U.S. small and mid-size businesses. Accept payments online, in-store or on the go, and go live in about a week."
         path="/"
       />
       <Header />
@@ -29,16 +29,16 @@ const Index = () => {
           <LogoBanner />
         </Reveal>
         <Reveal direction="up" delay={100}>
-          <ValueStats />
-        </Reveal>
-        <Reveal direction="up" delay={100}>
-          <Solutions />
-        </Reveal>
-        <Reveal direction="up" delay={100}>
           <HowItWorks />
         </Reveal>
         <Reveal direction="up" delay={100}>
           <OnboardingDetails />
+        </Reveal>
+        <Reveal direction="up" delay={100}>
+          <ValueStats />
+        </Reveal>
+        <Reveal direction="up" delay={100}>
+          <Solutions />
         </Reveal>
         <Reveal direction="up" delay={100}>
           <VampBlogBanner />
