@@ -1,42 +1,43 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, createRoutesFromChildren, matchRoutes } from "react-router-dom";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import { HelmetProvider } from "react-helmet-async";
-import LoadingScreen from "./components/LoadingScreen";
+import { RouteProgress } from "./components/RouteProgress";
+import { isLazyPage, lazyPage } from "./lib/lazyPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 
 /**
  * Main site pages - lazy loaded for initial bundle optimization
  */
-const Index = lazy(() => import("./pages/Index"));
-const Services = lazy(() => import("./pages/Services"));
-const Blog = lazy(() => import("./pages/Blog"));
-const Vamp = lazy(() => import("./pages/Vamp"));
-const Prediction2026Article = lazy(() => import("./pages/Prediction2026Article"));
-const PaymentGatewayGuide = lazy(() => import("./pages/PaymentGatewayGuide"));
-const SwipeFeeSettlement = lazy(() => import("./pages/SwipeFeeSettlement"));
-const ThreeDS = lazy(() => import("./pages/ThreeDS"));
-const ThreeDS2 = lazy(() => import("./pages/ThreeDS2"));
-const PaymentsSurvey2025 = lazy(() => import("./pages/PaymentsSurvey2025"));
-const TapToMobile = lazy(() => import("./pages/TapToMobile"));
-const ConstructionFinance = lazy(() => import("./pages/ConstructionFinance"));
-const AboutPage = lazy(() => import("./pages/AboutPage"));
-const Terms = lazy(() => import("./pages/Terms"));
-const Privacy = lazy(() => import("./pages/Privacy"));
-const Apply = lazy(() => import("./pages/Apply"));
-const Security = lazy(() => import("./pages/Security"));
-const ComingSoon = lazy(() => import("./pages/ComingSoon"));
-const SupportedProcessors = lazy(() => import("./pages/SupportedProcessors"));
-const DeviceCatalog = lazy(() => import("./pages/DeviceCatalog"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-const Quote = lazy(() => import("./pages/Quote"));
-const Todos = lazy(() => import("./pages/Todos"));
-const Pipeline = lazy(() => import("./pages/Pipeline"));
+const Index = lazyPage(() => import("./pages/Index"));
+const Services = lazyPage(() => import("./pages/Services"));
+const Blog = lazyPage(() => import("./pages/Blog"));
+const Vamp = lazyPage(() => import("./pages/Vamp"));
+const Prediction2026Article = lazyPage(() => import("./pages/Prediction2026Article"));
+const PaymentGatewayGuide = lazyPage(() => import("./pages/PaymentGatewayGuide"));
+const SwipeFeeSettlement = lazyPage(() => import("./pages/SwipeFeeSettlement"));
+const ThreeDS = lazyPage(() => import("./pages/ThreeDS"));
+const ThreeDS2 = lazyPage(() => import("./pages/ThreeDS2"));
+const PaymentsSurvey2025 = lazyPage(() => import("./pages/PaymentsSurvey2025"));
+const TapToMobile = lazyPage(() => import("./pages/TapToMobile"));
+const ConstructionFinance = lazyPage(() => import("./pages/ConstructionFinance"));
+const AboutPage = lazyPage(() => import("./pages/AboutPage"));
+const Terms = lazyPage(() => import("./pages/Terms"));
+const Privacy = lazyPage(() => import("./pages/Privacy"));
+const Apply = lazyPage(() => import("./pages/Apply"));
+const Security = lazyPage(() => import("./pages/Security"));
+const ComingSoon = lazyPage(() => import("./pages/ComingSoon"));
+const SupportedProcessors = lazyPage(() => import("./pages/SupportedProcessors"));
+const DeviceCatalog = lazyPage(() => import("./pages/DeviceCatalog"));
+const NotFound = lazyPage(() => import("./pages/NotFound"));
+const Quote = lazyPage(() => import("./pages/Quote"));
+const Todos = lazyPage(() => import("./pages/Todos"));
+const Pipeline = lazyPage(() => import("./pages/Pipeline"));
 
 /**
  * Developer Guides and Merchant Portal pages - directly imported for instant navigation
@@ -95,9 +96,8 @@ import Webhooks from "./pages/Webhooks";
  * route is shipped as real HTML that search engines and AI crawlers can read
  * without running JavaScript.
  */
-export const AppRoutes = () => (
-  <Suspense fallback={<LoadingScreen />}>
-    <Routes>
+const routeElements = (
+  <>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<AboutPage />} />
@@ -167,7 +167,34 @@ export const AppRoutes = () => (
               <Route path="/pipeline" element={<Pipeline />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
-            </Routes>
+  </>
+);
+
+const routeObjects = createRoutesFromChildren(routeElements.props.children);
+
+/** Start downloading the page for `pathname`, if it's a lazy page. Resolves when it's ready. */
+// The route table lives here because scripts/prerender.mjs reads routes from this file.
+// eslint-disable-next-line react-refresh/only-export-components
+export const preloadRoute = async (pathname: string) => {
+  const matches = matchRoutes(routeObjects, pathname) ?? [];
+  await Promise.all(
+    matches.map(({ route }) => {
+      const type = (route.element as JSX.Element | undefined)?.type;
+      return isLazyPage(type) ? type.preload().catch(() => undefined) : undefined;
+    }),
+  );
+};
+
+/*
+ * Only reached if a page suspends outside a navigation transition (the first
+ * page is preloaded in main.tsx, and navigations keep the old page on screen).
+ * It holds the page's space quietly; <RouteProgress /> shows that work is happening.
+ */
+const PageFallback = () => <div className="min-h-screen bg-background" aria-busy="true" />;
+
+export const AppRoutes = () => (
+  <Suspense fallback={<PageFallback />}>
+    <Routes>{routeElements}</Routes>
   </Suspense>
 );
 
@@ -198,9 +225,27 @@ export const AppProviders = ({
   );
 };
 
+/** Preload a page as soon as the visitor points at, focuses or touches a link to it. */
+const PreloadOnIntent = () => {
+  useEffect(() => {
+    const onIntent = (event: Event) => {
+      const link = (event.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!link || link.target === "_blank" || link.origin !== window.location.origin) return;
+      if (link.pathname !== window.location.pathname) void preloadRoute(link.pathname);
+    };
+    const events = ["pointerover", "focusin", "touchstart"] as const;
+    events.forEach((name) => document.addEventListener(name, onIntent, { passive: true }));
+    return () => events.forEach((name) => document.removeEventListener(name, onIntent));
+  }, []);
+  return null;
+};
+
 const App = () => (
   <AppProviders>
-    <BrowserRouter>
+    {/* v7_startTransition keeps the current page on screen while the next one loads. */}
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <RouteProgress />
+      <PreloadOnIntent />
       <ScrollToTop />
       <AppRoutes />
     </BrowserRouter>
