@@ -4,6 +4,8 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { PRIMARY_CTA } from "@/lib/cta";
+import { RevealGroup, RevealWords } from "@/components/Reveal";
+import { reveal, revealChild } from "@/lib/reveal";
 
 /* Annual billing is the monthly price for 12 months, less this discount. */
 const ANNUAL_DISCOUNT = 0.17;
@@ -151,27 +153,29 @@ export const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
   return (
-    <section id="pricing" className="scroll-mt-20 py-24 md:py-32 bg-background border-t border-border">
+    <RevealGroup as="section" stagger={110} id="pricing" className="scroll-mt-20 py-24 md:py-32 bg-background border-t border-border">
       <div className="px-6 md:px-16 lg:px-24">
         <div className="text-center mb-12">
-          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
-            Transparent pricing
+          <h2 {...reveal("words")} className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
+            <RevealWords text="Transparent pricing" />
           </h2>
-          <p className="text-lg leading-[27px] font-light text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p {...reveal("up", 120)} className="text-lg leading-[27px] font-light text-muted-foreground max-w-2xl mx-auto mb-8">
             Every plan includes our fraud-first foundation: network tokens, customer vault and basic fraud prevention. Custom volume pricing available.
           </p>
 
-          <Tabs value={billingCycle} onValueChange={(v) => setBillingCycle(v as "monthly" | "annual")} className="inline-flex">
-            <TabsList>
-              <TabsTrigger value="monthly">Monthly</TabsTrigger>
-              <TabsTrigger value="annual">
-                Annual
-                <span className="rounded-pill bg-brand-slate px-2 py-0.5 text-xs font-semibold text-brand-slate-foreground">
-                  Save {ANNUAL_DISCOUNT_PERCENT}%
-                </span>
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <div {...reveal("fade", 200)}>
+            <Tabs value={billingCycle} onValueChange={(v) => setBillingCycle(v as "monthly" | "annual")} className="inline-flex">
+              <TabsList>
+                <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                <TabsTrigger value="annual">
+                  Annual
+                  <span className="rounded-pill bg-brand-slate px-2 py-0.5 text-xs font-semibold text-brand-slate-foreground">
+                    Save {ANNUAL_DISCOUNT_PERCENT}%
+                  </span>
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </div>
 
         {/* Plan cards are counter-colour surfaces: navy on the cream page, cream on the navy page. */}
@@ -179,14 +183,15 @@ export const PricingSection = () => {
           {pricingPlans.map((plan) => (
             <div
               key={plan.name}
+              {...reveal("up")}
               className={`inverse relative flex flex-col gap-6 rounded-2xl bg-card p-8 ${
                 plan.popular ? "border-2 border-brand-slate shadow-marketing" : "border border-border"
               }`}
             >
               {plan.popular && (
-                <Badge variant="slate" className="absolute right-6 top-6">
-                  Popular
-                </Badge>
+                <span {...revealChild("pop", 420)} className="absolute right-6 top-6">
+                  <Badge variant="slate">Popular</Badge>
+                </span>
               )}
               <div>
                 <h3 className="text-[22px] font-bold leading-7 tracking-[-0.015em] text-heading">{plan.name}</h3>
@@ -223,7 +228,7 @@ export const PricingSection = () => {
         </div>
 
         {/* Feature Comparison Table */}
-        <div className="mt-16 animate-fade-in" style={{ animationDelay: "400ms" }}>
+        <div {...reveal("up")} className="mt-16">
           <h3 className="text-2xl font-bold text-center mb-8">Feature comparison</h3>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse min-w-[800px]">
@@ -264,6 +269,6 @@ export const PricingSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </RevealGroup>
   );
 };

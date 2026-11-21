@@ -114,12 +114,13 @@ All colors MUST be HSL.
 
   /* Dark theme: navy grounds, white body text, cream headings */
   .dark {
-    --background: 205 92% 15%;
+    /* Deeper navy than the light-mode brand navy (15%): 15% read slightly washed out as a full-page ground. */
+    --background: 205 92% 11%;
     --foreground: 0 0% 100%;
     --heading: 39 80% 92%;
-    --card: 205 95% 16%;
+    --card: 205 95% 13%;
     --card-foreground: 0 0% 100%;
-    --popover: 205 80% 20%;
+    --popover: 205 80% 16%;
     --popover-foreground: 0 0% 100%;
     --primary: 355 76% 44%;
     --primary-foreground: 0 0% 100%;
@@ -127,7 +128,7 @@ All colors MUST be HSL.
     --primary-text: 355 85% 74%;
     --secondary: 206 71% 26%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 205 76% 21%;
+    --muted: 205 76% 17%;
     --muted-foreground: 0 0% 75%;
     --accent: 206 71% 26%;
     --accent-foreground: 0 0% 100%;
@@ -136,7 +137,7 @@ All colors MUST be HSL.
     --attention-foreground: 0 0% 7%;
     --destructive: 12 90% 70%;
     --destructive-foreground: 0 0% 7%;
-    --border: 207 60% 29%;
+    --border: 207 60% 25%;
     --input: 205 41% 57%;
     --ring: 0 0% 100%;
     --brand-slate-text: 206 48% 70%;
@@ -656,6 +657,120 @@ All colors MUST be HSL.
     mask-mode: alpha;
   }
 }
+
+/* ── Scroll reveals ──────────────────────────────────────────────────────────
+   Placed by src/components/Reveal.tsx and armed by useRevealGroup. Nothing here
+   hides content until the group carries data-reveal-armed, which only happens
+   in a browser that allows motion, so prerendered HTML and print are untouched.
+
+   Animations use the individual `translate`/`scale` properties and fill
+   `backwards` only: they never fight an element's own Tailwind `transform`, and
+   once they end the element is back to its own opacity, hover effects and all.
+   Delay = place in the arriving batch × stagger + the item's own extra delay;
+   a child then adds its own --reveal-child-extra. */
+
+@keyframes reveal-up { from { opacity: 0; translate: 0 var(--reveal-distance, 28px); } }
+@keyframes reveal-down { from { opacity: 0; translate: 0 calc(var(--reveal-distance, 28px) * -1); } }
+@keyframes reveal-left { from { opacity: 0; translate: var(--reveal-distance, 40px) 0; } }
+@keyframes reveal-right { from { opacity: 0; translate: calc(var(--reveal-distance, 40px) * -1) 0; } }
+@keyframes reveal-scale { from { opacity: 0; scale: 0.94; } }
+@keyframes reveal-fade { from { opacity: 0; } }
+@keyframes reveal-pop {
+  0% { opacity: 0; scale: 0.4; }
+  60% { opacity: 1; scale: 1.12; }
+}
+@keyframes reveal-draw { from { scale: 0 1; } }
+@keyframes reveal-rise { from { translate: 0 110%; } }
+
+/* A word's clip for reveal-rise; the padding keeps descenders and italics in view. */
+.reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.06em 0.04em 0.16em;
+  margin: -0.06em -0.04em -0.16em;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* Armed: every item holds, paused, on its first keyframe, which is what hides
+     it. Revealing only lets it run. Opacity is never set as a plain value, so
+     an item's own `transition` classes are never triggered by the reveal. */
+  [data-reveal-armed][data-reveal],
+  [data-reveal-armed] [data-reveal],
+  [data-reveal-armed] [data-reveal-child] {
+    animation-name: reveal-up;
+    animation-duration: var(--reveal-duration, 760ms);
+    animation-timing-function: var(--ease-out);
+    animation-fill-mode: backwards;
+    animation-play-state: paused;
+    animation-delay: min(
+      calc(var(--reveal-order, 0) * var(--reveal-stagger, 90ms) + var(--reveal-extra, 0ms)),
+      1800ms
+    );
+  }
+
+  /* As specific as the armed rule above, and after it, so it wins. */
+  [data-reveal-armed][data-revealed],
+  [data-reveal-armed] [data-revealed],
+  [data-reveal-armed] [data-revealed] [data-reveal-child],
+  [data-reveal-armed][data-revealed] [data-reveal-child] {
+    animation-play-state: running;
+  }
+
+  [data-reveal-armed][data-reveal="down"],
+  [data-reveal-armed] [data-reveal="down"] { animation-name: reveal-down; }
+  [data-reveal-armed][data-reveal="left"],
+  [data-reveal-armed] [data-reveal="left"] { animation-name: reveal-left; }
+  [data-reveal-armed][data-reveal="right"],
+  [data-reveal-armed] [data-reveal="right"] { animation-name: reveal-right; }
+  [data-reveal-armed][data-reveal="scale"],
+  [data-reveal-armed] [data-reveal="scale"] { animation-name: reveal-scale; }
+  [data-reveal-armed][data-reveal="fade"],
+  [data-reveal-armed] [data-reveal="fade"] { animation-name: reveal-fade; }
+  /* A word-split heading does not move itself; its words rise instead. */
+  [data-reveal-armed][data-reveal="words"],
+  [data-reveal-armed] [data-reveal="words"] { animation: none; }
+
+  /* A child follows its item: the item's own delay, then the child's. */
+  [data-reveal-armed] [data-reveal-child] {
+    animation-delay: calc(
+      min(
+        calc(var(--reveal-order, 0) * var(--reveal-stagger, 90ms) + var(--reveal-extra, 0ms)),
+        1800ms
+      ) + var(--reveal-child-extra, 0ms)
+    );
+  }
+  [data-reveal-armed] [data-reveal-child="pop"] { animation-name: reveal-pop; animation-duration: 560ms; }
+  [data-reveal-armed] [data-reveal-child="fade"] { animation-name: reveal-fade; }
+  [data-reveal-armed] [data-reveal-child="draw"] { animation-name: reveal-draw; animation-duration: 900ms; }
+  [data-reveal-armed] [data-reveal-child="rise"] {
+    animation-name: reveal-rise;
+    animation-duration: 820ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Hero: as the page scrolls, the copy drifts up and fades and the footage eases
+     in a touch. Scroll-driven, so it costs no JavaScript; browsers without
+     scroll timelines simply keep the hero still. */
+  @supports (animation-timeline: scroll()) {
+    .hero-scroll-copy,
+    .hero-scroll-media,
+    .hero-scroll-cue {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      /* Firefox needs a non-zero duration to run a scroll-driven animation; others take auto. */
+      animation-duration: 1ms;
+      animation-duration: auto;
+      animation-timeline: scroll(root block);
+    }
+    .hero-scroll-copy { animation-name: hero-copy-out; animation-range: 0 85vh; }
+    .hero-scroll-media { animation-name: hero-media-in; animation-range: 0 100vh; }
+    .hero-scroll-cue { animation-name: reveal-fade; animation-direction: reverse; animation-range: 0 20vh; }
+  }
+}
+
+@keyframes hero-copy-out { to { opacity: 0.15; translate: 0 -72px; } }
+@keyframes hero-media-in { to { scale: 1.08; } }
 
 @media (prefers-reduced-motion: reduce) {
   *,

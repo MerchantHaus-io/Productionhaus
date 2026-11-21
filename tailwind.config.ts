@@ -199,6 +199,14 @@ export default {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        'marquee-left': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
+        'marquee-right': {
+          from: { transform: 'translateX(-50%)' },
+          to: { transform: 'translateX(0)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -206,6 +214,9 @@ export default {
         "fade-in": "fade-in 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
         scroll: "scroll 20s linear infinite",
+        /* Duration is set per row inline, from its item count. */
+        "marquee-left": "marquee-left 40s linear infinite",
+        "marquee-right": "marquee-right 40s linear infinite",
       },
     },
   },

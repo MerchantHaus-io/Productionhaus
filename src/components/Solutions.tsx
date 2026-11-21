@@ -20,6 +20,8 @@ import { createPortal } from "react-dom";
 import { Button } from "./ui/button";
 import shieldLogo from "@/assets/shield.webp";
 import { PRIMARY_CTA } from "@/lib/cta";
+import { RevealGroup, RevealWords } from "@/components/Reveal";
+import { reveal, revealChild } from "@/lib/reveal";
 
 type Solution = {
   icon: LucideIcon;
@@ -261,9 +263,9 @@ export const Solutions = () => {
 
 
   return (
-    <section id="services" className="py-24 px-6 md:px-16 lg:px-24 bg-background relative overflow-visible border-t border-border">
+    <RevealGroup as="section" id="services" className="py-24 px-6 md:px-16 lg:px-24 bg-background relative overflow-visible border-t border-border">
       {/* Minimal shield logo */}
-      <div className="relative mb-16 z-20 pointer-events-none">
+      <div {...reveal("scale")} className="relative mb-16 z-20 pointer-events-none">
         <div className="flex justify-center">
           <img
             src={shieldLogo}
@@ -273,19 +275,24 @@ export const Solutions = () => {
         </div>
       </div>
       <div className="overflow-visible relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
-            Core services
+        <div className="text-center mb-16">
+          <h2 {...reveal("words")} className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-4">
+            <RevealWords text="Core services" />
           </h2>
-          <p className="text-lg leading-[27px] text-muted-foreground max-w-2xl mx-auto mb-8 font-light">
+          <p {...reveal("up", 120)} className="text-lg leading-[27px] text-muted-foreground max-w-2xl mx-auto mb-8 font-light">
             Comprehensive payment solutions designed to help your business thrive in today's digital economy.
           </p>
-          <Button asChild variant="cta" size="lg">
-            <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
-          </Button>
+          <div {...reveal("up", 200)}>
+            <Button asChild variant="cta" size="lg">
+              <a href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
+            </Button>
+          </div>
         </div>
         <div className="relative">
-          <div 
+          {/* One reveal for the whole carousel, its cards cascading in from the right as
+              children: cards still off to the side are in place before anyone scrolls to them. */}
+          <div
+            {...reveal("fade")}
             ref={marqueeRef}
             className="marquee-container overflow-x-auto"
             onMouseEnter={handleMarqueeMouseEnter}
@@ -300,6 +307,7 @@ export const Solutions = () => {
                     ref={(el) => {
                       cardRefs.current[index] = el;
                     }}
+                    {...revealChild("up", Math.min(index, 6) * 90)}
                     className="group flex min-h-[280px] w-[280px] md:w-[320px] flex-shrink-0 snap-start flex-col gap-4 rounded-2xl border border-border bg-card p-8 transition-[border-color,box-shadow] duration-200 ease-brand hover:border-input hover:shadow-md"
                   >
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-muted">
@@ -322,7 +330,7 @@ export const Solutions = () => {
             </div>
           </div>
           {/* Navigation buttons */}
-          <div className="flex justify-between items-center mt-6 px-4">
+          <div {...reveal("fade", 300)} className="flex justify-between items-center mt-6 px-4">
             <button
               onClick={scrollLeft}
               className="nav-arrow-button"
@@ -338,7 +346,7 @@ export const Solutions = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
-          <div className="mt-8 text-center">
+          <div {...reveal("fade")} className="mt-8 text-center">
             <a
               href="/services"
               className="inline-flex items-center gap-1.5 rounded-sm text-base font-semibold text-primary-text ring-offset-background hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -351,6 +359,7 @@ export const Solutions = () => {
         {/* Services Banner Link. The banner's top edge is transparent, so the shadow is a
             drop-shadow filter that follows its shape rather than a box-shadow rectangle. */}
         <a
+          {...reveal("scale")}
           href="/services"
           className="block mt-12 mx-auto max-w-4xl overflow-hidden rounded-2xl drop-shadow-lg transition-all duration-300 hover:drop-shadow-2xl hover:scale-[1.02] group"
         >
@@ -444,6 +453,6 @@ export const Solutions = () => {
           }
         }
       `}</style>
-    </section>
+    </RevealGroup>
   );
 };

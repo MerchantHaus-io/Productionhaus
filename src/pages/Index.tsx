@@ -23,35 +23,24 @@ const Index = () => {
         path="/"
       />
       <Header />
+      {/* Sections with their own staggered reveals sit bare; the rest fade up whole. */}
       <main className="relative z-1">
         <Hero />
-        <Reveal direction="up">
-          <LogoBanner />
-        </Reveal>
-        <Reveal direction="up" delay={100}>
-          <HowItWorks />
-        </Reveal>
-        <Reveal direction="up" delay={100}>
-          <OnboardingDetails />
-        </Reveal>
+        <LogoBanner />
+        <HowItWorks />
+        <OnboardingDetails />
         <Reveal direction="up" delay={100}>
           <ValueStats />
         </Reveal>
-        <Reveal direction="up" delay={100}>
-          <Solutions />
-        </Reveal>
+        <Solutions />
         <Reveal direction="up" delay={100}>
           <VampBlogBanner />
         </Reveal>
-        <Reveal direction="up" delay={100}>
-          <PricingSection />
-        </Reveal>
+        <PricingSection />
         <Reveal direction="up" delay={100}>
           <ClientResources />
         </Reveal>
-        <Reveal direction="up" delay={100}>
-          <Contact />
-        </Reveal>
+        <Contact />
       </main>
       <Footer />
       <CookieConsent />

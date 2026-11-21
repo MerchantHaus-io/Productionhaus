@@ -35,7 +35,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden bg-neutral-dark">
       {/* Video background */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none">
+      <div className="hero-scroll-media absolute inset-0 w-full h-full pointer-events-none">
         <video autoPlay loop muted playsInline className="h-full w-full object-cover" poster="/hero-dark-room.webp">
           <source src={heroVideo} type="video/webm" />
         </video>
@@ -49,7 +49,8 @@ export const Hero = () => {
       </div>
 
       {/* Copy, anchored bottom-left */}
-      <div className="relative z-10 w-full px-6 md:px-16 lg:px-24 pt-24 pb-[120px]">
+      {/* hero-scroll-*: scroll-linked drift and fade as the page moves on (src/index.css). */}
+      <div className="hero-scroll-copy relative z-10 w-full px-6 md:px-16 lg:px-24 pt-24 pb-[120px]">
         <div className={`max-w-[920px] ${copy.className}`} style={copy.style}>
           <p className="mb-6 text-[13px] font-black uppercase leading-4 tracking-[0.12em] text-brand-slate">
             Payment infrastructure
@@ -83,7 +84,7 @@ export const Hero = () => {
 
       {/* Scroll indicator */}
       <div
-        className={`absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-opacity duration-300 [transition-delay:600ms] ${
+        className={`hero-scroll-cue absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-opacity duration-300 [transition-delay:600ms] ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
