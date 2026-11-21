@@ -25,6 +25,8 @@ const logos: Logo[] = [
   { file: "wix.webp", darkFile: "wix-on-dark.webp", name: "Wix", width: 463, height: 180 },
   { file: "zoho_crm.webp", darkFile: "zoho_crm-on-dark.webp", name: "Zoho CRM", width: 419, height: 180 },
   { file: "kurvs.svg", darkFile: "kurvs-on-dark.svg", name: "Kurvs", width: 120, height: 32 },
+  { file: "tami.webp", darkFile: "tami-on-dark.webp", name: "TAMI", width: 500, height: 105 },
+  { file: "improv-learning.webp", darkFile: "improv-learning-on-dark.webp", name: "IMPROV Learning", width: 219, height: 46 },
 ];
 
 /**
