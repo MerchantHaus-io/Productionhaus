@@ -40,55 +40,55 @@ const Todos = lazyPage(() => import("./pages/Todos"));
 const Pipeline = lazyPage(() => import("./pages/Pipeline"));
 
 /**
- * Developer Guides and Merchant Portal pages - directly imported for instant navigation
- * These pages share the NavTree sidebar and are frequently navigated between,
- * so eliminating lazy loading provides a smoother user experience.
+ * Developer Guides and Merchant Portal pages. Also lazy loaded, so the home page
+ * doesn't download ~45 docs pages; moving between them stays quick because links
+ * preload their page on hover, focus or touch (see PreloadOnIntent below).
  */
-import DeveloperPortal from "./pages/DeveloperPortal";
-import AccountInformation from "./pages/AccountInformation";
-import AddressVerification from "./pages/AddressVerification";
-import AutomaticCardUpdater from "./pages/AutomaticCardUpdater";
-import AutomaticLevelIII from "./pages/AutomaticLevelIII";
-import BillingStatement from "./pages/BillingStatement";
-import BlindCredits from "./pages/BlindCredits";
-import CardIDVerification from "./pages/CardIDVerification";
-import CountryCurrencyConfiguration from "./pages/CountryCurrencyConfiguration";
-import CustomerFeeConfiguration from "./pages/CustomerFeeConfiguration";
-import DkimSpfValidation from "./pages/DkimSpfValidation";
-import EmailTemplateChanges from "./pages/EmailTemplateChanges";
-import IntegrationOverview from "./pages/IntegrationOverview";
-import InvoiceLookFeel from "./pages/InvoiceLookFeel";
-import ManagingPartnerUsers from "./pages/ManagingPartnerUsers";
-import MerchantDefinedFields from "./pages/MerchantDefinedFields";
-import MerchantIPRestrictions from "./pages/MerchantIPRestrictions";
-import MerchantServiceProviderContacts from "./pages/MerchantServiceProviderContacts";
-import MerchantUserAccounts from "./pages/MerchantUserAccounts";
-import PasswordPolicy90Day from "./pages/PasswordPolicy90Day";
-import DirectConnect from "./pages/DirectConnect";
-import GatewayJs from "./pages/GatewayJs";
-import ReportConfiguration from "./pages/ReportConfiguration";
-import SecCodeConfiguration from "./pages/SecCodeConfiguration";
-import SettlementSchedule from "./pages/SettlementSchedule";
-import SpfDkimRecords from "./pages/SpfDkimRecords";
-import Secure3DS from "./pages/Secure3DS";
-import SubscriptionReports from "./pages/SubscriptionReports";
-import TestMode from "./pages/TestMode";
-import TheMerchantPortal from "./pages/TheMerchantPortal";
-import TransactionReports from "./pages/TransactionReports";
-import TransactionRouting from "./pages/TransactionRouting";
-import TwoFactorAuthentication from "./pages/TwoFactorAuthentication";
-import WhatIsACH from "./pages/WhatIsACH";
-import KountFraudManagement from "./pages/KountFraudManagement";
-import CollectCheckout from "./pages/CollectCheckout";
-import CollectJs from "./pages/CollectJs";
-import CustomerPresentCloud from "./pages/CustomerPresentCloud";
-import HostedPaymentPage from "./pages/HostedPaymentPage";
-import MobileSDK from "./pages/MobileSDK";
-import PaymentAPI from "./pages/PaymentAPI";
-import PaymentDeviceSDK from "./pages/PaymentDeviceSDK";
-import QueryAPI from "./pages/QueryAPI";
-import ThreeStepRedirect from "./pages/ThreeStepRedirect";
-import Webhooks from "./pages/Webhooks";
+const DeveloperPortal = lazyPage(() => import("./pages/DeveloperPortal"));
+const AccountInformation = lazyPage(() => import("./pages/AccountInformation"));
+const AddressVerification = lazyPage(() => import("./pages/AddressVerification"));
+const AutomaticCardUpdater = lazyPage(() => import("./pages/AutomaticCardUpdater"));
+const AutomaticLevelIII = lazyPage(() => import("./pages/AutomaticLevelIII"));
+const BillingStatement = lazyPage(() => import("./pages/BillingStatement"));
+const BlindCredits = lazyPage(() => import("./pages/BlindCredits"));
+const CardIDVerification = lazyPage(() => import("./pages/CardIDVerification"));
+const CountryCurrencyConfiguration = lazyPage(() => import("./pages/CountryCurrencyConfiguration"));
+const CustomerFeeConfiguration = lazyPage(() => import("./pages/CustomerFeeConfiguration"));
+const DkimSpfValidation = lazyPage(() => import("./pages/DkimSpfValidation"));
+const EmailTemplateChanges = lazyPage(() => import("./pages/EmailTemplateChanges"));
+const IntegrationOverview = lazyPage(() => import("./pages/IntegrationOverview"));
+const InvoiceLookFeel = lazyPage(() => import("./pages/InvoiceLookFeel"));
+const ManagingPartnerUsers = lazyPage(() => import("./pages/ManagingPartnerUsers"));
+const MerchantDefinedFields = lazyPage(() => import("./pages/MerchantDefinedFields"));
+const MerchantIPRestrictions = lazyPage(() => import("./pages/MerchantIPRestrictions"));
+const MerchantServiceProviderContacts = lazyPage(() => import("./pages/MerchantServiceProviderContacts"));
+const MerchantUserAccounts = lazyPage(() => import("./pages/MerchantUserAccounts"));
+const PasswordPolicy90Day = lazyPage(() => import("./pages/PasswordPolicy90Day"));
+const DirectConnect = lazyPage(() => import("./pages/DirectConnect"));
+const GatewayJs = lazyPage(() => import("./pages/GatewayJs"));
+const ReportConfiguration = lazyPage(() => import("./pages/ReportConfiguration"));
+const SecCodeConfiguration = lazyPage(() => import("./pages/SecCodeConfiguration"));
+const SettlementSchedule = lazyPage(() => import("./pages/SettlementSchedule"));
+const SpfDkimRecords = lazyPage(() => import("./pages/SpfDkimRecords"));
+const Secure3DS = lazyPage(() => import("./pages/Secure3DS"));
+const SubscriptionReports = lazyPage(() => import("./pages/SubscriptionReports"));
+const TestMode = lazyPage(() => import("./pages/TestMode"));
+const TheMerchantPortal = lazyPage(() => import("./pages/TheMerchantPortal"));
+const TransactionReports = lazyPage(() => import("./pages/TransactionReports"));
+const TransactionRouting = lazyPage(() => import("./pages/TransactionRouting"));
+const TwoFactorAuthentication = lazyPage(() => import("./pages/TwoFactorAuthentication"));
+const WhatIsACH = lazyPage(() => import("./pages/WhatIsACH"));
+const KountFraudManagement = lazyPage(() => import("./pages/KountFraudManagement"));
+const CollectCheckout = lazyPage(() => import("./pages/CollectCheckout"));
+const CollectJs = lazyPage(() => import("./pages/CollectJs"));
+const CustomerPresentCloud = lazyPage(() => import("./pages/CustomerPresentCloud"));
+const HostedPaymentPage = lazyPage(() => import("./pages/HostedPaymentPage"));
+const MobileSDK = lazyPage(() => import("./pages/MobileSDK"));
+const PaymentAPI = lazyPage(() => import("./pages/PaymentAPI"));
+const PaymentDeviceSDK = lazyPage(() => import("./pages/PaymentDeviceSDK"));
+const QueryAPI = lazyPage(() => import("./pages/QueryAPI"));
+const ThreeStepRedirect = lazyPage(() => import("./pages/ThreeStepRedirect"));
+const Webhooks = lazyPage(() => import("./pages/Webhooks"));
 
 /**
  * The route table, shared by the browser entry (BrowserRouter) and the
