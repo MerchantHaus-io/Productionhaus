@@ -35,17 +35,69 @@ const logos: Logo[] = [
  */
 const LOGO_AREA_PX = 3600;
 
-/* Text-only: no logo files for these. The full list is on /supported-processors. */
-const processors = [
-  "Fiserv (First Data)",
-  "Worldpay",
-  "TSYS",
-  "Global Payments",
-  "Elavon",
-  "Chase Paymentech",
-  "Heartland",
-  "Paysafe",
+/**
+ * Processors we connect to (the full list is on /supported-processors), shown in
+ * one colour so the marks sit together on light and dark. A `wordmark` already
+ * spells the name; a `symbol` is shown with the name beside it; with neither, the
+ * name is set in type until a logo file is supplied. Files are in /logos/processors;
+ * `width`/`height` are each wordmark's trimmed viewBox, for sizing and layout.
+ */
+type Processor = {
+  name: string;
+  wordmark?: { file: string; width: number; height: number };
+  symbol?: string;
+};
+
+const processors: Processor[] = [
+  { name: "Fiserv (First Data)", wordmark: { file: "fiserv.svg", width: 239, height: 120 } },
+  { name: "Worldpay", wordmark: { file: "worldpay.svg", width: 208, height: 49 } },
+  { name: "TSYS" },
+  { name: "Global Payments", wordmark: { file: "global-payments.svg", width: 208, height: 33 } },
+  { name: "Elavon", symbol: "elavon.svg" },
+  { name: "Chase Paymentech", symbol: "chase.svg" },
+  { name: "Heartland" },
+  { name: "Paysafe", symbol: "paysafe.svg" },
 ];
+
+/* Wordmarks share a visual area, like the partner logos above, so wide and compact marks carry similar weight. */
+const PROCESSOR_AREA_PX = 1800;
+/* Black on the light page, white on the dark one, whatever the file's own colours. */
+const monochrome = "brightness-0 dark:invert";
+
+const ProcessorMark = ({ processor }: { processor: Processor }) => {
+  const { name, wordmark, symbol } = processor;
+  if (wordmark) {
+    const width = Math.round(Math.sqrt(PROCESSOR_AREA_PX * (wordmark.width / wordmark.height)));
+    return (
+      <img
+        src={`/logos/processors/${wordmark.file}`}
+        alt=""
+        width={wordmark.width}
+        height={wordmark.height}
+        loading="lazy"
+        decoding="async"
+        className={`h-auto max-w-full ${monochrome}`}
+        style={{ width }}
+      />
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-2 whitespace-nowrap text-[15px] font-semibold tracking-[-0.01em] text-foreground">
+      {symbol && (
+        <img
+          src={`/logos/processors/${symbol}`}
+          alt=""
+          width={22}
+          height={22}
+          loading="lazy"
+          decoding="async"
+          className={`h-[22px] w-[22px] ${monochrome}`}
+        />
+      )}
+      {name}
+    </span>
+  );
+};
 
 const LogoMark = ({ logo }: { logo: Logo }) => {
   const width = Math.round(Math.sqrt(LOGO_AREA_PX * (logo.width / logo.height)));
@@ -420,19 +472,19 @@ const LogoBanner = () => {
         </div>
       </div>
 
-      {/* Processors, as text. Hidden from assistive tech here because the list below names them. */}
+      {/* Processor marks. Hidden from assistive tech here because the list below names them. */}
       <div className="px-6 md:px-16 lg:px-24 mt-10" aria-hidden="true">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-bold uppercase leading-4 tracking-[0.08em] text-muted-foreground mb-3">
+        <div className="mx-auto max-w-6xl text-center">
+          <p className="text-xs font-bold uppercase leading-4 tracking-[0.08em] text-muted-foreground mb-5">
             Processors we connect to
           </p>
-          <p className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm md:text-base leading-relaxed text-foreground">
-            {processors.map((name) => (
-              <span key={name} className="whitespace-nowrap">
-                {name}
-              </span>
+          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-5 opacity-80 md:gap-x-10">
+            {processors.map((processor) => (
+              <li key={processor.name} className="flex h-10 items-center">
+                <ProcessorMark processor={processor} />
+              </li>
             ))}
-          </p>
+          </ul>
         </div>
       </div>
 
@@ -446,7 +498,7 @@ const LogoBanner = () => {
         </ul>
         <h3>Processors we connect to</h3>
         <ul>
-          {processors.map((name) => (
+          {processors.map(({ name }) => (
             <li key={name}>{name}</li>
           ))}
         </ul>
