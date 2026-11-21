@@ -1,4 +1,6 @@
 import { Code2, Plug } from "lucide-react";
+import { RevealGroup, RevealWords } from "@/components/Reveal";
+import { reveal, revealChild } from "@/lib/reveal";
 
 type Step = {
   title: string;
@@ -41,14 +43,14 @@ const steps: Step[] = [
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="scroll-mt-20 py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-background border-t border-border">
+    <RevealGroup as="section" id="how-it-works" className="scroll-mt-20 py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-background border-t border-border">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-3xl mb-14">
-          <p className="mb-6 text-base font-black uppercase leading-5 tracking-[0.04em] text-brand-slate-text">How it works</p>
-          <h2 className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-5">
-            From first call to first deposit in about a week
+          <p {...reveal("fade")} className="mb-6 text-base font-black uppercase leading-5 tracking-[0.04em] text-brand-slate-text">How it works</p>
+          <h2 {...reveal("words")} className="font-display text-[40px] leading-[44px] md:text-[52px] md:leading-[56px] text-heading mb-5">
+            <RevealWords text="From first call to first deposit in about a week" />
           </h2>
-          <p className="text-lg leading-[27px] text-muted-foreground font-light">
+          <p {...reveal("up", 200)} className="text-lg leading-[27px] text-muted-foreground font-light">
             One clear path with no surprises. Here's what happens, how long each step takes, and what we'll need from
             you.
           </p>
@@ -57,13 +59,18 @@ export const HowItWorks = () => {
         <h3 className="sr-only">The process</h3>
         <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {steps.map((step, index) => (
-            <li key={step.title} className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-8">
+            <li key={step.title} {...reveal("up")} className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-8">
               <div className="flex items-baseline justify-between gap-4">
-                <span className="font-display text-5xl leading-none text-primary-text" aria-hidden="true">
+                {/* The step number pops in just after its card lands. */}
+                <span
+                  {...revealChild("pop", 220)}
+                  className="inline-block origin-bottom-left font-display text-5xl leading-none text-primary-text"
+                  aria-hidden="true"
+                >
                   {index + 1}
                 </span>
                 {step.time && (
-                  <span className="text-right text-xs leading-4 text-muted-foreground">
+                  <span {...revealChild("fade", 320)} className="text-right text-xs leading-4 text-muted-foreground">
                     {step.time}
                   </span>
                 )}
@@ -83,8 +90,11 @@ export const HowItWorks = () => {
           ))}
         </ol>
 
-        <div className="mt-10 flex flex-col gap-5 rounded-2xl bg-muted p-8 md:flex-row md:items-start">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-slate text-brand-slate-foreground">
+        <div {...reveal("up")} className="mt-10 flex flex-col gap-5 rounded-2xl bg-muted p-8 md:flex-row md:items-start">
+          <div
+            {...revealChild("pop", 200)}
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-slate text-brand-slate-foreground"
+          >
             <Plug className="h-7 w-7" aria-hidden="true" />
           </div>
           <div>
@@ -96,6 +106,6 @@ export const HowItWorks = () => {
           </div>
         </div>
       </div>
-    </section>
+    </RevealGroup>
   );
 };
