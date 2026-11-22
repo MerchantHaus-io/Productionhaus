@@ -493,7 +493,7 @@ export default function Apply() {
           <div className="mx-auto w-16 h-16 bg-status-approved-bg rounded-full flex items-center justify-center text-status-approved">
             <Check size={32} strokeWidth={3} />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">Application Received!</h2>
+          <h2 className="text-2xl font-bold text-heading">Application Received!</h2>
           <p className="text-muted-foreground">
             Thank you for submitting your application. A member of our sales team will contact you within 24 hours to request any supporting documentation.
           </p>
@@ -534,7 +534,7 @@ export default function Apply() {
               <FileText className="text-primary-foreground w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-foreground leading-tight">Merchant Preboarding</h1>
+              <h1 className="text-lg font-bold text-heading leading-tight">Merchant Preboarding</h1>
               <div className="flex items-center gap-2 mt-0.5">
                 <p className="text-xs text-muted-foreground hidden sm:block">Intake Wizard v2.4 (Supabase)</p>
                 {/* Save Status Indicator */}
@@ -632,7 +632,7 @@ export default function Apply() {
             >
               <div className="p-6 md:p-8">
                 <div className="mb-6">
-                  <h2 className="text-xl font-bold text-foreground mb-1">{STEPS[step].label}</h2>
+                  <h2 className="text-xl font-bold text-heading mb-1">{STEPS[step].label}</h2>
                   <p className="text-sm text-muted-foreground">
                     Please complete all required fields marked with <span className="text-destructive">*</span>
                   </p>
@@ -703,7 +703,7 @@ export default function Apply() {
           {/* Right Sidebar - Status Snapshot */}
           <aside className="space-y-6 lg:sticky lg:top-24">
             <div className="bg-card rounded-lg border border-border p-5 shadow-sm">
-              <h3 className="font-sans text-sm font-bold text-foreground mb-4 flex items-center gap-2">
+              <h3 className="font-sans text-sm font-bold text-heading mb-4 flex items-center gap-2">
                 <Info size={16} className="text-primary-text" />
                 Status Snapshot
               </h3>
@@ -749,7 +749,7 @@ export default function Apply() {
             </div>
 
             <div className="bg-muted rounded-lg border border-border p-5">
-              <h3 className="font-sans text-xs font-bold text-foreground uppercase tracking-wider mb-2">Tip</h3>
+              <h3 className="font-sans text-xs font-bold text-heading uppercase tracking-wider mb-2">Tip</h3>
               <p className="text-xs text-foreground leading-relaxed">
                 If your business does not currently have a processor, we will ask for additional documentation readiness checks after you click
                 "Complete".
@@ -859,7 +859,7 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
       </div>
 
       <hr className="border-border" />
-      <h3 className="font-sans text-sm font-semibold text-foreground">Contact Information</h3>
+      <h3 className="font-sans text-sm font-semibold text-heading">Contact Information</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="First Name" required>
@@ -892,7 +892,7 @@ function BusinessProfileStep({ form, onChange }: StepProps) {
       </div>
 
       <hr className="border-border" />
-      <h3 className="font-sans text-sm font-semibold text-foreground">Location</h3>
+      <h3 className="font-sans text-sm font-semibold text-heading">Location</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Address Line 1" required>
@@ -963,7 +963,7 @@ function LegalInfoStep({ form, onChange }: StepProps) {
       </div>
 
       <hr className="border-border" />
-      <h3 className="font-sans text-sm font-semibold text-foreground">Legal Address</h3>
+      <h3 className="font-sans text-sm font-semibold text-heading">Legal Address</h3>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Address Line 1" required>
@@ -1097,7 +1097,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-sm font-semibold text-foreground">Confirm Availability</h4>
+                <h4 className="text-sm font-semibold text-heading">Confirm Availability</h4>
 
                 <div className="flex items-center gap-3 p-3 border border-border rounded-lg bg-card">
                   <input
@@ -1141,7 +1141,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
       </div>
 
       <div>
-        <h3 className="font-sans text-sm font-semibold text-foreground mb-4">Volume & Ticket Size</h3>
+        <h3 className="font-sans text-sm font-semibold text-heading mb-4">Volume & Ticket Size</h3>
         <div className="grid gap-6 md:grid-cols-3">
           <Field label="Monthly Volume ($)" required>
             <NumberInput value={form.monthlyVolume} onChange={(e) => onChange("monthlyVolume", e.target.value)} />
@@ -1157,7 +1157,7 @@ function ProcessingStep({ form, onChange }: StepProps) {
 
       {/* Transaction Breakdown - shows percentage split across different transaction types */}
       <div>
-        <h3 className="font-sans text-sm font-semibold text-foreground mb-4">
+        <h3 className="font-sans text-sm font-semibold text-heading mb-4">
           Transaction Breakdown (%) <span className="text-muted-foreground font-normal ml-1">(Percentage of transactions you see or anticipate)</span>
         </h3>
         <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">
@@ -1227,7 +1227,7 @@ function ReviewStep({
             <ShieldCheck size={24} />
           </div>
           <div className="space-y-1">
-            <h4 className="font-bold text-foreground">Security & Value Added Services</h4>
+            <h4 className="font-bold text-heading">Security & Value Added Services</h4>
             <p className="text-sm text-foreground leading-relaxed">
               We are an anti-fraud first company.
               <span className="font-semibold"> Customer Vault</span>,
@@ -1258,7 +1258,7 @@ function ReviewStep({
       {/* Gateway-Only Review Confirmation - requires explicit acknowledgment before submission */}
       {isGatewayOnly && (
         <div className="rounded-lg border border-border bg-muted p-5 animate-in fade-in">
-          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-foreground uppercase tracking-wide">
+          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-heading uppercase tracking-wide">
             <Info size={16} className="text-brand-slate-text" />
             Review & Confirm
           </h4>
@@ -1297,7 +1297,7 @@ function ReviewStep({
       {/* Required Docs Confirmation for NEW SETUPS & SWITCHING */}
       {showFullChecklist && (
         <div className="rounded-lg border border-status-pending/40 bg-status-pending-bg p-5 animate-in fade-in">
-          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-foreground uppercase tracking-wide">
+          <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-heading uppercase tracking-wide">
             <FileText size={16} className="text-status-pending" />
             Application Readiness Checklist
           </h4>
@@ -1435,7 +1435,7 @@ interface SummaryCardProps {
 function SummaryCard({ title, icon: Icon, children }: SummaryCardProps) {
   return (
     <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
-      <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-foreground uppercase tracking-wide">
+      <h4 className="flex items-center gap-2 mb-4 text-sm font-bold text-heading uppercase tracking-wide">
         {Icon && <Icon size={16} className="text-muted-foreground" />}
         {title}
       </h4>

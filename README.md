@@ -63,6 +63,30 @@ npm run dev
 
 ---
 
+## 🔎 SEO and AI search
+
+The site is a client-rendered React app, so `npm run build` also runs
+`scripts/prerender.mjs`, which renders every public route to static HTML.
+Search engines, AI assistants (ChatGPT, Claude, Perplexity, Gemini) and link
+previews read real content without running JavaScript. The build also writes:
+
+| File | Purpose |
+|------|---------|
+| `/sitemap.xml` | Every indexable page |
+| `/llms.txt` | Site summary and page index for AI assistants ([llmstxt.org](https://llmstxt.org)) |
+| `/llms-full.txt` | All page content in one Markdown file |
+| `/<page>.md` | Markdown copy of each page (home page: `/index.md`) |
+
+- **Page metadata** lives in each page's `<PageSEO>` (title, description, path).
+  Blog posts also need an entry in `ARTICLES` and guides in `DOCS`, both in
+  `src/data/seo.ts`. Company facts used in structured data are there too.
+- **New page?** Add its `<Route>` in `src/App.tsx` and a `<PageSEO>`; the build
+  fails if a public page has no title or description. Internal tools should
+  pass `noindex` to `<PageSEO>`.
+- **Crawler rules** are in `public/robots.txt`; AI crawlers are allowed.
+
+---
+
 ## 🌍 Deployment
 Deploy seamlessly to any modern static hosting provider:
 

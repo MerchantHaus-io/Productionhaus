@@ -68,7 +68,7 @@ export default function VampBlogBanner() {
                 <span>{activeSlide.tag}</span>
                 <span className="text-foreground/50">&middot; {activeSlide.date}</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold font-ubuntu mb-3 text-foreground">
+              <h3 className="text-2xl md:text-3xl font-bold font-ubuntu mb-3 text-heading">
                 {activeSlide.title}
               </h3>
               <p className="text-muted-foreground text-base leading-relaxed max-w-2xl font-inter font-light">

@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { PageSEO } from '@/components/PageSEO';
+import { DOCS, DOC_SECTIONS } from '@/data/seo';
 
 /**
  * NavTree Component - Sidebar Navigation for Developer Guides and Merchant Portal
@@ -576,7 +578,20 @@ const NavTree: React.FC = () => {
     return isDeveloperSection ? "Developer Guides" : "Documentation";
   }, [currentPath]);
 
+  // Every guide renders NavTree, so it also owns the guide's <head> metadata.
+  const doc = DOCS[currentPath];
+  const docSection = doc ? DOC_SECTIONS[doc.section] : undefined;
+
   return (
+    <>
+    {doc && docSection && (
+      <PageSEO
+        title={currentPath === docSection.path ? doc.title : `${doc.title} · ${docSection.name}`}
+        description={doc.description}
+        path={currentPath}
+        breadcrumbs={currentPath === docSection.path ? [] : [{ name: docSection.name, path: docSection.path }]}
+      />
+    )}
     <nav
       className="w-full lg:w-64 bg-sidebar border-r border-sidebar-border text-sidebar-foreground backdrop-blur-sm overflow-y-auto flex-shrink-0"
       style={{ maxHeight: 'calc(100vh - 4rem)' }}
@@ -601,6 +616,7 @@ const NavTree: React.FC = () => {
         ))}
       </ul>
     </nav>
+    </>
   );
 };
 

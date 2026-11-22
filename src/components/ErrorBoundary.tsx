@@ -43,7 +43,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 />
               </svg>
             </div>
-            <h1 className="font-ubuntu text-2xl font-bold text-foreground">
+            <h1 className="font-ubuntu text-2xl font-bold text-heading">
               Something went wrong
             </h1>
             <p className="font-montserrat text-muted-foreground">

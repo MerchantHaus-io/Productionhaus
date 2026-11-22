@@ -22,7 +22,7 @@ const MobileSDK = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Mobile SDK (iOS/Android)
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const MobileSDK = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The mobile SDKs are designed for developers building
                 native apps. They abstract away the complexities of
@@ -48,7 +48,7 @@ const MobileSDK = () => {
 
             {/* Features */}
             <section id="features" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Features</h2>
+              <h2 className="text-2xl font-semibold text-heading">Features</h2>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>Mobile card reader library for supported hardware devices.</li>
                 <li>End‑to‑end encryption library to send payment data securely.</li>
@@ -59,7 +59,7 @@ const MobileSDK = () => {
 
             {/* Use Cases */}
             <section id="use-cases" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Use Cases</h2>
+              <h2 className="text-2xl font-semibold text-heading">Use Cases</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The mobile SDKs are ideal for apps that accept card
                 present transactions on phones or tablets—for example

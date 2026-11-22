@@ -19,39 +19,28 @@ const Index = () => {
     <div className="relative min-h-screen bg-background">
       <PageSEO
         title="Plug In, Play and Process"
-        description="Empowering merchants and ISOs through tailored retail solutions for payment processing. Accept cards, ACH, and secure pay links online, in-store, or on the go."
+        description="Card, ACH and pay-link payments for U.S. small and mid-size businesses. Accept payments online, in-store or on the go, and go live in about a week."
         path="/"
       />
       <Header />
+      {/* Sections with their own staggered reveals sit bare; the rest fade up whole. */}
       <main className="relative z-1">
         <Hero />
-        <Reveal direction="up">
-          <LogoBanner />
-        </Reveal>
+        <LogoBanner />
+        <HowItWorks />
+        <OnboardingDetails />
         <Reveal direction="up" delay={100}>
           <ValueStats />
         </Reveal>
-        <Reveal direction="up" delay={100}>
-          <Solutions />
-        </Reveal>
-        <Reveal direction="up" delay={100}>
-          <HowItWorks />
-        </Reveal>
-        <Reveal direction="up" delay={100}>
-          <OnboardingDetails />
-        </Reveal>
+        <Solutions />
         <Reveal direction="up" delay={100}>
           <VampBlogBanner />
         </Reveal>
-        <Reveal direction="up" delay={100}>
-          <PricingSection />
-        </Reveal>
+        <PricingSection />
         <Reveal direction="up" delay={100}>
           <ClientResources />
         </Reveal>
-        <Reveal direction="up" delay={100}>
-          <Contact />
-        </Reveal>
+        <Contact />
       </main>
       <Footer />
       <CookieConsent />

@@ -21,7 +21,7 @@ const SubscriptionReports = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Subscription Reports
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -32,7 +32,7 @@ const SubscriptionReports = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Subscription reports provide insight into your recurring billing
                 activity. You can search by subscription ID, order ID, customer
@@ -42,7 +42,7 @@ const SubscriptionReports = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 You need the “Access Recurring/Installment” permission to run
                 subscription reports. At least one active recurring plan must
@@ -52,7 +52,7 @@ const SubscriptionReports = () => {
 
             {/* Search Filters */}
             <section id="search-filters" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Search Filters
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -73,7 +73,7 @@ const SubscriptionReports = () => {
 
             {/* Pausing Subscriptions */}
             <section id="pausing-subscriptions" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Pausing Subscriptions
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -86,7 +86,7 @@ const SubscriptionReports = () => {
 
             {/* Exporting Reports */}
             <section id="exporting-reports" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Exporting Reports
               </h2>
               <p className="text-muted-foreground leading-relaxed">

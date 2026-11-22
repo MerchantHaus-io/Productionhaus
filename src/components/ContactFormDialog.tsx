@@ -136,7 +136,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
         {!isSubmitted ? (
           <>
             <DialogHeader>
-              <DialogTitle className="font-ubuntu text-3xl font-semibold text-foreground">
+              <DialogTitle className="font-ubuntu text-3xl font-semibold text-heading">
                 Get in Touch
               </DialogTitle>
               <DialogDescription className="font-montserrat text-base text-muted-foreground">
@@ -343,7 +343,7 @@ export const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps
               </div>
               
               <div className="space-y-3">
-                <h3 className="font-ubuntu text-3xl font-semibold text-foreground">
+                <h3 className="font-ubuntu text-3xl font-semibold text-heading">
                   Thank You!
                 </h3>
                 <p className="font-montserrat text-lg text-muted-foreground max-w-md">

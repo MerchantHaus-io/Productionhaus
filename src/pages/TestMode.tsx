@@ -22,7 +22,7 @@ const TestMode = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Test Mode
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const TestMode = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 When test mode is on, transactions are marked as “TEST” and
                 are never sent to your processor. They do not settle or
@@ -43,7 +43,7 @@ const TestMode = () => {
 
             {/* Enabling Test Mode */}
             <section id="enabling-test-mode" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Enabling Test Mode
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -62,7 +62,7 @@ const TestMode = () => {
 
             {/* Flushing Transactions */}
             <section id="flushing-transactions" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Flushing Transactions
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -74,7 +74,7 @@ const TestMode = () => {
 
             {/* Limitations */}
             <section id="limitations" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Limitations</h2>
+              <h2 className="text-2xl font-semibold text-heading">Limitations</h2>
               <p className="text-muted-foreground leading-relaxed">
                 While in test mode, you cannot capture, refund or void
                 transactions. Test mode does not simulate declines from

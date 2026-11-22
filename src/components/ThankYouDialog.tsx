@@ -29,7 +29,7 @@ export const ThankYouDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md bg-card">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-ubuntu text-foreground">
+          <DialogTitle className="text-2xl font-ubuntu text-heading">
             {title}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">

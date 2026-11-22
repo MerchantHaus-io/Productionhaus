@@ -5,7 +5,7 @@ export default function ClientResources() {
   return (
     <section className="py-20 px-6 md:px-16 lg:px-24">
       <div className="text-center mb-12">
-        <h2 className="font-ubuntu text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
+        <h2 className="font-ubuntu text-3xl md:text-4xl font-bold tracking-tight text-heading mb-3">
           Client Resources
         </h2>
         <p className="font-inter text-base text-muted-foreground max-w-2xl mx-auto font-light">

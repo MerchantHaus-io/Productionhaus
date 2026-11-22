@@ -23,7 +23,7 @@ const MerchantUserAccounts = () => {
         {/* Load Inter font */} <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Merchant User Accounts
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const MerchantUserAccounts = () => {
 
           {/* Overview */}
           <section id="overview" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Overview
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -47,7 +47,7 @@ const MerchantUserAccounts = () => {
 
           {/* Prerequisites */}
           <section id="prerequisites" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Prerequisites
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -64,7 +64,7 @@ const MerchantUserAccounts = () => {
 
           {/* Adding a New User */}
           <section id="adding-a-new-user" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Adding a New Merchant User
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -86,7 +86,7 @@ const MerchantUserAccounts = () => {
 
           {/* Password Reset */}
           <section id="password-reset" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Password Reset
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -106,7 +106,7 @@ const MerchantUserAccounts = () => {
 
           {/* Editing & Updating */}
           <section id="editing-and-updating" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Editing and Updating Users
             </h2>
             <p className="text-muted-foreground leading-relaxed">

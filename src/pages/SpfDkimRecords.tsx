@@ -24,7 +24,7 @@ const SpfDkimRecords = () => {
         {/* Load Inter font */} <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               SPF &amp; DKIM Records
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -36,7 +36,7 @@ const SpfDkimRecords = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 SPF and DKIM are DNS records that establish trust between your
                 email server and recipients. Without them, your outbound emails
@@ -49,7 +49,7 @@ const SpfDkimRecords = () => {
 
             {/* Why Add Records */}
             <section id="why-add-records" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Why Add Records</h2>
+              <h2 className="text-2xl font-semibold text-heading">Why Add Records</h2>
               <p className="text-muted-foreground leading-relaxed">
                 If your emails are sent from a third‑party provider, the
                 recipient’s spam filters may see a mismatch between the from
@@ -63,7 +63,7 @@ const SpfDkimRecords = () => {
 
             {/* SPF Setup */}
             <section id="spf-setup" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">SPF Setup</h2>
+              <h2 className="text-2xl font-semibold text-heading">SPF Setup</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 An SPF record is a TXT entry in your DNS that declares which
                 mail servers are authorised to send email for your domain. A
@@ -83,7 +83,7 @@ v=spf1 include:example.com ~all
 
             {/* DKIM Setup */}
             <section id="dkim-setup" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">DKIM Setup</h2>
+              <h2 className="text-2xl font-semibold text-heading">DKIM Setup</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 DKIM uses public/private key pairs to sign outgoing emails.
                 Your provider will supply one or more CNAME records that you
@@ -103,7 +103,7 @@ selector._domainkey IN CNAME selector.provider.com
 
             {/* Additional Tips */}
             <section id="additional-tips" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Additional Tips</h2>
+              <h2 className="text-2xl font-semibold text-heading">Additional Tips</h2>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>
                   Only one SPF record should exist per domain. If you need

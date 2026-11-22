@@ -22,7 +22,7 @@ const CustomerFeeConfiguration = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Customer Fee Configuration
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const CustomerFeeConfiguration = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The fee configuration tool allows you to apply surcharges,
                 convenience fees and miscellaneous fees to card and ACH
@@ -44,7 +44,7 @@ const CustomerFeeConfiguration = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Your service provider must enable the customer fee feature, and
                 you need administrative permissions to configure fees. Some
@@ -55,7 +55,7 @@ const CustomerFeeConfiguration = () => {
 
             {/* Creating Fees */}
             <section id="creating-fees" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Creating Fees
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -69,7 +69,7 @@ const CustomerFeeConfiguration = () => {
 
             {/* Fee Types */}
             <section id="fee-types" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Fee Types</h2>
+              <h2 className="text-2xl font-semibold text-heading">Fee Types</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 There are three types of fees you can configure:
               </p>

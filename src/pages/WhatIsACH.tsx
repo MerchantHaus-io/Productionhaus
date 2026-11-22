@@ -22,7 +22,7 @@ const WhatIsACH = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               What is ACH?
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const WhatIsACH = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 ACH transfers are batch‑processed, low‑cost and suitable for
                 recurring or large payments. Funds are typically available
@@ -46,7 +46,7 @@ const WhatIsACH = () => {
 
             {/* Setting Up ACH */}
             <section id="setting-up-ach" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Setting Up ACH
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -66,7 +66,7 @@ const WhatIsACH = () => {
 
             {/* Returns & Errors */}
             <section id="returns-errors" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Returns &amp; Errors
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -85,7 +85,7 @@ const WhatIsACH = () => {
 
             {/* NACHA Compliance */}
             <section id="nacha-compliance" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 NACHA Compliance
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -100,7 +100,7 @@ const WhatIsACH = () => {
 
             {/* SEC Codes */}
             <section id="sec-codes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">SEC Codes</h2>
+              <h2 className="text-2xl font-semibold text-heading">SEC Codes</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Each ACH entry must be classified with a Standard Entry Class
                 (SEC) code, such as PPD for consumer payments, CCD for
@@ -111,7 +111,7 @@ const WhatIsACH = () => {
 
             {/* Processing ACH */}
             <section id="processing-ach" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Processing ACH Transactions
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -124,7 +124,7 @@ const WhatIsACH = () => {
 
             {/* Best Practices */}
             <section id="best-practices" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Best Practices
               </h2>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
@@ -137,7 +137,7 @@ const WhatIsACH = () => {
 
             {/* FAQs */}
             <section id="faqs" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">FAQs</h2>
+              <h2 className="text-2xl font-semibold text-heading">FAQs</h2>
               <p className="text-muted-foreground leading-relaxed">
                 <strong>Can I process international ACH?</strong> International
                 debits require special authorisation and may not be supported

@@ -87,7 +87,7 @@ export function ContactDialog({ open, onOpenChange }: ContactDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md bg-card">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-ubuntu text-foreground">
+          <DialogTitle className="text-2xl font-ubuntu text-heading">
             {isSubmitted ? "Message Received!" : "Contact Us"}
           </DialogTitle>
           <DialogDescription className="text-muted-foreground">

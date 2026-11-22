@@ -57,7 +57,7 @@ export const CookieConsent = () => {
       className="fixed inset-x-4 bottom-4 z-50 sm:right-6 sm:left-auto sm:max-w-md"
     >
       <div className="rounded-2xl border border-border bg-background/95 p-6 shadow-xl backdrop-blur supports-[backdrop-filter]:bg-background/70">
-        <h2 className="text-lg font-semibold text-foreground">We value your privacy</h2>
+        <h2 className="text-lg font-semibold text-heading">We value your privacy</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. You can
           learn more in our {" "}

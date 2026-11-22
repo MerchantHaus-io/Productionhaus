@@ -35,10 +35,13 @@ type Section = {
   icon: ReactNode;
   heading: string;
   leftCopy: ReactNode;
-  stats: { icon: ReactNode; text: string }[];
+  stats: { icon: ReactNode; text: string; href?: string }[];
 };
 
 const iconClass = "w-5 h-5 text-current";
+
+/* Computed at build time from public/processors_simplified.csv (see vite.config.ts). */
+const PROCESSOR_COUNT = `${__SUPPORTED_PROCESSOR_COUNT__}+`;
 const sectionIconClass = "w-6 h-6 text-current";
 
 const sections: Section[] = [
@@ -48,18 +51,23 @@ const sections: Section[] = [
     leftCopy: (
       <>
         <p>
-          Connect instantly to 200+ leading commerce platforms and enterprise
-          systems. No custom development. No gateway rebuilds. Deploy quickly and
-          scale confidently with payment infrastructure built for high-volume operations.
+          Connect to the commerce platforms and processors your business already
+          uses, with {PROCESSOR_COUNT} supported processors. No custom development.
+          No gateway rebuilds. Deploy quickly and grow with payment infrastructure
+          that keeps up.
         </p>
         <p>
-          Engineered for organizations that demand speed to market without
+          Built for businesses that want to get paid sooner without
           sacrificing performance or flexibility.
         </p>
       </>
     ),
     stats: [
-      { icon: <ShoppingCart className={iconClass} strokeWidth={1.5} />, text: "200+ platform integrations" },
+      {
+        icon: <ShoppingCart className={iconClass} strokeWidth={1.5} />,
+        text: `${PROCESSOR_COUNT} supported processors`,
+        href: "/supported-processors",
+      },
       { icon: <Zap className={iconClass} strokeWidth={1.5} />, text: "Go live in days, not months" },
       { icon: <Plug className={iconClass} strokeWidth={1.5} />, text: "Plug-and-play deployment" },
       { icon: <Globe className={iconClass} strokeWidth={1.5} />, text: "Compatible with leading systems" },
@@ -107,7 +115,7 @@ const sections: Section[] = [
     stats: [
       { icon: <TrendingUp className={iconClass} strokeWidth={1.5} />, text: "Smart transaction routing" },
       { icon: <Shuffle className={iconClass} strokeWidth={1.5} />, text: "Multi-processor redundancy" },
-      { icon: <Globe className={iconClass} strokeWidth={1.5} />, text: "40+ global processors" },
+      { icon: <Globe className={iconClass} strokeWidth={1.5} />, text: "Works with your current processor" },
       { icon: <ArrowUp className={iconClass} strokeWidth={1.5} />, text: "Higher authorization rates" },
     ],
   },
@@ -130,7 +138,7 @@ const sections: Section[] = [
   },
   {
     icon: <RefreshCw className={sectionIconClass} strokeWidth={1.5} />,
-    heading: "Enterprise-Grade Uptime",
+    heading: "Reliable Uptime",
     leftCopy: (
       <>
         <p>
@@ -160,7 +168,7 @@ const sections: Section[] = [
         </p>
         <p>
           Deliver consistent payment experiences across every channel your
-          organization operates.
+          business sells in.
         </p>
       </>
     ),
@@ -249,7 +257,7 @@ export const ValueStats = () => {
     <section className="vs-section py-20 px-6 md:px-16 lg:px-24 bg-transparent">
       {/* Section heading */}
       <div className="mb-16 text-center">
-        <h2 className="font-rajdhani text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground uppercase">
+        <h2 className="font-rajdhani text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-heading uppercase">
           Platform Capabilities at a Glance
         </h2>
       </div>
@@ -278,7 +286,13 @@ export const ValueStats = () => {
               {currentSection.stats.map((stat) => (
                 <li key={stat.text} className="vs-card-stat-item">
                   <span className="vs-card-stat-icon" aria-hidden="true">{stat.icon}</span>
-                  <span className="vs-card-stat-text">{stat.text}</span>
+                  {stat.href ? (
+                    <a href={stat.href} className="vs-card-stat-text underline underline-offset-4 hover:no-underline">
+                      {stat.text}
+                    </a>
+                  ) : (
+                    <span className="vs-card-stat-text">{stat.text}</span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -497,7 +511,7 @@ export const ValueStats = () => {
         }
 
         .vs-card-label {
-          font-family: 'Montserrat', system-ui, sans-serif;
+          font-family: 'Public Sans', system-ui, sans-serif;
           font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0.15em;
@@ -549,7 +563,7 @@ export const ValueStats = () => {
           letter-spacing: 0.15em;
           color: var(--vs-muted);
           text-transform: uppercase;
-          font-family: 'Montserrat', system-ui, sans-serif;
+          font-family: 'Public Sans', system-ui, sans-serif;
         }
 
         /* ===== Navigation arrows ===== */

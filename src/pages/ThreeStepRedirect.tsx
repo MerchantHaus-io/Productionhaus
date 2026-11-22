@@ -23,7 +23,7 @@ const ThreeStepRedirect = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Three Step Redirect
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -36,7 +36,7 @@ const ThreeStepRedirect = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Instead of sending card data from your server, the Three
                 Step Redirect separates the transaction into three
@@ -66,7 +66,7 @@ const ThreeStepRedirect = () => {
 
             {/* Benefits */}
             <section id="benefits" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Benefits</h2>
+              <h2 className="text-2xl font-semibold text-heading">Benefits</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Independent experts highlight two key advantages of the
                 Three Step Redirect: it significantly reduces your PCI
@@ -82,7 +82,7 @@ const ThreeStepRedirect = () => {
 
             {/* Implementation */}
             <section id="implementation" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Implementation</h2>
+              <h2 className="text-2xl font-semibold text-heading">Implementation</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Implementing a Three Step Redirect integration usually
                 involves creating two endpoints on your server: one to
@@ -99,7 +99,7 @@ const ThreeStepRedirect = () => {
 
             {/* Considerations */}
             <section id="considerations" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Considerations</h2>
+              <h2 className="text-2xl font-semibold text-heading">Considerations</h2>
               <p className="text-muted-foreground leading-relaxed">
                 When using a hosted form, you have less control over the
                 user interface than with a direct post. Check the

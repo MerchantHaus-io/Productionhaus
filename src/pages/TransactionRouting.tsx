@@ -22,7 +22,7 @@ const TransactionRouting = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Transaction Routing
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const TransactionRouting = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Routing allows you to assign a percentage of your overall
                 transaction volume to each configured processor. The
@@ -45,7 +45,7 @@ const TransactionRouting = () => {
 
             {/* Setting Percentages */}
             <section id="setting-percentages" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Setting Percentages
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -70,7 +70,7 @@ const TransactionRouting = () => {
 
             {/* Overflow & Default */}
             <section id="overflow-default" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Overflow &amp; Default
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -83,7 +83,7 @@ const TransactionRouting = () => {
 
             {/* Additional Notes */}
             <section id="additional-notes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Additional Notes
               </h2>
               <p className="text-muted-foreground leading-relaxed">

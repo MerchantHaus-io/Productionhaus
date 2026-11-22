@@ -375,7 +375,7 @@ export default function ImprovedPaymentSlider() {
           font-size: 0.95rem;
           font-weight: 600;
           text-align: center;
-          font-family: 'Montserrat', sans-serif;
+          font-family: 'Public Sans', system-ui, sans-serif;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 

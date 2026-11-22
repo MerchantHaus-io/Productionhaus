@@ -25,7 +25,7 @@ const TheMerchantPortal = () => {
         <div className="max-w-6xl mx-auto flex gap-8">
           <NavTree />
           <div className="flex-1 docs-typography min-w-0">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               The Merchant Portal
             </h1>
             <p className="text-muted-foreground mb-10 leading-relaxed max-w-3xl">
@@ -37,7 +37,7 @@ const TheMerchantPortal = () => {
             <div className="grid gap-6 md:grid-cols-3">
               {/* Card for Transaction Reports */}
               <div className="p-6 border border-border rounded-2xl hover:shadow-lg transition-shadow">
-                <h2 className="text-xl font-semibold mb-2 text-foreground">
+                <h2 className="text-xl font-semibold mb-2 text-heading">
                   Transaction Reports
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
@@ -54,7 +54,7 @@ const TheMerchantPortal = () => {
               </div>
               {/* Card for Merchant User Accounts */}
               <div className="p-6 border border-border rounded-2xl hover:shadow-lg transition-shadow">
-                <h2 className="text-xl font-semibold mb-2 text-foreground">
+                <h2 className="text-xl font-semibold mb-2 text-heading">
                   Merchant User Accounts
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
@@ -70,7 +70,7 @@ const TheMerchantPortal = () => {
               </div>
               {/* Card for Managing Partner Users */}
               <div className="p-6 border border-border rounded-2xl hover:shadow-lg transition-shadow">
-                <h2 className="text-xl font-semibold mb-2 text-foreground">
+                <h2 className="text-xl font-semibold mb-2 text-heading">
                   Managing Partner Users
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">

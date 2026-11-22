@@ -24,7 +24,7 @@ const ManagingPartnerUsers = () => {
         {/* Load Inter font */} <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Managing Partner Users
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -36,7 +36,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Overview */}
           <section id="overview" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Overview
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -48,7 +48,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Prerequisites */}
           <section id="prerequisites" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Prerequisites
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -60,7 +60,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Adding a New User */}
           <section id="adding-a-new-user" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Adding a New User
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -78,7 +78,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Password Reset */}
           <section id="password-reset" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Password Reset
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -96,7 +96,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Editing and Updating Users */}
           <section id="editing-and-updating" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Editing and Updating Users
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -110,7 +110,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Requesting a Primary Username Change */}
           <section id="requesting-a-primary-username-change" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Requesting a Primary Username Change
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -123,7 +123,7 @@ const ManagingPartnerUsers = () => {
 
           {/* Deleting a User */}
           <section id="deleting-a-user" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               Deleting a User
             </h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -136,7 +136,7 @@ const ManagingPartnerUsers = () => {
 
           {/* User Permissions Overview */}
           <section id="user-permission-summary" className="space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-foreground">
+            <h2 className="text-2xl font-semibold text-heading">
               User Permission Summary
             </h2>
             <p className="text-muted-foreground leading-relaxed">

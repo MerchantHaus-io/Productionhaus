@@ -23,7 +23,7 @@ const AutomaticLevelIII = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Automatic Level III Template
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const AutomaticLevelIII = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 When enabled, the Automatic Level III feature inserts
                 pre‑populated data into transactions. You can create a default
@@ -45,7 +45,7 @@ const AutomaticLevelIII = () => {
 
             {/* Prerequisites */}
             <section id="prerequisites" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Prerequisites</h2>
+              <h2 className="text-2xl font-semibold text-heading">Prerequisites</h2>
               <p className="text-muted-foreground leading-relaxed">
                 You must subscribe to the Level III Advantage service. Your
                 processor must support Level III data, and you need
@@ -55,7 +55,7 @@ const AutomaticLevelIII = () => {
 
             {/* Configuring Fields */}
             <section id="configuring-fields" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Configuring Fields
               </h2>
               <p className="text-muted-foreground leading-relaxed">

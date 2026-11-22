@@ -23,7 +23,7 @@ const CardIDVerification = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Card ID Verification (CVV)
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const CardIDVerification = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 CVV is used to confirm that the purchaser has the physical card
                 in hand. The code is not stored on the magnetic stripe or chip,
@@ -44,7 +44,7 @@ const CardIDVerification = () => {
 
             {/* How It Works */}
             <section id="how-it-works" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+              <h2 className="text-2xl font-semibold text-heading">How It Works</h2>
               <p className="text-muted-foreground leading-relaxed">
                 During payment, the cardholder enters their CVV. The processor
                 requests verification from the issuer, who returns a result
@@ -55,7 +55,7 @@ const CardIDVerification = () => {
 
             {/* Settings */}
             <section id="settings" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Settings</h2>
+              <h2 className="text-2xl font-semibold text-heading">Settings</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 On the CVV settings page you can enable the rule for each
                 processor and choose whether it applies to domestic, foreign or
@@ -84,7 +84,7 @@ const CardIDVerification = () => {
 
             {/* Result Codes */}
             <section id="result-codes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Result Codes</h2>
+              <h2 className="text-2xl font-semibold text-heading">Result Codes</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 The issuer returns a code indicating whether the CVV matched.
                 Common codes include:
@@ -112,7 +112,7 @@ const CardIDVerification = () => {
 
             {/* Additional Notes */}
             <section id="additional-notes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Additional Notes
               </h2>
               <p className="text-muted-foreground leading-relaxed">

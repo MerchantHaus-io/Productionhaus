@@ -22,7 +22,7 @@ const EmailTemplateChanges = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Email Template Changes
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -34,7 +34,7 @@ const EmailTemplateChanges = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 There are three main templates: the merchant receipt sent to
                 you when a transaction occurs, the customer receipt sent to
@@ -46,7 +46,7 @@ const EmailTemplateChanges = () => {
 
             {/* Template Types */}
             <section id="template-types" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Template Types</h2>
+              <h2 className="text-2xl font-semibold text-heading">Template Types</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The following templates are available:
               </p>
@@ -69,7 +69,7 @@ const EmailTemplateChanges = () => {
 
             {/* Making Changes */}
             <section id="making-changes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Making Changes
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -101,7 +101,7 @@ const EmailTemplateChanges = () => {
 
             {/* Request Process */}
             <section id="request-process" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Request Process
               </h2>
               <p className="text-muted-foreground leading-relaxed">

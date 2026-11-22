@@ -22,7 +22,7 @@ const SecCodeConfiguration = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               SEC Code Configuration
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -33,7 +33,7 @@ const SecCodeConfiguration = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 NACHA rules require you to classify each ACH entry with a
                 Standard Entry Class code. The code describes whether the
@@ -45,7 +45,7 @@ const SecCodeConfiguration = () => {
 
             {/* Setting a Default */}
             <section id="setting-default" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Setting a Default
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -59,7 +59,7 @@ const SecCodeConfiguration = () => {
 
             {/* Allowed Codes */}
             <section id="allowed-codes" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Allowed Codes
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">

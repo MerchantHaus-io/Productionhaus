@@ -23,7 +23,7 @@ const AddressVerification = () => {
         <div className="max-w-5xl mx-auto flex">
           <NavTree />
           <div className="flex-1 docs-typography">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-heading mb-4">
               Address Verification (AVS)
             </h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ const AddressVerification = () => {
 
             {/* Overview */}
             <section id="overview" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">Overview</h2>
+              <h2 className="text-2xl font-semibold text-heading">Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
                 When a transaction is submitted, the address verification
                 service validates the street number and postcode (or ZIP code)
@@ -46,7 +46,7 @@ const AddressVerification = () => {
 
             {/* How It Works */}
             <section id="how-it-works" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">How It Works</h2>
+              <h2 className="text-2xl font-semibold text-heading">How It Works</h2>
               <p className="text-muted-foreground leading-relaxed">
                 AVS returns result codes such as <em>Y</em> (match), <em>N</em>
                 (no match) and others. The gateway uses these codes to
@@ -58,7 +58,7 @@ const AddressVerification = () => {
 
             {/* Configuring Rules */}
             <section id="configuring-rules" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Configuring Rules
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -72,7 +72,7 @@ const AddressVerification = () => {
 
             {/* Additional Options */}
             <section id="additional-options" className="space-y-4 mb-12">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-heading">
                 Additional Options
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
