@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
+import { Pause, Play } from "lucide-react";
 import { RevealGroup, RevealWords } from "@/components/Reveal";
 import { reveal } from "@/lib/reveal";
 
@@ -144,6 +145,7 @@ const partnerRows = [logos.slice(0, half), logos.slice(half)];
 type MarqueeRowProps = {
   items: ReactNode[];
   direction: "left" | "right";
+  paused: boolean;
   /* Small per-row variation so the rows never move in lockstep. */
   speed?: number;
   className?: string;
@@ -152,7 +154,7 @@ type MarqueeRowProps = {
 /* Rows slide in from the side they travel from, a little further than a plain reveal. */
 const ROW_ENTRANCE: CSSProperties = { "--reveal-distance": "120px", "--reveal-duration": "1100ms" } as CSSProperties;
 
-const MarqueeRow = ({ items, direction, speed = 1, className = "" }: MarqueeRowProps) => {
+const MarqueeRow = ({ items, direction, paused, speed = 1, className = "" }: MarqueeRowProps) => {
   const duration = `${Math.round(items.length * SECONDS_PER_ITEM * speed)}s`;
   const renderCopy = (copy: number) =>
     items.map((item, index) => (
@@ -170,12 +172,12 @@ const MarqueeRow = ({ items, direction, speed = 1, className = "" }: MarqueeRowP
     <div
       {...reveal(direction)}
       style={ROW_ENTRANCE}
-      className={`group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] motion-reduce:[mask-image:none] ${className}`}
+      className={`relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] motion-reduce:[mask-image:none] ${className}`}
     >
       <ul
         className={`flex w-max items-center ${
           direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
-        } group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-y-4`}
+        } ${paused ? "[animation-play-state:paused]" : ""} motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-y-4`}
         style={{ animationDuration: duration }}
       >
         {renderCopy(0)}
@@ -185,7 +187,15 @@ const MarqueeRow = ({ items, direction, speed = 1, className = "" }: MarqueeRowP
   );
 };
 
-const LogoBanner = () => (
+/*
+ * The rows used to pause on hover, but a resting cursor (or a tap on touch
+ * screens) left them frozen. They now always run unless the visitor presses
+ * Pause, which also gives the moving content the control WCAG 2.2.2 asks for.
+ */
+const LogoBanner = () => {
+  const [paused, setPaused] = useState(false);
+
+  return (
   <RevealGroup as="section" className="py-20 overflow-hidden border-b border-border">
     <div className="px-6 md:px-16 lg:px-24 mb-12">
       <div className="text-center">
@@ -201,6 +211,7 @@ const LogoBanner = () => (
     {/* Decorative motion; the sr-only lists below name every partner and processor once. */}
     <div className="mx-auto max-w-7xl space-y-6 md:space-y-8 [--logo-scale:0.9] md:[--logo-scale:1.05]" aria-hidden="true">
       <MarqueeRow
+        paused={paused}
         direction="left"
         items={partnerRows[0].map((logo) => (
           <div key={logo.name} className="flex h-14 md:h-16 items-center">
@@ -209,6 +220,7 @@ const LogoBanner = () => (
         ))}
       />
       <MarqueeRow
+        paused={paused}
         direction="right"
         speed={1.12}
         items={partnerRows[1].map((logo) => (
@@ -218,6 +230,7 @@ const LogoBanner = () => (
         ))}
       />
       <MarqueeRow
+        paused={paused}
         direction="left"
         speed={1.25}
         className="opacity-80"
@@ -227,6 +240,19 @@ const LogoBanner = () => (
           </div>
         ))}
       />
+    </div>
+
+    {/* Static under reduced motion, so there is nothing to pause. */}
+    <div className="mt-6 flex justify-center motion-reduce:hidden">
+      <button
+        type="button"
+        onClick={() => setPaused((value) => !value)}
+        aria-pressed={paused}
+        className="inline-flex items-center gap-1.5 rounded-pill px-3 py-1.5 text-xs font-semibold text-muted-foreground ring-offset-background transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        {paused ? <Play className="h-3.5 w-3.5" aria-hidden="true" /> : <Pause className="h-3.5 w-3.5" aria-hidden="true" />}
+        {paused ? "Play logos" : "Pause logos"}
+      </button>
     </div>
 
     <div className="sr-only">
@@ -252,6 +278,7 @@ const LogoBanner = () => (
       </a>
     </div>
   </RevealGroup>
-);
+  );
+};
 
 export default LogoBanner;
